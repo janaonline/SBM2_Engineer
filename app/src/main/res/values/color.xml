@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<color name="layout_bg">#333333</color>
+  <!-- A light Holo shade of blue -->
+  <!-- A light Holo shade of gray -->
+	<color name="bg_spinner_color">#DEDEDB</color>
+  <!-- A light Holo shade of green -->
+  <!-- A light Holo shade of red -->
+  <!-- A dark Holo shade of blue -->
+  <!-- A dark Holo shade of green -->
+  <!-- A dark Holo shade of red -->
+  <!-- A Holo shade of purple -->
+	<!-- A light Holo shade of orange -->
+  <!-- A dark Holo shade of orange -->
+  <!-- A really bright Holo shade of blue -->
+  <!-- A really bright Holo shade of gray -->
+  <color name="holo_orange">#FF8800</color>
+  <color name="black">#212121</color>
+	<color name="yellow">#ffd61c</color>
+	<color name="grayy">#e5e5e5</color>
+  <color name="white">#ffffff</color>
+	<color name="transparent">#00000000</color>
+	<color name="lt_gray">#757575</color>
+  <color name="red_reopn_open">#F6695E</color>
+	<color name="green_resolved">#00BD00</color>
+	<color name="blue_on_the_job">#2BB5F9</color>
+	<color name="gray_closed">#607D8B</color>
+
+  <color name="blue_pressed_bottom">#165FA0</color>
+  <color name="colorPrimary">#FF6D00</color>
+	<color name="colorPrimaryDark">#FF6D00</color>
+  <color name="colorAccent">#FFD180</color>
+  <color name="secondary_text_color">#757575</color>
+	<color name="white_edittext">#fafafa</color>
+	<color name="body">#e5e5e5</color>
+  <color name="complaint_id_bgcolor">#e6e6e6</color>
+	<color name="blue_fab_bg">#0981fc</color>
+</resources>

@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+
+group='com.github.mukeshsolanki'
+
+android {
+  compileSdkVersion 29
+  buildToolsVersion '28.0.3'
+
+  defaultConfig {
+    minSdkVersion 14
+    targetSdkVersion 29
+    versionCode 3
+    versionName "1.0.3"
+  }
+  buildTypes {
+    release {
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+  }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.+'
+}

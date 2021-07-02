@@ -1,0 +1,281 @@
+package com.ichangemycity.swachhbharatengineer;
+
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.google.gson.Gson;
+import com.ichangemycity.appdata.AppConstant;
+import com.ichangemycity.appdata.AppController;
+import com.ichangemycity.appdata.AppUtils;
+import com.ichangemycity.appdata.ICMyCPreferenceData;
+import com.ichangemycity.base.BaseAppCompatActivity;
+import com.ichangemycity.callback.OnButtonClick;
+import com.ichangemycity.callback.OnResponseListener;
+import com.ichangemycity.callback.OnTaskCompleted;
+import com.ichangemycity.webservice.URLDataSwachhManch;
+import com.ichangemycity.webservice.WebserviceHelper;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
+import static com.ichangemycity.webservice.URLDataSwachhManch.BASE_URL_PROFILE;
+import static com.ichangemycity.webservice.URLDataSwachhManch.CHANNEL_KEY_VALUE;
+
+public class UserMobileNumber extends BaseAppCompatActivity {
+
+  EditText mobileNumber;
+  Button submit;
+  public static Activity activity;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    // TODO Auto-generated method stub
+    super.onCreate(savedInstanceState);
+    AppController.assignLanguage(UserMobileNumber.this);
+    setContentView(R.layout.mobile_number);
+    activity = UserMobileNumber.this;
+
+    mobileNumber = findViewById(R.id.et_mobno);
+    submit = findViewById(R.id.done);
+    mobileNumber.addTextChangedListener(new TextWatcher() {
+
+      @Override
+      public void onTextChanged(CharSequence s, int start, int before,
+          int count) {
+        // TODO Auto-generated method stub
+
+      }
+
+      @Override
+      public void beforeTextChanged(CharSequence s, int start, int count,
+          int after) {
+        // TODO Auto-generated method stub
+
+      }
+
+      @Override
+      public void afterTextChanged(Editable s) {
+        // TODO Auto-generated method stub
+        if (s.toString().trim().length() == 10) {
+          submit.setVisibility(View.VISIBLE);
+//					submit.performClick();
+        } else {
+          submit.setVisibility(View.GONE);
+        }
+      }
+    });
+    mobileNumber.setText(ICMyCPreferenceData.getPreferenceItem(
+        UserMobileNumber.this, ICMyCPreferenceData.Mobile_No, ""));
+
+    submit.setOnClickListener(v -> {
+      if (AppUtils.validateMobileNumber(activity, mobileNumber)) {
+        submitMobileNumberAPI(false);
+      }
+    });
+    setToolbarAndCustomizeTitle(findViewById(R.id.toolbar), " ");
+  }
+
+  private void submitMobileNumberAPI(final boolean isToAddOTPSource) {
+    // take roles from this response if
+    /**
+     * {
+     * 	"data": {
+     * 		"id": 8950288,
+     * 		"email": "champa.aradhya@gmail.com",
+     * 		"mobile_number": "9740186211",
+     * 		"sign_up_with": "mobile_number",
+     * 		"email_verified": false,
+     * 		"mobile_number_verified": false,
+     * 		"has_password": true,
+     * 		"facebook_account_kit_enabled": false,
+     * 		"login_token": "14b031891f15098cd57062aa749bd25bdd7f253670b38be2adafc23f7b9e4287",
+     * 		"roles": [
+     * 			"Engineer",
+     * 			"Organization Admin"
+     * 		]
+     *    }
+     * }
+     * */
+    ICMyCPreferenceData
+        .setPreference(activity, ICMyCPreferenceData.Mobile_No, mobileNumber.getText().toString());
+    AppUtils.showProgressDialog(activity);
+    final String url = URLDataSwachhManch.BASE_URL_AUTH + URLDataSwachhManch.USERS;
+    HashMap<String, String> params = new HashMap<>();
+    params.put("mobile_number", mobileNumber.getText().toString());
+    params.put("mac_address",
+        ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.deviceUniqueID, ""));
+    params.put("device_token",
+        TextUtils.isEmpty(AppConstant.deviceToken) ? "" : AppConstant.deviceToken);
+    if (isToAddOTPSource) {
+      params.put("otp_source", "facebook");
+    }
+    params.putAll(URLDataSwachhManch.getChannelParam());
+
+    new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, params,
+        new OnResponseListener() {
+          @Override
+          public void OnResponseFailure() {
+            AppUtils.hideProgressDialog(activity);
+          }
+
+          @Override
+          public void OnResponseSuccess(JSONObject response) {
+            AppUtils.hideProgressDialog(activity);
+            try {
+              if (response.has("access_token")) {
+                ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.TOKEN_TYPE,
+                    response.optString("token_type"));
+                ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.token,
+                    response.optString("access_token"));
+                ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.refresh_token,
+                    response.optString("refresh_token"));
+//                  getProfileAPICall
+                getProfileAPICall();
+              } else {
+                JSONArray array = response.optJSONObject("data").optJSONArray("roles");
+                boolean isEngineerOrULBAdmin = false;
+                if (array != null) {
+                  for (int i = 0; i < array.length(); i++) {
+                    if (array.get(i).toString().equalsIgnoreCase("Engineer") || array.get(i)
+                        .toString().equalsIgnoreCase("ulb admin")) {
+                      isEngineerOrULBAdmin = true;
+                      break;
+                    }
+                  }
+                }
+                if (isEngineerOrULBAdmin) {
+                  startActivity(new Intent(activity, OTPVerification.class));
+                } else {
+                  AppController.showAlert(activity, "",
+                      "Provided mobile number is not registered as SBM Engineer, please check the "
+                          +
+                          "number and try again", false, new OnButtonClick() {
+                        @Override
+                        public void onPositiveButtonClicked(DialogInterface dialogInterface) {
+                          mobileNumber.setText("");
+                          mobileNumber.requestFocus();
+                        }
+
+                        @Override
+                        public void onNegativeButtonClicked() {
+
+                        }
+                      });
+                }
+              }
+            } catch (JSONException e) {
+              e.printStackTrace();
+            }
+
+//                if (isToAddOTPSource) {
+//                    if (response.has("data")) {
+//                        ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.Mobile_No, mobileNumber.getText().toString());
+//                        response = response.optJSONObject("data");
+//                        ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.activated, (response.optBoolean("mobile_number_verified")
+//                                == false ? "0" : "1"));
+//                        submitMobileNumberAPI(false);
+//                    }
+//                } else {
+            //call 1.1 without otpsource
+//                    startActivity(new Intent(activity, OTPVerification.class));
+//                }
+//                if (response.has("access_token")) {
+//                    ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.TOKEN_TYPE, response.optString("token_type"));
+//                    ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.token, response.optString("access_token"));
+//                    ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.refresh_token, response.optString("refresh_token"));
+//                    ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.activated, "1");
+////                        getProfileAPICall
+//                    getProfileAPICall(true);
+//                }
+
+          }
+        }, true, WebserviceHelper.HEADER_TYPE_AUTH);
+  }
+
+  private void getProfileAPICall() {
+
+    final String url = BASE_URL_PROFILE + CHANNEL_KEY_VALUE;
+    new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null,
+        new OnResponseListener() {
+
+          @Override
+          public void OnResponseFailure() {
+            AppUtils.hideProgressDialog(activity);
+          }
+
+          @Override
+          public void OnResponseSuccess(final JSONObject response) {
+            final Gson gson = new Gson();
+            final String json = gson.toJson(response);
+            ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.profileData, json);
+            new AppUtils().parseProfileGetResponse(activity, response, new OnTaskCompleted() {
+              @Override
+              public void onTaskSuccess() {
+//                                if (!hasAccessToken) {
+//                                    if (!jsonObject.optBoolean("has_password")) {
+//                                        // Goto Email,password and confirm password screen
+//                                        startActivity(new Intent(activity, SetEmailPasswordActivity.class).putExtra("type", AppConstant
+//                                                .ONBOARDING_TYPE_SET_EMAIL_PASSWORD));
+//                                    } else {
+                startActivity(new Intent(activity, MainActivity.class));
+////                                    }
+//                                } else {
+//                                    if (!jsonObject.optBoolean("has_password")) {
+//                                        // Goto Email,password and confirm password screen
+//                                        startActivity(new Intent(activity, SetEmailPasswordActivity.class).putExtra("type", AppConstant
+//                                                .ONBOARDING_TYPE_SET_EMAIL_PASSWORD));
+//                                        //call 1.4 if type=setEmailPassword and show three fields in SetEmailPasswordActivity.class
+//                                    } else {
+//                                        startActivity(new Intent(activity, SetEmailPasswordActivity.class).putExtra("type", AppConstant
+//                                                .ONBOARDING_TYPE_LOGIN));
+//                                        //call 1.2 if type=login and show three fields in SetEmailPasswordActivity.class
+//                                    }
+//                                }
+              }
+
+              @Override
+              public void onTaskFailure() {
+                submitMobileNumberAPI(false);
+              }
+            });
+
+          }
+        }, true, WebserviceHelper.HEADER_TYPE_PROFILE);
+  }
+
+  private void setToolbarAndCustomizeTitle(final Toolbar toolbar, String title) {
+    setSupportActionBar(toolbar);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setDisplayShowHomeEnabled(true);
+    getSupportActionBar().setTitle(title);
+
+    toolbar.setNavigationOnClickListener(v -> activity.finish());
+    final Drawable upArrow = getResources().getDrawable(R.mipmap.back);
+    upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+    getSupportActionBar().setHomeAsUpIndicator(upArrow);
+  }
+
+
+  @Override
+  protected void onResume() {
+    // TODO Auto-generated method stub
+    super.onResume();
+    if (mobileNumber != null) {
+      mobileNumber.setText("");
+    }
+  }
+}
