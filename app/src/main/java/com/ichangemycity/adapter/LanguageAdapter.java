@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.andexert.library.RippleView;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.model.LanguageData;
 import com.ichangemycity.swachhbharatengineer.R;
@@ -28,7 +27,7 @@ public class LanguageAdapter extends BaseAdapter {
         this.mLanguage.addAll(mLanguage);
     }
 
-  @Override
+    @Override
     public int getCount() {
         return mLanguage.size();
     }
@@ -50,10 +49,10 @@ public class LanguageAdapter extends BaseAdapter {
      * activity.getLayoutInflater().inflate(
      * R.layout.inflate_toolbar_spinner_item_dropdown, parent, false);
      * view.setTag("DROPDOWN"); }
-     * 
+     *
      * TextView textView = (TextView) view.findViewById(android.R.id.text1);
      * textView.setText(getTitle(position));
-     * 
+     *
      * return view; }
      */
 
@@ -67,14 +66,13 @@ public class LanguageAdapter extends BaseAdapter {
             view.setTag("NON_DROPDOWN");
         }
         final TextView textView = view
-                .findViewById(android.R.id.text1);
+                .findViewById(R.id.text1);
         textView.setGravity(Gravity.CENTER);
         textView.setText(getTitle(position));
         view.setTag(mLanguage.get(position));
         textView.setTag(position);
-        final RippleView rippleView = view.findViewById(R.id.rippleView);
         final View finalView = view;
-        rippleView.setOnClickListener(new OnClickListener() {
+        textView.setOnClickListener(new OnClickListener() {
             /**
              * Called when a view has been clicked.
              *
@@ -82,23 +80,20 @@ public class LanguageAdapter extends BaseAdapter {
              */
             @Override
             public void onClick(View v) {
-                rippleView.setBackgroundColor(activity.getResources().getColor(
+                textView.setBackgroundColor(activity.getResources().getColor(
                         R.color.blue_pressed_bottom));
                 textView.setTextColor(Color.WHITE);
+                int sid = (int) textView.getTag();
+                LanguageData languageData = mLanguage.get(sid);
+                ICMyCPreferenceData.setPreference(activity,
+                        ICMyCPreferenceData.selectedLanguage,
+                        languageData.getLanguage_code());
+
+                ICMyCPreferenceData.setPreference(activity,
+                        ICMyCPreferenceData.selectedLanguagePosition, sid + "");
+                activity.startActivity(new Intent(activity,
+                        UserMobileNumber.class));
             }
-        });
-        rippleView.setOnRippleCompleteListener(rippleView1 -> {
-            int sid = (int) textView.getTag();
-            LanguageData languageData = mLanguage.get(sid);
-            ICMyCPreferenceData.setPreference(activity,
-                    ICMyCPreferenceData.selectedLanguage,
-                    languageData.getLanguage_code());
-
-            ICMyCPreferenceData.setPreference(activity,
-                    ICMyCPreferenceData.selectedLanguagePosition, sid + "");
-            activity.startActivity(new Intent(activity,
-                    UserMobileNumber.class));
-
         });
         return view;
     }

@@ -1,2 +1,0 @@
-# Referenced at D:\SBM-Engineer\app\build\intermediates\manifests\full\debug\AndroidManifest.xml:46
--keep class com.ichangemycity.appdata.AppController { <init>(...); }

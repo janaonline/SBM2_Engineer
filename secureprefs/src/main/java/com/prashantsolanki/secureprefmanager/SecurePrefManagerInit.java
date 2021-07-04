@@ -1,7 +1,7 @@
 package com.prashantsolanki.secureprefmanager;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.prashantsolanki.secureprefmanager.encryptor.AESEncryptor;
 import com.prashantsolanki.secureprefmanager.encryptor.BlankEncryptor;

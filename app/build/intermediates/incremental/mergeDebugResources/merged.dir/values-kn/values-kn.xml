@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d ಹೊಸ ಅಧಿಸೂಚನೆಗಳು</item>
+    <item quantity="other">%d ಹೊಸ ಅಧಿಸೂಚನೆಗಳು</item>
+  </plurals>
     <string name="_10_digit_mobile_number">ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</string>
     <string name="_comments">" ಕಮೆಂಟುಗಳು"</string>
     <string name="_votes">" ಮತಗಳು"</string>
-    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"ಮುಖಪುಟವನ್ನು ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ"</string>
-    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"ಮೇಲಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ"</string>
-    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳು"</string>
-    <string msgid="4076576682505996667" name="abc_action_mode_done">"ಮುಗಿದಿದೆ"</string>
-    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"ಎಲ್ಲವನ್ನೂ ನೋಡಿ"</string>
-    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"ಒಂದು ಅಪ್ಲಿಕೇಶನ್ ಆಯ್ಕೆಮಾಡಿ"</string>
-    <string msgid="121134116657445385" name="abc_capital_off">"ಆಫ್"</string>
-    <string msgid="3405795526292276155" name="abc_capital_on">"ಆನ್"</string>
-    <string msgid="1302280443949172191" name="abc_menu_alt_shortcut_label">"Alt+"</string>
-    <string msgid="1324831542140195728" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
-    <string msgid="8362206064229013510" name="abc_menu_delete_shortcut_label">"delete"</string>
-    <string msgid="8341180395196749340" name="abc_menu_enter_shortcut_label">"enter"</string>
-    <string msgid="4792426091847145555" name="abc_menu_function_shortcut_label">"Function+"</string>
-    <string msgid="7643535737296831317" name="abc_menu_meta_shortcut_label">"Meta+"</string>
-    <string msgid="8126296154200614004" name="abc_menu_shift_shortcut_label">"Shift+"</string>
-    <string msgid="2378550843553983978" name="abc_menu_space_shortcut_label">"space"</string>
-    <string msgid="9002602288060866689" name="abc_menu_sym_shortcut_label">"Sym+"</string>
-    <string msgid="1351762916121158029" name="abc_prepend_shortcut_label">"Menu+"</string>
-    <string msgid="7723749260725869598" name="abc_search_hint">"ಹುಡುಕಿ…"</string>
-    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"ಪ್ರಶ್ನೆಯನ್ನು ತೆರವುಗೊಳಿಸು"</string>
-    <string msgid="2550479030709304392" name="abc_searchview_description_query">"ಪ್ರಶ್ನೆಯನ್ನು ಹುಡುಕಿ"</string>
-    <string msgid="8264924765203268293" name="abc_searchview_description_search">"ಹುಡುಕಿ"</string>
-    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"ಪ್ರಶ್ನೆಯನ್ನು ಸಲ್ಲಿಸು"</string>
-    <string msgid="893419373245838918" name="abc_searchview_description_voice">"ಧ್ವನಿ ಹುಡುಕಾಟ"</string>
-    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"ಇವರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ"</string>
-    <string msgid="3300176832234831527" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g> ನೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ"</string>
-    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"ಸಂಕುಚಿಸು"</string>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"ಹೋಮ್‌ಗೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"ಮೇಲಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"ಇನ್ನಷ್ಟು ಆಯ್ಕೆಗಳು"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"ಮುಗಿದಿದೆ"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"ಎಲ್ಲವನ್ನೂ ನೋಡಿ"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"ಆ್ಯಪ್‌ವೊಂದನ್ನು ಆಯ್ಕೆಮಾಡಿ"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"ಆಫ್"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"ಆನ್"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"space"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"ಹುಡುಕಿ…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"ಪ್ರಶ್ನೆಯನ್ನು ತೆರವುಗೊಳಿಸಿ"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"ಪ್ರಶ್ನೆಯನ್ನು ಹುಡುಕಿ"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"ಹುಡುಕಿ"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"ಪ್ರಶ್ನೆಯನ್ನು ಸಲ್ಲಿಸಿ"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"ಧ್ವನಿ ಹುಡುಕಾಟ"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"ಇವರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g> ನೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"ಕುಗ್ಗಿಸಿ"</string>
     <string name="address">ವಿಳಾಸ</string>
     <string name="all_complaints">ಎಲ್ಲಾ ದೂರುಗಳು</string>
     <string name="app_name">ಸ್ವಚ್ಛ ಭಾರತ</string>
+    <string name="bottomsheet_action_expand_halfway">ಅರ್ಧದಷ್ಟು ವಿಸ್ತರಿಸಿ</string>
     <string msgid="4778414446709286370" name="cast_ad_label">"ಜಾಹೀರಾತು"</string>
     <string msgid="366047012176970604" name="cast_casting_to_device">"%1$s ಗೆ ಬಿತ್ತರಿಸಲಾಗುತ್ತಿದೆ"</string>
     <string msgid="2888745622334830481" name="cast_closed_captions">"ಮುಚ್ಚಿದ ಶೀರ್ಷಿಕೆಗಳು"</string>
@@ -73,6 +78,9 @@
     <string msgid="2454147715032376208" name="cast_tracks_chooser_dialog_subtitles">"ಉಪಶೀರ್ಷಿಕೆಗಳು"</string>
     <string msgid="2913461521603516868" name="cast_unmute">"ಅನ್‌ಮ್ಯೂಟ್"</string>
     <string name="change_status">ಸ್ಥಿತಿ ಬದಲಾವಣೆ</string>
+    <string name="character_counter_content_description">%2$d ರಲ್ಲಿ %1$d ಅಕ್ಷರಗಳನ್ನು ನಮೂದಿಸಲಾಗಿದೆ</string>
+    <string name="character_counter_overflowed_content_description">ಅಕ್ಷರ ಮಿತಿಯು %2$d ರಲ್ಲಿ %1$d ಮೀರಿದೆ</string>
+    <string name="clear_text_end_icon_content_description">ಪಠ್ಯ ತೆರವುಗೊಳಿಸಿ</string>
     <string name="comment">ಕಮೆಂಟ್</string>
     <string name="comments">ಕಮೆಂಟುಗಳು</string>
     <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"ಸಕ್ರಿಯಗೊಳಿಸು"</string>
@@ -96,40 +104,89 @@
     <string name="done">ಆಯಿತು</string>
     <string name="enter_otp">OTP ನಮೂದಿಸಿ</string>
     <string name="enter_verification_code_sent_to_">ನಾವು ನಿಮ್ಮ ಕೋಡ್ ಸಂಖ್ಯೆಯನ್ನು ಕಳುಹಿಸಿದ್ದೇವೆ</string>
+    <string name="error_icon_content_description">ದೋಷ</string>
+    <string name="exposed_dropdown_menu_content_description">ಡ್ರಾಪ್‌ಡೌನ್ ಮೆನು ತೋರಿಸಿ</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"ಇತರೆ"</string>
     <string name="gallery">ಗ್ಯಾಲರಿ</string>
     <string msgid="9521340570209730" name="gcm_fallback_notification_channel_label">"ಇತರೆ"</string>
     <string name="get_started">ಆರಂಭಿಸಿ</string>
     <string name="high_priority_complaints">ಹೆಚ್ಚಿನ ಆದ್ಯತೆಯ ದೂರುಗಳು</string>
+    <string name="icon_content_description">ಡೈಲಾಗ್ ಐಕಾನ್</string>
     <string name="id_">"ಐಡಿ: "</string>
+    <string name="item_view_role_description">ಟ್ಯಾಬ್</string>
     <string name="landmark">ಹೆಗ್ಗುರುತು</string>
     <string name="load_more">ಇನ್ನೂ ಹೆಚ್ಚಿನದನ್ನು ಲೋಡ್ ಮಾಡಿ</string>
     <string name="loading">ಲೋಡ್ ಆಗುತ್ತಿದೆ</string>
+    <string name="material_clock_toggle_content_description">ಬೆಳಿಗ್ಗೆ ಅಥವಾ ಮಧ್ಯಾಹ್ನ ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="material_hour_selection">ಸಮಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="material_hour_suffix">%1$s ಗಂಟೆ</string>
+    <string name="material_minute_selection">ನಿಮಿಷಗಳನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="material_minute_suffix">%1$s ನಿಮಿಷಗಳು</string>
+    <string name="material_timepicker_am">AM</string>
+    <string name="material_timepicker_clock_mode_description">ಸಮಯವನ್ನು ನಮೂದಿಸಲು ಗಡಿಯಾರದ ನಮೂನೆಗೆ ಬದಲಿಸಿ.</string>
+    <string name="material_timepicker_hour">ಗಂಟೆ</string>
+    <string name="material_timepicker_minute">ನಿಮಿಷ</string>
+    <string name="material_timepicker_pm">PM</string>
+    <string name="material_timepicker_select_time">ಸಮಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="material_timepicker_text_input_mode_description">ಸಮಯವನ್ನು ನಮೂದಿಸಲು ಪಠ್ಯದ ನಮೂನೆಗೆ ಬದಲಿಸಿ.</string>
     <string name="mobile_number_cannot_be_empty">ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯನ್ನು ಖಾಲಿ ಬಿಡುವಂತಿಲ್ಲ</string>
     <string name="mobile_number_needs_10_digits">10 ಅಂಕಿಗಳ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯ ಅಗತ್ಯವಿದೆ</string>
     <string name="mobile_verification">ಪರಿಶೀಲಿಸಿ</string>
     <string name="more_information">ಹೆಚ್ಚಿನ ಮಾಹಿತಿ</string>
-    <string msgid="3698378085901466129" name="mr_button_content_description">"ಬಿತ್ತರಿಸು ಬಟನ್‌"</string>
-    <string msgid="5088427771788648085" name="mr_cast_button_connected">"ಬಿತ್ತರಿಸು ಬಟನ್‌. ಸಂಪರ್ಕಿತಗೊಂಡಿದೆ"</string>
-    <string msgid="2187642765091873834" name="mr_cast_button_connecting">"ಬಿತ್ತರಿಸು ಬಟನ್‌. ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ"</string>
-    <string msgid="816305490427819240" name="mr_cast_button_disconnected">"ಬಿತ್ತರಿಸು ಬಟನ್‌. ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಲಾಗಿದೆ"</string>
-    <string msgid="6349900579507521956" name="mr_chooser_searching">"ಸಾಧನಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ"</string>
-    <string msgid="414301941546135990" name="mr_chooser_title">"ಇದಕ್ಕೆ ಬಿತ್ತರಿಸಿ"</string>
-    <string msgid="6422801843540543585" name="mr_controller_album_art">"ಆಲ್ಬಮ್ ಕಲೆ"</string>
-    <string msgid="4868457957151124867" name="mr_controller_casting_screen">"ಪರದೆಯನ್ನು ಬಿತ್ತರಿಸಲಾಗುತ್ತಿದೆ"</string>
-    <string msgid="7333862312480583260" name="mr_controller_close_description">"ಮುಚ್ಚು"</string>
-    <string msgid="7924809056904240926" name="mr_controller_collapse_group">"ಸಂಕುಚಿಸು"</string>
-    <string msgid="1227264889412989580" name="mr_controller_disconnect">"ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸು"</string>
-    <string msgid="8062427022744266907" name="mr_controller_expand_group">"ವಿಸ್ತರಿಸು"</string>
-    <string msgid="5585418471741142924" name="mr_controller_no_info_available">"ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ"</string>
-    <string msgid="6547130360349182381" name="mr_controller_no_media_selected">"ಯಾವುದೇ ಮಾಧ್ಯಮ ಆಯ್ಕೆಮಾಡಲಾಗಿಲ್ಲ"</string>
-    <string msgid="5451884435510905406" name="mr_controller_pause">"ವಿರಾಮ"</string>
-    <string msgid="683634565969987458" name="mr_controller_play">"ಪ್ಲೇ ಮಾಡಿ"</string>
-    <string msgid="735874641921425123" name="mr_controller_stop">"ನಿಲ್ಲಿಸಿ"</string>
-    <string msgid="8857886794086583226" name="mr_controller_stop_casting">"ಬಿತ್ತರಿಸುವಿಕೆ ನಿಲ್ಲಿಸಿ"</string>
-    <string msgid="2361785992211841709" name="mr_controller_volume_slider">"ವಾಲ್ಯೂಮ್ ಸ್ಲೈಡರ್"</string>
-    <string msgid="5441529851481176817" name="mr_system_route_name">"ಸಿಸ್ಟಂ"</string>
-    <string msgid="7498112907524977311" name="mr_user_route_category_name">"ಸಾಧನಗಳು"</string>
+    <string msgid="1685185767093348095" name="mr_button_content_description">"ಬಿತ್ತರಿಸು ಬಟನ್‌"</string>
+    <string msgid="1350095112462806159" name="mr_cast_button_connected">"ಬಿತ್ತರಿಸು ಬಟನ್‌. ಸಂಪರ್ಕಿತಗೊಂಡಿದೆ"</string>
+    <string msgid="8959304318293841992" name="mr_cast_button_connecting">"ಬಿತ್ತರಿಸು ಬಟನ್‌. ಸಂಪರ್ಕಿಸಲಾಗುತ್ತಿದೆ"</string>
+    <string msgid="5501231066847739632" name="mr_cast_button_disconnected">"ಬಿತ್ತರಿಸು ಬಟನ್‌. ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಲಾಗಿದೆ"</string>
+    <string msgid="5504553798429329689" name="mr_chooser_searching">"ಸಾಧನಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ"</string>
+    <string msgid="7548226170787476564" name="mr_chooser_title">"ಇದಕ್ಕೆ ಬಿತ್ತರಿಸಿ"</string>
+    <string msgid="5813284753012893250" name="mr_controller_album_art">"ಆಲ್ಬಮ್ ಕಲೆ"</string>
+    <string msgid="5286734709674025661" name="mr_controller_casting_screen">"ಪರದೆಯನ್ನು ಬಿತ್ತರಿಸಲಾಗುತ್ತಿದೆ"</string>
+    <string msgid="5468775621814500662" name="mr_controller_close_description">"ಮುಚ್ಚಿ"</string>
+    <string msgid="5518911192681928413" name="mr_controller_collapse_group">"ಕುಗ್ಗಿಸಿ"</string>
+    <string msgid="1370654436555555647" name="mr_controller_disconnect">"ಸಂಪರ್ಕ ಕಡಿತಗೊಳಿಸಿ"</string>
+    <string msgid="2422682304043876468" name="mr_controller_expand_group">"ಹಿಗ್ಗಿಸಿ"</string>
+    <string msgid="7299368841849988218" name="mr_controller_no_info_available">"ಯಾವುದೇ ಮಾಹಿತಿ ಲಭ್ಯವಿಲ್ಲ"</string>
+    <string msgid="4342878516155861006" name="mr_controller_no_media_selected">"ಯಾವುದೇ ಮಾಧ್ಯಮವನ್ನು ಆಯ್ಕೆ ಮಾಡಿಲ್ಲ"</string>
+    <string msgid="4701315813294065305" name="mr_controller_pause">"ವಿರಾಮ"</string>
+    <string msgid="4443315438268112801" name="mr_controller_play">"ಪ್ಲೇ"</string>
+    <string msgid="5106056093749454009" name="mr_controller_stop">"ನಿಲ್ಲಿಸಿ"</string>
+    <string msgid="7617024847862349259" name="mr_controller_stop_casting">"ಬಿತ್ತರಿಸುವುದನ್ನು ನಿಲ್ಲಿಸಿ"</string>
+    <string msgid="691656961160498512" name="mr_controller_volume_slider">"ವಾಲ್ಯೂಮ್ ಸ್ಲೈಡರ್"</string>
+    <string msgid="3117964881088969586" name="mr_system_route_name">"ಸಿಸ್ಟಂ"</string>
+    <string msgid="8236416097133080726" name="mr_user_route_category_name">"ಸಾಧನಗಳು"</string>
+    <string name="mtrl_badge_numberless_content_description">ಹೊಸ ಅಧಿಸೂಚನೆ</string>
+    <string name="mtrl_chip_close_icon_content_description">%1$s ಅನ್ನು ತೆಗೆದುಹಾಕಿ</string>
+    <string name="mtrl_exceed_max_badge_number_content_description">%1$d ಕ್ಕಿಂತ ಹೆಚ್ಚು ಹೊಸ ಅಧಿಸೂಚನೆಗಳು</string>
+    <string name="mtrl_picker_a11y_next_month">ಮುಂದಿನ ತಿಂಗಳಿಗೆ ಬದಲಿಸಿ</string>
+    <string name="mtrl_picker_a11y_prev_month">ಹಿಂದಿನ ತಿಂಗಳಿಗೆ ಬದಲಿಸಿ</string>
+    <string name="mtrl_picker_announce_current_selection">ಪ್ರಸ್ತುತ ಆಯ್ಕೆ: %1$s</string>
+    <string name="mtrl_picker_confirm">@android:string/ok</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="mtrl_picker_date_header_unselected">ದಿನಾಂಕವನ್ನು ಆಯ್ಕೆಮಾಡಲಾಗಿದೆ</string>
+    <string name="mtrl_picker_day_of_week_column_header">ದಿನಗಳ ಕಾಲಮ್: %1$s</string>
+    <string name="mtrl_picker_invalid_format">ಅಮಾನ್ಯವಾದ ಫಾರ್ಮ್ಯಾಟ್.</string>
+    <string name="mtrl_picker_invalid_format_example">ಉದಾಹರಣೆ: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">ಇದನ್ನು ಬಳಸಿ: %1$s</string>
+    <string name="mtrl_picker_invalid_range">ಅಮಾನ್ಯ ಶ್ರೇಣಿ.</string>
+    <string name="mtrl_picker_navigate_to_year_description">%1$s ವರ್ಷಕ್ಕೆ ನ್ಯಾವಿಗೇಟ್ ಮಾಡಿ</string>
+    <string name="mtrl_picker_out_of_range">ವ್ಯಾಪ್ತಿಯ ಹೊರಗಿದೆ: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">ಪ್ರಾರಂಭ ದಿನಾಂಕ – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – ಮುಕ್ತಾಯ ದಿನಾಂಕ</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">ಶ್ರೇಣಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="mtrl_picker_range_header_unselected">ಪ್ರಾರಂಭ ದಿನಾಂಕ – ಮುಕ್ತಾಯ ದಿನಾಂಕ</string>
+    <string name="mtrl_picker_save">ಉಳಿಸಿ</string>
+    <string name="mtrl_picker_text_input_date_hint">ದಿನಾಂಕ</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">ಮುಕ್ತಾಯ ದಿನಾಂಕ</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">ಪ್ರಾರಂಭ ದಿನಾಂಕ</string>
+    <string name="mtrl_picker_text_input_day_abbr">ದಿ</string>
+    <string name="mtrl_picker_text_input_month_abbr">ತಿ</string>
+    <string name="mtrl_picker_text_input_year_abbr">ವ</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">ಕ್ಯಾಲೆಂಡರ್ ಇನ್‌ಪುಟ್ ಮೋಡ್‌ಗೆ ಬದಲಿಸಿ</string>
+    <string name="mtrl_picker_toggle_to_day_selection">ದಿನವನ್ನು ಆಯ್ಕೆಗಾಗಿ ಬದಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">ಪಠ್ಯ ಇನ್‌ಪುಟ್ ಮೋಡ್‌ಗೆ ಬದಲಿಸಿ</string>
+    <string name="mtrl_picker_toggle_to_year_selection">ವರ್ಷವನ್ನು ಆಯ್ಕೆಗಾಗಿ ಬದಲಿಸಲು ಟ್ಯಾಪ್ ಮಾಡಿ</string>
     <string name="no">ಅಲ್ಲ</string>
     <string name="no_complaints">ದೂರುಗಳಿಲ್ಲ</string>
     <string name="no_data">ದತ್ತಾಂಶವಿಲ್ಲ</string>
@@ -137,6 +194,7 @@
     <string name="notification">"ನೋಟಿಫಿಕೇಷನ್ "</string>
     <string name="on_the_job">ಕೆಲಸದ ಮೇಲೆ</string>
     <string name="on_the_job_complaints">ಕೆಲಸದ ದೂರುಗಳು</string>
+    <string name="password_toggle_content_description">ಪಾಸ್‌ವರ್ಡ್ ತೋರಿಸಿ</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"ಹುಡುಕಾಟ ತೆರವುಗೊಳಿಸಿ"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"ಹುಡುಕಿ"</string>
     <string name="previously_read">ಹಿಂದೆ ಓದಲಾಗಿದೆ</string>
@@ -155,8 +213,8 @@
     <string msgid="1566682516266724847" name="s5">"ಕ್ಯಾಲೆಂಡರ್ ಈವೆಂಟ್ ರಚಿಸಿ"</string>
     <string msgid="5996672174517137271" name="s6">"ಕ್ಯಾಲೆಂಡರ್ ಈವೆಂಟ್ ರಚಿಸಲು ಜಾಹೀರಾತಿಗೆ ಅನುಮತಿಸುವುದೇ?"</string>
     <string msgid="7163549807207034258" name="s7">"ಪರೀಕ್ಷಾ ಜಾಹೀರಾತು"</string>
-    <string msgid="146198913615257606" name="search_menu_title">"ಹುಡುಕಿ"</string>
-    <string msgid="7988687684186075107" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"ಹುಡುಕಿ"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string name="take_a_picture">ಫೋಟೋ ತೆಗೆದುಕೊಳ್ಳಿ</string>
     <string name="vote_up">ವೋಟ್ ಅಪ್</string>
     <string msgid="363496807345461806" name="wallet_buy_button_place_holder">"Google ನಲ್ಲಿ ಖರೀದಿಸಿ"</string>

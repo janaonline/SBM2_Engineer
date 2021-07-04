@@ -12,13 +12,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
+
+import androidx.core.content.FileProvider;
+
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.andexert.library.RippleView;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
@@ -44,7 +46,8 @@ import java.util.Locale;
 
 public class SelectImageDialogActivity extends BaseAppCompatActivity {
     private static Activity activity;
-    private RippleView rippleViewCamera, rippleViewGallery;
+    //    private RippleView rippleViewCamera, rippleViewGallery;
+    private TextView tvCamera, tvGallery;
     ProgressBar progress;
     List<String> permissionsRequired = new ArrayList<>();
 
@@ -58,8 +61,8 @@ public class SelectImageDialogActivity extends BaseAppCompatActivity {
 
         activity = SelectImageDialogActivity.this;
         progress = activity.findViewById(R.id.progress);
-        rippleViewCamera = findViewById(R.id.rippleViewCamera);
-        rippleViewGallery = findViewById(R.id.rippleViewGallery);
+        tvCamera = findViewById(R.id.tvCamera);
+        tvGallery = findViewById(R.id.tvGallery);
         AppController.mSelectedImageModels = new SelectedImageModel();
         AppController.latitude = 0.0;
         AppController.longitude = 0.0;
@@ -75,14 +78,19 @@ public class SelectImageDialogActivity extends BaseAppCompatActivity {
             @Override
             public void resultPermissionSuccess() {
 //                Toast.makeText(activity, "Thanks for allowing permissions", Toast.LENGTH_SHORT).show();
-                rippleViewCamera.setOnRippleCompleteListener(rippleView -> {
-
-
-                    GenerateFolders();
-                    captureImage();
+                tvCamera.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        GenerateFolders();
+                        captureImage();
+                    }
                 });
-                rippleViewGallery.setOnRippleCompleteListener(
-                    rippleView -> startActivity(new Intent(activity, AndroidCustomGalleryActivity.class)));
+                tvGallery.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(activity, AndroidCustomGalleryActivity.class));
+                    }
+                });
 
             }
 

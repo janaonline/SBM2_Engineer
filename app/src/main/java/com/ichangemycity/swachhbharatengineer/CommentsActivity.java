@@ -7,18 +7,16 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -40,7 +38,6 @@ import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.VolleyMultipartRequest;
 import com.ichangemycity.webservice.VolleySingleton;
 import com.ichangemycity.webservice.WebserviceHelper;
-import com.jude.easyrecyclerview.EasyRecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -56,7 +53,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
   Toolbar toolbar;
   public static Activity activity;
-  private EasyRecyclerView recycler_view;
+  private RecyclerView recycler_view;
   private static String url;
   private int currentPage = 0;
   ComplaintData data = new ComplaintData();

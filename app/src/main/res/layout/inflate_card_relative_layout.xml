@@ -16,7 +16,7 @@
 		android:layout_margin="8dp"
 		android:orientation="horizontal" >
 
-		<android.support.design.widget.FloatingActionButton
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
 			android:id="@+id/user_image"
 			android:layout_width="48dp"
 			android:layout_height="48dp"

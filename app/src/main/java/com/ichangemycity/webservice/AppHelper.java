@@ -1,12 +1,9 @@
 package com.ichangemycity.webservice;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.provider.MediaStore;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 
 
 import com.ichangemycity.model.SelectedImageModel;

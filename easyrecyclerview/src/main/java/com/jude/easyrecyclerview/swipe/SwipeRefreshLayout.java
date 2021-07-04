@@ -18,18 +18,18 @@ package com.jude.easyrecyclerview.swipe;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.Nullable;
-import android.support.annotation.VisibleForTesting;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.NestedScrollingChild;
-import android.support.v4.view.NestedScrollingChildHelper;
-import android.support.v4.view.NestedScrollingParent;
-import android.support.v4.view.NestedScrollingParentHelper;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.VisibleForTesting;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.NestedScrollingChild;
+import androidx.core.view.NestedScrollingChildHelper;
+import androidx.core.view.NestedScrollingParent;
+import androidx.core.view.NestedScrollingParentHelper;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -103,7 +103,7 @@ public class SwipeRefreshLayout extends FrameLayout implements NestedScrollingPa
     private static final int DEFAULT_CIRCLE_TARGET = 64;
 
     private View mTarget; // the target of the gesture
-    android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener mListener;
+    androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener mListener;
     boolean mRefreshing = false;
     private int mTouchSlop;
     private float mTotalDragDistance = -1;
@@ -389,7 +389,7 @@ public class SwipeRefreshLayout extends FrameLayout implements NestedScrollingPa
      * Set the listener to be notified when a refresh is triggered via the swipe
      * gesture.
      */
-    public void setOnRefreshListener(android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener listener) {
+    public void setOnRefreshListener(androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener listener) {
         mListener = listener;
     }
 

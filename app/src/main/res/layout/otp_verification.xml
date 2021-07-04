@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/parentLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white" android:visibility="visible" >
-    <android.support.v7.widget.Toolbar
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:visibility="visible">
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -15,9 +17,9 @@
         app:layout_collapseMode="pin"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:subtitleTextColor="@color/white"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
@@ -48,7 +50,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                      android:layout_width="match_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
@@ -56,7 +58,7 @@
                         android:text="@string/mobile_verification"
                         android:textColor="@color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/enterotp"
@@ -65,7 +67,7 @@
                         android:layout_marginTop="16dp"
                         android:gravity="center"
                         android:textColor="@color/lt_gray"
-                        android:textSize="14sp"/>
+                        android:textSize="14sp" />
 
                     <com.mukesh.OtpView
                         android:id="@+id/otp"
@@ -82,7 +84,7 @@
                         android:maxLines="1"
                         android:paddingBottom="10dp"
                         android:textColor="@color/black"
-                        app:otp=""/>
+                        app:otp="" />
 
                     <TextView
                         android:id="@+id/resendCode"
@@ -93,32 +95,25 @@
                         android:text="@string/resend_code_"
                         android:textColor="#0980f4"
                         android:textSize="14sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
-                    <com.andexert.library.RippleView
-                        android:id="@+id/rippleView"
-                        rv_centered="true"
+
+                    <Button
+                        android:id="@+id/done"
+                        style="?android:attr/button"
                         android:layout_width="match_parent"
                         android:layout_height="?android:actionBarSize"
+                        android:layout_centerHorizontal="true"
                         android:layout_margin="16dp"
-                        >
-
-                        <Button
-                            android:id="@+id/done"
-                            style="?android:attr/button"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/signup_with_fb_bg"
-                            android:maxLines="1"
-                            android:padding="16dp"
-                            android:text="@string/done"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="16sp"/>
-                    </com.andexert.library.RippleView>
+                        android:background="@drawable/signup_with_fb_bg"
+                        android:maxLines="1"
+                        android:padding="16dp"
+                        android:text="@string/done"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </ScrollView>
         </RelativeLayout>
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 </RelativeLayout>

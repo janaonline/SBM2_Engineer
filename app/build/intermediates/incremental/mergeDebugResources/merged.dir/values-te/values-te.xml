@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d కొత్త నోటిఫికేషన్</item>
+    <item quantity="other">%d కొత్త నోటిఫికేషన్‌లు</item>
+  </plurals>
     <string name="_10_digit_mobile_number">మొబైల్ నంబరు</string>
     <string name="_comments">" మీరు"</string>
     <string name="_votes">" ఓట్లు"</string>
-    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"హోమ్‌కు నావిగేట్ చేయండి"</string>
-    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"పైకి నావిగేట్ చేయండి"</string>
-    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"మరిన్ని ఎంపికలు"</string>
-    <string msgid="4076576682505996667" name="abc_action_mode_done">"పూర్తయింది"</string>
-    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"అన్నీ చూడండి"</string>
-    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"అనువర్తనాన్ని ఎంచుకోండి"</string>
-    <string msgid="121134116657445385" name="abc_capital_off">"ఆఫ్ చేయి"</string>
-    <string msgid="3405795526292276155" name="abc_capital_on">"ఆన్ చేయి"</string>
-    <string msgid="1302280443949172191" name="abc_menu_alt_shortcut_label">"Alt+"</string>
-    <string msgid="1324831542140195728" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
-    <string msgid="8362206064229013510" name="abc_menu_delete_shortcut_label">"delete"</string>
-    <string msgid="8341180395196749340" name="abc_menu_enter_shortcut_label">"enter"</string>
-    <string msgid="4792426091847145555" name="abc_menu_function_shortcut_label">"Function+"</string>
-    <string msgid="7643535737296831317" name="abc_menu_meta_shortcut_label">"Meta+"</string>
-    <string msgid="8126296154200614004" name="abc_menu_shift_shortcut_label">"Shift+"</string>
-    <string msgid="2378550843553983978" name="abc_menu_space_shortcut_label">"స్పేస్"</string>
-    <string msgid="9002602288060866689" name="abc_menu_sym_shortcut_label">"Sym+"</string>
-    <string msgid="1351762916121158029" name="abc_prepend_shortcut_label">"Menu+"</string>
-    <string msgid="7723749260725869598" name="abc_search_hint">"వెతుకు..."</string>
-    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"ప్రశ్నను క్లియర్ చేయి"</string>
-    <string msgid="2550479030709304392" name="abc_searchview_description_query">"ప్రశ్న శోధించండి"</string>
-    <string msgid="8264924765203268293" name="abc_searchview_description_search">"వెతుకు"</string>
-    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"ప్రశ్నని సమర్పించు"</string>
-    <string msgid="893419373245838918" name="abc_searchview_description_voice">"వాయిస్ శోధన"</string>
-    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"వీరితో భాగస్వామ్యం చేయి"</string>
-    <string msgid="3300176832234831527" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>తో భాగస్వామ్యం చేయండి"</string>
-    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"కుదించండి"</string>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"హోమ్‌కు నావిగేట్ చేస్తుంది"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"పైకి నావిగేట్ చేస్తుంది"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"మరిన్ని ఎంపికలు"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"పూర్తయింది"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"అన్నీ చూడండి"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"యాప్‌ను ఎంచుకోండి"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"ఆఫ్"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"ఆన్"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"స్పేస్"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"వెతకండి…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"ప్రశ్నను తీసివేస్తుంది"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"శోధన ప్రశ్న"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"శోధన"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"ప్రశ్నని సమర్పిస్తుంది"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"వాయిస్ శోధన"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"వీరితో షేర్ చేస్తుంది"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"<ns1:g id="APPLICATION_NAME">%s</ns1:g>తో షేర్ చేస్తుంది"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"కుదిస్తుంది"</string>
     <string name="address">చిరునామా</string>
     <string name="all_complaints">అన్ని ఫిర్యాదులు</string>
     <string name="app_name">స్వచ్ఛ భారత్</string>
+    <string name="bottomsheet_action_expand_halfway">సగాన్ని విస్తరింపజేయండి</string>
     <string msgid="4778414446709286370" name="cast_ad_label">"ప్రకటన"</string>
     <string msgid="366047012176970604" name="cast_casting_to_device">"%1$sకి ప్రసారం చేస్తోంది"</string>
     <string msgid="2888745622334830481" name="cast_closed_captions">"సంవృత శీర్షికలు"</string>
@@ -73,6 +78,9 @@
     <string msgid="2454147715032376208" name="cast_tracks_chooser_dialog_subtitles">"ఉపశీర్షికలు"</string>
     <string msgid="2913461521603516868" name="cast_unmute">"అన్‌మ్యూట్ చేయి"</string>
     <string name="change_status">స్థితి మార్చండి</string>
+    <string name="character_counter_content_description">%2$dలో %1$d అక్షరాలు నమోదు చేయబడ్డాయి</string>
+    <string name="character_counter_overflowed_content_description">అక్షర పరిధి %2$dలో %1$dను అధిగమించింది</string>
+    <string name="clear_text_end_icon_content_description">రాసినదాన్ని తీసివేయి</string>
     <string name="comment">వ్యాఖ్య</string>
     <string name="comments">వ్యాఖ్యలు</string>
     <string msgid="8585111718777012708" name="common_google_play_services_enable_button">"ప్రారంభించు"</string>
@@ -96,40 +104,89 @@
     <string name="done">సరే</string>
     <string name="enter_otp">ఓటిపి ఎంటర్ చేయండి</string>
     <string name="enter_verification_code_sent_to_">మీకోడ్ నంబర్ కోడ్ ను మేము పంపాము</string>
+    <string name="error_icon_content_description">ఎర్రర్</string>
+    <string name="exposed_dropdown_menu_content_description">డ్రాప్‌డౌన్ మెనూను చూపు</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"ఇతరాలు"</string>
     <string name="gallery">గ్యాలరీ</string>
     <string msgid="9521340570209730" name="gcm_fallback_notification_channel_label">"ఇతరాలు"</string>
     <string name="get_started">ఆరంభించండి</string>
     <string name="high_priority_complaints">అధిక ప్రాధాన్యతా ఫిర్యాదులు</string>
+    <string name="icon_content_description">డైలాగ్ చిహ్నం</string>
     <string name="id_">"ఐడి: "</string>
+    <string name="item_view_role_description">ట్యాబ్</string>
     <string name="landmark">ల్యాండ్ మార్క్</string>
     <string name="load_more">మరిన్ని లోడ్ చేయండి</string>
     <string name="loading">లోడ్ చేయబడుతోంది</string>
+    <string name="material_clock_toggle_content_description">AM లేదా PMను ఎంచుకోండి</string>
+    <string name="material_hour_selection">గంటను ఎంచుకోండి</string>
+    <string name="material_hour_suffix">%1$s అవుతుంది</string>
+    <string name="material_minute_selection">నిమిషాలను ఎంచుకోండి</string>
+    <string name="material_minute_suffix">%1$s నిమిషాలు</string>
+    <string name="material_timepicker_am">AM</string>
+    <string name="material_timepicker_clock_mode_description">సమయాన్ని నమోదు చేయడం కోసం గడియారం మోడ్‌కు మారండి.</string>
+    <string name="material_timepicker_hour">గంట</string>
+    <string name="material_timepicker_minute">నిమిషం</string>
+    <string name="material_timepicker_pm">PM</string>
+    <string name="material_timepicker_select_time">సమయాన్ని ఎంచుకోండి</string>
+    <string name="material_timepicker_text_input_mode_description">సమయాన్ని నమోదు చేయడం కోసం వచన నమోదు మోడ్‌కి మారండి.</string>
     <string name="mobile_number_cannot_be_empty">మొబైల్ నంబరు ఖాళీగా ఉండకూడదు</string>
     <string name="mobile_number_needs_10_digits">10 అంకెల మొబైల్ నంబర్ అవసరం</string>
     <string name="mobile_verification">తనిఖీ చేయడం</string>
     <string name="more_information">మరింత సమాచారం</string>
-    <string msgid="3698378085901466129" name="mr_button_content_description">"ప్రసారం చేయి బటన్"</string>
-    <string msgid="5088427771788648085" name="mr_cast_button_connected">"ప్రసార బటన్. కనెక్ట్ చేయబడింది"</string>
-    <string msgid="2187642765091873834" name="mr_cast_button_connecting">"ప్రసార బటన్. కనెక్ట్ చేస్తోంది"</string>
-    <string msgid="816305490427819240" name="mr_cast_button_disconnected">"ప్రసార బటన్. డిస్‌కనెక్ట్ చేయబడింది"</string>
-    <string msgid="6349900579507521956" name="mr_chooser_searching">"పరికరాలను కనుగొంటోంది"</string>
-    <string msgid="414301941546135990" name="mr_chooser_title">"దీనికి ప్రసారం చేయండి"</string>
-    <string msgid="6422801843540543585" name="mr_controller_album_art">"ఆల్బమ్ ఆర్ట్"</string>
-    <string msgid="4868457957151124867" name="mr_controller_casting_screen">"స్క్రీన్‌ను ప్రసారం చేస్తోంది"</string>
-    <string msgid="7333862312480583260" name="mr_controller_close_description">"మూసివేస్తుంది"</string>
-    <string msgid="7924809056904240926" name="mr_controller_collapse_group">"కుదిస్తుంది"</string>
-    <string msgid="1227264889412989580" name="mr_controller_disconnect">"డిస్‌కనెక్ట్ చేయి"</string>
-    <string msgid="8062427022744266907" name="mr_controller_expand_group">"విస్తరింపజేస్తుంది"</string>
-    <string msgid="5585418471741142924" name="mr_controller_no_info_available">"సమాచారం అందుబాటులో లేదు"</string>
-    <string msgid="6547130360349182381" name="mr_controller_no_media_selected">"మీడియా ఏదీ ఎంచుకోబడలేదు"</string>
-    <string msgid="5451884435510905406" name="mr_controller_pause">"పాజ్ చేస్తుంది"</string>
-    <string msgid="683634565969987458" name="mr_controller_play">"ప్లే చేస్తుంది"</string>
-    <string msgid="735874641921425123" name="mr_controller_stop">"ఆపివేయి"</string>
-    <string msgid="8857886794086583226" name="mr_controller_stop_casting">"ప్రసారాన్ని ఆపివేయి"</string>
-    <string msgid="2361785992211841709" name="mr_controller_volume_slider">"వాల్యూమ్ స్లయిడర్"</string>
-    <string msgid="5441529851481176817" name="mr_system_route_name">"సిస్టమ్"</string>
-    <string msgid="7498112907524977311" name="mr_user_route_category_name">"పరికరాలు"</string>
+    <string msgid="1685185767093348095" name="mr_button_content_description">"Cast బటన్"</string>
+    <string msgid="1350095112462806159" name="mr_cast_button_connected">"Cast బటన్. కనెక్ట్ చేయబడింది"</string>
+    <string msgid="8959304318293841992" name="mr_cast_button_connecting">"Cast బటన్. కనెక్ట్ చేస్తోంది"</string>
+    <string msgid="5501231066847739632" name="mr_cast_button_disconnected">"Cast బటన్. డిస్‌కనెక్ట్ చేయబడింది"</string>
+    <string msgid="5504553798429329689" name="mr_chooser_searching">"పరికరాలను కనుగొంటోంది"</string>
+    <string msgid="7548226170787476564" name="mr_chooser_title">"దీనికి ప్రసారం చేయండి"</string>
+    <string msgid="5813284753012893250" name="mr_controller_album_art">"ఆల్బమ్ ఆర్ట్"</string>
+    <string msgid="5286734709674025661" name="mr_controller_casting_screen">"స్క్రీన్‌ను ప్రసారం చేస్తోంది"</string>
+    <string msgid="5468775621814500662" name="mr_controller_close_description">"మూసివేయి"</string>
+    <string msgid="5518911192681928413" name="mr_controller_collapse_group">"కుదించు"</string>
+    <string msgid="1370654436555555647" name="mr_controller_disconnect">"డిస్‌కనెక్ట్ చేయి"</string>
+    <string msgid="2422682304043876468" name="mr_controller_expand_group">"విస్తరించు"</string>
+    <string msgid="7299368841849988218" name="mr_controller_no_info_available">"సమాచారం అందుబాటులో లేదు"</string>
+    <string msgid="4342878516155861006" name="mr_controller_no_media_selected">"మీడియా ఏదీ ఎంచుకోలేదు"</string>
+    <string msgid="4701315813294065305" name="mr_controller_pause">"పాజ్ చేయి"</string>
+    <string msgid="4443315438268112801" name="mr_controller_play">"ఆడండి"</string>
+    <string msgid="5106056093749454009" name="mr_controller_stop">"ఆపు"</string>
+    <string msgid="7617024847862349259" name="mr_controller_stop_casting">"ప్రసారాన్ని ఆపివేయి"</string>
+    <string msgid="691656961160498512" name="mr_controller_volume_slider">"వాల్యూమ్ స్లయిడర్"</string>
+    <string msgid="3117964881088969586" name="mr_system_route_name">"సిస్టమ్"</string>
+    <string msgid="8236416097133080726" name="mr_user_route_category_name">"పరికరాలు"</string>
+    <string name="mtrl_badge_numberless_content_description">కొత్త నోటిఫికేషన్</string>
+    <string name="mtrl_chip_close_icon_content_description">(%1$s)ని తీసివేస్తుంది</string>
+    <string name="mtrl_exceed_max_badge_number_content_description">%1$d కంటే ఎక్కువ కొత్త నోటిఫికేషన్‌లు</string>
+    <string name="mtrl_picker_a11y_next_month">వచ్చే నెలకు మార్చుతుంది</string>
+    <string name="mtrl_picker_a11y_prev_month">మునుపటి నెలకు మార్చుతుంది</string>
+    <string name="mtrl_picker_announce_current_selection">ప్రస్తుత ఎంపిక: %1$s</string>
+    <string name="mtrl_picker_confirm">@android:string/ok</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">తేదీని ఎంచుకోండి</string>
+    <string name="mtrl_picker_date_header_unselected">ఎంచుకున్న తేది</string>
+    <string name="mtrl_picker_day_of_week_column_header">రోజుల నిలువు వరుస: %1$s</string>
+    <string name="mtrl_picker_invalid_format">ఫార్మాట్ చెల్లదు.</string>
+    <string name="mtrl_picker_invalid_format_example">ఉదాహరణ: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">ఇలా ఉపయోగించండి: %1$s</string>
+    <string name="mtrl_picker_invalid_range">చెల్లని పరిధి.</string>
+    <string name="mtrl_picker_navigate_to_year_description">%1$sసంవత్సరానికి నావిగేట్ చేస్తుంది</string>
+    <string name="mtrl_picker_out_of_range">పరిధి వెలుపల ఉంది: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">ప్రారంభ తేదీ – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – ముగింపు తేది</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">పరిధిని ఎంచుకోండి</string>
+    <string name="mtrl_picker_range_header_unselected">ప్రారంభ తేది - ముగింపు తేది</string>
+    <string name="mtrl_picker_save">సేవ్ చేయి</string>
+    <string name="mtrl_picker_text_input_date_hint">తేదీ</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">ముగింపు తేదీ</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">ప్రారంభ తేదీ</string>
+    <string name="mtrl_picker_text_input_day_abbr">రో</string>
+    <string name="mtrl_picker_text_input_month_abbr">నె</string>
+    <string name="mtrl_picker_text_input_year_abbr">సం</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">క్యాలెండర్ ఇన్‌పుట్ మోడ్‌కు మారుస్తుంది</string>
+    <string name="mtrl_picker_toggle_to_day_selection">\'రోజును ఎంపిక చేసుకోవడం\'కు మారడానికి నొక్కండి</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">వచన ఇన్‌పుట్ మోడ్‌కు మారుస్తుంది</string>
+    <string name="mtrl_picker_toggle_to_year_selection">\'సంవత్సరాన్ని ఎంపిక చేసుకోవడం\'కు మారడానికి నొక్కండి</string>
     <string name="no">కాదు</string>
     <string name="no_complaints">ఫిర్యాదులు లేవు</string>
     <string name="no_data">డేటా లేదు</string>
@@ -137,6 +194,7 @@
     <string name="notification">"నోటిఫికేషన్ "</string>
     <string name="on_the_job">ఆన్ ద జాబ్</string>
     <string name="on_the_job_complaints">ఆన్-ద-జాబ్ ఫిర్యాదులు</string>
+    <string name="password_toggle_content_description">పాస్‌వర్డ్‌ను చూపు</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"శోధనను తీసివేస్తుంది"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"శోధించండి"</string>
     <string name="previously_read">ఇదివరకు చదివినది</string>
@@ -155,8 +213,8 @@
     <string msgid="1566682516266724847" name="s5">"క్యాలెండర్ ఈవెంట్‌ను సృష్టించు"</string>
     <string msgid="5996672174517137271" name="s6">"క్యాలెండర్ ఈవెంట్‌ను సృష్టించడానికి ప్రకటనను అనుమతించాలా?"</string>
     <string msgid="7163549807207034258" name="s7">"ప్రకటనను పరీక్షించండి"</string>
-    <string msgid="146198913615257606" name="search_menu_title">"వెతుకు"</string>
-    <string msgid="7988687684186075107" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"శోధన"</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
     <string name="take_a_picture">ఒక చిత్రాన్ని తీసుకోండి</string>
     <string name="vote_up">ఓటు చేయండి</string>
     <string msgid="363496807345461806" name="wallet_buy_button_place_holder">"Googleతో కొనుగోలు చేయి"</string>

@@ -13,7 +13,6 @@ import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.swachhbharatengineer.R;
-import com.prashantsolanki.secureprefmanager.SecurePrefManager;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -100,10 +99,10 @@ public class ParseComplaintData {
                         cData.setFeed_description(mComplaintFeedJsonObject
                                 .optString("feed_description"));
                         cData.setFeed_full_name(""/*
-												 * mComplaintFeedJsonObject
-												 * .getString
-												 * ("feed_user_full_name")
-												 */);
+                         * mComplaintFeedJsonObject
+                         * .getString
+                         * ("feed_user_full_name")
+                         */);
                         cData.setFeed_color(mComplaintFeedJsonObject
                                 .optString("feed_color"));
                         cData.set_is_feed_high_priority(mComplaintFeedJsonObject
@@ -183,7 +182,7 @@ public class ParseComplaintData {
     public static String getSpanColorForStatusTitle(final int statusId) {
 //        Log.i("getSpanColor", "--------------->" + statusId + "");
         try {
-            if (statusId == AppController.COMPLAINT_OPEN|| statusId == AppController.COMPLAINT_REOPEN) {
+            if (statusId == AppController.COMPLAINT_OPEN || statusId == AppController.COMPLAINT_REOPEN) {
 //                return Color.argb(1, 213, 0, 0);
                 return ("#D50000");
             } else if (statusId == AppController.COMPLAINT_ON_THE_JOB) {
@@ -245,26 +244,28 @@ public class ParseComplaintData {
         return complaintStatusBgDrawable;
 
     }
+
     public static void shareComplaint(Activity activity, ComplaintData cdata) {
         try {
             Intent i = new Intent(Intent.ACTION_SEND);
             i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             i.putExtra(Intent.EXTRA_SUBJECT,
                     activity.getResources().getString(R.string.app_name));
-            String sAux = SecurePrefManager.with(activity).get(ICMyCPreferenceData.user_full_name).defaultValue("").go()
+            String sAux = ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.user_full_name, "")
                     + " shared a complaint with you.\n\n";
             sAux = sAux + cdata.getComplaint_url();
-            if (SecurePrefManager.with(activity).get(ICMyCPreferenceData.shareImage).defaultValue("").go().trim().length() == 0) {
+            if (ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.shareImage, "").trim().length() == 0) {
                 i.setType("text/plain");
             } else {
                 i.setType("image/jpeg");
                 i.putExtra(
                         Intent.EXTRA_STREAM,
-                        Uri.parse(SecurePrefManager.with(activity).get(ICMyCPreferenceData.shareImage).defaultValue("").go()));
+                        Uri.parse(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.shareImage, "")));
             }
             i.putExtra(Intent.EXTRA_TEXT, sAux);
             activity.startActivity(Intent.createChooser(i, "Share"));
-            SecurePrefManager.with(activity).set(ICMyCPreferenceData.shareImage).value("").go();
+//            SecurePrefManager.with(activity).set(ICMyCPreferenceData.shareImage).value("").go();
+            ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.shareImage, "");
         } catch (Exception e) { // e.toString();
         }
     }

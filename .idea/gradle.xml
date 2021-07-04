@@ -11,19 +11,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/RippleEffectLibrary" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/circleimageview" />
-            <option value="$PROJECT_DIR$/easyrecyclerview" />
-            <option value="$PROJECT_DIR$/multispinner" />
             <option value="$PROJECT_DIR$/otpview" />
-            <option value="$PROJECT_DIR$/permission_manager" />
-            <option value="$PROJECT_DIR$/secureprefs" />
-            <option value="$PROJECT_DIR$/shoot-lib" />
-            <option value="$PROJECT_DIR$/toasty" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>

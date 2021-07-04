@@ -29,7 +29,6 @@ import com.ichangemycity.swachhbharatengineer.Splashscreen;
 import com.ichangemycity.swachhbharatengineer.UserMobileNumber;
 import com.ichangemycity.webservice.GenerateNewAccessToken;
 import com.ichangemycity.webservice.HTTPResponseCode;
-import com.prashantsolanki.secureprefmanager.SecurePrefManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +37,6 @@ import org.json.JSONObject;
 import java.util.Iterator;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import es.dmoral.toasty.Toasty;
 
 /**
  * Created by pattabi.raman on 03-10-2017.
@@ -46,8 +44,8 @@ import es.dmoral.toasty.Toasty;
 
 public class AppUtils {
     public static void setImage(final CircleImageView circleImageView,
-        final NetworkImageView imageView, final String
-        imageUrl, final boolean isCircularImageView) {
+                                final NetworkImageView imageView, final String
+                                        imageUrl, final boolean isCircularImageView) {
         final ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
         if (isCircularImageView) {
@@ -85,13 +83,16 @@ public class AppUtils {
     public static void showToast(final Activity activity, final int type, final String message) {
         switch (type) {
             case AppConstant.TOAST_TYPE_ERROR:
-                Toasty.error(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
+//                Toasty.error(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
+                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
                 break;
             case AppConstant.TOAST_TYPE_INFO:
-                Toasty.info(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
+//                Toasty.info(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
+                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
                 break;
             case AppConstant.TOAST_TYPE_SUCCESS:
-                Toasty.success(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
+//                Toasty.success(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
+                Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
                 break;
         }
     }
@@ -262,7 +263,7 @@ public class AppUtils {
                         e.printStackTrace();
                         ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.ward_id, "");
                     }
-                    try{
+                    try {
                         ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.city_id, location.optString("city_id"));
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -287,7 +288,7 @@ public class AppUtils {
     private static String errors = "";
     private static JSONObject responseObject = new JSONObject();
 
-    public static void handleVolleyError(final Activity act,final VolleyError volleyError) {
+    public static void handleVolleyError(final Activity act, final VolleyError volleyError) {
         NetworkResponse response = volleyError.networkResponse;
         responseObject = new JSONObject();
         errors = "";
@@ -320,7 +321,7 @@ public class AppUtils {
                                 }
                             } catch (Exception e) {
                                 errors = "Error Parsing Failed!\n";
-                                errors+=responseObject.optJSONArray("errors");
+                                errors += responseObject.optJSONArray("errors");
                             }
                         }
                         AppController.showAlert(act, responseObject.optString("message"), errors, false, new OnButtonClick() {
@@ -364,7 +365,7 @@ public class AppUtils {
                         public void onTaskFailure() {
                             if ((act.getClass().getSimpleName().equalsIgnoreCase(UserMobileNumber.class.getSimpleName()) ||
                                     act.getClass().getSimpleName().equalsIgnoreCase(SetEmailPasswordActivity.class.getSimpleName()) ||
-                                     act.getClass().getSimpleName().equalsIgnoreCase(OTPVerification.class.getSimpleName()))) {
+                                    act.getClass().getSimpleName().equalsIgnoreCase(OTPVerification.class.getSimpleName()))) {
                                 errors = responseObject.optString("message") + "";
                                 AppController.traceLog("error", responseObject + "");
                                 AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);

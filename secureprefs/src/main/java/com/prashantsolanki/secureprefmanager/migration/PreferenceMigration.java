@@ -1,6 +1,6 @@
 package com.prashantsolanki.secureprefmanager.migration;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.prashantsolanki.secureprefmanager.SPM;
 

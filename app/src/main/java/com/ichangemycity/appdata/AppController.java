@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.provider.Settings;
-import android.support.multidex.MultiDex;
-import android.support.multidex.MultiDexApplication;
-import android.support.v7.app.AlertDialog;
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -51,8 +53,6 @@ import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.swachhbharatengineer.Splashscreen;
 import com.ichangemycity.swachhbharatengineer.UserMobileNumber;
 import com.ichangemycity.webservice.LruBitmapCache;
-import com.jude.easyrecyclerview.EasyRecyclerView;
-import com.prashantsolanki.secureprefmanager.SecurePrefManagerInit;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -120,9 +120,9 @@ public class AppController extends MultiDexApplication {
         super.onCreate();
         mInstance = this;
         try {
-            new SecurePrefManagerInit.Initializer(mInstance.getApplicationContext())
-                    .useEncryption(true)
-                    .initialize();
+//            new SecurePrefManagerInit.Initializer(mInstance.getApplicationContext())
+//                    .useEncryption(true)
+//                    .initialize();
             MultiDex.install(this);
             AnalyticsTracker.initialize(this);
             AnalyticsTracker.getInstance().get(AnalyticsTracker.Target.APP);
@@ -409,7 +409,7 @@ public class AppController extends MultiDexApplication {
     }
 
     public static void setEmptyViewForRecyclerView(final Activity activity,
-                                                   final EasyRecyclerView recyclerView) {
+                                                   final RecyclerView recyclerView) {
 
         if (recyclerView.getAdapter() != null) {
             if (recyclerView.getAdapter().getItemCount() <= 0) {
@@ -424,7 +424,7 @@ public class AppController extends MultiDexApplication {
                 } catch (Exception e) {
                 }
                 try {
-                    recyclerView.setEmptyView(null);
+//                    recyclerView.setEmptyView(null);
                 } catch (Exception e) {
 
                 }
@@ -432,7 +432,7 @@ public class AppController extends MultiDexApplication {
         }
     }
 
-    public static void setEmptyViewForRecyclerViewFragments(final Activity activity, final EasyRecyclerView recyclerView, final TextView textview) {
+    public static void setEmptyViewForRecyclerViewFragments(final Activity activity, final RecyclerView recyclerView, final TextView textview) {
         try {
             if (recyclerView.getAdapter() != null) {
                 if (recyclerView.getAdapter().getItemCount() <= 0) {

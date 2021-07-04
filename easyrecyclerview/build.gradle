@@ -22,5 +22,5 @@ android {
 }
 
 dependencies {
-    provided 'com.android.support:recyclerview-v7:28.0.+'
+    provided 'androidx.recyclerview:recyclerview:1.0.0'
 }

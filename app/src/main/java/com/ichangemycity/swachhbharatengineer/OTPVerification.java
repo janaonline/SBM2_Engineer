@@ -11,7 +11,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -30,8 +30,6 @@ import com.ichangemycity.webservice.URLDataSwachhManch;
 import com.ichangemycity.webservice.WebserviceHelper;
 import com.mukesh.OtpView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -124,7 +122,7 @@ public class OTPVerification extends BaseAppCompatActivity {
 
   @Nullable
   @BindView(R.id.toolbar)
-  android.support.v7.widget.Toolbar toolbar;
+  androidx.appcompat.widget.Toolbar toolbar;
 
   private void setToolbarAndCustomizeTitle() {
     setSupportActionBar(toolbar);

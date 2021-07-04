@@ -1,6 +1,6 @@
 package com.jude.easyrecyclerview;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 
