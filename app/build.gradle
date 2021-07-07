@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.ichangemycity.swachhbharatengineer"
-        minSdkVersion 14
+        minSdkVersion 18
         multiDexEnabled true
         targetSdkVersion 29
         versionCode 28
@@ -47,7 +47,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.github.karanchuri:PermissionManager:0.1.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    implementation project(':otpview')
     implementation 'com.android.volley:dc-volley:1.1.0'
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'

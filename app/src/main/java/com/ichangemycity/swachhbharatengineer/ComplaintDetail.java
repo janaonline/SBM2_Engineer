@@ -280,7 +280,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     private void loadDataIntoComponents() {
         AppController.hideProgressDialog(activity);
         setupViewPager();
-        AppController.customizeChangeStatusDropdown(activity, complaintDetailData, resolved, changeStatus, neutral, satisfaction, un_satisfied,
+        AppController.customizeChangeStatusDropdown(activity, complaintDetailData, changeStatus,
                 frameSpinner);
         setOffsetChangeListenerWhileScroll(true);
         appBarLayout.setExpanded(true);

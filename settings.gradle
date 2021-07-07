@@ -1,1 +1,1 @@
-include ':app', ':otpview'
+include ':app'

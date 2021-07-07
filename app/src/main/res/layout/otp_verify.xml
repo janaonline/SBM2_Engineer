@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -66,22 +67,26 @@
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp" />
 
-                    <com.mukesh.OtpView
-                        android:id="@+id/otp"
+                    <EditText
+                        android:id="@+id/otpEditText"
+                        style="@style/EditTextTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:hint="@string/enter_otp"
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:maxLength="4"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin16dp"
+                        android:layout_marginEnd="@dimen/margin16dp"
+                        android:cursorVisible="false"
+                        android:gravity="left"
+                        android:hint="123456"
+                        android:importantForAutofill="no"
+                        android:letterSpacing="1.5"
+                        android:maxLength="6"
                         android:maxLines="1"
-                        android:paddingBottom="10dp"
-                        android:textColor="@color/black"
-                        app:otp="" />
+                        tools:ignore="RtlHardcoded"
+                        tools:targetApi="lollipop">
+                        <requestFocus />
+
+                    </EditText>
 
                     <TextView
                         android:id="@+id/resendCode"

@@ -2,9 +2,9 @@ package com.ichangemycity.adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
@@ -24,14 +24,13 @@ public class ChangeStatusSpinnerAdapter extends BaseAdapter {
     Activity activity;
     ComplaintData cData;
 
-    public ChangeStatusSpinnerAdapter(Activity activity, ComplaintData cData,
-                                      ArrayList<ChangeStatusModel> changeStatusModel) {
+    public ChangeStatusSpinnerAdapter(Activity activity, ComplaintData cData, ArrayList<ChangeStatusModel> changeStatusModel) {
         this.activity = activity;
         this.cData = cData;
         this.changeStatusModel = changeStatusModel;
     }
 
-  @Override
+    @Override
     public int getCount() {
         return changeStatusModel.size();
     }
@@ -48,31 +47,26 @@ public class ChangeStatusSpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getDropDownView(int position, View view, ViewGroup parent) {
-        if (view == null || !view.getTag().toString().equals("DROPDOWN")) {
-            view = activity.getLayoutInflater().inflate(
-                    R.layout.inflate_change_status, parent, false);
+        if(view == null || !view.getTag().toString().equals("DROPDOWN")) {
+            view = activity.getLayoutInflater().inflate(R.layout.inflate_change_status, parent, false);
             view.setTag("DROPDOWN");
         }
         final TextView textViewColor = view.findViewById(R.id.statusColor);
-        textViewColor.setBackgroundColor(changeStatusModel.get(position)
-                .getColor());
+        textViewColor.setBackgroundColor(Color.TRANSPARENT);
         textViewColor.setTag(changeStatusModel.get(position));
         final View view1 = view.findViewById(R.id.view);
         view1.setVisibility(View.VISIBLE);
         view1.setTag(cData);
 
-        final TextView textView = view
-                .findViewById(android.R.id.text1);
+        final TextView textView = view.findViewById(android.R.id.text1);
         textView.setTag(position);
         textView.setGravity(Gravity.CENTER);
         textView.setText(getTitle(position));
         view.setOnClickListener(v -> {
-            AppController.selectedComplaintData = (ComplaintData) view1
-                    .getTag();
+            AppController.selectedComplaintData = (ComplaintData) view1.getTag();
             AppController.selectedComplaintData.setToChangeStatus(true);
             selectedComplaintChangeStatusOptions = (ChangeStatusModel) textViewColor.getTag();
-            activity.startActivity(new Intent(activity,
-                    ChangeStatusActivity.class));
+            activity.startActivity(new Intent(activity, ChangeStatusActivity.class));
         });
         view.setTag(changeStatusModel.get(position));
 
@@ -81,13 +75,11 @@ public class ChangeStatusSpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        if (view == null || !view.getTag().toString().equals("NON_DROPDOWN")) {
-            view = activity.getLayoutInflater().inflate(
-                    R.layout.inflate_change_status, parent, false);
+        if(view == null || !view.getTag().toString().equals("NON_DROPDOWN")) {
+            view = activity.getLayoutInflater().inflate(R.layout.inflate_change_status, parent, false);
             view.setTag("NON_DROPDOWN");
         }
-        final TextView textView = view
-                .findViewById(android.R.id.text1);
+        final TextView textView = view.findViewById(android.R.id.text1);
         TextView textViewColor = view.findViewById(R.id.statusColor);
         final View view1 = view.findViewById(R.id.view);
         view1.setTag(changeStatusModel.get(position));
@@ -98,19 +90,17 @@ public class ChangeStatusSpinnerAdapter extends BaseAdapter {
         // .getColor());
         textViewColor.setVisibility(View.VISIBLE);
         textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-        textViewColor.setBackgroundColor(changeStatusModel.get(0).getCurrentStatusColor());
-        textView.setText(activity.getResources().getString(
-                R.string.change_status));
+        //        textViewColor.setBackgroundColor(changeStatusModel.get(0).getCurrentStatusColor());
+        textViewColor.setBackgroundColor(Color.TRANSPARENT);
+        textView.setText(activity.getResources().getString(R.string.change_status));
         textView.setTag(position);
         view.setTag(changeStatusModel.get(position));
 
         return view;
     }
 
-
     private String getTitle(int position) {
-        return position >= 0 && position < changeStatusModel.size() ? changeStatusModel
-                .get(position).getStatusName() : "";
+        return position >= 0 && position < changeStatusModel.size() ? changeStatusModel.get(position).getStatusName() : "";
     }
 
 }

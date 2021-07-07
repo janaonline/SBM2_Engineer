@@ -455,9 +455,8 @@ public class AppController extends MultiDexApplication {
 
     // Complaint cards
     public static void customizeChangeStatusDropdown(final Activity activity,
-                                                     final ComplaintData cData, final LinearLayout resolved,
-                                                     final Spinner changeStatusSpinner, final TextView neutral,
-                                                     final TextView satisfaction, final TextView un_satisfied,
+                                                     final ComplaintData cData,
+                                                     final Spinner changeStatusSpinner,
                                                      final FrameLayout frameSpinner) {
         ArrayList<ChangeStatusModel> changeStatusModel = new ArrayList<ChangeStatusModel>();
         ChangeStatusModel changeStatus = new ChangeStatusModel();
@@ -468,7 +467,7 @@ public class AppController extends MultiDexApplication {
             changeStatus.setStatusID(COMPLAINT_ON_THE_JOB);
             changeStatus.setStatusName(activity.getString(R.string.on_the_job)
                     .toUpperCase());
-            changeStatus.setColor(Color.parseColor("#2bb5f9"));
+            changeStatus.setColor(Color.parseColor("#00000000"));
             changeStatus.setCurrentStatusColor(activity.getResources()
                     .getColor(R.color.red_reopn_open));
             changeStatusModel.add(changeStatus);
@@ -478,19 +477,18 @@ public class AppController extends MultiDexApplication {
                     .toString().toUpperCase());
             changeStatus.setCurrentStatusColor(activity.getResources()
                     .getColor(R.color.red_reopn_open));
-            changeStatus.setColor(Color.parseColor("#607d8b"));
+            changeStatus.setColor(Color.parseColor("#00000000"));
             changeStatusModel.add(changeStatus);
             changeStatusSpinner.setVisibility(View.VISIBLE);
             frameSpinner.setVisibility(View.VISIBLE);
-            resolved.setVisibility(View.GONE);
-        } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_ON_THE_JOB) {
+         } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_ON_THE_JOB) {
             changeStatus = new ChangeStatusModel();
             changeStatus.setStatusID(COMPLAINT_RESOLVED);
             changeStatus.setCurrentStatusColor(activity.getResources()
                     .getColor(R.color.blue_on_the_job));
             changeStatus.setStatusName(activity.getString(R.string.resolved)
                     .toUpperCase());
-            changeStatus.setColor(Color.parseColor("#00bd00"));
+            changeStatus.setColor(Color.parseColor("#00000000"));
             changeStatusModel.add(changeStatus);
 
             changeStatus = new ChangeStatusModel();
@@ -499,61 +497,23 @@ public class AppController extends MultiDexApplication {
                     .getColor(R.color.blue_on_the_job));
             changeStatus.setStatusName(activity.getString(R.string.rejected)
                     .toUpperCase());
-            changeStatus.setColor(Color.parseColor("#607d8b"));
+            changeStatus.setColor(Color.parseColor("#00000000"));
             changeStatusModel.add(changeStatus);
             changeStatusSpinner.setVisibility(View.VISIBLE);
             frameSpinner.setVisibility(View.VISIBLE);
-            resolved.setVisibility(View.GONE);
-        } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_REJECTED) {
+         } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_REJECTED) {
             changeStatusSpinner.setVisibility(View.INVISIBLE);
             frameSpinner.setVisibility(View.INVISIBLE);
-            resolved.setVisibility(View.GONE);
-        } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_RESOLVED) {
+         } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_RESOLVED) {
             changeStatusSpinner.setVisibility(View.INVISIBLE);
             frameSpinner.setVisibility(View.INVISIBLE);
-            resolved.setVisibility(View.VISIBLE);
-        }
-
-        if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_RESOLVED)
-            setSmileCounts(cData, neutral, satisfaction, un_satisfied, true,
-                    resolved);
-
-        else
-            setSmileCounts(cData, neutral, satisfaction, un_satisfied, true,
-                    resolved);
+         }
 
         if (changeStatusSpinner.getVisibility() == View.VISIBLE) {
 
             ChangeStatusSpinnerAdapter mAdapter = new ChangeStatusSpinnerAdapter(
                     activity, cData, changeStatusModel);
             changeStatusSpinner.setAdapter(mAdapter);
-        }
-    }
-
-    public static void setSmileCounts(final ComplaintData cData,
-                                      final TextView neutral, final TextView satisfaction,
-                                      final TextView un_satisfied, final boolean isToClick,
-                                      final LinearLayout cta_feedback) {
-        if (isToClick) {
-            neutral.setClickable(true);
-            satisfaction.setClickable(true);
-            un_satisfied.setClickable(true);
-            cta_feedback.setClickable(true);
-
-        } else {
-            neutral.setClickable(false);
-            satisfaction.setClickable(false);
-            un_satisfied.setClickable(false);
-            cta_feedback.setClickable(false);
-        }
-
-
-        if (cData.isFeedback_count()) {
-            neutral.setText(cData.getNeutral());
-            satisfaction.setText(cData.getSatisfaction());
-            un_satisfied.setText(cData.getUn_satisfied());
-        } else {
-
         }
     }
 
