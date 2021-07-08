@@ -1,8 +1,9 @@
 package com.ichangemycity.adapter;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
-import android.graphics.Color;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,12 +82,14 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
         TextView tv_feed_user_name;
         @BindView(R.id.tv_feed)
         TextView tv_feed;
-        @BindView(R.id.votedUpCount)
-        TextView votedUpCount;
+        /* @BindView(R.id.votedUpCount)
+         TextView votedUpCount;
+         @BindView(R.id.share)
+         TextView share;*/
         @BindView(R.id.commentedCount)
         TextView commentedCount;
-        @BindView(R.id.share)
-        TextView share;
+        @BindView(R.id.ic_directions)
+        ImageView ic_directions;
         @BindView(R.id.rl_cc_top)
         RelativeLayout rl_cc_top;
         @BindView(R.id.rl_top_feed)
@@ -107,6 +110,8 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
         CircleImageView user_image;
         @BindView(R.id.rl_cc_images)
         RelativeLayout rl_cc_images;
+        @BindView(R.id.complaintId)
+        TextView complaintId;
 
         public ViewHolder(final View convertView, int type) {
             super(convertView);
@@ -131,8 +136,9 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
         v.complaint_location.setText(cData.getLocation());
         v.complaint_status.setText(cData.getComplaint_status());
         v.moreInfo.setText(cData.getLandmark());
+        v.complaintId.setText(activity.getResources().getString(R.string.id_) + ": " + cData.getGeneric_id());
 
-        v.votedUpCount.setText(cData.getVote_up_count() + "");
+        //        v.votedUpCount.setText(cData.getVote_up_count() + "");
         v.commentedCount.setText(cData.getComment_count() + "");
         v.rl_cc_top.setTag(cData);
         v.card.setOnClickListener(m -> {
@@ -159,17 +165,31 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
             Intent toCommentsActivity = new Intent(activity, CommentsActivity.class);
             activity.startActivity(toCommentsActivity);
         });
-        v.share.setOnClickListener(m -> {
+        v.ic_directions.setOnClickListener(m -> {
+            // TODO Auto-generated method stub
+            final ComplaintData complaintDetailData = (ComplaintData) v.rl_cc_top.getTag();
+            String uri = "google.navigation:q=" + complaintDetailData.getLatitude() + "," + complaintDetailData.getLongitude();
+            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
+            // + cData.getLongitude());
+            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            mapIntent.setComponent(new ComponentName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity"));
+            mapIntent.setPackage("com.google.android.apps.maps");
+            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            activity.startActivity(mapIntent);
+            // }
+
+        });
+      /*  v.share.setOnClickListener(m -> {
             final ComplaintData mCData = (ComplaintData) v.rl_cc_top.getTag();
             ParseComplaintData.shareComplaint(activity, mCData);
-        });
+        });*/
         if(Integer.parseInt(cData.getComplaint_status_id()) == AppController.COMPLAINT_REJECTED) {
             v.rl_top_feed.setVisibility(View.GONE);
         } else {
             v.rl_top_feed.setVisibility(View.VISIBLE);
             v.tv_feed.setText(cData.getFeed_description());
             v.tv_feed_user_name.setText(cData.getFeed_full_name());
-            setColor(cData, v.rl_top_feed, v.tv_feed, v.tv_feed_user_name, v.feed_flag);
+            setTopFeedForCard(cData, v.rl_top_feed, v.tv_feed, v.tv_feed_user_name, v.feed_flag);
         }
         ParseComplaintData.getInstance().setCategoryImage(activity, v.category_image, cData);
 
@@ -183,7 +203,7 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
         // }
     }
 
-    private void setColor(final ComplaintData cData, final RelativeLayout rl_top_feed, final TextView tv_feed, final TextView tv_feed_user_name, ImageView feed_flag) {
+    private void setTopFeedForCard(final ComplaintData cData, final RelativeLayout rl_top_feed, final TextView tv_feed, final TextView tv_feed_user_name, ImageView feed_flag) {
         if(cData.isHasFeed()) {
             rl_top_feed.setVisibility(View.VISIBLE);
             if(cData.get_is_feed_high_priority().equalsIgnoreCase("1")) {
@@ -211,47 +231,5 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
         }
     }
 
-    private final int COMPLAINT_OPEN = 1;
-    private final int COMPLAINT_ON_THE_JOB = 3;
-    private final int COMPLAINT_RESOLVED = 4;
-    private final int COMPLAINT_REOPEN = 5;
-    private final int COMPLAINT_REJECTED = 6;
-
-    private int setBgDrawableForComplaintStatus(final ComplaintData cData, final TextView complaintStatusTextView) {
-        String ComplaintStatusID = cData.getComplaint_status_id();
-        int complaintStatusBgDrawable = Integer.parseInt(ComplaintStatusID);
-        int complaintStatusTextColor = Color.BLACK;
-        switch(complaintStatusBgDrawable) {
-            case COMPLAINT_REOPEN:
-                complaintStatusBgDrawable = R.drawable.complaint_status_red;
-                complaintStatusTextColor = activity.getResources().getColor(R.color.red_reopn_open);
-                break;
-            case COMPLAINT_OPEN:
-                complaintStatusBgDrawable = R.drawable.complaint_status_red;
-                complaintStatusTextColor = activity.getResources().getColor(R.color.red_reopn_open);
-                break;
-            case COMPLAINT_ON_THE_JOB:
-                complaintStatusBgDrawable = R.drawable.complaint_status_on_the_job;
-                complaintStatusTextColor = activity.getResources().getColor(R.color.blue_on_the_job);
-                break;
-            case COMPLAINT_RESOLVED:
-                complaintStatusBgDrawable = R.drawable.complaint_status_resolved;
-                complaintStatusTextColor = activity.getResources().getColor(R.color.green_resolved);
-                break;
-            case COMPLAINT_REJECTED:
-                complaintStatusBgDrawable = R.drawable.complaint_status_closed;
-                complaintStatusTextColor = activity.getResources().getColor(R.color.gray_closed);
-                break;
-            default:
-                complaintStatusBgDrawable = R.drawable.complaint_status_closed;
-                complaintStatusTextColor = activity.getResources().getColor(R.color.gray_closed);
-                break;
-        }
-        complaintStatusTextView.setTextColor(complaintStatusTextColor);
-        complaintStatusTextView.setText(cData.getComplaint_status());
-        complaintStatusTextView.setBackgroundResource(complaintStatusBgDrawable);
-        return complaintStatusBgDrawable;
-
-    }
 
 }

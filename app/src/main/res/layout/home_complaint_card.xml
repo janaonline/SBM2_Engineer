@@ -6,12 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="16dip"
+    android:background="@color/body"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stateListAnimator="@anim/lift_on_touch"
+        android:layout_marginStart="@dimen/horizontal_vertical_spacing"
+        android:layout_marginEnd="@dimen/horizontal_vertical_spacing"
         app:cardCornerRadius="15dp"
         card_view:cardElevation="@dimen/horizontal_vertical_spacing"
         card_view:cardPreventCornerOverlap="false"
@@ -25,7 +27,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <RelativeLayout android:visibility="gone"
                 android:id="@+id/rl_top_feed"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
@@ -80,11 +82,7 @@
                     android:textSize="14dp" />
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_below="@+id/rl_top_feed"
-                android:background="#e6e6e6" />
+
 
             <RelativeLayout
                 android:id="@+id/rl_top_cc"
@@ -92,8 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_top_feed"
                 android:layout_centerVertical="true"
-                android:background="@color/white"
-                android:gravity="center"
+                 android:gravity="center"
+                android:layout_marginTop="@dimen/horizontal_vertical_spacing"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -249,14 +247,29 @@
                             android:textColor="@color/secondary"
                             android:textSize="@dimen/textSize16dp" />
 
+                        <TextView
+                            android:id="@+id/complaintId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/moreInfo"
+                            android:layout_marginStart="@dimen/margin32dp"
+                            android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="center_vertical"
+                            android:maxLines="1"
+                            android:text="@string/id_"
+                            android:textColor="@color/secondary_text_color"
+                            android:textSize="@dimen/textSize16dp" />
+
                         <RelativeLayout
                             android:id="@+id/rl_cc_images"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/moreInfo"
+                            android:layout_below="@+id/complaintId"
                             android:layout_alignParentStart="true"
                             android:layout_marginStart="@dimen/horizontal_vertical_spacing"
-                            android:layout_marginTop="@dimen/horizontal_vertical_spacing">
+                            android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+                            android:visibility="gone">
 
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/cv"
@@ -301,82 +314,10 @@
                         android:paddingBottom="@dimen/horizontal_vertical_spacing">
 
 
-                        <LinearLayout
-                            android:id="@+id/not_resolved"
+                        <include
+                            layout="@layout/inflate_cta_change_stats_directions"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:gravity="center"
-                            android:orientation="horizontal"
-                            android:visibility="visible"
-                            android:weightSum="4">
-
-                            <FrameLayout
-                                android:id="@+id/frameSpinner"
-                                android:layout_width="156dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1">
-
-                                <TextView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    android:layout_gravity="center|right"
-                                    android:background="@mipmap/ic_arrow_drop_down_black_24dp"
-                                    android:visibility="gone" />
-
-                                <Spinner
-                                    android:id="@+id/changeStatus"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="52dp"
-                                    android:layout_alignParentLeft="true"
-                                    android:popupBackground="@color/white" />
-                            </FrameLayout>
-
-                            <TextView
-                                android:id="@+id/votedUpCount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableStart="@mipmap/outline_thumb_up_white_36_before_voteup"
-                                android:drawableTint="@color/secondary"
-                                android:fontFamily="@font/roboto_bold"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:padding="@dimen/horizontal_vertical_spacing"
-                                android:text="4500"
-                                android:textColor="@color/secondary"
-                                android:textSize="@dimen/textSize16dp" />
-
-                            <TextView
-                                android:id="@+id/commentedCount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:drawableStart="@mipmap/round_comment_white_36"
-                                android:drawableTint="@color/secondary"
-                                android:fontFamily="@font/roboto_bold"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:padding="@dimen/horizontal_vertical_spacing"
-                                android:text="6700"
-                                android:textColor="@color/secondary"
-                                android:textSize="@dimen/textSize16dp" />
-
-                            <TextView
-                                android:id="@+id/share"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:drawableLeft="@mipmap/round_share_white_36"
-                                android:drawableTint="@color/secondary"
-                                android:fontFamily="@font/roboto_bold"
-                                android:gravity="center"
-                                android:padding="@dimen/horizontal_vertical_spacing"
-                                android:textColor="@color/secondary"
-                                android:textSize="@dimen/textSize16dp" />
-
-                        </LinearLayout>
-
+                            android:layout_height="wrap_content" />
                     </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>

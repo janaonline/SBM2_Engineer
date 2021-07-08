@@ -22,4 +22,5 @@
     <dimen name="margin_size_medium">8dp</dimen>
 
     <dimen name="horizontal_vertical_spacing">8dp</dimen>
+    <dimen name="margin32dp">32dp</dimen>
 </resources>
