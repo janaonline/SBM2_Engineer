@@ -1,26 +1,27 @@
 package com.ichangemycity.adapter;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Handler;
-import androidx.recyclerview.widget.RecyclerView;
 import android.text.Html;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.NetworkImageView;
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.model.CommentsData;
-
 import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.webservice.ParseComplaintData;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by srimadhu.s on 19-07-2017.
@@ -56,52 +57,17 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.AddRem
     public void onBindViewHolder(final AddRemarkViewHolder holder, int position) {
 
         final CommentsData commentData = AppController.selectedComplaintData.getCommentsData().get(position);
-        String text = "<b><font color=" + commentData.getSpanColorForCoplaintStatus() + " >" + commentData.getComment_complaint_status()
-                .toUpperCase()
-                + "</font></b>" + "<font color=#212121>" + " " + commentData.getComment_description() + "</font>";
-        holder.mDescription.setText(Html.fromHtml(text));
-        holder.mName.setText(commentData.getComment_full_name());
-        holder.mpostedOn.setText(commentData.getComment_posted_on());
-        ParseComplaintData.setImage(activity, holder.mUserImage, null, commentData.getUser_image_url(), true);
+//        String text = "<b><font color=" + commentData.getSpanColorForCoplaintStatus() + " >" + commentData.getComment_complaint_status()
+//                .toUpperCase()
+//                + "</font></b>" + "<font color=#212121>" + " " + commentData.getComment_description() + "</font>";
+//        holder.mDescription.setText(Html.fromHtml(text));
+//        holder.mName.setText(commentData.getComment_full_name());
+//        holder.mpostedOn.setText(commentData.getComment_posted_on());
+//        ParseComplaintData.setImage(activity, holder.mUserImage, null, commentData.getUser_image_url(), true);
 
-        if( commentData.getComment_image_url().trim().length()<=0){
-            holder.imageLinear.setVisibility(View.GONE);
-        }else {
-            handler.post(() -> {
-                try {
-                    holder.imageLayout.setVisibility(View.VISIBLE);
-                    holder.imageLinear.setVisibility(View.VISIBLE);
-                    holder.imageLinear.removeAllViews();
-                    String imgUrl = commentData.getComment_image_url();
+        holder.bind(commentData);
 
 
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                            (int) wt_px, (int) ht_px);
-
-                    layoutParams.setMargins(0, 0, (int) margin, 0);
-
-                    final NetworkImageView image = new NetworkImageView(activity);
-                    image.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    image.setLayoutParams(layoutParams);
-//                            imageLoader.DisplayImage(imgUrl, R.drawable.pl, image);
-                    ParseComplaintData.setImage(activity, null, image, imgUrl, false);
-                    holder.imageLinear.setTag(imgUrl);
-                    holder.mDescription.setTag(commentData);
-                    image.setOnClickListener(arg1 -> {
-                        CommentsData cData = (CommentsData) holder.mDescription.getTag();
-                        String url = cData.getComment_image_url();
-                        Intent i = new Intent(Intent.ACTION_VIEW);
-                        i.setData(Uri.parse(url));
-                        activity.startActivity(i);
-                    });
-                    holder.imageLinear.addView(image);
-
-                } catch (Exception e) {
-                    // TODO: handle exception
-                    e.printStackTrace();
-                }
-            });
-        }
     }
 
 
@@ -114,20 +80,46 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.AddRem
     }
 
     class AddRemarkViewHolder extends RecyclerView.ViewHolder {
-        private TextView mName, mDescription, mpostedOn;
-        private de.hdodenhof.circleimageview.CircleImageView mUserImage;
-        private LinearLayout imageLinear;
-        private HorizontalScrollView imageLayout;
+        @Nullable
+        @BindView(R.id.userName)
+        TextView mName;
+        @Nullable
+        @BindView(R.id.description_count)
+        TextView mDescription;
+        @Nullable
+        @BindView(R.id.postedOn)
+        TextView mpostedOn;
+        @Nullable
+        @BindView(R.id.userImage)
+        de.hdodenhof.circleimageview.CircleImageView mUserImage;
+        @BindView(R.id.comment_image)
+        ImageView comment_image;
+        @BindView(R.id.cvCommentImage)
+        CardView cvCommentImage;
 
         public AddRemarkViewHolder(View itemView) {
             super(itemView);
-            imageLinear = itemView
-                    .findViewById(R.id.imageLinear);
-            mDescription = itemView.findViewById(R.id.description_count);
-            mName = itemView.findViewById(R.id.userName);
-            mUserImage = itemView.findViewById(R.id.userImage);
-            mpostedOn = itemView.findViewById(R.id.postedOn);
-            imageLayout = itemView.findViewById(R.id.imageLayout);
+            ButterKnife.bind(this, itemView);
+        }
+
+        public void bind(final CommentsData commentData) {
+            String text = (!TextUtils.isEmpty(commentData.getComment_complaint_status()) ? (
+                    (commentData.getComment_complaint_status() + " - ")) : "") + commentData
+                    .getComment_description();
+            mDescription.setText(Html.fromHtml(text));
+            mName.setText(commentData.getComment_full_name());
+            mpostedOn.setText(commentData.getComment_posted_on());
+            ParseComplaintData.getInstance().setImage(activity, mUserImage, null,
+                    commentData.getUser_image_url(), true);
+            if (TextUtils.isEmpty(commentData.getComment_image_url())) {
+                cvCommentImage.setVisibility(View.GONE);
+                comment_image.setVisibility(View.GONE);
+            } else {
+                cvCommentImage.setVisibility(View.VISIBLE);
+                comment_image.setVisibility(View.VISIBLE);
+                ParseComplaintData.getInstance().setImage(activity, null, comment_image,
+                        commentData.getComment_image_url().trim(), false);
+            }
         }
     }
 }

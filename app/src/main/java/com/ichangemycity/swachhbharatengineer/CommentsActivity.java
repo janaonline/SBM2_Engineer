@@ -546,10 +546,9 @@ public class CommentsActivity extends BaseAppCompatActivity {
     RecyclerView.LayoutManager manager = new LinearLayoutManager(activity);
     recycler_view.setLayoutManager(manager);
     recycler_view
-        .addItemDecoration(new DividerItemDecoration(activity, LinearLayoutManager.VERTICAL));
+        .addItemDecoration(new DividerItemDecoration(activity, LinearLayoutManager.HORIZONTAL));
     recycler_view.setItemAnimator(new DefaultItemAnimator());
     recycler_view.setAdapter(commentsAdapter);
-
 
   }
 

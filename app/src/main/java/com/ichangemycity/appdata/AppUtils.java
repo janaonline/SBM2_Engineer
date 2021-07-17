@@ -4,16 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.cardview.widget.CardView;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.VolleyError;
@@ -21,7 +20,6 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.callback.OnTaskCompleted;
-import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.swachhbharatengineer.OTPVerification;
 import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.swachhbharatengineer.SetEmailPasswordActivity;
@@ -35,6 +33,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,6 +42,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
  */
 
 public class AppUtils {
+
+    private static AppUtils instance;
+
+    public static AppUtils getInstance() {
+        return instance == null ? instance = new AppUtils() : instance;
+    }
+
     public static void setImage(final CircleImageView circleImageView,
                                 final NetworkImageView imageView, final String
                                         imageUrl, final boolean isCircularImageView) {
@@ -188,21 +194,35 @@ public class AppUtils {
 
     public static View view;
 
+//    public static void showProgressDialog(final Activity activity) {
+//        if (view != null)
+//            hideProgressDialog(activity);
+//        view = ((LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_loading, null);
+//        activity.addContentView(view, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                ViewGroup
+//                        .LayoutParams.MATCH_PARENT));
+//
+//    }
+
     public static void showProgressDialog(final Activity activity) {
-        if (view != null)
+        if (view != null) {
             hideProgressDialog(activity);
-        view = ((LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_loading, null);
-        activity.addContentView(view, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup
-                        .LayoutParams.MATCH_PARENT));
+        }
+        view = ((LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE))
+                .inflate(R.layout.view_loading, null);
+        CardView viewLoadingCardView = view.findViewById(R.id.viewLoadingCardView);
+        viewLoadingCardView.setCardBackgroundColor(
+                activity.getResources().getColor(AppController.BG_COLOR_DEFAULT[new Random()
+                        .nextInt(AppController.BG_COLOR_DEFAULT.length - 1)]));
+        activity
+                .addContentView(view, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup
+                                .LayoutParams.MATCH_PARENT));
 
     }
 
     public static void hideProgressDialog(final Activity activity) {
-        try {
 
-        } catch (Exception e) {
-        }
         try {
             ViewGroup rootView = activity.findViewById(android.R.id.content);
             for (int i = 0; i < rootView.getChildCount(); i++) {

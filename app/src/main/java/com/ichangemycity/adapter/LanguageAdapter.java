@@ -1,7 +1,6 @@
 package com.ichangemycity.adapter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.view.Gravity;
 import android.view.View;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.model.LanguageData;
 import com.ichangemycity.swachhbharatengineer.R;
-import com.ichangemycity.swachhbharatengineer.UserMobileNumber;
 
 import java.util.ArrayList;
 
@@ -91,8 +89,10 @@ public class LanguageAdapter extends BaseAdapter {
 
                 ICMyCPreferenceData.setPreference(activity,
                         ICMyCPreferenceData.selectedLanguagePosition, sid + "");
-                activity.startActivity(new Intent(activity,
-                        UserMobileNumber.class));
+//                activity.startActivity(new Intent(activity,
+//                        UserMobileNumber.class));
+                activity.setResult(Activity.RESULT_OK);
+                activity.finish();
             }
         });
         return view;

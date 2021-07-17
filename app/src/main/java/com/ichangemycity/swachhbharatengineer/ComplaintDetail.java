@@ -83,7 +83,6 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     LinearLayout /*cta_btn, cta_feedback, */resolved;
     TextView locationText, locationlandmark;
     ImageView change_status;
-    ImageView locateComplaint, navigateComplaint;
     public static boolean isToRefresh = false;
     private Spinner changeStatus;
     FrameLayout frameSpinner;
@@ -102,8 +101,8 @@ public class ComplaintDetail extends BaseAppCompatActivity {
         un_satisfied = findViewById(R.id.un_satisfied);
         neutral = findViewById(R.id.neutral);
         frameSpinner = findViewById(R.id.frameSpinner);
-        locateComplaint = findViewById(R.id.locateComplaint);
-        navigateComplaint = findViewById(R.id.navigateComplaint);
+//        locateComplaint = findViewById(R.id.locateComplaint);
+//        navigateComplaint = findViewById(R.id.navigateComplaint);
         change_status = findViewById(R.id.change_status);
          complaint_image = findViewById(R.id.complaint_image);
         collapsingToolbar = findViewById(R.id.collapsingToolbar);
@@ -129,8 +128,8 @@ public class ComplaintDetail extends BaseAppCompatActivity {
 //                .findViewById(R.id.not_resolved);
 //        cta_feedback = (LinearLayout) ComplaintDetail.this
 //                .findViewById(R.id.resolved);
-        locationText = findViewById(R.id.locationText);
-        locationlandmark = findViewById(R.id.locationlandmark);
+//        locationText = findViewById(R.id.locationText);
+//        locationlandmark = findViewById(R.id.locationlandmark);
          changeStatus = findViewById(R.id.changeStatus);
         change_status.setVisibility(View.GONE);
         setToolbarAndCustomizeTitle(toolbar, " ");
@@ -315,40 +314,40 @@ public class ComplaintDetail extends BaseAppCompatActivity {
         share.setOnClickListener(
             m -> ParseComplaintData.shareComplaint(activity, complaintDetailData));
 
-        locateComplaint.setOnClickListener(v -> {
-            String uri = String.format(
-                    Locale.ENGLISH,
-                    "geo:0,0?q=" + complaintDetailData.getLatitude() + ","
-                            + complaintDetailData.getLongitude() + "&z=12 ("
-                            + complaintDetailData.getLocation() + ")");
-            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
-            // + cData.getLongitude());
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri
-                    .parse(uri));
-            mapIntent.setPackage("com.google.android.apps.maps");
-            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-            // }
-        });
-        navigateComplaint.setOnClickListener(v -> {
-            // TODO Auto-generated method stub
-
-            String uri = String.format(Locale.ENGLISH,
-                    "google.navigation:q=" + complaintDetailData.getLatitude() + ","
-                            + complaintDetailData.getLongitude());
-            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
-            // + cData.getLongitude());
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri
-                    .parse(uri));
-            mapIntent.setComponent(new ComponentName(
-                    "com.google.android.apps.maps",
-                    "com.google.android.maps.MapsActivity"));
-            mapIntent.setPackage("com.google.android.apps.maps");
-            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-            // }
-
-        });
+//        locateComplaint.setOnClickListener(v -> {
+//            String uri = String.format(
+//                    Locale.ENGLISH,
+//                    "geo:0,0?q=" + complaintDetailData.getLatitude() + ","
+//                            + complaintDetailData.getLongitude() + "&z=12 ("
+//                            + complaintDetailData.getLocation() + ")");
+//            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
+//            // + cData.getLongitude());
+//            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri
+//                    .parse(uri));
+//            mapIntent.setPackage("com.google.android.apps.maps");
+//            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(mapIntent);
+//            // }
+//        });
+//        navigateComplaint.setOnClickListener(v -> {
+//            // TODO Auto-generated method stub
+//
+//            String uri = String.format(Locale.ENGLISH,
+//                    "google.navigation:q=" + complaintDetailData.getLatitude() + ","
+//                            + complaintDetailData.getLongitude());
+//            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
+//            // + cData.getLongitude());
+//            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri
+//                    .parse(uri));
+//            mapIntent.setComponent(new ComponentName(
+//                    "com.google.android.apps.maps",
+//                    "com.google.android.maps.MapsActivity"));
+//            mapIntent.setPackage("com.google.android.apps.maps");
+//            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(mapIntent);
+//            // }
+//
+//        });
         AppController.initiateCTAForShareComment();
         change_status.setOnClickListener(v -> inflateDialogtoShowChangeStatusMenu());
     }

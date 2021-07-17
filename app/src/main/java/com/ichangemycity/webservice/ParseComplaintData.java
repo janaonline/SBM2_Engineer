@@ -3,23 +3,34 @@ package com.ichangemycity.webservice;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.swachhbharatengineer.R;
+import com.ichangemycity.swachhbharatengineer.ViewAllMediaActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -152,8 +163,11 @@ public class ParseComplaintData {
                 public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
                     imageView.setImageUrl(imageUrl, imageLoader);
                     imageView.setOnClickListener(v -> {
-                        Intent toPreview = new Intent(ACTION_VIEW, Uri.parse(imageUrl));
-                        activity.startActivity(toPreview);
+//                        Intent toPreview = new Intent(ACTION_VIEW, Uri.parse(imageUrl));
+//                        activity.startActivity(toPreview);
+                        AppConstant.getInstance().imagePreviewList.clear();
+                        AppConstant.getInstance().imagePreviewList.add(imageUrl);
+                        activity.startActivity(new Intent(activity, ViewAllMediaActivity.class));
                     });
                 }
 
@@ -163,6 +177,72 @@ public class ParseComplaintData {
 
                 }
             });
+        }
+    }
+
+
+
+    public void setImage(final Activity activity, final CircleImageView circleImageView,
+                         final ImageView imageView, final String
+                                 imageUrl, final boolean isCircularImageView) {
+        try {
+            if (!TextUtils.isEmpty(imageUrl)) {
+                if (isCircularImageView) {
+                    try {
+                        Glide.with(activity.getApplicationContext()).load(imageUrl).thumbnail(0.5f)
+                                .into(circleImageView);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Glide.with(activity.getApplicationContext()).load(imageUrl)
+                            .listener(new RequestListener<Drawable>() {
+                                @Override
+                                public boolean onLoadFailed(@Nullable GlideException e, Object model,
+                                                            Target<Drawable> target, boolean isFirstResource) {
+                                    imageView.setBackgroundColor(
+                                            activity.getResources()
+                                                    .getColor(AppController.BG_COLOR_DEFAULT[new Random()
+                                                            .nextInt(AppController.BG_COLOR_DEFAULT.length - 1)]));
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean onResourceReady(Drawable resource, Object model,
+                                                               Target<Drawable> target, DataSource dataSource, boolean
+                                                                       isFirstResource) {
+
+                                    return false;
+                                }
+                            }).thumbnail(0.2f).into(imageView);
+
+                    imageView.setOnClickListener(v -> {
+                        AppConstant.getInstance().imagePreviewList.clear();
+                        AppConstant.getInstance().imagePreviewList.add(imageUrl);
+                        activity.startActivity(new Intent(activity, ViewAllMediaActivity.class));
+                    });
+
+                }
+            } else {
+                if (imageView != null) {
+                    imageView.setBackgroundColor(activity.getResources()
+                            .getColor(AppController.BG_COLOR_DEFAULT[new Random()
+                                    .nextInt(AppController.BG_COLOR_DEFAULT.length - 1)]));
+                }
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (circleImageView != null) {
+                circleImageView.setImageResource(R.mipmap.round_new_releases_white_36);
+                circleImageView.setColorFilter(activity.getResources().getColor(R.color.secondary),
+                        android.graphics.PorterDuff.Mode.MULTIPLY);
+            } else if (imageView != null) {
+//        imageView.setImageResource(R.mipmap.ic_not_found);
+                imageView.setBackgroundColor(activity.getResources()
+                        .getColor(AppController.BG_COLOR_DEFAULT[new Random()
+                                .nextInt(AppController.BG_COLOR_DEFAULT.length - 1)]));
+            }
         }
     }
 

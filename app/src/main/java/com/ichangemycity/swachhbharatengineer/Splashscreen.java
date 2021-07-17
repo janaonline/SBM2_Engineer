@@ -2,8 +2,17 @@ package com.ichangemycity.swachhbharatengineer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
 
@@ -11,6 +20,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.base.BaseAppCompatActivity;
+import com.ichangemycity.callback.InternetConnectionCallback;
 import com.ichangemycity.callback.OnResponseListener;
 import com.ichangemycity.firebase.MyFirebaseInstanceIDService;
 import com.ichangemycity.model.LanguageData;
@@ -20,6 +30,9 @@ import com.ichangemycity.webservice.WebserviceHelper;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by pattabi.raman on 23-09-2017.
  */
@@ -28,13 +41,60 @@ public class Splashscreen extends BaseAppCompatActivity {
 
     //    List<String> permissionsRequired = new ArrayList<>();
     public static Activity activity;
+    private static TextView tv_check_connection;
+    CheckConnectivity mNetworkReceiver;
+    @BindView(R.id.videoView)
+    VideoView videoView;
+
+    public Activity getActivity() {
+        if (activity == null) {
+            activity = Splashscreen.this;
+        }
+        return activity;
+    }
+
+    InternetConnectionCallback internetConnectionCallback = new InternetConnectionCallback() {
+        @Override
+        public void onInternetConnected(boolean isConnected) {
+
+            proceedAfterPermissionGranted();
+        }
+
+        @Override
+        public void onInternetDisconnected(boolean isConnected) {
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+        ButterKnife.bind(this);
         activity = Splashscreen.this;
-        proceedAfterPermissionGranted();
+        tv_check_connection = findViewById(R.id.tv_check_connection);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        mNetworkReceiver = new CheckConnectivity(internetConnectionCallback);
+        activity = Splashscreen.this;
+        mNetworkReceiver = new CheckConnectivity(internetConnectionCallback);
+        registerNetworkBroadcastForNougat();
+
+        Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.splash_screen);
+        videoView.setVideoURI(video);
+        videoView.start();
+    }
+
+    protected void unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(mNetworkReceiver);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterNetworkChanges();
     }
 
     private void proceedAfterPermissionGranted() {
@@ -50,6 +110,7 @@ public class Splashscreen extends BaseAppCompatActivity {
         protected String doInBackground(String... arg0) {
             String msg = "";
             try {
+                Thread.sleep(2000);
                 performGCMRegistration();
 
             } catch (Exception e) {
@@ -161,7 +222,7 @@ public class Splashscreen extends BaseAppCompatActivity {
                     ICMyCPreferenceData.activated, "0").equalsIgnoreCase("0") || ICMyCPreferenceData.getPreferenceItem(Splashscreen.this,
                     ICMyCPreferenceData.activated, "0").equalsIgnoreCase("NA")) {
                 startActivity(new Intent(Splashscreen.this,
-                        SelectLanguage.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        UserMobileNumber.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             } else {
                 startActivity(new Intent(Splashscreen.this,
                         MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
@@ -169,6 +230,28 @@ public class Splashscreen extends BaseAppCompatActivity {
             }
             Splashscreen.this.finish();
 
+        }
+
+    }
+
+    private void registerNetworkBroadcastForNougat() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        }
+    }
+
+
+    public void dialog(boolean value) {
+        if (value) {
+            tv_check_connection.setVisibility(View.GONE);
+        } else {
+            tv_check_connection.setVisibility(View.VISIBLE);
+            tv_check_connection.setText(R.string.could_not_connect_to_internet);
+            tv_check_connection.setBackgroundColor(Color.RED);
+            tv_check_connection.setTextColor(Color.WHITE);
         }
     }
 

@@ -83,6 +83,10 @@ public class AppController extends MultiDexApplication {
     public static final int PURPOSE_POST_COMMENT = 1;
     public static final int PURPOSE_CHANGE_STATUS = 2;
     public static int selectedPurposeToUploadImage;
+    public static final int[] BG_COLOR_DEFAULT = new int[]{R.color.primaryDark, R.color.secondaryDark,
+            R.color.tertiaryDark, R.color.secondaryLight, R.color.greyDark, R.color.secondary,
+            R.color.tertiary, R.color.primaryLight, R.color.tertiaryLight, R.color.secondaryLight,
+            R.color.primerColorBlack};
 
     private Locale locale = null;
 

@@ -58,4 +58,8 @@ public class URLDataSwachhManch {
         map.put(CHANNEL_KEY, CHANNEL_VALUE);
         return map;
     }
+
+  public static final String MAP_THUMBNAIL = "http://maps.google" +
+          ".com/maps/api/staticmap?markers=color:red%7C" + "<COORDINATES>" + "&zoom=16&size=480x320&sensor=true&key=AIzaSyDaVU6S0SkzD8gSMG4l2R0C2bnxW7ZJXms";
+
 }

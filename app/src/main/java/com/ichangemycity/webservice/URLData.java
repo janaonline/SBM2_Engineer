@@ -71,6 +71,10 @@ public class URLData {
   public static final String BEARER_TOKEN = "";
   public static final String CONTENT_TYPE = "application/json";
 
+  public static final String TIMTHUMB_MEDIUM = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=72&src=";
+  public static final String TIMTHUMB_SMALL = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=48&src=";
+  public static final String TIMTHUMB_XXLARGE = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=1024&src=";
+
 
   public static HashMap<String, String> getHeaders(final Activity activity, final int headerType) {
     final HashMap<String, String> headers = new HashMap<String, String>();
