@@ -9,113 +9,127 @@
     android:fitsSystemWindows="true"
     android:visibility="visible">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/white"
-        android:minHeight="?attr/actionBarSize" />
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_above="@+id/icmycText"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="20dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:color/white">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <FrameLayout
+                android:id="@+id/bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ScrollView
-                android:id="@+id/scrollView"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                <ImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/margin16dp"
+                    android:src="@mipmap/back"
+                    app:tint="@color/primerColorBlack" />
 
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="56dp"
-                android:paddingBottom="20dp">
-
-                <LinearLayout
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/toolbar"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="16dp"
-                    android:background="@android:color/white"
-                    android:orientation="vertical">
+                    android:layout_height="260dp"
+                    android:scaleType="fitEnd"
+                    android:src="@drawable/onboarding_bg" />
+            </FrameLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center"
-                        android:text="@string/mobile_verification"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/mobile_verification"
+                android:textColor="@color/primerColorBlack"
+                android:textSize="@dimen/textSize20dp" />
 
-                    <TextView
-                        android:id="@+id/enterotp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:gravity="center"
-                        android:text="@string/enter_otp"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp" />
+            <TextView
+                android:id="@+id/otpText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.2"
+                android:text="@string/enter_verification_code_sent_to_"
+                android:textColor="@color/primerColorBlack"
+                android:textSize="@dimen/textSize16dp" />
 
-                    <EditText
-                        android:id="@+id/otpEditText"
-                        style="@style/EditTextTheme"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/margin16dp"
-                        android:layout_marginEnd="@dimen/margin16dp"
-                        android:cursorVisible="false"
-                        android:gravity="left"
-                        android:hint="123456"
-                        android:importantForAutofill="no"
-                        android:letterSpacing="1.5"
-                        android:maxLength="6"
-                        android:maxLines="1"
-                        tools:ignore="RtlHardcoded"
-                        tools:targetApi="lollipop">
-                        <requestFocus />
+            <!--<com.mukesh.OtpView
+              android:id="@+id/otp"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="left"
+              android:gravity="center"
+              android:hint="@string/enter_otp"
+              android:imeOptions="actionNext"
+              android:inputType="number"
+              android:maxLength="4"
+              android:maxLines="1"
+              android:paddingBottom="10dp"
+              android:textColor="@color/primary"
+              app:otp=""
+              tools:ignore="RtlHardcoded" />-->
+            <EditText
+                android:id="@+id/enterotp"
+                style="@style/EditTextTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin16dp"
+                android:layout_marginEnd="@dimen/margin16dp"
+                android:cursorVisible="false"
+                android:gravity="left"
+                android:hint="123456"
+                android:importantForAutofill="no"
+                android:letterSpacing="1.5"
+                android:maxLength="6"
+                android:maxLines="1"
+                tools:ignore="RtlHardcoded"
+                tools:targetApi="lollipop">
 
-                    </EditText>
+                <requestFocus />
 
-                    <TextView
-                        android:id="@+id/resendCode"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:gravity="center"
-                        android:text="@string/resend_code_"
-                        android:textColor="#0980f4"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
+            </EditText>
 
+            <TextView
+                android:id="@+id/resendCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="@string/didn_t_receive_otp"
+                android:textColor="@color/primerColorBlack"
+                android:textSize="@dimen/textSize16dp" />
 
-                    <Button
-                        android:id="@+id/done"
-                        style="?android:attr/button"
-                        android:layout_width="match_parent"
-                        android:layout_height="?android:actionBarSize"
-                        android:layout_centerHorizontal="true"
-                        android:layout_margin="16dp"
-                        android:background="@drawable/signup_with_fb_bg"
-                        android:maxLines="1"
-                        android:padding="16dp"
-                        android:text="@string/done"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="16sp" />
-                </LinearLayout>
-            </ScrollView>
-        </RelativeLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+            <Button
+                android:id="@+id/done"
+                style="@style/ButtonTheme"
+                android:text="@string/done" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/icmycText"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/moud" />
+
 </RelativeLayout>

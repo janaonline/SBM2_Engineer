@@ -1,68 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:orientation="horizontal"
-                android:id="@+id/parentLayout"
-                android:padding="10dp" >
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <ImageView
-      android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/lin"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="16dp"
-        android:scaleType="fitCenter"
-        android:src="@mipmap/moud" />
-
-    <LinearLayout
-        android:id="@+id/lin"
+    <RelativeLayout
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="horizontal" >
+        android:layout_height="match_parent">
 
-        <ImageView
-          android:layout_width="match_parent"
+        <include
+            android:id="@+id/internet"
+            layout="@layout/inflate_internet_connection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/public_eye" />
-    </LinearLayout>
+            android:layout_below="@+id/internet"
+            android:layout_centerInParent="true"
+            android:gravity="center">
 
-    <TextView
-      android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/icmycText"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="@string/powered_by_"
-        android:textColor="@color/lt_gray"
-        android:textSize="12sp" />
+            <VideoView
+                android:id="@+id/videoView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-    <ImageView
-        android:id="@+id/icmycText"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
-        android:scaleType="fitStart"
-        android:src="@mipmap/icmyc" />
-
-    <com.pnikosis.materialishprogress.ProgressWheel
-        android:id="@+id/progress"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_above="@+id/icmycText"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="8dp"
-        android:visibility="visible"
-        app:matProg_barColor="@color/blue_on_the_job"
-        app:matProg_progressIndeterminate="true"
-        app:matProg_rimWidth="8dp"
-        app:matProg_spinSpeed="1" />
-
-</RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

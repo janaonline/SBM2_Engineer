@@ -70,5 +70,19 @@
     <!--COVID-19-->
     <string name="more_information" translatable="false">More Info</string>
     <string name="directions" translatable="false">Directions</string>
+    <string name="could_not_connect_to_internet" translatable="false">Could not connect to internet</string>
+    <string name="english" translatable="false">English</string>
+    <string name="didn_t_receive_otp" translatable="false">Didn\'t receive OTP?</string>
+    <string name="create_your_account" translatable="false">Create your account</string>
+    <string name="welcome_back" translatable="false">Welcome back</string>
+    <string name="login_to_your_account" translatable="false">Log in to your account</string>
+    <string name="first_name" translatable="false">First name</string>
+    <string name="last_name" translatable="false">Last name</string>
+    <string name="already_user" translatable="false">Already user?</string>
+    <string name="mobile_number" translatable="false">Mobile number</string>
+    <string name="dont_have_account" translatable="false">Dont have account?</string>
+    <string name="login" translatable="false">Log in</string>
+    <string name="be_the_first_to_comment" translatable="false">Be the first to comment</string>
+    <string name="complaint_details" translatable="false">Complaint Details</string>
 
 </resources>
