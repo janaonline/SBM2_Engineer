@@ -129,7 +129,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
             @Override
             public void OnResponseFailure() {
                 setSwipeProgress(false);
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
                 //  AppController.handleVolleyError(activity, (RelativeLayout) findViewById(R.id.parentLayout), error);
             }
 
@@ -153,7 +153,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -477,7 +477,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
                 setSwipeProgress(false);
             }
 
@@ -500,7 +500,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -686,7 +686,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url,params, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override

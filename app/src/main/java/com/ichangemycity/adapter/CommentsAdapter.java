@@ -29,22 +29,17 @@ import butterknife.ButterKnife;
 
 public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.AddRemarkViewHolder> {
 
-//    private ComplaintData arrayList;
+    //    private ComplaintData arrayList;
     public static Activity activity;
     private static Handler handler = new Handler();
-    private static boolean isToShowLoadMore;
     float wt_px, ht_px, margin;
 
-    public CommentsAdapter(Activity mAct , boolean isToShowLoadMore) {
+    public CommentsAdapter(Activity mAct) {
         activity = mAct;
-//        arrayList = complaintData;
-        wt_px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 90, activity
-                .getResources().getDisplayMetrics());
-        ht_px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 90, activity
-                .getResources().getDisplayMetrics());
-        margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, activity
-                .getResources().getDisplayMetrics());
-        this.isToShowLoadMore = isToShowLoadMore;
+        //        arrayList = complaintData;
+        wt_px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 90, activity.getResources().getDisplayMetrics());
+        ht_px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 90, activity.getResources().getDisplayMetrics());
+        margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, activity.getResources().getDisplayMetrics());
     }
 
     @Override
@@ -57,26 +52,21 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.AddRem
     public void onBindViewHolder(final AddRemarkViewHolder holder, int position) {
 
         final CommentsData commentData = AppController.selectedComplaintData.getCommentsData().get(position);
-//        String text = "<b><font color=" + commentData.getSpanColorForCoplaintStatus() + " >" + commentData.getComment_complaint_status()
-//                .toUpperCase()
-//                + "</font></b>" + "<font color=#212121>" + " " + commentData.getComment_description() + "</font>";
-//        holder.mDescription.setText(Html.fromHtml(text));
-//        holder.mName.setText(commentData.getComment_full_name());
-//        holder.mpostedOn.setText(commentData.getComment_posted_on());
-//        ParseComplaintData.setImage(activity, holder.mUserImage, null, commentData.getUser_image_url(), true);
+        //        String text = "<b><font color=" + commentData.getSpanColorForCoplaintStatus() + " >" + commentData.getComment_complaint_status()
+        //                .toUpperCase()
+        //                + "</font></b>" + "<font color=#212121>" + " " + commentData.getComment_description() + "</font>";
+        //        holder.mDescription.setText(Html.fromHtml(text));
+        //        holder.mName.setText(commentData.getComment_full_name());
+        //        holder.mpostedOn.setText(commentData.getComment_posted_on());
+        //        ParseComplaintData.setImage(activity, holder.mUserImage, null, commentData.getUser_image_url(), true);
 
         holder.bind(commentData);
 
-
     }
-
 
     @Override
     public int getItemCount() {
-        if (isToShowLoadMore)
-            return (AppController.selectedComplaintData.getCommentsData().size()>5)?5: AppController.selectedComplaintData.getCommentsData().size();
-        else
-            return AppController.selectedComplaintData.getCommentsData().size();
+        return AppController.selectedComplaintData.getCommentsData().size();
     }
 
     class AddRemarkViewHolder extends RecyclerView.ViewHolder {
@@ -103,22 +93,18 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.AddRem
         }
 
         public void bind(final CommentsData commentData) {
-            String text = (!TextUtils.isEmpty(commentData.getComment_complaint_status()) ? (
-                    (commentData.getComment_complaint_status() + " - ")) : "") + commentData
-                    .getComment_description();
+            String text = (!TextUtils.isEmpty(commentData.getComment_complaint_status()) ? ((commentData.getComment_complaint_status() + " - ")) : "") + commentData.getComment_description();
             mDescription.setText(Html.fromHtml(text));
             mName.setText(commentData.getComment_full_name());
             mpostedOn.setText(commentData.getComment_posted_on());
-            ParseComplaintData.getInstance().setImage(activity, mUserImage, null,
-                    commentData.getUser_image_url(), true);
-            if (TextUtils.isEmpty(commentData.getComment_image_url())) {
+            ParseComplaintData.getInstance().setImage(activity, mUserImage, null, commentData.getUser_image_url(), true);
+            if(TextUtils.isEmpty(commentData.getComment_image_url())) {
                 cvCommentImage.setVisibility(View.GONE);
                 comment_image.setVisibility(View.GONE);
             } else {
                 cvCommentImage.setVisibility(View.VISIBLE);
                 comment_image.setVisibility(View.VISIBLE);
-                ParseComplaintData.getInstance().setImage(activity, null, comment_image,
-                        commentData.getComment_image_url().trim(), false);
+                ParseComplaintData.getInstance().setImage(activity, null, comment_image, commentData.getComment_image_url().trim(), false);
             }
         }
     }

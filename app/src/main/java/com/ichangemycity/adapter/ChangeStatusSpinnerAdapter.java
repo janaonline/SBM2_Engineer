@@ -92,7 +92,7 @@ public class ChangeStatusSpinnerAdapter extends BaseAdapter {
         textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         //        textViewColor.setBackgroundColor(changeStatusModel.get(0).getCurrentStatusColor());
         textViewColor.setBackgroundColor(Color.TRANSPARENT);
-        textView.setText(activity.getResources().getString(R.string.change_status));
+        textView.setText(activity.getResources().getString(R.string.change_status) +"  ▼  ");
         textView.setTag(position);
         view.setTag(changeStatusModel.get(position));
 

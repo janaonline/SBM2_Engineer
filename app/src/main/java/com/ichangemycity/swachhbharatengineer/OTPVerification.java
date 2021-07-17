@@ -6,9 +6,11 @@ package com.ichangemycity.swachhbharatengineer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
@@ -91,16 +93,12 @@ public class OTPVerification extends BaseAppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
-                if (s.toString().trim().length() == 4) {
-                    done.setVisibility(View.VISIBLE);
-                    done.setEnabled(true);
-                    done.setTextColor(activity.getResources().getColor(R.color.white));
-//					submit.performClick();
-                } else {
-                    done.setVisibility(View.GONE);
-                    done.setEnabled(false);
-                    done.setTextColor(activity.getResources().getColor(R.color.greySecondary));
+                boolean isToEnableVerifyButton =
+                        (!TextUtils.isEmpty(otpEditText.getText().toString())) ? true : false;
+                if (s.toString().trim().length() >= 4) {
+                    AppController.getInstance().hideKeyboard(activity, otpEditText);
                 }
+                setButtonStyleEnabledOrDisabled(isToEnableVerifyButton);
             }
         });
 //        enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_) + "\n(+91 - " + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, "") + ")");
@@ -119,6 +117,10 @@ public class OTPVerification extends BaseAppCompatActivity {
             }
         });
 
+        resendCode.setText(Html.fromHtml(
+                getString(R.string.didn_t_receive_otp) + "<font color='" + getResources()
+                        .getColor(R.color.primary) + "' >  " + getString(R.string.resend) + "</font>"));
+
         resendCode.setOnClickListener(new View.OnClickListener() {
             /**
              * Called when a view has been clicked.
@@ -127,7 +129,7 @@ public class OTPVerification extends BaseAppCompatActivity {
              */
             @Override
             public void onClick(View v) {
-                AppUtils.showProgressDialog(activity);
+                AppUtils.getInstance().showProgressDialog(activity);
                 onResendOtp();
                 //wait for 60 sec until receive resent otp
                 new CountDownTimer(60000, 1000) {
@@ -161,7 +163,15 @@ public class OTPVerification extends BaseAppCompatActivity {
         });
 
     }
-
+    private void setButtonStyleEnabledOrDisabled(boolean isToEnable) {
+        if (isToEnable) {
+            done.setEnabled(true);
+            done.setTextColor(Color.WHITE);
+        } else {
+            done.setEnabled(false);
+            done.setTextColor(getResources().getColor(R.color.greySecondary));
+        }
+    }
 
 //    @BindView(R.id.toolbar)
 //    androidx.appcompat.widget.Toolbar toolbar;
@@ -180,12 +190,12 @@ public class OTPVerification extends BaseAppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        AppUtils.hideProgressDialog(activity);
+        AppUtils.getInstance().hideProgressDialog(activity);
         //        if (!isToShowOTPView) {
         //            parentLayout.setVisibility(View.GONE);
         //        } else {
         //            isToShowOTPView = false;
-        //            AppUtils.hideProgressDialog(activity);
+        //            AppUtils.getInstance().hideProgressDialog(activity);
         //            parentLayout.setVisibility(View.VISIBLE);
         //        }
     }
@@ -200,7 +210,7 @@ public class OTPVerification extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, URLDataSwachhManch.BASE_URL_AUTH, params, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppUtils.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -223,7 +233,7 @@ public class OTPVerification extends BaseAppCompatActivity {
 
             @Override
             public void OnResponseFailure() {
-                AppUtils.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -254,20 +264,20 @@ public class OTPVerification extends BaseAppCompatActivity {
     }
 
     private void onResendOtp() {
-        AppUtils.showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity);
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("mobile_number", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
         final String url = URLDataSwachhManch.BASE_URL_AUTH + URLData.GENERATE_OTP + "?mobile_number=" + params.get("mobile_number").toString().trim();
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, params, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppUtils.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
             public void OnResponseSuccess(JSONObject responseJsonObject) {
                 try {
-                    AppUtils.hideProgressDialog(activity);
+                    AppUtils.getInstance().hideProgressDialog(activity);
                     if (responseJsonObject.optInt("httpCode") == 200 || responseJsonObject.optInt("httpCode") == 201) {
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, responseJsonObject.optString("message"));
                     } else {

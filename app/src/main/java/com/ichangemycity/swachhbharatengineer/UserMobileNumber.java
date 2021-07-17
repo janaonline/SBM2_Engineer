@@ -3,6 +3,7 @@ package com.ichangemycity.swachhbharatengineer;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -59,7 +60,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        AppController.getInstance().assignLanguage(this);
+        AppController.assignLanguage(this);
         setContentView(R.layout.mobile_number);
         activity = UserMobileNumber.this;
         ButterKnife.bind(this);
@@ -85,14 +86,12 @@ public class UserMobileNumber extends BaseAppCompatActivity {
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
                 if (s.toString().trim().length() == 10) {
-                    submit.setVisibility(View.VISIBLE);
                     submit.setEnabled(true);
-                    submit.setTextColor(activity.getResources().getColor(R.color.white));
-                    submit.performClick();
+                    submit.setTextColor(Color.WHITE);
+                    AppController.hideKeyboard(activity, mobileNumber);
                 } else {
-                    submit.setVisibility(View.GONE);
-                    submit.setTextColor(activity.getResources().getColor(R.color.greySecondary));
                     submit.setEnabled(false);
+                    submit.setTextColor(getResources().getColor(R.color.greySecondary));
                 }
             }
         });
@@ -143,7 +142,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
          * */
         ICMyCPreferenceData
                 .setPreference(activity, ICMyCPreferenceData.Mobile_No, mobileNumber.getText().toString());
-        AppUtils.showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity);
         final String url = URLDataSwachhManch.BASE_URL_AUTH + URLDataSwachhManch.USERS;
         HashMap<String, String> params = new HashMap<>();
         params.put("mobile_number", mobileNumber.getText().toString());
@@ -160,12 +159,12 @@ public class UserMobileNumber extends BaseAppCompatActivity {
                 new OnResponseListener() {
                     @Override
                     public void OnResponseFailure() {
-                        AppUtils.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     }
 
                     @Override
                     public void OnResponseSuccess(JSONObject response) {
-                        AppUtils.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                         try {
                             if (response.has("access_token")) {
                                 ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.TOKEN_TYPE,
@@ -245,7 +244,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
 
                     @Override
                     public void OnResponseFailure() {
-                        AppUtils.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     }
 
                     @Override
@@ -314,7 +313,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 102) {
-            AppController.getInstance().assignLanguage(activity);
+            AppController.assignLanguage(activity);
             selectedLanguage.setText(AppController.languageArrayList.get(Integer.parseInt(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.selectedLanguagePosition, "0"))).getLanguage_label());
         }
     }

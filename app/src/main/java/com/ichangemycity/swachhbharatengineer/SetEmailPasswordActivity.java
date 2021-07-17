@@ -100,7 +100,7 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, URLDataSwachhManch.BASE_URL_AUTH, params, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppUtils.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -124,7 +124,7 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PATCH, URLString + PARAMS, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppUtils.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -150,7 +150,7 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
 
                     @Override
                     public void OnResponseFailure() {
-                        AppUtils.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     }
 
                     @Override

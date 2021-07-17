@@ -159,7 +159,7 @@ public class NotificationAdapter extends
   }
 
   private void markAsRead(final NotificationHeaderData nData) {
-    AppController.showProgressDialog(activity);
+    AppUtils.getInstance().showProgressDialog(activity);
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("apiKey", URLData.API_KEY);
     params.put("notificationId", Integer
@@ -170,11 +170,11 @@ public class NotificationAdapter extends
         new OnResponseListener() {
           @Override
           public void OnResponseFailure() {
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
             //  AppController.handleVolleyError(activity, (RelativeLayout) activity.findViewById(R.id.parentLayout), error);
             try {
               redirectToAppropriateScreens(nData);
-              AppController.hideProgressDialog(activity);
+              AppUtils.getInstance().hideProgressDialog(activity);
             } catch (Exception e) {
               e.printStackTrace();
             }
@@ -184,7 +184,7 @@ public class NotificationAdapter extends
           public void OnResponseSuccess(JSONObject response) {
             // JSONObject responseJsonObject;
             try {
-              AppController.hideProgressDialog(activity);
+              AppUtils.getInstance().hideProgressDialog(activity);
               //  responseJsonObject = new JSONObject(response);
               int index = data.indexOf(nData);
               nData.setRead(true);

@@ -23,6 +23,7 @@ public class AppConstant {
     public static final String ONBOARDING_TYPE_LOGIN = "login";
     public static String deviceToken = "";
     public static boolean isInternetInterrupted = false;
+    public static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
 
     public ArrayList<String> imagePreviewList = new ArrayList<>();
 

@@ -24,6 +24,7 @@ import com.ichangemycity.callback.OnResponseListener;
 import com.ichangemycity.model.VotedUpData;
 import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.WebserviceHelper;
+import com.ichangemycity.appdata.AppUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -90,7 +91,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
     private void runVotedupFeedWebService(final boolean isToScroll) {
         if (isToScroll) {
             currentPage = 0;
-            AppController.showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity);
         }
         currentPage += 1;
         if (currentPage == 1) {
@@ -104,7 +105,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
                 new OnResponseListener() {
                     @Override
                     public void OnResponseFailure() {
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     }
 
                     @Override
@@ -112,7 +113,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
 
                /* JSONObject responseJsonObject = null;
                 try {
-                    AppController.hideProgressDialog(activity);
+                    AppUtils.getInstance().hideProgressDialog(activity);
                     responseJsonObject = new JSONObject(response);
                     new ParseResponse(responseJsonObject, isToScroll).execute();
                 } catch (JSONException e) {
@@ -131,7 +132,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
                     public void onResponse(String response) {
                         JSONObject responseJsonObject = null;
                         try {
-                            AppController.hideProgressDialog(activity);
+                            AppUtils.getInstance().hideProgressDialog(activity);
                             responseJsonObject = new JSONObject(response);
                             new ParseResponse(responseJsonObject, isToScroll).execute();
                         } catch (JSONException e) {
@@ -144,7 +145,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 //                        Toast.makeText(UserMobileNumber.this, error.toString(), Toast.LENGTH_LONG).show();
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
 
                         AppController.handleVolleyError(activity, (RelativeLayout) findViewById(R.id.parentLayout), error);
                     }
@@ -207,9 +208,9 @@ public class VoteupsActivity extends BaseAppCompatActivity {
             super.onPostExecute(aVoid);
 
 //            if (isToScroll) {
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
             addVoteups();
-            AppController.setEmptyViewForRecyclerView(activity, recycler_view);
+            AppController.getInstance().setEmptyViewForRecyclerView(activity, recycler_view);
 
             recycler_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 /**
@@ -293,7 +294,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
             // TODO Auto-generated catch block
             e.printStackTrace();
 //            isLoadMore = false;
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
         }
 
 

@@ -1,11 +1,5 @@
 package com.ichangemycity.swachhbharatengineer;
 
-import static android.R.color.holo_blue_bright;
-import static android.R.color.holo_green_light;
-import static android.R.color.holo_orange_light;
-import static android.R.color.holo_red_light;
-import static com.ichangemycity.swachhbharatengineer.ComplaintDetail.isToRefresh;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,19 +7,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.core.view.GravityCompat;
-import androidx.core.view.MenuItemCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.Menu;
@@ -36,6 +17,17 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.google.android.material.navigation.NavigationView;
 import com.ichangemycity.adapter.ComplaintFilterSpinnerAdapter;
 import com.ichangemycity.adapter.HomeTabLocalFeedAdapter;
 import com.ichangemycity.appdata.AppConstant;
@@ -49,17 +41,21 @@ import com.ichangemycity.webservice.ParseComplaintData;
 import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.WebserviceHelper;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
-        SwipeRefreshLayout.OnRefreshListener {
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static android.R.color.holo_blue_bright;
+import static android.R.color.holo_green_light;
+import static android.R.color.holo_orange_light;
+import static android.R.color.holo_red_light;
+import static com.ichangemycity.swachhbharatengineer.ComplaintDetail.isToRefresh;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
     public static Activity activity;
     RecyclerView mRecyclerView;
@@ -92,8 +88,7 @@ public class MainActivity extends AppCompatActivity
         initSwipeOptions();
         setToolbarAndCustomizeTitle(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -117,15 +112,15 @@ public class MainActivity extends AppCompatActivity
     private void clearBackStack() {
         try {
             UserMobileNumber.activity.finish();
-        } catch (Exception e) {
+        } catch(Exception e) {
         }
         try {
             OTPVerification.activity.finish();
-        } catch (Exception e) {
+        } catch(Exception e) {
         }
         try {
             SelectLanguage.act.finish();
-        } catch (Exception e) {
+        } catch(Exception e) {
         }
     }
 
@@ -134,10 +129,9 @@ public class MainActivity extends AppCompatActivity
         super.onNewIntent(intent);
         String action = intent.getAction();
         String data = intent.getDataString();
-        if (data != null) {
-            if (Intent.ACTION_VIEW.equals(action) && data != null) {
-                AppController.selectedComplaintData.setComplaintId(data
-                        .substring(data.lastIndexOf("/") + 1));
+        if(data != null) {
+            if(Intent.ACTION_VIEW.equals(action) && data != null) {
+                AppController.selectedComplaintData.setComplaintId(data.substring(data.lastIndexOf("/") + 1));
                 startActivity(new Intent(activity, ComplaintDetail.class));
             }
         } else {
@@ -149,22 +143,20 @@ public class MainActivity extends AppCompatActivity
 
     private void redirectIfFromPushNotification() {
         try {
-            if (getIntent().getExtras() != null) {
-                if (getIntent().getExtras().getString("body") != null) {
-//        showNotification();
+            if(getIntent().getExtras() != null) {
+                if(getIntent().getExtras().getString("body") != null) {
+                    //        showNotification();
                 }
             }
-        } catch (Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
         try {
-            if (!TextUtils
-                    .isEmpty(AppController.selectedComplaintData.getComplaintId())) {
-                startActivity(new Intent(MainActivity.activity,
-                        ComplaintDetail.class));
+            if(!TextUtils.isEmpty(AppController.selectedComplaintData.getComplaintId())) {
+                startActivity(new Intent(MainActivity.activity, ComplaintDetail.class));
             }
 
-        } catch (Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -174,95 +166,69 @@ public class MainActivity extends AppCompatActivity
         // TODO Auto-generated method stub
         complaintFilterModel.clear();
         ComplaintFilterModel mComplaintFilterModel = new ComplaintFilterModel();
-        if (ICMyCPreferenceData.getPreferenceItem(activity,
-                ICMyCPreferenceData.roleId, "").equalsIgnoreCase("2")) {
+        if(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.roleId, "").equalsIgnoreCase("2")) {
             // 2 or ULB , 4 for Engineer
-            mComplaintFilterModel
-                    .setDisplayTitle(activity
-                            .getResources().getString(
-                                    R.string.un_assigned_complaints));
-            mComplaintFilterModel
-                    .setComplaintType(URLData.UN_ASSIGNED_COMPLAINTS);
+            mComplaintFilterModel.setDisplayTitle(activity.getResources().getString(R.string.un_assigned_complaints));
+            mComplaintFilterModel.setComplaintType(URLData.UN_ASSIGNED_COMPLAINTS);
 
         } else {
             mComplaintFilterModel.setDisplayTitle("Assigned Complaints");
-            mComplaintFilterModel
-                    .setComplaintType(URLData.ASSIGNED_COMPLAINTS_ENGINEER);
+            mComplaintFilterModel.setComplaintType(URLData.ASSIGNED_COMPLAINTS_ENGINEER);
 
         }
 
-        mComplaintFilterModel.setComplaintColor((getResources()
-                .getColor(R.color.black)));
+        mComplaintFilterModel.setComplaintColor((getResources().getColor(R.color.black)));
         complaintFilterModel.add(mComplaintFilterModel);
 
         mComplaintFilterModel = new ComplaintFilterModel();
         mComplaintFilterModel.setComplaintType(URLData.ALL_COMPLAINTS);
-        mComplaintFilterModel
-                .setDisplayTitle(getString(R.string.all_complaints));
-        mComplaintFilterModel.setComplaintColor((getResources()
-                .getColor(R.color.black)));
+        mComplaintFilterModel.setDisplayTitle(getString(R.string.all_complaints));
+        mComplaintFilterModel.setComplaintColor((getResources().getColor(R.color.black)));
         complaintFilterModel.add(mComplaintFilterModel);
 
         mComplaintFilterModel = new ComplaintFilterModel();
         mComplaintFilterModel.setComplaintType(URLData.PRIORITY_COMPLAINTS);
-        mComplaintFilterModel
-                .setDisplayTitle(getString(R.string.high_priority_complaints));
-        mComplaintFilterModel.setComplaintColor((getResources()
-                .getColor(R.color.red_reopn_open)));
+        mComplaintFilterModel.setDisplayTitle(getString(R.string.high_priority_complaints));
+        mComplaintFilterModel.setComplaintColor((getResources().getColor(R.color.red_reopn_open)));
         complaintFilterModel.add(mComplaintFilterModel);
 
         mComplaintFilterModel = new ComplaintFilterModel();
-        mComplaintFilterModel
-                .setComplaintType(URLData.ON_THE_JOB_COMPLAINT_LISTS);
-        mComplaintFilterModel
-                .setDisplayTitle(getString(R.string.on_the_job_complaints));
-        mComplaintFilterModel.setComplaintColor((getResources()
-                .getColor(R.color.blue_on_the_job)));
+        mComplaintFilterModel.setComplaintType(URLData.ON_THE_JOB_COMPLAINT_LISTS);
+        mComplaintFilterModel.setDisplayTitle(getString(R.string.on_the_job_complaints));
+        mComplaintFilterModel.setComplaintColor((getResources().getColor(R.color.blue_on_the_job)));
 
         complaintFilterModel.add(mComplaintFilterModel);
 
         mComplaintFilterModel = new ComplaintFilterModel();
-        mComplaintFilterModel
-                .setComplaintType(URLData.REOPENED_COMPLAINT_LISTS);
-        mComplaintFilterModel
-                .setDisplayTitle(getString(R.string.re_opened_complaints));
-        mComplaintFilterModel.setComplaintColor((getResources()
-                .getColor(R.color.red_reopn_open)));
+        mComplaintFilterModel.setComplaintType(URLData.REOPENED_COMPLAINT_LISTS);
+        mComplaintFilterModel.setDisplayTitle(getString(R.string.re_opened_complaints));
+        mComplaintFilterModel.setComplaintColor((getResources().getColor(R.color.red_reopn_open)));
         complaintFilterModel.add(mComplaintFilterModel);
 
         mComplaintFilterModel = new ComplaintFilterModel();
-        mComplaintFilterModel
-                .setComplaintType(URLData.RESOLVED_COMPLAINT_LISTS);
-        mComplaintFilterModel
-                .setDisplayTitle(getString(R.string.resolved_complaints));
-        mComplaintFilterModel.setComplaintColor((getResources()
-                .getColor(R.color.green_resolved)));
+        mComplaintFilterModel.setComplaintType(URLData.RESOLVED_COMPLAINT_LISTS);
+        mComplaintFilterModel.setDisplayTitle(getString(R.string.resolved_complaints));
+        mComplaintFilterModel.setComplaintColor((getResources().getColor(R.color.green_resolved)));
         complaintFilterModel.add(mComplaintFilterModel);
 
         mComplaintFilterModel = new ComplaintFilterModel();
-        mComplaintFilterModel
-                .setComplaintType(URLData.GET_REJECTED_COMPLAINT_LISTS);
-        mComplaintFilterModel
-                .setDisplayTitle(getString(R.string.rejected_complaints));
-        mComplaintFilterModel.setComplaintColor((getResources()
-                .getColor(R.color.gray_closed)));
+        mComplaintFilterModel.setComplaintType(URLData.GET_REJECTED_COMPLAINT_LISTS);
+        mComplaintFilterModel.setDisplayTitle(getString(R.string.rejected_complaints));
+        mComplaintFilterModel.setComplaintColor((getResources().getColor(R.color.gray_closed)));
         complaintFilterModel.add(mComplaintFilterModel);
 
         complaintFilter = findViewById(R.id.complaintFilter);
         complaintFilterDropdownImageView = findViewById(R.id.complaintFilterDropdownImageView);
-        ComplaintFilterSpinnerAdapter complaintFilterSpinnerAdapter = new ComplaintFilterSpinnerAdapter(
-                activity, complaintFilterModel);
+        ComplaintFilterSpinnerAdapter complaintFilterSpinnerAdapter = new ComplaintFilterSpinnerAdapter(activity, complaintFilterModel);
         complaintFilter.setAdapter(complaintFilterSpinnerAdapter);
 
         complaintFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 AppController.getInstance().cancelPendingRequests(AppController.TAG);
-                AppUtils.hideProgressDialog(activity);
-                runHomeFeedWebService(complaintFilterModel.get(position)
-                        .getComplaintType(), true);
+                AppUtils.getInstance().hideProgressDialog(activity);
+                runHomeFeedWebService(complaintFilterModel.get(position).getComplaintType(), true);
 
             }
 
@@ -289,7 +255,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
+        if(drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
@@ -311,14 +277,13 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.notifs) {
+        if(id == R.id.notifs) {
             activity.startActivity(new Intent(activity, NotificationActivity.class));
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 
     TextView on_the_job, resolved, rejected, re_opened, high_priority;
     NavigationView navigationView;
@@ -342,24 +307,20 @@ public class MainActivity extends AppCompatActivity
     //  private static ImageView menuIcon1;
     private TextView userNameLeftMenu, textViewLocation, userDesignationLeftMenu;
 
-
     private void setLeftMenuProfileDetails() {
         navigationView.inflateHeaderView(R.layout.nav_header_main);
-//    menuIcon1 = (ImageView) drawer.findViewById(R.id.menuIcon1);
-//    menuIcon1.setVisibility(View.VISIBLE);
+        //    menuIcon1 = (ImageView) drawer.findViewById(R.id.menuIcon1);
+        //    menuIcon1.setVisibility(View.VISIBLE);
         CircleImageView imageView = drawer.findViewById(R.id.imageView1);
         imageView.setImageResource(R.mipmap.ic_not_found);
-//    imageView.setTag(SecurePrefManager.with(activity).get(ICMyCPreferenceData.userProfileImage)
-//        .defaultValue("http://icmycsaasqa.ichangemycity" +
-//            ".com/android/image/image_not_found.png").go());
-        imageView.setTag(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage,
-                "http://icmycsaasqa.ichangemycity" +
-                        ".com/android/image/image_not_found.png"));
+        //    imageView.setTag(SecurePrefManager.with(activity).get(ICMyCPreferenceData.userProfileImage)
+        //        .defaultValue("http://icmycsaasqa.ichangemycity" +
+        //            ".com/android/image/image_not_found.png").go());
+        imageView.setTag(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, "http://icmycsaasqa.ichangemycity" + ".com/android/image/image_not_found.png"));
 
-
-//    AppUtils.setImage(imageView, null,
-//        SecurePrefManager.with(activity).get(ICMyCPreferenceData.userProfileImage).defaultValue("")
-//            .go(), true);
+        //    AppUtils.setImage(imageView, null,
+        //        SecurePrefManager.with(activity).get(ICMyCPreferenceData.userProfileImage).defaultValue("")
+        //            .go(), true);
         AppUtils.setImage(imageView, null, ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, ""), true);
         userNameLeftMenu = drawer.findViewById(R.id.userNameLeftMenu);
         textViewLocation = drawer.findViewById(R.id.textViewLocation);
@@ -372,27 +333,20 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(Gravity.LEFT);
       }
     });*/
-        userNameLeftMenu.setText(
-                ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.user_full_name, activity.getResources()
-                        .getString(R
-                                .string.you)));
-//        SecurePrefManager.with(activity).get(ICMyCPreferenceData.user_full_name)
-//            .defaultValue(activity.getResources()
-//                .getString(R
-//                    .string.you)).go());
+        userNameLeftMenu.setText(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.user_full_name, activity.getResources().getString(R.string.you)));
+        //        SecurePrefManager.with(activity).get(ICMyCPreferenceData.user_full_name)
+        //            .defaultValue(activity.getResources()
+        //                .getString(R
+        //                    .string.you)).go());
         textViewLocation.setText(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.location, ""));
-        if (!TextUtils.isEmpty(
-                ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.designation, ""))) {
+        if(!TextUtils.isEmpty(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.designation, ""))) {
             userDesignationLeftMenu.setVisibility(View.VISIBLE);
-            userDesignationLeftMenu.setText(
-                    ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.designation, ""));
+            userDesignationLeftMenu.setText(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.designation, ""));
         } else {
             userDesignationLeftMenu.setVisibility(View.GONE);
         }
 
-
     }
-
 
     private void setPropertyForNavItemCount() {
 
@@ -428,10 +382,10 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        if (item != null) {
-            if (!isFirstTime) {
+        if(item != null) {
+            if(!isFirstTime) {
                 int id = item.getItemId();
-                switch (id) {
+                switch(id) {
                     case R.id.high_priority:
                         complaintFilter.setSelection(2);
                         break;
@@ -448,7 +402,7 @@ public class MainActivity extends AppCompatActivity
                         complaintFilter.setSelection(4);
                         break;
 
-//Added by Sindhu BC(ITC Infotech)
+                    //Added by Sindhu BC(ITC Infotech)
                   /*  case R.id.public_toilet_nearby:
 
                         startActivity(new Intent(MainActivity.this,
@@ -468,67 +422,53 @@ public class MainActivity extends AppCompatActivity
                     case R.id.rate_us_on_playstore:
                         String appPackageName = activity.getPackageName();
                         try {
-                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                                    .parse("http://play.google.com/store/apps/details?id="
-                                            + appPackageName)));
-//                        AppController.trackEvent(AppController.RATE_US_ON_PLAYSTORE,
-//                                AppController.RATE_US_ON_PLAYSTORE_LANDED,
-//                                AppController.RATE_US_ON_PLAYSTORE_LANDED);
-                        } catch (android.content.ActivityNotFoundException anfe) {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+                            //                        AppController.trackEvent(AppController.RATE_US_ON_PLAYSTORE,
+                            //                                AppController.RATE_US_ON_PLAYSTORE_LANDED,
+                            //                                AppController.RATE_US_ON_PLAYSTORE_LANDED);
+                        } catch(android.content.ActivityNotFoundException anfe) {
 
                         }
                         break;
                     case R.id.nav_privacypolicy:
                         try {
-                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri
-                                    .parse(
-                                            "http://www.ichangemycity.com/privacy-policy-mobile?app=sbmengineer")));
-                        } catch (android.content.ActivityNotFoundException anfe) {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.ichangemycity.com/privacy-policy-mobile?app=sbmengineer")));
+                        } catch(android.content.ActivityNotFoundException anfe) {
 
                         }
                         break;
 
                     case R.id.report_bug:
                         try {
-                            Intent emailIntent = new Intent(
-                                    Intent.ACTION_SENDTO,
-                                    Uri.fromParts(
-                                            "mailto",
-                                            "champa.r@janaagraha.org,pattabi.raman@janaagraha.org",
-                                            null));
+                            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "champa.r@janaagraha.org,pattabi.raman@janaagraha.org", null));
                             String sAux = "\n";
                             sAux = sAux + "Bug : \n";
-                            emailIntent.putExtra(Intent.EXTRA_SUBJECT, activity
-                                    .getResources().getString(R.string.app_name)
-                                    + " - Android App - Bug Report");
+                            emailIntent.putExtra(Intent.EXTRA_SUBJECT, activity.getResources().getString(R.string.app_name) + " - Android App - Bug Report");
                             emailIntent.putExtra(Intent.EXTRA_TEXT, sAux);
-                            activity.startActivity(Intent.createChooser(emailIntent,
-                                    "Report bug using"));
+                            activity.startActivity(Intent.createChooser(emailIntent, "Report bug using"));
 
-//                        AppController.trackEvent(AppController.REPORT_BUG,
-//                                AppController.REPORT_BUG_LANDED,
-//                                AppController.REPORT_BUG_LANDED);
+                            //                        AppController.trackEvent(AppController.REPORT_BUG,
+                            //                                AppController.REPORT_BUG_LANDED,
+                            //                                AppController.REPORT_BUG_LANDED);
 
-                        } catch (Exception e) { // e.toString();
+                        } catch(Exception e) { // e.toString();
                         }
                         break;
                     case R.id.nav_logout:
-//                    AppController.trackEvent(
-//                            AppController.LOGOUT,
-//                            AppController.LOGGED_OUT_SUCCESS,
-//                            AppController.LOGGED_OUT_SUCCESS);
-//            SecurePrefManager.with(activity).clear().confirm();
+                        //                    AppController.trackEvent(
+                        //                            AppController.LOGOUT,
+                        //                            AppController.LOGGED_OUT_SUCCESS,
+                        //                            AppController.LOGGED_OUT_SUCCESS);
+                        //            SecurePrefManager.with(activity).clear().confirm();
                         ICMyCPreferenceData.clearPreferences(activity);
 
-                        activity.startActivity(
-                                new Intent(activity, Splashscreen.class)
-                                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        activity.startActivity(new Intent(activity, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         activity.finish();
                         break;
                 }
             }
         }
-        if (isFirstTime) {
+        if(isFirstTime) {
             isFirstTime = false;
         }
 
@@ -538,52 +478,48 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
     private void getProfileDetailsAndRunHomeFeed() {
 
         final String url = URLData.BASE_URL + URLData.USERS + "?apiKey=" + URLData.API_KEY;
-        new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null,
-                new OnResponseListener() {
-                    @Override
-                    public void OnResponseFailure() {
-                        AppUtils.hideProgressDialog(activity);
-                    }
+        new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
+            @Override
+            public void OnResponseFailure() {
+                AppUtils.getInstance().hideProgressDialog(activity);
+            }
 
-                    @Override
-                    public void OnResponseSuccess(final JSONObject response) {
-                        AppUtils.hideProgressDialog(activity);
+            @Override
+            public void OnResponseSuccess(final JSONObject response) {
+                AppUtils.getInstance().hideProgressDialog(activity);
+                try {
+                    if(response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
                         try {
-                            if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
-                                try {
-                                    AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,
-                                            response.optString("message"));
-//                                    Toast.makeText(MainActivity.this,
-//                                            mJsonObject.optString("message"),
-//                                            Toast.LENGTH_LONG).show();
-                                    handleSuccessResponse(response);
-                                } catch (Exception e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                            } else {
-                                try {
-                                    AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,
-                                            response.optString("message"));
-//                                    Toast.makeText(MainActivity.this,
-//                                            mJsonObject.optString("message"),
-//                                            Toast.LENGTH_LONG).show(
-                                } catch (Exception e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                            }
-                            onNewIntent(getIntent());
-                        } catch (Exception e) {
+                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
+                            //                                    Toast.makeText(MainActivity.this,
+                            //                                            mJsonObject.optString("message"),
+                            //                                            Toast.LENGTH_LONG).show();
+                            handleSuccessResponse(response);
+                        } catch(Exception e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    } else {
+                        try {
+                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
+                            //                                    Toast.makeText(MainActivity.this,
+                            //                                            mJsonObject.optString("message"),
+                            //                                            Toast.LENGTH_LONG).show(
+                        } catch(Exception e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                     }
-                }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
+                    onNewIntent(getIntent());
+                } catch(Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
 
 
       /*  JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
@@ -657,144 +593,73 @@ public class MainActivity extends AppCompatActivity
 
     private void handleSuccessResponse(final JSONObject mJsonObject) {
         try {
-            if (mJsonObject.has("engineer")) {
+            if(mJsonObject.has("engineer")) {
                 String user = mJsonObject.optString("engineer");
                 JSONObject userData = new JSONObject(user);
                 String name = userData.optString("name");
-                String mobile_number = userData
-                        .optString("mobile_number");
-                String latitude = userData.get("latitude")
-                        .toString() + "";
+                String mobile_number = userData.optString("mobile_number");
+                String latitude = userData.get("latitude").toString() + "";
                 String roleId = userData.optString("role_id");
                 String designation = userData.optString("designation");
 
-                String longitude = userData.get("longitude")
-                        .toString() + "";
+                String longitude = userData.get("longitude").toString() + "";
                 // String complaint_count = userData
                 // .optInt("complaint_count") + "";
                 // String voted_up_count = userData
                 // .optInt("voted_up_count") + "";
-                String location = userData
-                        .optString("location");
+                String location = userData.optString("location");
                 // String language = userData
                 // .optString("language");
-                String language_code = userData
-                        .optString("lang");
-                String imageUrl = userData
-                        .optString("image_urls");
-                String unReadNotificationCount = userData
-                        .optString("unread_notification_count");
-                String high_priority_count = userData.get(
-                        "high_priority_count").toString();
-                String on_the_job_count = userData.get(
-                        "on_the_job_count").toString();
-                String resolved_count = userData.get(
-                        "resolved_count").toString();
-                String re_opened_count = userData.get(
-                        "re_opened_count").toString();
-                String rejected_count = userData.get(
-                        "rejected_count").toString();
+                String language_code = userData.optString("lang");
+                String imageUrl = userData.optString("image_urls");
+                String unReadNotificationCount = userData.optString("unread_notification_count");
+                String high_priority_count = userData.get("high_priority_count").toString();
+                String on_the_job_count = userData.get("on_the_job_count").toString();
+                String resolved_count = userData.get("resolved_count").toString();
+                String re_opened_count = userData.get("re_opened_count").toString();
+                String rejected_count = userData.get("rejected_count").toString();
                 String un_assigned_count = "0";
-                if (userData.has("un_assigned_count")) {
-                    un_assigned_count = userData.getString(
-                            "un_assigned_count").toString();
+                if(userData.has("un_assigned_count")) {
+                    un_assigned_count = userData.getString("un_assigned_count").toString();
                 }
 
-                if (!imageUrl.equalsIgnoreCase("")) {
-                    JSONObject image_urls = new JSONObject(
-                            imageUrl);
+                if(!imageUrl.equalsIgnoreCase("")) {
+                    JSONObject image_urls = new JSONObject(imageUrl);
                     imageUrl = image_urls.optString("original");
-                    ICMyCPreferenceData
-                            .setPreference(
-                                    MainActivity.this,
-                                    ICMyCPreferenceData.userProfileImage,
-                                    imageUrl);
+                    ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.userProfileImage, imageUrl);
                 } else {
-                    ICMyCPreferenceData
-                            .setPreference(
-                                    MainActivity.this,
-                                    ICMyCPreferenceData.userProfileImage,
-                                    "");
+                    ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.userProfileImage, "");
                 }
-                if (roleId != null) {
-                    ICMyCPreferenceData.setPreference(
-                            MainActivity.this,
-                            ICMyCPreferenceData.roleId, roleId);
+                if(roleId != null) {
+                    ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.roleId, roleId);
                     // 2 or ULB , 4 for Engineer
-                    if (roleId.equalsIgnoreCase("2")) {
+                    if(roleId.equalsIgnoreCase("2")) {
 
-                    } else if (roleId.equalsIgnoreCase("4")) {
-                        ICMyCPreferenceData
-                                .setPreference(
-                                        MainActivity.this,
-                                        ICMyCPreferenceData.assignedCount,
-                                        userData.getString(
-                                                "assignedCount")
-                                                .toString());
+                    } else if(roleId.equalsIgnoreCase("4")) {
+                        ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.assignedCount, userData.getString("assignedCount").toString());
                     }
                 }
-                if (!TextUtils.isEmpty(designation)) {
+                if(!TextUtils.isEmpty(designation)) {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.designation, designation);
                 } else {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.designation, "");
                 }
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.un_assigned_count,
-                        (un_assigned_count == null) ? "0"
-                                : un_assigned_count);
-                ICMyCPreferenceData
-                        .setPreference(
-                                MainActivity.this,
-                                ICMyCPreferenceData.unreadNotificationsCnt,
-                                (unReadNotificationCount == null) ? "0"
-                                        : unReadNotificationCount);
-                ICMyCPreferenceData
-                        .setPreference(
-                                MainActivity.this,
-                                ICMyCPreferenceData.high_priority_count,
-                                (high_priority_count == null) ? "0"
-                                        : high_priority_count);
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.on_the_job_count,
-                        (on_the_job_count == null) ? "0"
-                                : on_the_job_count);
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.resolved_count,
-                        (resolved_count == null) ? "0"
-                                : resolved_count);
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.re_opened_count,
-                        (re_opened_count == null) ? "0"
-                                : re_opened_count);
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.rejected_count,
-                        (rejected_count == null) ? "0"
-                                : rejected_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.un_assigned_count, (un_assigned_count == null) ? "0" : un_assigned_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.unreadNotificationsCnt, (unReadNotificationCount == null) ? "0" : unReadNotificationCount);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.high_priority_count, (high_priority_count == null) ? "0" : high_priority_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.on_the_job_count, (on_the_job_count == null) ? "0" : on_the_job_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.resolved_count, (resolved_count == null) ? "0" : resolved_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.re_opened_count, (re_opened_count == null) ? "0" : re_opened_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.rejected_count, (rejected_count == null) ? "0" : rejected_count);
 
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.Mobile_No,
-                        mobile_number);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.Mobile_No, mobile_number);
                 // ICMyCPreferenceData.setPreference(
                 // MainActivity.this,
                 // ICMyCPreferenceData.selectedLanguage,
                 // language_code);
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.location,
-                        location.replace("%20", " "));
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.Latitude, latitude);
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.Longitude,
-                        longitude);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.location, location.replace("%20", " "));
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.Latitude, latitude);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.Longitude, longitude);
                 // ICMyCPreferenceData.setPreference(
                 // MainActivity.this,
                 // ICMyCPreferenceData.selectedLanguage,
@@ -809,24 +674,20 @@ public class MainActivity extends AppCompatActivity
                 // MainActivity.this,
                 // ICMyCPreferenceData.voted_up_count,
                 // voted_up_count);
-                ICMyCPreferenceData.setPreference(
-                        MainActivity.this,
-                        ICMyCPreferenceData.user_full_name,
-                        name);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.user_full_name, name);
             }
             // new ParseJSONResponse(
             // complaintsResponse)
             // .execute();
             initializeCountForNavItems();
 
-//            runHomeFeedWebService(complaintFilterModel.get(
-//                    complaintFilter.getSelectedItemPosition())
-//                    .getComplaintType());
-        } catch (Exception e) {
+            //            runHomeFeedWebService(complaintFilterModel.get(
+            //                    complaintFilter.getSelectedItemPosition())
+            //                    .getComplaintType());
+        } catch(Exception e) {
             e.printStackTrace();
         }
-        ICMyCPreferenceData.setPreference(
-                activity, ICMyCPreferenceData.activated, "1");
+        ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.activated, "1");
     }
 
     @Override
@@ -834,13 +695,12 @@ public class MainActivity extends AppCompatActivity
         super.onResume();
         try {
 
-            AppController.hideProgressDialog(activity);
-            if (isToRefresh) {
+            AppUtils.getInstance().hideProgressDialog(activity);
+            if(isToRefresh) {
                 isToRefresh = false;
-                runHomeFeedWebService(complaintFilterModel.get(
-                        complaintFilter.getSelectedItemPosition()).getComplaintType(), true);
+                runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), true);
             }
-        } catch (Exception e) {
+        } catch(Exception e) {
 
         }
     }
@@ -850,61 +710,60 @@ public class MainActivity extends AppCompatActivity
 
     private void runHomeFeedWebService(final String ComplaintType, final boolean isToScroll) {
         {
-            AppUtils.hideProgressDialog(activity);
-            if (isToScroll) {
+            AppUtils.getInstance().hideProgressDialog(activity);
+            if(isToScroll) {
                 currentPage = 0;
-//            ((TextView) (mRecyclerView.getEmptyView().findViewById(R.id.emptyView))).setText(activity.getResources().getString(R.string.loading));
-//            mRecyclerView.getProgressView().setVisibility(View.VISIBLE);
-//            AppController.showProgressDialog(activity, getString(R.string.loading));
+                //            ((TextView) (mRecyclerView.getEmptyView().findViewById(R.id.emptyView))).setText(activity.getResources().getString(R.string.loading));
+                //            mRecyclerView.getProgressView().setVisibility(View.VISIBLE);
+                //            AppUtils.getInstance().showProgressDialog(activity, getString(R.string.loading));
             }
             currentPage += 1;
-            if (currentPage == 1) {
+            if(currentPage == 1) {
                 data.clear();
                 mRecyclerView.setAdapter(new HomeTabLocalFeedAdapter(activity));
-                AppController.setEmptyViewForRecyclerView(activity, mRecyclerView);
+                AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                 try {
-                    ((TextView) findViewById(R.id.viewEmpty))
-                            .setText(activity.getResources().getString(R.string.loading));
-                } catch (Exception e) {
+                    ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.loading));
+                } catch(Exception e) {
+                    e.printStackTrace();
                 }
 
             }
-            final String url = URLData.BASE_URL
-                    + ComplaintType + URLData.PAGE + currentPage;
-            new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null,
-                    new OnResponseListener() {
-                        @Override
-                        public void OnResponseFailure() {
+            refreshLayout.setEnabled(false);
+            final String url = URLData.BASE_URL + ComplaintType + URLData.PAGE + currentPage;
+            new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
+                @Override
+                public void OnResponseFailure() {
+                    refreshLayout.setEnabled(true);
+                    AppUtils.getInstance().hideProgressDialog(activity);
+                    hideSwipeProgress();
+                    AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
 
-                            AppController.hideProgressDialog(activity);
-                            hideSwipeProgress();
-                            AppController.setEmptyViewForRecyclerView(activity, mRecyclerView);
+                }
 
+                @Override
+                public void OnResponseSuccess(final JSONObject response) {
+                    AppUtils.getInstance().hideProgressDialog(activity);
+                    refreshLayout.setEnabled(true);
+                    AppController.traceLog("home", url + " ---> " + response);
+                    if(isToScroll) {
+                        data.clear();
+                        mRecyclerView.getAdapter().notifyDataSetChanged();
+                        AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
+                        try {
+                            ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.loading));
+                        } catch(Exception e) {
                         }
-
-                        @Override
-                        public void OnResponseSuccess(final JSONObject response) {
-                            AppUtils.hideProgressDialog(activity);
-                            AppController.traceLog("home", url + " ---> " + response);
-                            if (isToScroll) {
-                                data.clear();
-                                mRecyclerView.getAdapter().notifyDataSetChanged();
-                                AppController.setEmptyViewForRecyclerView(activity, mRecyclerView);
-                                try {
-                                    ((TextView) findViewById(R.id.viewEmpty))
-                                            .setText(activity.getResources().getString(R.string.loading));
-                                } catch (Exception e) {
-                                }
-                            } else {
-                                AppController.setEmptyViewForRecyclerView(activity, mRecyclerView);
-                                try {
-                                    findViewById(R.id.viewEmpty).setVisibility(View.GONE);
-                                } catch (Exception e) {
-                                }
-                            }
-                            new ParseJSONResponse(response, isToScroll).execute();
+                    } else {
+                        AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
+                        try {
+                            findViewById(R.id.viewEmpty).setVisibility(View.GONE);
+                        } catch(Exception e) {
                         }
-                    }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
+                    }
+                    new ParseJSONResponse(response, isToScroll).execute();
+                }
+            }, isToScroll, WebserviceHelper.HEADER_TYPE_NORMAL);
 
 
            /* JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
@@ -924,9 +783,9 @@ public class MainActivity extends AppCompatActivity
 
                 @Override
                 public void onErrorResponse(final VolleyError volleyError) {
-//                AppController.hideProgressDialog(activity);
+//                AppUtils.getInstance().hideProgressDialog(activity);
                     hideSwipeProgress();
-                    AppController.setEmptyViewForRecyclerView(activity, mRecyclerView);
+                    AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                     AppController.handleVolleyError(activity, (RelativeLayout) activity.findViewById(R.id.parentLayout), volleyError);
                     NetworkResponse networkResponse = volleyError.networkResponse;
                     if (retryCount < AppConstant.MAX_RETRY_API_REQUEST && currentPage == 1 && networkResponse != null) {
@@ -984,23 +843,21 @@ public class MainActivity extends AppCompatActivity
             super.onPostExecute(result);
             mRecyclerView.setVisibility(View.VISIBLE);
             hideSwipeProgress();
-            if (data.size() <= 0) {
-                AppController.setEmptyViewForRecyclerView(activity, mRecyclerView);
+            if(data.size() <= 0) {
+                AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                 try {
                     findViewById(R.id.viewEmpty).setVisibility(View.VISIBLE);
-                    ((TextView) findViewById(R.id.viewEmpty))
-                            .setText(activity.getResources().getString(R.string.no_complaints));
-                } catch (Exception e) {
+                    ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
+                } catch(Exception e) {
                 }
             }
-            if (isToScroll) {
-                AppController.hideProgressDialog(activity);
+            if(isToScroll) {
+                AppUtils.getInstance().hideProgressDialog(activity);
                 mRecyclerView.setAdapter(new HomeTabLocalFeedAdapter(activity));
-                AppController.setEmptyViewForRecyclerView(activity, mRecyclerView);
+                AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                 try {
-                    ((TextView) findViewById(R.id.viewEmpty))
-                            .setText(activity.getResources().getString(R.string.no_complaints));
-                } catch (Exception e) {
+                    ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
+                } catch(Exception e) {
                 }
                 mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                     /**
@@ -1029,26 +886,23 @@ public class MainActivity extends AppCompatActivity
                         boolean enable = false;
                         visibleItemCount = mLayoutManager.getChildCount();
                         totalItemCount = mLayoutManager.getItemCount();
-                        pastVisiblesItems = ((LinearLayoutManager) mLayoutManager)
-                                .findFirstVisibleItemPosition();
-                        if (visibleItemCount > 0 && mRecyclerView != null) {
+                        pastVisiblesItems = ((LinearLayoutManager) mLayoutManager).findFirstVisibleItemPosition();
+                        if(visibleItemCount > 0 && mRecyclerView != null) {
                             boolean firstItemVisible = pastVisiblesItems == 0;
                             // check if the top of the first item is
                             // visible
-                            boolean topOfFirstItemVisible = ((LinearLayoutManager) mLayoutManager)
-                                    .findFirstCompletelyVisibleItemPosition() == 0;
+                            boolean topOfFirstItemVisible = ((LinearLayoutManager) mLayoutManager).findFirstCompletelyVisibleItemPosition() == 0;
                             enable = firstItemVisible && topOfFirstItemVisible;
                         }
                         refreshLayout.setEnabled(enable);
-                        if (isLoadMore) {
-                            if ((visibleItemCount + pastVisiblesItems) >= (totalItemCount - 5)) {
+                        if(isLoadMore) {
+                            if((visibleItemCount + pastVisiblesItems) >= (totalItemCount - 5)) {
                                 isLoadMore = false;
                                 // loading = false;
                                 try {
-                                    runHomeFeedWebService(complaintFilterModel.get(
-                                            complaintFilter.getSelectedItemPosition()).getComplaintType(), false);
+                                    runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), false);
 
-                                } catch (Exception e) {
+                                } catch(Exception e) {
                                     e.printStackTrace();
                                 }
                             }
@@ -1063,26 +917,22 @@ public class MainActivity extends AppCompatActivity
             hideSwipeProgress();
         }
 
-
     }
 
     boolean isLoadMore;
 
-    private ArrayList<ComplaintData> GetParsedJsonFromResponse(
-            JSONObject json_comp_object) {
+    private ArrayList<ComplaintData> GetParsedJsonFromResponse(JSONObject json_comp_object) {
         try {
-            JSONArray json_comp_array = json_comp_object
-                    .getJSONArray("complaints");
-            if (json_comp_array.length() == 0) {
+            JSONArray json_comp_array = json_comp_object.getJSONArray("complaints");
+            if(json_comp_array.length() == 0) {
                 isLoadMore = false;
             } else {
 
-                data.addAll(ParseComplaintData
-                        .getParsedComplaintData(json_comp_array));
+                data.addAll(ParseComplaintData.getParsedComplaintData(json_comp_array));
                 isLoadMore = true;
             }
             return data;
-        } catch (JSONException e) {
+        } catch(JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             isLoadMore = false;
@@ -1090,13 +940,12 @@ public class MainActivity extends AppCompatActivity
         return null;
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
         try {
             mRecyclerView.getAdapter().notifyDataSetChanged();
-        } catch (Exception e) {
+        } catch(Exception e) {
         }
     }
 
@@ -1109,10 +958,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setAppearance() {
-        refreshLayout.setColorSchemeResources(holo_red_light,
-                holo_green_light,
-                holo_orange_light,
-                holo_blue_bright);
+        refreshLayout.setColorSchemeResources(holo_red_light, holo_green_light, holo_orange_light, holo_blue_bright);
     }
 
     /**
@@ -1128,8 +974,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRefresh() {
         mRecyclerView.setVisibility(View.GONE);
-        runHomeFeedWebService(complaintFilterModel.get(
-                complaintFilter.getSelectedItemPosition()).getComplaintType(), true);
+        runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), true);
     }
 
 }

@@ -91,10 +91,10 @@
                 android:layout_marginEnd="@dimen/margin16dp"
                 android:cursorVisible="false"
                 android:gravity="left"
-                android:hint="123456"
+                android:hint="1234"
                 android:importantForAutofill="no"
                 android:letterSpacing="1.5"
-                android:maxLength="6"
+                android:maxLength="4"
                 android:maxLines="1"
                 tools:ignore="RtlHardcoded"
                 tools:targetApi="lollipop">

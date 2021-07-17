@@ -87,7 +87,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
     send.setOnClickListener(v -> {
       if (((EditText) findViewById(R.id.textComment)).getText().toString().trim().length() > 0) {
-        AppController.showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity);
         new InitiatePostComment().execute();
       } else {
         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,
@@ -131,7 +131,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
     @Override
     protected void onPostExecute(Void aVoid) {
       super.onPostExecute(aVoid);
-      AppController.hideProgressDialog(activity);
+      AppUtils.getInstance().hideProgressDialog(activity);
       if (!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
         uploadImage();
       }/* else if (TextUtils.isEmpty(ICMyCPreferenceData.getPreferenceItem(activity,
@@ -183,7 +183,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
           public void OnResponseFailure() {
 
 //                        Toast.makeText(UserMobileNumber.this, error.toString(), Toast.LENGTH_LONG).show();
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
             findViewById(R.id.postComm).setVisibility(View.VISIBLE);
           }
 
@@ -191,7 +191,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
           public void OnResponseSuccess(JSONObject responseJsonObject) {
 
             try {
-              AppController.hideProgressDialog(activity);
+              AppUtils.getInstance().hideProgressDialog(activity);
               ((EditText) CommentsActivity.this.findViewById(R.id.textComment)).setText("");
               if (hasImage) {
 //                                AppController.trackEvent(GAData.POST_A_COMMENT + GAData.WITH_IMAGE, GAData.DONE, GAData.DONE);
@@ -229,13 +229,13 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
   private void uploadImage() {
     final String uploadImageURL = BASE_URL_UPLOAD_IMAGE;
-    AppController.showProgressDialog(activity);
+    AppUtils.getInstance().showProgressDialog(activity);
     VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST,
         uploadImageURL,
         response -> {
           String resultResponse = new String(response.data);
           try {
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
             JSONObject result = new JSONObject(resultResponse);
             try {
               switch (result.optInt("httpCode")) {
@@ -260,14 +260,14 @@ public class CommentsActivity extends BaseAppCompatActivity {
               // TODO Auto-generated catch block
               e.printStackTrace();
             }
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
 
           } catch (JSONException e) {
             e.printStackTrace();
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
           }
         }, error -> {
-      AppController.hideProgressDialog(activity);
+      AppUtils.getInstance().hideProgressDialog(activity);
       AppController.handleVolleyError(activity, error);
     }) {
       @Override
@@ -312,7 +312,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
       if (!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
         showSelectedImage();
       }
-      AppController.hideProgressDialog(activity);
+      AppUtils.getInstance().hideProgressDialog(activity);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -343,14 +343,14 @@ public class CommentsActivity extends BaseAppCompatActivity {
   }
 
   private void runCommentFeedWebService(final boolean isToScroll) {
-    AppController.hideProgressDialog(activity);
+    AppUtils.getInstance().hideProgressDialog(activity);
     if (isToScroll) {
       currentPage = 0;
     }
     ++currentPage;
     if (currentPage == 1) {
       AppController.commentData.clear();
-      recycler_view.setAdapter(new CommentsAdapter(activity, false));
+      recycler_view.setAdapter(new CommentsAdapter(activity));
     }
     String getCommentRequestUrl = url + currentPage;
 //        if (AppController.getInstance().getRequestQueue().getCache().get(url) != null) {
@@ -368,9 +368,9 @@ public class CommentsActivity extends BaseAppCompatActivity {
       @Override
       public void OnResponseFailure() {
         if (isToScroll) {
-          AppController.hideProgressDialog(activity);
+          AppUtils.getInstance().hideProgressDialog(activity);
         }
-        AppController.setEmptyViewForRecyclerView(activity, recycler_view);
+        AppController.getInstance().setEmptyViewForRecyclerView(activity, recycler_view);
 
       }
 
@@ -379,9 +379,9 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
         if (isToScroll) {
           AppController.commentData.clear();
-          AppController.hideProgressDialog(activity);
+          AppUtils.getInstance().hideProgressDialog(activity);
         }
-        AppController.hideProgressDialog(activity);
+        AppUtils.getInstance().hideProgressDialog(activity);
         new ParseResponse(response, isToScroll).execute();
 
       }
@@ -423,11 +423,11 @@ public class CommentsActivity extends BaseAppCompatActivity {
     protected void onPostExecute(Void aVoid) {
       super.onPostExecute(aVoid);
       addComments();
-      AppController.hideProgressDialog(activity);
+      AppUtils.getInstance().hideProgressDialog(activity);
       if (isToScroll) {
-        AppController.hideProgressDialog(activity);
-        recycler_view.setAdapter(new CommentsAdapter(activity, false));
-        AppController.setEmptyViewForRecyclerView(activity, recycler_view);
+        AppUtils.getInstance().hideProgressDialog(activity);
+        recycler_view.setAdapter(new CommentsAdapter(activity));
+        AppController.getInstance().setEmptyViewForRecyclerView(activity, recycler_view);
         recycler_view.addOnScrollListener(new RecyclerView.OnScrollListener() {
           /**
            * Callback method to be invoked when the RecyclerView has been scrolled. This will be
@@ -542,7 +542,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
   }
 
   private void addComments() {
-    final CommentsAdapter commentsAdapter = new CommentsAdapter(activity, false);
+    final CommentsAdapter commentsAdapter = new CommentsAdapter(activity);
     RecyclerView.LayoutManager manager = new LinearLayoutManager(activity);
     recycler_view.setLayoutManager(manager);
     recycler_view

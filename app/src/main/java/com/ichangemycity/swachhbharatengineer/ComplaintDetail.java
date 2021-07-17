@@ -159,7 +159,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     private void runGetComplaintWebService() {
         frameLoading.setVisibility(View.GONE);
         findViewById(R.id.parentLayout).setVisibility(View.GONE);
-        AppController.showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity);
         final String url = URLData.BASE_URL
                 + URLData.COMPLAINT_ID
                 + AppController.selectedComplaintData.getComplaintId()
@@ -172,7 +172,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
             @Override
             public void OnResponseFailure() {
                 frameLoading.setVisibility(View.GONE);
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,"Unknown error, please refresh complaints");
             }
 
@@ -222,7 +222,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
             super.onPostExecute(aVoid);
             frameLoading.setVisibility(View.GONE);
             findViewById(R.id.parentLayout).setVisibility(View.VISIBLE);
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
             loadDataIntoComponents();
             initiateChangeStatusEventListener();
         }
@@ -277,7 +277,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     }
 
     private void loadDataIntoComponents() {
-        AppController.hideProgressDialog(activity);
+        AppUtils.getInstance().hideProgressDialog(activity);
         setupViewPager();
         AppController.customizeChangeStatusDropdown(activity, complaintDetailData, changeStatus,
                 frameSpinner);

@@ -43,14 +43,14 @@ public class CommentsFragment extends Fragment {
     RecyclerView mRecyclerview;
 
     private void addRemark() {
-        final CommentsAdapter commentsAdapter = new CommentsAdapter(ComplaintDetail.activity , true);
+        final CommentsAdapter commentsAdapter = new CommentsAdapter(ComplaintDetail.activity );
         mRecyclerview = v.findViewById(R.id.mRecyclerview);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(ComplaintDetail.activity);
         mRecyclerview.setLayoutManager(manager);
         mRecyclerview.addItemDecoration(new DividerItemDecoration(ComplaintDetail.activity, LinearLayoutManager.VERTICAL));
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
         mRecyclerview.setAdapter(commentsAdapter);
-        AppController.setEmptyViewForRecyclerViewFragments(ComplaintDetail.activity,mRecyclerview,
+        AppController.getInstance().setEmptyViewForRecyclerViewFragments(ComplaintDetail.activity,mRecyclerview,
             v.findViewById(R.id.viewEmpty));
 
         if (Integer.parseInt(AppController.selectedComplaintData.getComment_count()) > 5) {

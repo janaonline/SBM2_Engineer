@@ -58,6 +58,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     androidTestImplementation 'androidx.annotation:annotation:1.2.0'
     implementation "com.airbnb.android:lottie:3.4.0"
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
 }
 
 allprojects {

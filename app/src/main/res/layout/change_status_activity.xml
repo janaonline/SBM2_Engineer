@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/parentLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/black"
-        android:minHeight="?attr/actionBarSize"/>
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/primaryDark"
+        android:minHeight="?android:attr/actionBarSize" />
 
     <RelativeLayout
-      android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/bottomLayout"
         android:layout_below="@+id/toolbar"
@@ -23,55 +24,73 @@
         <RelativeLayout
             android:id="@+id/relativeTitle"
             android:layout_width="match_parent"
-            android:layout_margin="16dp"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:gravity="center">
 
             <TextView
                 android:id="@+id/statusTitleName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/statusTitleValue"
                 android:layout_alignTop="@+id/statusTitleValue"
+                android:layout_alignBottom="@+id/statusTitleValue"
                 android:layout_marginLeft="8dp"
                 android:gravity="center"
                 android:text="Mark as "
-                android:visibility="gone"
                 android:textAllCaps="true"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/statusTitleValue"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:layout_toRightOf="@+id/statusTitleName"
-                android:background="@drawable/complaint_status_red"
-                android:gravity="center"
-                android:textAllCaps="true"
-                android:textColor="@color/red_reopn_open" />
+                android:layout_marginTop="@dimen/margin56dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="left"
+                android:text="ID : W0234C5365463"
+                android:textAllCaps="false"
+                android:textColor="@color/secondary_text_color"
+                android:textSize="@dimen/textSize16dp"
+                android:visibility="visible" />
         </RelativeLayout>
+
 
         <TextView
             android:id="@+id/messageToShow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/relativeTitle"
-            android:gravity="center_horizontal|top"
-            android:padding="8dp"
-            android:text="@string/you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_"
+            android:layout_alignLeft="@+id/relativeTitle"
+            android:gravity="center_vertical|top|left"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/you_re_changing_the_status_of_the_complaint_to_new_status"
             android:textSize="@dimen/text_size_default"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/list" android:layout_below="@+id/messageToShow"
+        <TextView
+            android:id="@+id/messageToShow1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/messageToShow"
+            android:layout_alignLeft="@+id/relativeTitle"
+            android:gravity="center_vertical|top|left"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_"
+            android:textSize="@dimen/text_size_default"
+            android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/messageToShow1"
             android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/margin16dp"
             android:divider="#e1e2e3"
             android:dividerHeight="1dp"
-            android:scrollbars="none"/>
+            android:scrollbars="none" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -80,67 +99,104 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
-        <ImageView
-            android:id="@+id/imageToUpload"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/white"
-            android:scaleType="centerCrop"
-            android:visibility="gone"/>
 
-
-        <RelativeLayout
-            android:id="@+id/postComm"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageToUpload"
-            android:background="@color/white">
+            android:orientation="vertical">
 
-            <View
-                android:id="@+id/view1"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvimagePreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/postComm"
+                android:layout_margin="@dimen/margin16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/secondaryDark"
+                app:cardCornerRadius="@dimen/horizontal_vertical_spacing"
+                card_view:cardElevation="@dimen/horizontal_vertical_spacing"
+                card_view:cardPreventCornerOverlap="false"
+                card_view:cardUseCompatPadding="false">
+
+                <FrameLayout
+                    android:id="@+id/imagePreviewFrameLayout"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:gravity="bottom"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageToUpload"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerInside"
+                        android:src="@mipmap/ic_add_a_photo_white_48dp" />
+
+                    <ImageView
+                        android:id="@+id/clear"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/black_round_bg"
+                        android:padding="4dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/clear"
+                        android:visibility="gone"
+                        app:tint="@color/white" />
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/postComm"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e6e6e6"/>
+                android:layout_height="64dp"
+                android:layout_alignParentBottom="true">
 
-            <ImageView
-                android:id="@+id/addImage"
-                android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignTop="@+id/textComment"
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/view_color" />
 
-                android:layout_centerVertical="true"
-                android:padding="8dp"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/ic_add_image"/>
+                <ImageView
+                    android:id="@+id/addImage"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/horizontal_vertical_spacing"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_add_image"
+                    app:tint="@color/primaryDark" />
 
-            <EditText
-                android:id="@+id/textComment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/send"
-                android:layout_alignTop="@+id/send"
-                android:layout_toLeftOf="@+id/send"
-                android:layout_toRightOf="@+id/addImage"
-                android:background="@null"
-                android:hint="@string/write_a_comment"
-                android:inputType="text"
-                android:maxLength="400"
-                android:maxLines="1"
-                android:paddingLeft="8dp"
-                android:textColor="@color/black"
-                android:textSize="14sp"/>
+                <EditText
+                    android:id="@+id/textComment"
+                    style="@style/EditTextTheme"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/horizontal_vertical_spacing"
+                    android:layout_toStartOf="@+id/send"
+                    android:layout_toEndOf="@+id/addImage"
+                    android:background="@color/transparent"
+                    android:cursorVisible="true"
+                    android:gravity="top"
+                    android:hint="@string/write_a_comment"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:textColor="@color/primerColorBlack"
+                    android:textColorHint="@color/secondary_text_color"
+                    android:textSize="@dimen/textSize16dp" />
 
-            <ImageView
-                android:id="@+id/send"
-                android:layout_width="56dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:padding="8dp"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/ic_send_black_24dp"/>
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/send"
+                    android:layout_width="48dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/transparent"
+                    android:padding="@dimen/horizontal_vertical_spacing"
+                    android:scaleType="fitCenter"
+                    android:src="@mipmap/ic_send_black_24dp"
+                    app:tint="@color/primaryDark" />
+            </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
 
 

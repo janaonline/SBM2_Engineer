@@ -193,7 +193,7 @@ public class Splashscreen extends BaseAppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-//            AppController.hideProgressDialog(activity);
+//            AppUtils.getInstance().hideProgressDialog(activity);
             setConditionToNavigateScreens();
 
         }

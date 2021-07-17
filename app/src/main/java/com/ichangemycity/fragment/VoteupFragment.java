@@ -58,7 +58,7 @@ public class VoteupFragment extends Fragment {
         mAdd_remarkrecyclerview.addItemDecoration(new DividerItemDecoration(activity, LinearLayoutManager.VERTICAL));
         mAdd_remarkrecyclerview.setItemAnimator(new DefaultItemAnimator());
         mAdd_remarkrecyclerview.setAdapter(commentsAdapter);
-        AppController.setEmptyViewForRecyclerViewFragments(ComplaintDetail.activity,mAdd_remarkrecyclerview,
+        AppController.getInstance().setEmptyViewForRecyclerViewFragments(ComplaintDetail.activity,mAdd_remarkrecyclerview,
             v.findViewById(R.id.viewEmpty));
 
         if (AppController.selectedComplaintData.getVotedUpData().size() > 5) {
