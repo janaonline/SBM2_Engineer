@@ -6,25 +6,22 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ichangemycity.adapter.VoteupsAdapter;
 import com.ichangemycity.appdata.AppController;
+import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.base.BaseAppCompatActivity;
 import com.ichangemycity.callback.OnResponseListener;
 import com.ichangemycity.model.VotedUpData;
 import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.WebserviceHelper;
-import com.ichangemycity.appdata.AppUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -60,14 +57,12 @@ public class VoteupsActivity extends BaseAppCompatActivity {
                 .getComplaintId()
                 + URLData.GET_VOTED_UP_SORT;
         toolbar = findViewById(R.id.toolbar);
-
         adapter = new VoteupsAdapter(activity, AppController.votedUpData, false);
         findViewById(R.id.postComm).setVisibility(View.GONE);
 
         recycler_view = findViewById(R.id.mRecyclerview);
         setToolbarAndCustomizeTitle(
-                getResources().getString(R.string.vote_up) + "(" + AppController.selectedComplaintData
-                        .getVote_up_count() + ")");
+                getResources().getString(R.string.vote_up));
         layoutManager = new LinearLayoutManager(activity);
         recycler_view.setLayoutManager(layoutManager);
 
@@ -304,9 +299,9 @@ public class VoteupsActivity extends BaseAppCompatActivity {
 
         RecyclerView.LayoutManager manager = new LinearLayoutManager(activity);
         recycler_view.setLayoutManager(manager);
-        recycler_view
-                .addItemDecoration(new DividerItemDecoration(activity, LinearLayoutManager.VERTICAL));
-        recycler_view.setItemAnimator(new DefaultItemAnimator());
+//        recycler_view
+//                .addItemDecoration(new DividerItemDecoration(activity, LinearLayoutManager.VERTICAL));
+//        recycler_view.setItemAnimator(new DefaultItemAnimator());
         recycler_view.setAdapter(new VoteupsAdapter(activity, AppController.votedUpData, false));
         ((TextView) activity.findViewById(R.id.viewEmpty))
                 .setText(getResources().getString(R.string.no_complaints));

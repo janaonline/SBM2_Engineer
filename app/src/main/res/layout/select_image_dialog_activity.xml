@@ -12,6 +12,7 @@
         android:layout_height="?android:attr/actionBarSize"
         android:layout_alignParentTop="true"
         android:background="@color/primaryDark"
+        android:theme="@style/ToolbarTheme"
         android:minHeight="?android:attr/actionBarSize" />
 
     <LinearLayout
