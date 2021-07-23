@@ -52,6 +52,7 @@ import com.ichangemycity.swachhbharatengineer.Splashscreen;
 import com.ichangemycity.swachhbharatengineer.UserMobileNumber;
 import com.ichangemycity.webservice.LruBitmapCache;
 
+import org.acra.annotation.AcraMailSender;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,7 +67,7 @@ import static com.ichangemycity.appdata.AppConstant.TOAST_TYPE_ERROR;
 /**
  * Created by pattabi.raman on 23-09-2017.
  */
-
+@AcraMailSender(mailTo = "pattabi.raman@janaagraha.org")
 public class AppController extends MultiDexApplication {
     public static ArrayList<LanguageData> languageArrayList = new ArrayList<LanguageData>();
     public static String language_code = "code";

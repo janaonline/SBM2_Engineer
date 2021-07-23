@@ -93,7 +93,7 @@
             tools:ignore="LockedOrientationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".OTPVerification"
             tools:ignore="LockedOrientationActivity"

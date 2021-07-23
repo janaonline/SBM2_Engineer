@@ -15,9 +15,9 @@
         android:focusableInTouchMode="true"
         android:titleTextColor="@color/white"
         app:layout_collapseMode="pin"
+        android:theme="@style/ToolbarTheme"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:subtitleTextColor="@color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        app:subtitleTextColor="@color/white"/>
 
     <FrameLayout
         android:layout_width="match_parent"
