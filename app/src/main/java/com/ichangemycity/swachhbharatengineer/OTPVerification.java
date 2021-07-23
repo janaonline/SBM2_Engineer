@@ -58,8 +58,8 @@ public class OTPVerification extends BaseAppCompatActivity {
     @BindView(R.id.back)
     ImageView back;
 
-//    @BindView(R.id.enterotp)
-//    TextView enterotp;
+    //    @BindView(R.id.enterotp)
+    //    TextView enterotp;
 
     @BindView(R.id.parentLayout)
     RelativeLayout parentLayout;
@@ -77,15 +77,13 @@ public class OTPVerification extends BaseAppCompatActivity {
         otpEditText.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before,
-                                      int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // TODO Auto-generated method stub
 
             }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // TODO Auto-generated method stub
 
             }
@@ -93,15 +91,14 @@ public class OTPVerification extends BaseAppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
-                boolean isToEnableVerifyButton =
-                        (!TextUtils.isEmpty(otpEditText.getText().toString())) ? true : false;
-                if (s.toString().trim().length() >= 4) {
+                boolean isToEnableVerifyButton = (!TextUtils.isEmpty(otpEditText.getText().toString())) ? true : false;
+                if(s.toString().trim().length() >= 4) {
                     AppController.getInstance().hideKeyboard(activity, otpEditText);
                 }
                 setButtonStyleEnabledOrDisabled(isToEnableVerifyButton);
             }
         });
-//        enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_) + "\n(+91 - " + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, "") + ")");
+        //        enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_) + "\n(+91 - " + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, "") + ")");
         done.setOnClickListener(new View.OnClickListener() {
             /**
              * Called when a view has been clicked.
@@ -110,16 +107,14 @@ public class OTPVerification extends BaseAppCompatActivity {
              */
             @Override
             public void onClick(View v) {
-                if (!TextUtils.isEmpty(otpEditText.getText().toString())) {
+                if(!TextUtils.isEmpty(otpEditText.getText().toString())) {
                     runOTPWebService();
                 } else {
                 }
             }
         });
 
-        resendCode.setText(Html.fromHtml(
-                getString(R.string.didn_t_receive_otp) + "<font color='" + getResources()
-                        .getColor(R.color.primary) + "' >  " + getString(R.string.resend) + "</font>"));
+        resendCode.setText(Html.fromHtml(getString(R.string.didn_t_receive_otp) + "<font color='" + getResources().getColor(R.color.primary) + "' >  " + getString(R.string.resend) + "</font>"));
 
         resendCode.setOnClickListener(new View.OnClickListener() {
             /**
@@ -146,9 +141,9 @@ public class OTPVerification extends BaseAppCompatActivity {
                 }.start();
             }
         });
-//        enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_));
+        //        enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_));
 
-//        setToolbarAndCustomizeTitle();
+        //        setToolbarAndCustomizeTitle();
 
         back.setOnClickListener(new View.OnClickListener() {
             /**
@@ -164,7 +159,7 @@ public class OTPVerification extends BaseAppCompatActivity {
 
     }
     private void setButtonStyleEnabledOrDisabled(boolean isToEnable) {
-        if (isToEnable) {
+        if(isToEnable) {
             done.setEnabled(true);
             done.setTextColor(Color.WHITE);
         } else {
@@ -173,19 +168,19 @@ public class OTPVerification extends BaseAppCompatActivity {
         }
     }
 
-//    @BindView(R.id.toolbar)
-//    androidx.appcompat.widget.Toolbar toolbar;
+    //    @BindView(R.id.toolbar)
+    //    androidx.appcompat.widget.Toolbar toolbar;
 
-//    private void setToolbarAndCustomizeTitle() {
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        toolbar.setNavigationOnClickListener(v -> activity.finish());
-//        final Drawable upArrow = getResources().getDrawable(R.mipmap.back);
-//        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
-//        getSupportActionBar().setHomeAsUpIndicator(upArrow);
-//        getSupportActionBar().setTitle(" ");
-//        toolbar.setTitleTextColor(Color.TRANSPARENT);
-//    }
+    //    private void setToolbarAndCustomizeTitle() {
+    //        setSupportActionBar(toolbar);
+    //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    //        toolbar.setNavigationOnClickListener(v -> activity.finish());
+    //        final Drawable upArrow = getResources().getDrawable(R.mipmap.back);
+    //        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+    //        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+    //        getSupportActionBar().setTitle(" ");
+    //        toolbar.setTitleTextColor(Color.TRANSPARENT);
+    //    }
 
     @Override
     public void onStart() {
@@ -204,7 +199,8 @@ public class OTPVerification extends BaseAppCompatActivity {
         HashMap<String, String> params = new HashMap<>();
         params.put("mobile_number", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
         params.put("otp", otpEditText.getText().toString());
-        params.put("device_token", AppConstant.deviceToken);
+        if(!TextUtils.isEmpty(AppConstant.deviceToken))
+            params.put("device_token", AppConstant.deviceToken);
         params.put("mac_address", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.deviceUniqueID, ""));
         params.putAll(URLDataSwachhManch.getChannelParam());
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, URLDataSwachhManch.BASE_URL_AUTH, params, new OnResponseListener() {
@@ -215,7 +211,7 @@ public class OTPVerification extends BaseAppCompatActivity {
 
             @Override
             public void OnResponseSuccess(JSONObject response) {
-                if (response.has("access_token")) {
+                if(response.has("access_token")) {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.TOKEN_TYPE, response.optString("token_type"));
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.token, response.optString("access_token"));
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.refresh_token, response.optString("refresh_token"));
@@ -278,12 +274,12 @@ public class OTPVerification extends BaseAppCompatActivity {
             public void OnResponseSuccess(JSONObject responseJsonObject) {
                 try {
                     AppUtils.getInstance().hideProgressDialog(activity);
-                    if (responseJsonObject.optInt("httpCode") == 200 || responseJsonObject.optInt("httpCode") == 201) {
+                    if(responseJsonObject.optInt("httpCode") == 200 || responseJsonObject.optInt("httpCode") == 201) {
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, responseJsonObject.optString("message"));
                     } else {
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, responseJsonObject.optString("message"));
                     }
-                } catch (Exception e) {
+                } catch(Exception e) {
                     e.printStackTrace();
                 }
                 //                        runCommentFeedWebService(true);

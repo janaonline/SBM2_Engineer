@@ -272,7 +272,7 @@ public class AppController extends MultiDexApplication {
                     }
                 }
             }
-        } catch(Exception e) {}
+        } catch(Exception e) {e.printStackTrace();}
     }
 
     public static String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";

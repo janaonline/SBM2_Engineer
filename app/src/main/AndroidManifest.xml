@@ -99,7 +99,7 @@
             tools:ignore="LockedOrientationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".ComplaintDetail"
             tools:ignore="LockedOrientationActivity"
