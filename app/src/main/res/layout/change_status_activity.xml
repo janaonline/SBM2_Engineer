@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/postComm"
                 android:layout_margin="@dimen/margin16dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:cardBackgroundColor="@color/secondaryDark"
                 app:cardCornerRadius="@dimen/horizontal_vertical_spacing"
                 card_view:cardElevation="@dimen/horizontal_vertical_spacing"

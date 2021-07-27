@@ -108,6 +108,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         statusTitleValue.setText(getString(R.string.id_) + " " + AppController.selectedComplaintData.getGeneric_id());
         setStatusForTitle(AppController.selectedComplaintChangeStatusOptions.getStatusID());
         clear.setOnClickListener(v -> initializeImageView());
+        initializeImageView();
     }
 
     private class InitiateChangeStatus extends AsyncTask<Void, Void, Void> {

@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.ichangemycity.appdata.AppController;
+import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.base.BaseAppCompatActivity;
 import com.ichangemycity.callback.InternetConnectionCallback;
@@ -47,7 +48,7 @@ public class Splashscreen extends BaseAppCompatActivity {
     VideoView videoView;
 
     public Activity getActivity() {
-        if (activity == null) {
+        if(activity == null) {
             activity = Splashscreen.this;
         }
         return activity;
@@ -86,7 +87,7 @@ public class Splashscreen extends BaseAppCompatActivity {
     protected void unregisterNetworkChanges() {
         try {
             unregisterReceiver(mNetworkReceiver);
-        } catch (IllegalArgumentException e) {
+        } catch(IllegalArgumentException e) {
             e.printStackTrace();
         }
     }
@@ -113,7 +114,7 @@ public class Splashscreen extends BaseAppCompatActivity {
                 Thread.sleep(2000);
                 performGCMRegistration();
 
-            } catch (Exception e) {
+            } catch(Exception e) {
                 e.printStackTrace();
             }
             return msg;
@@ -123,7 +124,7 @@ public class Splashscreen extends BaseAppCompatActivity {
         private void performGCMRegistration() {
             try {
                 new MyFirebaseInstanceIDService().onTokenRefresh();
-            } catch (Exception ex) {
+            } catch(Exception ex) {
                 ex.printStackTrace();
             }
         }
@@ -132,18 +133,17 @@ public class Splashscreen extends BaseAppCompatActivity {
         protected void onPostExecute(String msg) {
 
             final String url = URLData.GET_LANGUAGES;
-            new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null,
-                    new OnResponseListener() {
-                        @Override
-                        public void OnResponseFailure() {
+            new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
+                @Override
+                public void OnResponseFailure() {
+                    AppUtils.getInstance().hideProgressDialog(activity);
+                }
 
-                        }
-
-                        @Override
-                        public void OnResponseSuccess(JSONObject response) {
-                            new GetParsedData(activity, response.optJSONArray("languages")).execute();
-                        }
-                    }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
+                @Override
+                public void OnResponseSuccess(JSONObject response) {
+                    new GetParsedData(activity, response.optJSONArray("languages")).execute();
+                }
+            }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
         }
 
     }
@@ -169,22 +169,20 @@ public class Splashscreen extends BaseAppCompatActivity {
 
             // TODO Auto-generated method stub
             try {
-                if (AppController.languageArrayList.size() <= 0) {
+                if(AppController.languageArrayList.size() <= 0) {
                     AppController.languageArrayList.clear();
 
-                    for (int i = 0; i < this.response.length(); i++) {
+                    for(int i = 0; i < this.response.length(); i++) {
                         JSONObject mJsonObject = this.response.optJSONObject(i);
                         LanguageData lData = new LanguageData();
-                        lData.setLanguage_code(mJsonObject
-                                .optString(AppController.language_code));
-                        lData.setLanguage_label(mJsonObject
-                                .optString(AppController.language_label));
-                        if (!AppController.languageArrayList.contains(lData)) {
+                        lData.setLanguage_code(mJsonObject.optString(AppController.language_code));
+                        lData.setLanguage_label(mJsonObject.optString(AppController.language_label));
+                        if(!AppController.languageArrayList.contains(lData)) {
                             AppController.languageArrayList.add(lData);
                         }
                     }
                 }
-            } catch (Exception e) {
+            } catch(Exception e) {
                 e.printStackTrace();
             }
             return null;
@@ -193,7 +191,7 @@ public class Splashscreen extends BaseAppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-//            AppUtils.getInstance().hideProgressDialog(activity);
+            //            AppUtils.getInstance().hideProgressDialog(activity);
             setConditionToNavigateScreens();
 
         }
@@ -216,16 +214,12 @@ public class Splashscreen extends BaseAppCompatActivity {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
-//      if (Integer.parseInt(ICMyCPreferenceData.getPreferenceItem(
-//          Splashscreen.this, ICMyCPreferenceData.activated, "0")) == 0) {
-            if (ICMyCPreferenceData.getPreferenceItem(Splashscreen.this,
-                    ICMyCPreferenceData.activated, "0").equalsIgnoreCase("0") || ICMyCPreferenceData.getPreferenceItem(Splashscreen.this,
-                    ICMyCPreferenceData.activated, "0").equalsIgnoreCase("NA")) {
-                startActivity(new Intent(Splashscreen.this,
-                        UserMobileNumber.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            //      if (Integer.parseInt(ICMyCPreferenceData.getPreferenceItem(
+            //          Splashscreen.this, ICMyCPreferenceData.activated, "0")) == 0) {
+            if(ICMyCPreferenceData.getPreferenceItem(Splashscreen.this, ICMyCPreferenceData.activated, "0").equalsIgnoreCase("0") || ICMyCPreferenceData.getPreferenceItem(Splashscreen.this, ICMyCPreferenceData.activated, "0").equalsIgnoreCase("NA")) {
+                startActivity(new Intent(Splashscreen.this, UserMobileNumber.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             } else {
-                startActivity(new Intent(Splashscreen.this,
-                        MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(Splashscreen.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
             }
             Splashscreen.this.finish();
@@ -235,17 +229,16 @@ public class Splashscreen extends BaseAppCompatActivity {
     }
 
     private void registerNetworkBroadcastForNougat() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             registerReceiver(mNetworkReceiver, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         }
     }
 
-
     public void dialog(boolean value) {
-        if (value) {
+        if(value) {
             tv_check_connection.setVisibility(View.GONE);
         } else {
             tv_check_connection.setVisibility(View.VISIBLE);
@@ -260,13 +253,12 @@ public class Splashscreen extends BaseAppCompatActivity {
         super.onNewIntent(intent);
         String action = intent.getAction();
         String data = intent.getDataString();
-        if (data != null) {
+        if(data != null) {
             ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.isDeeplinked, "1");
-            if (Intent.ACTION_VIEW.equals(action) && data.contains("/complaints/")) {
-//              Complaint deeplink
+            if(Intent.ACTION_VIEW.equals(action) && data.contains("/complaints/")) {
+                //              Complaint deeplink
                 ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.isDeeplinked, "1");
-                AppController.selectedComplaintData.setComplaintId(data
-                        .substring(data.lastIndexOf("/") + 1));
+                AppController.selectedComplaintData.setComplaintId(data.substring(data.lastIndexOf("/") + 1));
             }
         } else {
             // do nothing
