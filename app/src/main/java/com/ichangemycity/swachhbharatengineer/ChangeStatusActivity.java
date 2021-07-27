@@ -204,6 +204,10 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                     // responseJsonObject = new JSONObject(response);
 
                     try {
+                        try {
+                            ComplaintDetailNew.isToRefresh = true;
+                        } catch(Exception e) {}
+
                         int httpCode = response.getInt("httpCode");
                         if(httpCode == 200 || httpCode == 201) {
                             ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
@@ -448,8 +452,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                         ((EditText) findViewById(R.id.textComment)).setText(listOfReasonToRejectComplaint.get(i));
                         changeStatus(false);
                     });
-                    final String rejectedStatus = getString(R.string.you_re_changing_the_status_of_the_complaint_to_new_status).replace("#New_STATUS", getString(R.string.change_status_rejected))
-                            + "Please select a reason from below to reject this complaint";
+                    final String rejectedStatus = getString(R.string.you_re_changing_the_status_of_the_complaint_to_new_status).replace("#New_STATUS", getString(R.string.change_status_rejected)) + "Please select a reason from below to reject this complaint";
                     messageToShow.setText(rejectedStatus);
                     postComm.setVisibility(View.GONE);
                     break;

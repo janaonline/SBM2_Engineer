@@ -229,6 +229,9 @@ public class CommentsActivity extends BaseAppCompatActivity {
                         }
                     }
                     findViewById(R.id.postComm).setVisibility(View.VISIBLE);
+                    try {
+                        ComplaintDetailNew.isToRefresh = true;
+                    }catch(Exception e){}
                 } catch(Exception e) {
                     e.printStackTrace();
                 }
