@@ -91,7 +91,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         setToolbarAndCustomizeTitle(getString(R.string.change_status));
         send.setOnClickListener(v -> {
             if(((EditText) findViewById(R.id.textComment)).getText().toString().trim().length() > 0) {
-                AppUtils.getInstance().showProgressDialog(activity);
+                AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
                 new InitiateChangeStatus().execute();
             } else {
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, activity.getResources().getString(R.string.write_a_comment));
@@ -172,7 +172,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
     private void changeStatus(final boolean hasImage) {
         //need clarify
-        AppUtils.getInstance().showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         final String url = URLData.BASE_URL + URLData.COMPLAINT_STATUS;
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("apiKey", URLData.API_KEY);
@@ -189,7 +189,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url + URLParams, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Unknown error, please refresh complaints");
                 activity.finish();
@@ -304,7 +304,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
     private void uploadImage() {
         final String uploadImageURL = URLData.BASE_URL_UPLOAD_IMAGE;
-        AppUtils.getInstance().showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, uploadImageURL, response -> {
             String resultResponse = new String(response.data);
             JSONObject mJsonObject;

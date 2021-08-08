@@ -92,6 +92,14 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Apri sul telefono"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Accedi"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Accedi con Google"</string>
+    <string name="crop_image_activity_no_permissions">Annullamento in corso, autorizzazione richieste non concesse</string>
+    <string name="crop_image_activity_title"/>
+    <string name="crop_image_menu_crop">Ritaglia</string>
+    <string name="crop_image_menu_flip">Capovolgi</string>
+    <string name="crop_image_menu_flip_horizontally">Capovolgi orizzontalmente</string>
+    <string name="crop_image_menu_flip_vertically">Capovolgi verticalmente</string>
+    <string name="crop_image_menu_rotate_left">Ruota in senso antiorario</string>
+    <string name="crop_image_menu_rotate_right">Ruota</string>
     <string name="error_icon_content_description">Errore</string>
     <string name="exposed_dropdown_menu_content_description">Mostra il menu a discesa</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Varie"</string>
@@ -165,6 +173,7 @@
     <string name="mtrl_picker_toggle_to_text_input_mode">Passa alla modalità di immissione Testo</string>
     <string name="mtrl_picker_toggle_to_year_selection">Tocca per passare alla selezione di un anno</string>
     <string name="password_toggle_content_description">Mostra password</string>
+    <string name="pick_image_intent_chooser_title">Seleziona origine</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"Cancella ricerca"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"Cerca"</string>
     <string msgid="368094699078615544" name="s1">"Salva immagine"</string>

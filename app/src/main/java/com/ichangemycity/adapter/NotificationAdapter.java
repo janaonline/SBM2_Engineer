@@ -159,7 +159,7 @@ public class NotificationAdapter extends
   }
 
   private void markAsRead(final NotificationHeaderData nData) {
-    AppUtils.getInstance().showProgressDialog(activity);
+    AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
     HashMap<String, String> params = new HashMap<String, String>();
     params.put("apiKey", URLData.API_KEY);
     params.put("notificationId", Integer
@@ -169,7 +169,7 @@ public class NotificationAdapter extends
     new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url, params,
         new OnResponseListener() {
           @Override
-          public void OnResponseFailure() {
+          public void OnResponseFailure(JSONObject response) {
             AppUtils.getInstance().hideProgressDialog(activity);
             //  AppController.handleVolleyError(activity, (RelativeLayout) activity.findViewById(R.id.parentLayout), error);
             try {

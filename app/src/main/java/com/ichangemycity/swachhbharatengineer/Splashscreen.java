@@ -135,7 +135,7 @@ public class Splashscreen extends BaseAppCompatActivity {
             final String url = URLData.GET_LANGUAGES;
             new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
                 @Override
-                public void OnResponseFailure() {
+                public void OnResponseFailure(JSONObject response) {
                     AppUtils.getInstance().hideProgressDialog(activity);
                 }
 

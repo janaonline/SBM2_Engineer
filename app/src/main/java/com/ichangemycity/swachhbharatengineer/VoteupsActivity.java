@@ -86,7 +86,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
     private void runVotedupFeedWebService(final boolean isToScroll) {
         if (isToScroll) {
             currentPage = 0;
-            AppUtils.getInstance().showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         }
         currentPage += 1;
         if (currentPage == 1) {
@@ -99,7 +99,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, urlm, null,
                 new OnResponseListener() {
                     @Override
-                    public void OnResponseFailure() {
+                    public void OnResponseFailure(JSONObject response) {
                         AppUtils.getInstance().hideProgressDialog(activity);
                     }
 

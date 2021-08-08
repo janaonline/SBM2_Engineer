@@ -483,7 +483,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final String url = URLData.BASE_URL + URLData.USERS + "?apiKey=" + URLData.API_KEY;
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 
@@ -733,7 +733,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             final String url = URLData.BASE_URL + ComplaintType + URLData.PAGE + currentPage;
             new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
                 @Override
-                public void OnResponseFailure() {
+                public void OnResponseFailure(JSONObject response) {
                     refreshLayout.setEnabled(true);
                     AppUtils.getInstance().hideProgressDialog(activity);
                     hideSwipeProgress();

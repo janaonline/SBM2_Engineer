@@ -92,6 +92,14 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Openen op telefoon"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Inloggen"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Inloggen met Google"</string>
+    <string name="crop_image_activity_no_permissions">Wordt geannuleerd, vereiste machtigingen zijn niet toegekend</string>
+    <string name="crop_image_activity_title"/>
+    <string name="crop_image_menu_crop">Bijsnijden</string>
+    <string name="crop_image_menu_flip">Spiegelen</string>
+    <string name="crop_image_menu_flip_horizontally">Horizontaal spiegelen</string>
+    <string name="crop_image_menu_flip_vertically">Verticaal spiegelen</string>
+    <string name="crop_image_menu_rotate_left">Tegen de klok in draaien</string>
+    <string name="crop_image_menu_rotate_right">Draaien</string>
     <string name="error_icon_content_description">Fout</string>
     <string name="exposed_dropdown_menu_content_description">Dropdownmenu weergeven</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Overige"</string>
@@ -165,6 +173,7 @@
     <string name="mtrl_picker_toggle_to_text_input_mode">Overschakelen naar tekstinvoermodus</string>
     <string name="mtrl_picker_toggle_to_year_selection">Tik om naar jaarselectie te schakelen</string>
     <string name="password_toggle_content_description">Wachtwoord weergeven</string>
+    <string name="pick_image_intent_chooser_title">Bron selecteren</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"Zoekopdracht wissen"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"Zoeken"</string>
     <string msgid="368094699078615544" name="s1">"Afbeelding opslaan"</string>

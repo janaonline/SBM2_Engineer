@@ -124,7 +124,7 @@ public class OTPVerification extends BaseAppCompatActivity {
              */
             @Override
             public void onClick(View v) {
-                AppUtils.getInstance().showProgressDialog(activity);
+                AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
                 onResendOtp();
                 //wait for 60 sec until receive resent otp
                 new CountDownTimer(60000, 1000) {
@@ -205,7 +205,7 @@ public class OTPVerification extends BaseAppCompatActivity {
         params.putAll(URLDataSwachhManch.getChannelParam());
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, URLDataSwachhManch.BASE_URL_AUTH, params, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 
@@ -228,7 +228,7 @@ public class OTPVerification extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
 
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 
@@ -260,13 +260,13 @@ public class OTPVerification extends BaseAppCompatActivity {
     }
 
     private void onResendOtp() {
-        AppUtils.getInstance().showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("mobile_number", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
         final String url = URLDataSwachhManch.BASE_URL_AUTH + URLData.GENERATE_OTP + "?mobile_number=" + params.get("mobile_number").toString().trim();
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, params, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 

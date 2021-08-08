@@ -184,12 +184,12 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
         //        frameLoading.setVisibility(View.GONE);
         findViewById(R.id.parentLayout).setVisibility(View.GONE);
         findViewById(R.id.progressBarRim).setVisibility(View.VISIBLE);
-        AppUtils.getInstance().showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         final String url = URLData.BASE_URL + URLData.COMPLAINT_ID + AppController.selectedComplaintData.getComplaintId() + "&userId=" + ICMyCPreferenceData.getPreferenceItem(ComplaintDetailNew.this, ICMyCPreferenceData.id, "");
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 //                frameLoading.setVisibility(View.GONE);
                 AppUtils.getInstance().hideProgressDialog(activity);
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Unknown error, please refresh complaints");

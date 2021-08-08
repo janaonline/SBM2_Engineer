@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.gson.Gson;
@@ -23,6 +24,9 @@ import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
+import com.ichangemycity.appdata.SBM2Constants;
+import com.ichangemycity.appdata.SBM2Utils;
+import com.ichangemycity.appdata.SBMPreferenceData;
 import com.ichangemycity.base.BaseAppCompatActivity;
 import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.callback.OnResponseListener;
@@ -44,7 +48,7 @@ import static com.ichangemycity.webservice.URLDataSwachhManch.CHANNEL_KEY_VALUE;
 
 public class UserMobileNumber extends BaseAppCompatActivity {
 
-    public static Activity activity;
+    public static AppCompatActivity activity;
 
     @BindView(R.id.et_mobno)
     EditText mobileNumber;
@@ -111,12 +115,25 @@ public class UserMobileNumber extends BaseAppCompatActivity {
             }
         });
 
-        submit.setOnClickListener(v -> {
-            if (AppUtils.validateMobileNumber(activity, mobileNumber)) {
-                submitMobileNumberAPI(false);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(AppUtils.getInstance().validateMobileNumber(activity, mobileNumber)) {
+                    SBMPreferenceData.setPreference(activity, SBMPreferenceData.MOBILE, mobileNumber.getText().toString());
+                    SBM2Utils.getInstance().onSignInOrResendOTPForSignIn(activity, new OnResponseListener() {
+                        @Override
+                        public void OnResponseFailure(JSONObject response) {
+
+                        }
+                        @Override
+                        public void OnResponseSuccess(JSONObject response) {
+                            startActivity(new Intent(activity, OTPVerification.class).putExtra("from", AppConstant.FROM_SIGN_IN));
+                        }
+                    });
+                }
             }
         });
-//    setToolbarAndCustomizeTitle(findViewById(R.id.toolbar), " ");
     }
 
     private void submitMobileNumberAPI(final boolean isToAddOTPSource) {
@@ -142,7 +159,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
          * */
         ICMyCPreferenceData
                 .setPreference(activity, ICMyCPreferenceData.Mobile_No, mobileNumber.getText().toString());
-        AppUtils.getInstance().showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         final String url = URLDataSwachhManch.BASE_URL_AUTH + URLDataSwachhManch.USERS;
         HashMap<String, String> params = new HashMap<>();
         params.put("mobile_number", mobileNumber.getText().toString());
@@ -158,7 +175,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, params,
                 new OnResponseListener() {
                     @Override
-                    public void OnResponseFailure() {
+                    public void OnResponseFailure(JSONObject response) {
                         AppUtils.getInstance().hideProgressDialog(activity);
                     }
 
@@ -243,7 +260,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
                 new OnResponseListener() {
 
                     @Override
-                    public void OnResponseFailure() {
+                    public void OnResponseFailure(JSONObject response) {
                         AppUtils.getInstance().hideProgressDialog(activity);
                     }
 

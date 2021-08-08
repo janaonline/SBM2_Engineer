@@ -92,6 +92,13 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"スマートフォンで開く"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"ログイン"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Googleにログイン"</string>
+    <string name="crop_image_activity_no_permissions">必要な権限がありません、キャンセルしています。</string>
+    <string name="crop_image_menu_crop">切り取り</string>
+    <string name="crop_image_menu_flip">反転</string>
+    <string name="crop_image_menu_flip_horizontally">左右反転</string>
+    <string name="crop_image_menu_flip_vertically">上下反転</string>
+    <string name="crop_image_menu_rotate_left">左回転</string>
+    <string name="crop_image_menu_rotate_right">右回転</string>
     <string name="error_icon_content_description">エラー</string>
     <string name="exposed_dropdown_menu_content_description">プルダウン メニューを表示</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"その他"</string>
@@ -165,6 +172,7 @@
     <string name="mtrl_picker_toggle_to_text_input_mode">テキスト入力モードに切り替え</string>
     <string name="mtrl_picker_toggle_to_year_selection">タップすると、年の選択に切り替わります</string>
     <string name="password_toggle_content_description">パスワードを表示</string>
+    <string name="pick_image_intent_chooser_title">画像を選択</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"検索をクリア"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"検索"</string>
     <string msgid="368094699078615544" name="s1">"画像の保存"</string>

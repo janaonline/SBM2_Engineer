@@ -92,6 +92,13 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Abrir no smartphone"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Fazer login"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Fazer login com o Google"</string>
+    <string name="crop_image_activity_title"/>
+    <string name="crop_image_menu_crop">Cortar</string>
+    <string name="crop_image_menu_flip">Espelhar</string>
+    <string name="crop_image_menu_flip_horizontally">Espelhar na horizontal</string>
+    <string name="crop_image_menu_flip_vertically">Espelhar na vertifcal</string>
+    <string name="crop_image_menu_rotate_left">Girar para a esquerda</string>
+    <string name="crop_image_menu_rotate_right">Girar para a direita</string>
     <string name="error_icon_content_description">Erro</string>
     <string name="exposed_dropdown_menu_content_description">Mostrar menu suspenso</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Diversos"</string>
@@ -165,6 +172,7 @@
     <string name="mtrl_picker_toggle_to_text_input_mode">Alternar para o modo de entrada de texto</string>
     <string name="mtrl_picker_toggle_to_year_selection">Toque para alternar para a seleção de um ano</string>
     <string name="password_toggle_content_description">Exibir senha</string>
+    <string name="pick_image_intent_chooser_title">Escolher foto a partir de</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"Limpar pesquisa"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"Pesquisar"</string>
     <string msgid="368094699078615544" name="s1">"Salvar imagem"</string>

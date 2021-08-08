@@ -98,7 +98,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
         send.setOnClickListener(v -> {
             if(((EditText) findViewById(R.id.textComment)).getText().toString().trim().length() > 0) {
-                AppUtils.getInstance().showProgressDialog(activity);
+                AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
                 new InitiatePostComment().execute();
             } else {
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, activity.getResources().getString(R.string.write_a_comment));
@@ -198,7 +198,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url + urlParams, params, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
 
                 //                        Toast.makeText(UserMobileNumber.this, error.toString(), Toast.LENGTH_LONG).show();
                 AppUtils.getInstance().hideProgressDialog(activity);
@@ -245,7 +245,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
     private void uploadImage() {
         final String uploadImageURL = BASE_URL_UPLOAD_IMAGE;
-        AppUtils.getInstance().showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, uploadImageURL, response -> {
             String resultResponse = new String(response.data);
             try {
@@ -368,7 +368,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, getCommentRequestUrl, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 if(isToScroll) {
                     AppUtils.getInstance().hideProgressDialog(activity);
                 }

@@ -92,6 +92,14 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Auf Smartphone öffnen"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Anmelden"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Über Google anmelden"</string>
+    <string name="crop_image_activity_no_permissions">Vorgang wird abgebrochen, benötigte Berechtigungen wurden nicht erteilt.</string>
+    <string name="crop_image_activity_title"/>
+    <string name="crop_image_menu_crop">zuschneiden</string>
+    <string name="crop_image_menu_flip">spiegeln</string>
+    <string name="crop_image_menu_flip_horizontally">horizontal spiegeln</string>
+    <string name="crop_image_menu_flip_vertically">vertikal spiegeln</string>
+    <string name="crop_image_menu_rotate_left">gegen den Uhrzeigersinn drehen</string>
+    <string name="crop_image_menu_rotate_right">drehen</string>
     <string name="error_icon_content_description">Fehler</string>
     <string name="exposed_dropdown_menu_content_description">Drop-down-Menü anzeigen</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Sonstiges"</string>
@@ -165,6 +173,7 @@
     <string name="mtrl_picker_toggle_to_text_input_mode">In den Texteingabemodus wechseln</string>
     <string name="mtrl_picker_toggle_to_year_selection">Tippen, um zur Jahresauswahl zu wechseln</string>
     <string name="password_toggle_content_description">Passwort anzeigen</string>
+    <string name="pick_image_intent_chooser_title">Quelle wählen</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"Suche zurücksetzen"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"Suche"</string>
     <string msgid="368094699078615544" name="s1">"Bild speichern"</string>

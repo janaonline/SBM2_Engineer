@@ -47,6 +47,6 @@
     <string name="write_a_comment">Write a comment </string>
     <string name="yes">Yes</string>
     <string name="you">You</string>
-    <string name="you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_">You\'re changing status of the complaint. Please leave a comment and you can add a photo as well.</string>
+    <string name="you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_">Please leave a comment about your experience or if you have any remarks. You can add a photo as well to your comment.</string>
     <string name="your_mobile_number_is_safe_with_us">Your mobile number is safe with us.</string>
 </resources>

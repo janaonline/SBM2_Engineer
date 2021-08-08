@@ -96,6 +96,14 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"فتح على الهاتف"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"تسجل الدخول"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"‏تسجيل الدخول عبر Google"</string>
+    <string name="crop_image_activity_no_permissions">إلغاء؛ الأذونات المطلوبة غير ممنوحة</string>
+    <string name="crop_image_activity_title"/>
+    <string name="crop_image_menu_crop">قُصّ</string>
+    <string name="crop_image_menu_flip">اقلب</string>
+    <string name="crop_image_menu_flip_horizontally">اقلب أفقيًا</string>
+    <string name="crop_image_menu_flip_vertically">اقلب رأسيًا</string>
+    <string name="crop_image_menu_rotate_left">أدر عكس اتجاه عقارب الساعة</string>
+    <string name="crop_image_menu_rotate_right">أدر</string>
     <string name="error_icon_content_description">خطأ</string>
     <string name="exposed_dropdown_menu_content_description">عرض القائمة المنسدلة</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"متنوعة"</string>
@@ -169,6 +177,7 @@
     <string name="mtrl_picker_toggle_to_text_input_mode">التبديل إلى وضع \"إدخال النص\"</string>
     <string name="mtrl_picker_toggle_to_year_selection">انقر للتبديل إلى اختيار عام</string>
     <string name="password_toggle_content_description">عرض كلمة المرور</string>
+    <string name="pick_image_intent_chooser_title">اختر مصدرًا</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"مسح البحث"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"البحث"</string>
     <string msgid="368094699078615544" name="s1">"حفظ الصورة"</string>

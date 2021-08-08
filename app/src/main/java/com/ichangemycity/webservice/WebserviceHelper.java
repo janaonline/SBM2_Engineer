@@ -1,9 +1,12 @@
 package com.ichangemycity.webservice;
 
 import android.app.Activity;
+import android.content.DialogInterface;
+import android.text.TextUtils;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -12,7 +15,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
+import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.callback.OnResponseListener;
+import com.ichangemycity.swachhbharatengineer.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +49,7 @@ public class WebserviceHelper {
     public static final int HEADER_TYPE_CONVERT_COMPLAINT_TO_EVENT = 9;
 
     public static final String TAG = AppController.class
-        .getSimpleName();
+            .getSimpleName();
 
     /**
      * @param activity               activity of calling API
@@ -56,7 +61,7 @@ public class WebserviceHelper {
      */
 
     public WebserviceHelper(final Activity activity, final int methodType, final String url, HashMap<String, String> params,
-        OnResponseListener onResponseListener, final boolean isToShowProgressDialog, final int headerType) {
+                            OnResponseListener onResponseListener, final boolean isToShowProgressDialog, final int headerType) {
         AppUtils.getInstance().hideProgressDialog(activity);
         switch (methodType) {
             case METHOD_GET:
@@ -81,13 +86,13 @@ public class WebserviceHelper {
     }
 
     private void doPut(final Activity activity, final String url, final HashMap<String, String> params, final OnResponseListener onResponseListener,
-        final boolean isToShowProgressDialog, final int headerType) {
-        AppUtils.getInstance().showProgressDialog(activity);
+                       final boolean isToShowProgressDialog, final int headerType) {
+        AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response0) {
                 try {
-                        JSONObject response = new JSONObject(response0);
+                    JSONObject response = new JSONObject(response0);
                     if (isToShowProgressDialog)
                         AppUtils.getInstance().hideProgressDialog(activity);
                     if (response.has("httpCode")) {
@@ -95,7 +100,7 @@ public class WebserviceHelper {
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, response.optString("message"));
                             onResponseListener.OnResponseSuccess(response);
                         } else {
-                            onResponseListener.OnResponseFailure();
+                            onResponseListener.OnResponseFailure(response);
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
                         }
                     } else {
@@ -104,7 +109,7 @@ public class WebserviceHelper {
                         } catch (Exception e) {
                             e.printStackTrace();
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
-                            onResponseListener.OnResponseFailure();
+                            onResponseListener.OnResponseFailure(response);
                         }
                     }
                 } catch (JSONException e) {
@@ -112,15 +117,15 @@ public class WebserviceHelper {
                 }
             }
         },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    if (isToShowProgressDialog)
-                        AppUtils.getInstance().hideProgressDialog(activity);
-                    onResponseListener.OnResponseFailure();
-                    AppController.handleVolleyError(activity, error);
-                }
-            }) {
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (isToShowProgressDialog)
+                            AppUtils.getInstance().hideProgressDialog(activity);
+                        onResponseListener.OnResponseFailure(null);
+                        AppController.handleVolleyError(activity, error);
+                    }
+                }) {
             @Override
             protected Map<String, String> getParams() {
                 return params;
@@ -134,54 +139,54 @@ public class WebserviceHelper {
             }
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-            AppController.MY_SOCKET_TIMEOUT_MS,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                AppController.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         AppController.getInstance().addToRequestQueue(stringRequest, AppController.TAG);
     }
 
     private void doDelete(final Activity activity, final String url, final HashMap<String, String> params, final OnResponseListener
-        onResponseListener, final boolean
-        isToShowProgressDialog, final int headerType) {
+            onResponseListener, final boolean
+                                  isToShowProgressDialog, final int headerType) {
         if (isToShowProgressDialog)
-            AppUtils.getInstance().showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.DELETE, url,
-            (String) null, response -> {
-                try {
-                    if (isToShowProgressDialog)
-                        AppUtils.getInstance().hideProgressDialog(activity);
-                    if (response.has("httpCode")) {
-                        if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
-                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, response.optString("message"));
-                            onResponseListener.OnResponseSuccess(response);
-                        } else {
-                            onResponseListener.OnResponseFailure();
-                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
-                        }
+                (String) null, response -> {
+            try {
+                if (isToShowProgressDialog)
+                    AppUtils.getInstance().hideProgressDialog(activity);
+                if (response.has("httpCode")) {
+                    if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
+                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, response.optString("message"));
+                        onResponseListener.OnResponseSuccess(response);
                     } else {
-                        try {
-                            onResponseListener.OnResponseSuccess(response);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
-                            onResponseListener.OnResponseFailure();
-                        }
+                        onResponseListener.OnResponseFailure(response);
+                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
                     }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                } else {
+                    try {
+                        onResponseListener.OnResponseSuccess(response);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
+                        onResponseListener.OnResponseFailure(response);
+                    }
                 }
-            },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    if (isToShowProgressDialog)
-                        AppUtils.getInstance().hideProgressDialog(activity);
-                    AppController.handleVolleyError(activity, error);
-                    onResponseListener.OnResponseFailure();
 
-                }
-            }) {
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (isToShowProgressDialog)
+                            AppUtils.getInstance().hideProgressDialog(activity);
+                        AppController.handleVolleyError(activity, error);
+                        onResponseListener.OnResponseFailure(null);
+
+                    }
+                }) {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -194,64 +199,74 @@ public class WebserviceHelper {
             }
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-            AppController.MY_SOCKET_TIMEOUT_MS,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                AppController.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         AppController.getInstance().addToRequestQueue(stringRequest, activity.getClass().getSimpleName());
     }
 
     private static void doGet(final Activity activity, final String url, final OnResponseListener onResponseListener,
-        final boolean isToShowProgressDialog, final int headerType) {
+                              final boolean isToShowProgressDialog, final int headerType) {
         AppUtils.getInstance().hideProgressDialog(activity);
         if (isToShowProgressDialog)
-            AppUtils.getInstance().showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-            url, (String) null,
-            response -> {
-                AppUtils.getInstance().hideProgressDialog(activity);
-                AppController.traceLog("URL : ", url);
-                AppController.traceLog("Response : ", response + "");
-                if (response.has("httpCode")) {
-                    if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
-                        try {
-                            onResponseListener.OnResponseSuccess(response);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            onResponseListener.OnResponseFailure();
-                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
-                        }
-                    } else if (response.optInt("httpCode") == 401) {
-                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, response.optString("message") + ", please try again");
+                url, (String) null,
+                response -> {
+                    AppUtils.getInstance().hideProgressDialog(activity);
+                    AppController.traceLog("URL : ", url);
+                    AppController.traceLog("Response : ", response + "");
+                    if (response.has("httpCode")) {
+                        if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
+                            try {
+                                onResponseListener.OnResponseSuccess(response);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                onResponseListener.OnResponseFailure(response);
+                                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
+                            }
+                        } else if (response.optInt("httpCode") == 401) {
+                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, response.optString("message") + ", please try again");
 //                                SecurePrefManager.with(activity).clear().confirm();
 //                                activity.startActivity(new Intent(activity, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 //                                activity.finish();
 //                                new AppController().cancelPendingRequests(AppController.TAG);
-                    } else if (response.optInt("httpCode") == 404) {
-                        onResponseListener.OnResponseFailure();
+                        } else if (response.optInt("httpCode") == 404) {
+                            onResponseListener.OnResponseFailure(response);
+                        } else {
+                            try {
+                                onResponseListener.OnResponseFailure(response);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
+                            }
+                        }
                     } else {
                         try {
-                            onResponseListener.OnResponseFailure();
+                            onResponseListener.OnResponseSuccess(response);
                         } catch (Exception e) {
                             e.printStackTrace();
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
+                            onResponseListener.OnResponseFailure(response);
                         }
                     }
-                } else {
-                    try {
-                        onResponseListener.OnResponseSuccess(response);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
-                        onResponseListener.OnResponseFailure();
-                    }
-                }
-            }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(final VolleyError volleyError) {
                 if (isToShowProgressDialog)
                     AppUtils.getInstance().hideProgressDialog(activity);
-                onResponseListener.OnResponseFailure();
+                NetworkResponse response = volleyError.networkResponse;
+                JSONObject responseObject = new JSONObject();
+                try {
+                    responseObject = new JSONObject(new String(response.data));
+                    showErrorAlert(activity, responseObject);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (NullPointerException ex) {
+                    ex.printStackTrace();
+                }
+                onResponseListener.OnResponseFailure(responseObject);
                 AppController.handleVolleyError(activity, volleyError);
             }
 
@@ -274,67 +289,77 @@ public class WebserviceHelper {
 
         };
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(
-            AppController.MY_SOCKET_TIMEOUT_MS,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                AppController.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq,
-            TAG);
+                TAG);
     }
 
     private static void doPatch(final Activity activity, final String url, final OnResponseListener onResponseListener,
-        final boolean isToShowProgressDialog, final int headerType) {
+                                final boolean isToShowProgressDialog, final int headerType) {
         if (isToShowProgressDialog)
-            AppUtils.getInstance().showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.PATCH,
-            url, (String) null,
-            response -> {
-                if (isToShowProgressDialog)
-                    AppUtils.getInstance().hideProgressDialog(activity);
-                AppController.traceLog("URL : ", url);
-                AppController.traceLog("Response : ", response + "");
-                if (response.has("httpCode")) {
-                    if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
-                        try {
-                            onResponseListener.OnResponseSuccess(response);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            onResponseListener.OnResponseFailure();
-                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
-                        }
-                    } else if (response.optInt("httpCode") == 401) {
-                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, response.optString("message") + ", please try again");
+                url, (String) null,
+                response -> {
+                    if (isToShowProgressDialog)
+                        AppUtils.getInstance().hideProgressDialog(activity);
+                    AppController.traceLog("URL : ", url);
+                    AppController.traceLog("Response : ", response + "");
+                    if (response.has("httpCode")) {
+                        if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
+                            try {
+                                onResponseListener.OnResponseSuccess(response);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                onResponseListener.OnResponseFailure(response);
+                                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
+                            }
+                        } else if (response.optInt("httpCode") == 401) {
+                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, response.optString("message") + ", please try again");
 //                                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, response.optString("message"));
 //                                SecurePrefManager.with(activity).clear().confirm();
 //                                activity.startActivity(new Intent(activity, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 //                                activity.finish();
 //                                new AppController().cancelPendingRequests(AppController.TAG);
-                    } else if (response.optInt("httpCode") == 404) {
-                        onResponseListener.OnResponseFailure();
+                        } else if (response.optInt("httpCode") == 404) {
+                            onResponseListener.OnResponseFailure(response);
+                        } else {
+                            try {
+                                onResponseListener.OnResponseFailure(response);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
+                            }
+                        }
                     } else {
                         try {
-                            onResponseListener.OnResponseFailure();
+                            onResponseListener.OnResponseSuccess(response);
                         } catch (Exception e) {
                             e.printStackTrace();
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
+                            onResponseListener.OnResponseFailure(response);
                         }
                     }
-                } else {
-                    try {
-                        onResponseListener.OnResponseSuccess(response);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, e.getMessage());
-                        onResponseListener.OnResponseFailure();
-                    }
-                }
-            }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(final VolleyError volleyError) {
                 if (isToShowProgressDialog)
                     AppUtils.getInstance().hideProgressDialog(activity);
-                onResponseListener.OnResponseFailure();
+                NetworkResponse response = volleyError.networkResponse;
+                JSONObject responseObject = new JSONObject();
+                try {
+                    responseObject = new JSONObject(new String(response.data));
+                    showErrorAlert(activity, responseObject);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (NullPointerException ex) {
+                    ex.printStackTrace();
+                }
+                onResponseListener.OnResponseFailure(responseObject);
                 AppController.handleVolleyError(activity, volleyError);
             }
 
@@ -358,19 +383,19 @@ public class WebserviceHelper {
 
         };
         jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(
-            AppController.MY_SOCKET_TIMEOUT_MS,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                AppController.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(jsonObjReq,
-            TAG);
+                TAG);
     }
 
 
     private static void doPost(final Activity activity, final String url, final HashMap<String, String> requestParams, final OnResponseListener
-        onResponseListener, final boolean isToShowProgressDialog, final int headerType) {
+            onResponseListener, final boolean isToShowProgressDialog, final int headerType) {
         if (isToShowProgressDialog)
-            AppUtils.getInstance().showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
 
@@ -398,7 +423,7 @@ public class WebserviceHelper {
 //                        activity.finish();
 //                        new AppController().cancelPendingRequests(AppController.TAG);
                     } else if (mJsonObject.optInt("httpCode") == 404) {
-                        onResponseListener.OnResponseFailure();
+                        onResponseListener.OnResponseFailure(null);
                     } else if (!mJsonObject.has("httpCode")) { //event create success
                         try {
                             onResponseListener.OnResponseSuccess(mJsonObject);
@@ -416,7 +441,7 @@ public class WebserviceHelper {
                     } /*else {
                         try {
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_ERROR, mJsonObject.optString("message"));
-                            onResponseListener.OnResponseFailure(mJsonObject);
+                            onResponseListener.OnResponseFailure(responsemJsonObject);
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -430,15 +455,15 @@ public class WebserviceHelper {
             }
 
         },
-            new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    if (isToShowProgressDialog)
-                        AppUtils.getInstance().hideProgressDialog(activity);
-                    AppController.handleVolleyError(activity, error);
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (isToShowProgressDialog)
+                            AppUtils.getInstance().hideProgressDialog(activity);
+                        AppController.handleVolleyError(activity, error);
 
-                }
-            }) {
+                    }
+                }) {
             @Override
             protected Map<String, String> getParams() {
                 return requestParams;
@@ -451,10 +476,35 @@ public class WebserviceHelper {
             }
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-            AppController.MY_SOCKET_TIMEOUT_MS,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                AppController.MY_SOCKET_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         AppController.getInstance().addToRequestQueue(stringRequest, TAG);
+    }
+
+
+    public static void showErrorAlert(final Activity activity, final JSONObject errorObject) {
+        String message = "", title = "";
+        message = errorObject.optString("msg");
+        if (errorObject.has("errorDetails") && !TextUtils
+                .isEmpty(errorObject.optString("errorDetails")) && errorObject.optBoolean("error")) {
+            if (errorObject.optJSONObject("errorDetails") instanceof JSONObject) {
+                message = errorObject.optJSONObject("errorDetails").optString("message");
+                title = errorObject.optString("msg");
+            }
+
+            AppUtils.getInstance().showAlert(activity, title, message, false, new OnButtonClick() {
+                @Override
+                public void onPositiveButtonClicked(DialogInterface dialogInterface) {
+
+                }
+
+                @Override
+                public void onNegativeButtonClicked() {
+
+                }
+            });
+        }
     }
 
 }

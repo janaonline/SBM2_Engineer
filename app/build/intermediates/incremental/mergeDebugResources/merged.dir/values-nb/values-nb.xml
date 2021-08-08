@@ -92,6 +92,14 @@
     <string msgid="5201977337835724196" name="common_open_on_phone">"Åpne på telefonen"</string>
     <string msgid="3441753203274453993" name="common_signin_button_text">"Logg på"</string>
     <string msgid="669893613918351210" name="common_signin_button_text_long">"Logg på med Google"</string>
+    <string name="crop_image_activity_no_permissions">Avbryter, nødvendige tillatelser er ikke gitt</string>
+    <string name="crop_image_activity_title"/>
+    <string name="crop_image_menu_crop">Beskjær</string>
+    <string name="crop_image_menu_flip">Vend</string>
+    <string name="crop_image_menu_flip_horizontally">Vend vannrett</string>
+    <string name="crop_image_menu_flip_vertically">Vend loddrett</string>
+    <string name="crop_image_menu_rotate_left">Roter teller med urviseren</string>
+    <string name="crop_image_menu_rotate_right">Roter</string>
     <string name="error_icon_content_description">Feil</string>
     <string name="exposed_dropdown_menu_content_description">Vis rullegardinmenyen</string>
     <string msgid="4133737464567140336" name="fcm_fallback_notification_channel_label">"Diverse"</string>
@@ -165,6 +173,7 @@
     <string name="mtrl_picker_toggle_to_text_input_mode">Bytt til tekstinndatamodus</string>
     <string name="mtrl_picker_toggle_to_year_selection">Trykk for å bytte til å velge år</string>
     <string name="password_toggle_content_description">Vis passordet</string>
+    <string name="pick_image_intent_chooser_title">Velg kilde</string>
     <string msgid="1303870564366209730" name="place_autocomplete_clear_button">"Fjern søket"</string>
     <string msgid="2809095107724486040" name="place_autocomplete_search_hint">"Søk"</string>
     <string msgid="368094699078615544" name="s1">"Lagre bilde"</string>

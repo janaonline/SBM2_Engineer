@@ -159,7 +159,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     private void runGetComplaintWebService() {
         frameLoading.setVisibility(View.GONE);
         findViewById(R.id.parentLayout).setVisibility(View.GONE);
-        AppUtils.getInstance().showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity,activity.getResources().getString(R.string.loading));
         final String url = URLData.BASE_URL
                 + URLData.COMPLAINT_ID
                 + AppController.selectedComplaintData.getComplaintId()
@@ -170,7 +170,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 frameLoading.setVisibility(View.GONE);
                 AppUtils.getInstance().hideProgressDialog(activity);
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,"Unknown error, please refresh complaints");
