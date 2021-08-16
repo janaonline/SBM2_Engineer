@@ -178,7 +178,7 @@
                                                 android:layout_toLeftOf="@+id/complaint_status"
                                                 android:layout_toRightOf="@+id/user_image"
                                                 android:maxLines="1"
-                                                android:text="Paul Walker"
+                                                android:text=""
                                                 android:textColor="@color/black"
                                                 android:textSize="14sp"
                                                 android:textStyle="bold" />
@@ -195,7 +195,7 @@
                                                 android:layout_marginBottom="8dp"
                                                 android:layout_toLeftOf="@+id/change_status"
                                                 android:background="@drawable/complaint_status_on_the_job"
-                                                android:text="ON-THE-JOB"
+                                                android:hint="ON-THE-JOB"
                                                 android:textAllCaps="true"
                                                 android:textColor="@color/blue_on_the_job"
                                                 android:textSize="12sp" />
@@ -232,7 +232,7 @@
                                                     android:layout_alignParentLeft="true"
                                                     android:layout_alignParentRight="true"
                                                     android:maxLines="1"
-                                                    android:text="2 hours ago"
+                                                    android:hint="2 hours ago"
                                                     android:textColor="#757575"
                                                     android:textSize="12dp" />
                                             </RelativeLayout>
@@ -273,7 +273,7 @@
                                                     android:layout_marginLeft="8dp"
                                                     android:layout_marginBottom="2dp"
                                                     android:gravity="center_vertical"
-                                                    android:text="Bad Roads"
+                                                    android:hint="Bad Roads"
                                                     android:textColor="@color/black"
                                                     android:textSize="14sp"
                                                     android:textStyle="bold" />
@@ -300,7 +300,7 @@
                                                     android:layout_marginTop="8dp"
                                                     android:layout_marginBottom="2dp"
                                                     android:gravity="center_vertical"
-                                                    android:text="Location of complaint"
+                                                    android:hint="Location of complaint"
                                                     android:textColor="@color/secondary_text_color"
                                                     android:textSize="14sp" />
 

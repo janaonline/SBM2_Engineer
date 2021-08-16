@@ -85,7 +85,7 @@ public class AndroidCustomGalleryActivity extends BaseAppCompatActivity {
 
         next.setOnClickListener(view -> {
             if (mSelectedImagesModel.getSizeInMB() > 8) {
-                showAlertToSelectImageNumbers("Please select an image less than 8MB");
+                showAlertToSelectImageNumbers(getString(R.string.select_less_mb_image));
             } else {
                 new ProceedToDescriptionScreen().execute();
             }
@@ -114,7 +114,7 @@ public class AndroidCustomGalleryActivity extends BaseAppCompatActivity {
         ab.setTitle("Message");
         ab.setIcon(getResources().getDrawable(android.R.drawable.ic_dialog_info));
         ab.setMessage(messageInfo);
-        ab.setPositiveButton("Ok", (dialog, which) -> dialog.dismiss());
+        ab.setPositiveButton(activity.getResources().getString(R.string.ok), (dialog, which) -> dialog.dismiss());
         ab.show();
     }
 

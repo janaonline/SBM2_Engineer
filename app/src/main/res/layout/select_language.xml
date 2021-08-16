@@ -20,7 +20,7 @@
         android:gravity="left"
         android:maxLines="2"
         android:padding="@dimen/margin16dp"
-        android:text="@string/set_your_swachh_bharath_in_nyour_favourite_language"
+        android:text="@string/choose_your_preferred_language"
         android:textColor="@color/white"
         android:textSize="@dimen/textSize18dp"
         android:textStyle="bold"

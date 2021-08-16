@@ -65,7 +65,6 @@ public class UserMobileNumber extends BaseAppCompatActivity {
         activity = UserMobileNumber.this;
         ButterKnife.bind(this);
 
-
         mobileNumber.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -89,6 +88,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
                     submit.setEnabled(true);
                     submit.setTextColor(Color.WHITE);
                     AppController.hideKeyboard(activity, mobileNumber);
+                    AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER = mobileNumber.getText().toString();
                 } else {
                     submit.setEnabled(false);
                     submit.setTextColor(getResources().getColor(R.color.greySecondary));
@@ -98,7 +98,11 @@ public class UserMobileNumber extends BaseAppCompatActivity {
         mobileNumber.setText(ICMyCPreferenceData.getPreferenceItem(
                 UserMobileNumber.this, ICMyCPreferenceData.Mobile_No, ""));
 
-        selectedLanguage.setText(getString(R.string.english));
+
+        if (!AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER.isEmpty())
+            mobileNumber.setText(AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER);
+
+        selectedLanguage.setText(AppController.languageArrayList.get(Integer.parseInt(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.selectedLanguagePosition, "0"))).getLanguage_label());
         selectedLanguage.setOnClickListener(new View.OnClickListener() {
             /**
              * Called when a view has been clicked.
@@ -107,6 +111,8 @@ public class UserMobileNumber extends BaseAppCompatActivity {
              */
             @Override
             public void onClick(View v) {
+
+
                 startActivityForResult(new Intent(activity, SelectLanguage.class), 102);
             }
         });
@@ -189,6 +195,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
                                 }
                                 if (isEngineerOrULBAdmin) {
                                     startActivity(new Intent(activity, OTPVerification.class));
+                                    AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER = "";
                                 } else {
                                     AppController.showAlert(activity, "",
                                             "Provided mobile number is not registered as SBM Engineer, please check the "
@@ -305,15 +312,17 @@ public class UserMobileNumber extends BaseAppCompatActivity {
         // TODO Auto-generated method stub
         super.onResume();
         if (mobileNumber != null) {
-            mobileNumber.setText("");
+//            mobileNumber.setText("");
         }
+        AppController.assignLanguage(this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 102) {
-            AppController.assignLanguage(activity);
+            UserMobileNumber.this.finish();
+            startActivity(new Intent(activity, UserMobileNumber.class));
             selectedLanguage.setText(AppController.languageArrayList.get(Integer.parseInt(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.selectedLanguagePosition, "0"))).getLanguage_label());
         }
     }

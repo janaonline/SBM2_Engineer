@@ -37,7 +37,7 @@
                 android:layout_alignBottom="@+id/statusTitleValue"
                 android:layout_marginLeft="8dp"
                 android:gravity="center"
-                android:text="Mark as "
+                android:text="@string/mark_as"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:visibility="gone" />
@@ -49,7 +49,7 @@
                 android:layout_marginTop="@dimen/margin56dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="left"
-                android:text="ID : W0234C5365463"
+                android:hint="ID : W0234C5365463"
                 android:textAllCaps="false"
                 android:textColor="@color/secondary_text_color"
                 android:textSize="@dimen/textSize16dp"

@@ -92,7 +92,7 @@ public class OTPVerification extends BaseAppCompatActivity {
             public void afterTextChanged(Editable s) {
                 // TODO Auto-generated method stub
                 boolean isToEnableVerifyButton = (!TextUtils.isEmpty(otpEditText.getText().toString())) ? true : false;
-                if(s.toString().trim().length() >= 4) {
+                if (s.toString().trim().length() >= 4) {
                     AppController.getInstance().hideKeyboard(activity, otpEditText);
                 }
                 setButtonStyleEnabledOrDisabled(isToEnableVerifyButton);
@@ -107,14 +107,14 @@ public class OTPVerification extends BaseAppCompatActivity {
              */
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(otpEditText.getText().toString())) {
+                if (!TextUtils.isEmpty(otpEditText.getText().toString())) {
                     runOTPWebService();
                 } else {
                 }
             }
         });
 
-        resendCode.setText(Html.fromHtml(getString(R.string.didn_t_receive_otp) + "<font color='" + getResources().getColor(R.color.primary) + "' >  " + getString(R.string.resend) + "</font>"));
+        resendCode.setText(Html.fromHtml(getString(R.string.didn_t_receive_otp) + "<font color='" + getResources().getColor(R.color.primary) + "' >  " + getString(R.string.resend_code_) + "</font>"));
 
         resendCode.setOnClickListener(new View.OnClickListener() {
             /**
@@ -136,7 +136,7 @@ public class OTPVerification extends BaseAppCompatActivity {
 
                     public void onFinish() {
                         resendCode.setClickable(true);
-                        resendCode.setText("Resend code");
+                        resendCode.setText(activity.getResources().getString(R.string.resend_code_));
                     }
                 }.start();
             }
@@ -158,8 +158,9 @@ public class OTPVerification extends BaseAppCompatActivity {
         });
 
     }
+
     private void setButtonStyleEnabledOrDisabled(boolean isToEnable) {
-        if(isToEnable) {
+        if (isToEnable) {
             done.setEnabled(true);
             done.setTextColor(Color.WHITE);
         } else {
@@ -199,7 +200,7 @@ public class OTPVerification extends BaseAppCompatActivity {
         HashMap<String, String> params = new HashMap<>();
         params.put("mobile_number", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
         params.put("otp", otpEditText.getText().toString());
-        if(!TextUtils.isEmpty(AppConstant.deviceToken))
+        if (!TextUtils.isEmpty(AppConstant.deviceToken))
             params.put("device_token", AppConstant.deviceToken);
         params.put("mac_address", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.deviceUniqueID, ""));
         params.putAll(URLDataSwachhManch.getChannelParam());
@@ -211,7 +212,7 @@ public class OTPVerification extends BaseAppCompatActivity {
 
             @Override
             public void OnResponseSuccess(JSONObject response) {
-                if(response.has("access_token")) {
+                if (response.has("access_token")) {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.TOKEN_TYPE, response.optString("token_type"));
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.token, response.optString("access_token"));
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.refresh_token, response.optString("refresh_token"));
@@ -274,12 +275,12 @@ public class OTPVerification extends BaseAppCompatActivity {
             public void OnResponseSuccess(JSONObject responseJsonObject) {
                 try {
                     AppUtils.getInstance().hideProgressDialog(activity);
-                    if(responseJsonObject.optInt("httpCode") == 200 || responseJsonObject.optInt("httpCode") == 201) {
+                    if (responseJsonObject.optInt("httpCode") == 200 || responseJsonObject.optInt("httpCode") == 201) {
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, responseJsonObject.optString("message"));
                     } else {
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, responseJsonObject.optString("message"));
                     }
-                } catch(Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 //                        runCommentFeedWebService(true);

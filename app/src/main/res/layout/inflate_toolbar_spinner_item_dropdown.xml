@@ -17,7 +17,7 @@
         android:letterSpacing="0.045"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
-        android:text="Language"
+        android:text="@string/language"
         android:textColor="@color/primerColorBlack"
         android:textSize="@dimen/textSize16dp" />
 </LinearLayout>

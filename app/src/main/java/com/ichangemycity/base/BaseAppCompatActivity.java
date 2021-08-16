@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.permission.GetPermissionResult;
+import com.ichangemycity.swachhbharatengineer.R;
 import com.karan.churi.PermissionManager.PermissionManager;
 
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class BaseAppCompatActivity extends AppCompatActivity {
             public void ifCancelledAndCanRequest(Activity activity) {
                 // Do Customized operation if permission is cancelled without checking "Don't ask again"
                 // Use super.ifCancelledAndCanRequest(activity); or Don't override this method if not in use
-                Toast.makeText(activity, "Please go to App settings and enable permissions", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, activity.getResources().getString(R.string.app_setting_and_enable_permission), Toast.LENGTH_SHORT).show();
 //                proceedAfterPermissionFailure();
             }
 

@@ -33,7 +33,7 @@ public class ViewAllMediaActivity extends BaseAppCompatActivity {
     setContentView(R.layout.activity_view_all_media);
     ButterKnife.bind(this);
     activity = ViewAllMediaActivity.this;
-    setToolbarAndCustomizeTitle(toolbar, "Preview");
+    setToolbarAndCustomizeTitle(toolbar, getString(R.string.preview));
     ImagePagerAdapter adapter = new ImagePagerAdapter(getSupportFragmentManager(),
         AppConstant.getInstance().imagePreviewList.size());
     viewPager.setAdapter(adapter);

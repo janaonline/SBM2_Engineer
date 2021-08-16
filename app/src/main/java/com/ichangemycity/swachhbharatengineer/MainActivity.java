@@ -112,15 +112,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void clearBackStack() {
         try {
             UserMobileNumber.activity.finish();
-        } catch(Exception e) {
+        } catch (Exception e) {
         }
         try {
             OTPVerification.activity.finish();
-        } catch(Exception e) {
+        } catch (Exception e) {
         }
         try {
             SelectLanguage.act.finish();
-        } catch(Exception e) {
+        } catch (Exception e) {
         }
     }
 
@@ -129,8 +129,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onNewIntent(intent);
         String action = intent.getAction();
         String data = intent.getDataString();
-        if(data != null) {
-            if(Intent.ACTION_VIEW.equals(action) && data != null) {
+        if (data != null) {
+            if (Intent.ACTION_VIEW.equals(action) && data != null) {
                 AppController.selectedComplaintData.setComplaintId(data.substring(data.lastIndexOf("/") + 1));
                 startActivity(new Intent(activity, ComplaintDetail.class));
             }
@@ -143,20 +143,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void redirectIfFromPushNotification() {
         try {
-            if(getIntent().getExtras() != null) {
-                if(getIntent().getExtras().getString("body") != null) {
+            if (getIntent().getExtras() != null) {
+                if (getIntent().getExtras().getString("body") != null) {
                     //        showNotification();
                 }
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            if(!TextUtils.isEmpty(AppController.selectedComplaintData.getComplaintId())) {
+            if (!TextUtils.isEmpty(AppController.selectedComplaintData.getComplaintId())) {
                 startActivity(new Intent(MainActivity.activity, ComplaintDetail.class));
             }
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -166,13 +166,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // TODO Auto-generated method stub
         complaintFilterModel.clear();
         ComplaintFilterModel mComplaintFilterModel = new ComplaintFilterModel();
-        if(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.roleId, "").equalsIgnoreCase("2")) {
+        if (ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.roleId, "").equalsIgnoreCase("2")) {
             // 2 or ULB , 4 for Engineer
             mComplaintFilterModel.setDisplayTitle(activity.getResources().getString(R.string.un_assigned_complaints));
             mComplaintFilterModel.setComplaintType(URLData.UN_ASSIGNED_COMPLAINTS);
 
         } else {
-            mComplaintFilterModel.setDisplayTitle("Assigned Complaints");
+            mComplaintFilterModel.setDisplayTitle(activity.getResources().getString(R.string.assigned_complaints));
             mComplaintFilterModel.setComplaintType(URLData.ASSIGNED_COMPLAINTS_ENGINEER);
 
         }
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if(drawer.isDrawerOpen(GravityCompat.START)) {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
@@ -277,7 +277,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if(id == R.id.notifs) {
+        if (id == R.id.notifs) {
             activity.startActivity(new Intent(activity, NotificationActivity.class));
             return true;
         }
@@ -339,7 +339,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //                .getString(R
         //                    .string.you)).go());
         textViewLocation.setText(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.location, ""));
-        if(!TextUtils.isEmpty(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.designation, ""))) {
+        if (!TextUtils.isEmpty(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.designation, ""))) {
             userDesignationLeftMenu.setVisibility(View.VISIBLE);
             userDesignationLeftMenu.setText(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.designation, ""));
         } else {
@@ -382,10 +382,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        if(item != null) {
-            if(!isFirstTime) {
+        if (item != null) {
+            if (!isFirstTime) {
                 int id = item.getItemId();
-                switch(id) {
+                switch (id) {
                     case R.id.high_priority:
                         complaintFilter.setSelection(2);
                         break;
@@ -426,14 +426,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             //                        AppController.trackEvent(AppController.RATE_US_ON_PLAYSTORE,
                             //                                AppController.RATE_US_ON_PLAYSTORE_LANDED,
                             //                                AppController.RATE_US_ON_PLAYSTORE_LANDED);
-                        } catch(android.content.ActivityNotFoundException anfe) {
+                        } catch (android.content.ActivityNotFoundException anfe) {
 
                         }
                         break;
                     case R.id.nav_privacypolicy:
                         try {
                             activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.ichangemycity.com/privacy-policy-mobile?app=sbmengineer")));
-                        } catch(android.content.ActivityNotFoundException anfe) {
+                        } catch (android.content.ActivityNotFoundException anfe) {
 
                         }
                         break;
@@ -451,7 +451,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             //                                AppController.REPORT_BUG_LANDED,
                             //                                AppController.REPORT_BUG_LANDED);
 
-                        } catch(Exception e) { // e.toString();
+                        } catch (Exception e) { // e.toString();
                         }
                         break;
                     case R.id.nav_logout:
@@ -468,7 +468,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         }
-        if(isFirstTime) {
+        if (isFirstTime) {
             isFirstTime = false;
         }
 
@@ -491,14 +491,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void OnResponseSuccess(final JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
                 try {
-                    if(response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
+                    if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
                         try {
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
                             //                                    Toast.makeText(MainActivity.this,
                             //                                            mJsonObject.optString("message"),
                             //                                            Toast.LENGTH_LONG).show();
                             handleSuccessResponse(response);
-                        } catch(Exception e) {
+                        } catch (Exception e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
@@ -508,13 +508,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             //                                    Toast.makeText(MainActivity.this,
                             //                                            mJsonObject.optString("message"),
                             //                                            Toast.LENGTH_LONG).show(
-                        } catch(Exception e) {
+                        } catch (Exception e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                     }
                     onNewIntent(getIntent());
-                } catch(Exception e) {
+                } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
@@ -593,7 +593,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void handleSuccessResponse(final JSONObject mJsonObject) {
         try {
-            if(mJsonObject.has("engineer")) {
+            if (mJsonObject.has("engineer")) {
                 String user = mJsonObject.optString("engineer");
                 JSONObject userData = new JSONObject(user);
                 String name = userData.optString("name");
@@ -619,27 +619,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String re_opened_count = userData.get("re_opened_count").toString();
                 String rejected_count = userData.get("rejected_count").toString();
                 String un_assigned_count = "0";
-                if(userData.has("un_assigned_count")) {
+                if (userData.has("un_assigned_count")) {
                     un_assigned_count = userData.getString("un_assigned_count").toString();
                 }
 
-                if(!imageUrl.equalsIgnoreCase("")) {
+                if (!imageUrl.equalsIgnoreCase("")) {
                     JSONObject image_urls = new JSONObject(imageUrl);
                     imageUrl = image_urls.optString("original");
                     ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.userProfileImage, imageUrl);
                 } else {
                     ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.userProfileImage, "");
                 }
-                if(roleId != null) {
+                if (roleId != null) {
                     ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.roleId, roleId);
                     // 2 or ULB , 4 for Engineer
-                    if(roleId.equalsIgnoreCase("2")) {
+                    if (roleId.equalsIgnoreCase("2")) {
 
-                    } else if(roleId.equalsIgnoreCase("4")) {
+                    } else if (roleId.equalsIgnoreCase("4")) {
                         ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.assignedCount, userData.getString("assignedCount").toString());
                     }
                 }
-                if(!TextUtils.isEmpty(designation)) {
+                if (!TextUtils.isEmpty(designation)) {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.designation, designation);
                 } else {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.designation, "");
@@ -684,7 +684,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //            runHomeFeedWebService(complaintFilterModel.get(
             //                    complaintFilter.getSelectedItemPosition())
             //                    .getComplaintType());
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.activated, "1");
@@ -696,11 +696,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         try {
 
             AppUtils.getInstance().hideProgressDialog(activity);
-            if(isToRefresh) {
+            if (isToRefresh) {
                 isToRefresh = false;
                 runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), true);
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
 
         }
     }
@@ -711,20 +711,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void runHomeFeedWebService(final String ComplaintType, final boolean isToScroll) {
         {
             AppUtils.getInstance().hideProgressDialog(activity);
-            if(isToScroll) {
+            if (isToScroll) {
                 currentPage = 0;
                 //            ((TextView) (mRecyclerView.getEmptyView().findViewById(R.id.emptyView))).setText(activity.getResources().getString(R.string.loading));
                 //            mRecyclerView.getProgressView().setVisibility(View.VISIBLE);
                 //            AppUtils.getInstance().showProgressDialog(activity, getString(R.string.loading));
             }
             currentPage += 1;
-            if(currentPage == 1) {
+            if (currentPage == 1) {
                 data.clear();
                 mRecyclerView.setAdapter(new HomeTabLocalFeedAdapter(activity));
                 AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                 try {
                     ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.loading));
-                } catch(Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -746,19 +746,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     AppUtils.getInstance().hideProgressDialog(activity);
                     refreshLayout.setEnabled(true);
                     AppController.traceLog("home", url + " ---> " + response);
-                    if(isToScroll) {
+                    if (isToScroll) {
                         data.clear();
                         mRecyclerView.getAdapter().notifyDataSetChanged();
                         AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                         try {
                             ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.loading));
-                        } catch(Exception e) {
+                        } catch (Exception e) {
                         }
                     } else {
                         AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                         try {
                             findViewById(R.id.viewEmpty).setVisibility(View.GONE);
-                        } catch(Exception e) {
+                        } catch (Exception e) {
                         }
                     }
                     new ParseJSONResponse(response, isToScroll).execute();
@@ -843,21 +843,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onPostExecute(result);
             mRecyclerView.setVisibility(View.VISIBLE);
             hideSwipeProgress();
-            if(data.size() <= 0) {
+            if (data.size() <= 0) {
                 AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                 try {
                     findViewById(R.id.viewEmpty).setVisibility(View.VISIBLE);
                     ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
-                } catch(Exception e) {
+                } catch (Exception e) {
                 }
             }
-            if(isToScroll) {
+            if (isToScroll) {
                 AppUtils.getInstance().hideProgressDialog(activity);
                 mRecyclerView.setAdapter(new HomeTabLocalFeedAdapter(activity));
                 AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                 try {
                     ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
-                } catch(Exception e) {
+                } catch (Exception e) {
                 }
                 mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                     /**
@@ -887,7 +887,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         visibleItemCount = mLayoutManager.getChildCount();
                         totalItemCount = mLayoutManager.getItemCount();
                         pastVisiblesItems = ((LinearLayoutManager) mLayoutManager).findFirstVisibleItemPosition();
-                        if(visibleItemCount > 0 && mRecyclerView != null) {
+                        if (visibleItemCount > 0 && mRecyclerView != null) {
                             boolean firstItemVisible = pastVisiblesItems == 0;
                             // check if the top of the first item is
                             // visible
@@ -895,14 +895,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             enable = firstItemVisible && topOfFirstItemVisible;
                         }
                         refreshLayout.setEnabled(enable);
-                        if(isLoadMore) {
-                            if((visibleItemCount + pastVisiblesItems) >= (totalItemCount - 5)) {
+                        if (isLoadMore) {
+                            if ((visibleItemCount + pastVisiblesItems) >= (totalItemCount - 5)) {
                                 isLoadMore = false;
                                 // loading = false;
                                 try {
                                     runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), false);
 
-                                } catch(Exception e) {
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
@@ -924,7 +924,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ArrayList<ComplaintData> GetParsedJsonFromResponse(JSONObject json_comp_object) {
         try {
             JSONArray json_comp_array = json_comp_object.getJSONArray("complaints");
-            if(json_comp_array.length() == 0) {
+            if (json_comp_array.length() == 0) {
                 isLoadMore = false;
             } else {
 
@@ -932,7 +932,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 isLoadMore = true;
             }
             return data;
-        } catch(JSONException e) {
+        } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
             isLoadMore = false;
@@ -945,7 +945,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onStart();
         try {
             mRecyclerView.getAdapter().notifyDataSetChanged();
-        } catch(Exception e) {
+        } catch (Exception e) {
         }
     }
 
@@ -976,5 +976,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mRecyclerView.setVisibility(View.GONE);
         runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), true);
     }
+
 
 }

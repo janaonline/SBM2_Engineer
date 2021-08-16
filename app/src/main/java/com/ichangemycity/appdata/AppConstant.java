@@ -25,6 +25,9 @@ public class AppConstant {
     public static boolean isInternetInterrupted = false;
     public static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
 
+    public static String USER_TEMP_MOBILE_NUMBER = "";
+
+
     public ArrayList<String> imagePreviewList = new ArrayList<>();
 
 
