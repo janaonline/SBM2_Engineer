@@ -12,6 +12,8 @@
     <string name="we_won_t_share_your_details_with_any_one">আমরা আপনার বিস্তারিত কোন ব্যক্তির সাথে শেয়ার করব না।</string>
     <string name="change">পরিবর্তন করুন</string>
     <string name="enter_mobile_number">মোবাইল নম্বর লিখুন</string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
+    <string name="login_to_your_account">Log in to your account</string>
 
     <!-- Home tab -->
     <string name="app_name">স্বচ্ছতা</string>
@@ -86,5 +88,7 @@
     <!--COVID-19-->
     <string name="skip">এড়িয়ে</string>
     <string name="more_information_landmark_contact">নাম, ফোন নম্বর, ঠিকানা, ল্যান্ডমার্ক,বা রোগীর প্রাথমিক লক্ষণগুলি</string>
+    <string name="please_wait_for">"Please wait for "</string>
+    <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
 
 </resources>

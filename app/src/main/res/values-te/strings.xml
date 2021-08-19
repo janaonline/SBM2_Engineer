@@ -12,6 +12,8 @@
     <string name="we_won_t_share_your_details_with_any_one">మేము మీ వివరాలను ఎవరితోనూ పంచుకోము</string>
     <string name="change">మార్పు</string>
     <string name="enter_mobile_number">మొబైల్ నంబర్ నమోదు చేయండి</string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
+    <string name="login_to_your_account">Log in to your account</string>
 
     <!-- Home tab -->
     <string name="app_name">స్వచ్ఛత </string>
@@ -86,6 +88,8 @@
     <!--COVID-19-->
     <string name="skip">స్కిప్ </string>
     <string name="more_information_landmark_contact">పేరు, ఫోను నంబరు, చిరునామా, మైలురాయి, లేదా రోగి యొక్క ప్రాథమిక లక్షణాలు </string>
+    <string name="please_wait_for">"Please wait for "</string>
+    <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
 
 
 </resources>

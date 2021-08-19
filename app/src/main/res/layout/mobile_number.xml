@@ -116,7 +116,7 @@
                 android:id="@+id/done"
                 style="@style/ButtonTheme"
                 android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
-                android:text="@string/login" />
+                android:text="@string/get_started" />
 
             <TextView
                 android:id="@+id/signupLinkBtn"

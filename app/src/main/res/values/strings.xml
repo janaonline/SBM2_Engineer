@@ -96,8 +96,8 @@
     <string name="resolved">Resolved</string>
     <string name="on_the_job">On the job</string>
     <string name="english" translatable="false">English</string>
-    <string name="didn_t_receive_otp" translatable="false">Didn\'t receive OTP?</string>
-    <string name="login_to_your_account" translatable="false">Log in to your account</string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
+    <string name="login_to_your_account">Log in to your account</string>
     <string name="already_user" translatable="false">Already user?</string>
     <string name="dont_have_account" translatable="false">Dont have account?</string>
     <string name="please_upload_an_image_and_then_resolve_the_complaint_to_resolved" translatable="false">Image upload is mandatory to resolve a complaint</string>
@@ -112,5 +112,7 @@
     <string name="skip">Skip Selection</string>
     <string name="more_information_landmark_contact">Landmark, name, phone number, address</string>
     <string name="assigned_complaints">Assigned Complaints</string>
+    <string name="please_wait_for">"Please wait for "</string>
+    <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
 
 </resources>

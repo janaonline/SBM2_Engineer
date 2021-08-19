@@ -131,7 +131,7 @@ public class OTPVerification extends BaseAppCompatActivity {
 
                     public void onTick(long millisUntilFinished) {
                         resendCode.setClickable(false);
-                        resendCode.setText("Please wait for " + (millisUntilFinished / 1000) + " seconds,\n to resend OTP code");
+                        resendCode.setText(activity.getResources().getString(R.string.please_wait_for) + (millisUntilFinished / 1000) + activity.getResources().getString(R.string.seconds_to_resend_otp));
                     }
 
                     public void onFinish() {
