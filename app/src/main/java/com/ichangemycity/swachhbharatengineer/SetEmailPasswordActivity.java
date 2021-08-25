@@ -6,12 +6,12 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
+import androidx.annotation.Nullable;
+import com.google.android.material.textfield.TextInputLayout;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
-import com.andexert.library.RippleView;
 import com.google.gson.Gson;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppUtils;
@@ -44,8 +44,8 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
     @BindView(R.id.confirmPassword)
     EditText confirmPassword;
     @Nullable
-    @BindView(R.id.rippleView)
-    RippleView rippleView;
+    @BindView(R.id.done)
+    Button done;
     //call 1.4 if type=setEmailPassword and show three fields in SetEmailPasswordActivity.class
     //call 1.2 if type=login and show three fields in SetEmailPasswordActivity.class
     String type = "";
@@ -68,14 +68,17 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
             setToolbarAndCustomizeTitle(getString(R.string.login_with_password));
             confirmPasswordTIL.setVisibility(View.GONE);
         }
-        rippleView.setOnRippleCompleteListener(rippleView -> {
-            if (type.equalsIgnoreCase(AppConstant.ONBOARDING_TYPE_SET_EMAIL_PASSWORD)) {
-                //call 1.4 if type=setEmailPassword and show three fields in SetEmailPasswordActivity.class
-                setEmailPasswordAPICall();
-            } else if (type.equalsIgnoreCase(AppConstant.ONBOARDING_TYPE_LOGIN)) {
-                //call 1.2 if type=login and show three fields in SetEmailPasswordActivity.class
-                loginAPICall();
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (type.equalsIgnoreCase(AppConstant.ONBOARDING_TYPE_SET_EMAIL_PASSWORD)) {
+                    //call 1.4 if type=setEmailPassword and show three fields in SetEmailPasswordActivity.class
+                    setEmailPasswordAPICall();
+                } else if (type.equalsIgnoreCase(AppConstant.ONBOARDING_TYPE_LOGIN)) {
+                    //call 1.2 if type=login and show three fields in SetEmailPasswordActivity.class
+                    loginAPICall();
 
+                }
             }
         });
 
@@ -97,7 +100,7 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, URLDataSwachhManch.BASE_URL_AUTH, params, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppUtils.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -121,7 +124,7 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PATCH, URLString + PARAMS, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppUtils.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -147,7 +150,7 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
 
                     @Override
                     public void OnResponseFailure() {
-                        AppUtils.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     }
 
                     @Override
@@ -173,7 +176,7 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
 
     @Nullable
     @BindView(R.id.toolbar)
-    android.support.v7.widget.Toolbar toolbar;
+    androidx.appcompat.widget.Toolbar toolbar;
 
     private void setToolbarAndCustomizeTitle(String title) {
         setSupportActionBar(toolbar);

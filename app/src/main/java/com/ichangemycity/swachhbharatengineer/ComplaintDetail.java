@@ -10,22 +10,21 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.tabs.TabLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.widget.Toolbar;
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -84,7 +83,6 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     LinearLayout /*cta_btn, cta_feedback, */resolved;
     TextView locationText, locationlandmark;
     ImageView change_status;
-    ImageView locateComplaint, navigateComplaint;
     public static boolean isToRefresh = false;
     private Spinner changeStatus;
     FrameLayout frameSpinner;
@@ -103,8 +101,8 @@ public class ComplaintDetail extends BaseAppCompatActivity {
         un_satisfied = findViewById(R.id.un_satisfied);
         neutral = findViewById(R.id.neutral);
         frameSpinner = findViewById(R.id.frameSpinner);
-        locateComplaint = findViewById(R.id.locateComplaint);
-        navigateComplaint = findViewById(R.id.navigateComplaint);
+//        locateComplaint = findViewById(R.id.locateComplaint);
+//        navigateComplaint = findViewById(R.id.navigateComplaint);
         change_status = findViewById(R.id.change_status);
          complaint_image = findViewById(R.id.complaint_image);
         collapsingToolbar = findViewById(R.id.collapsingToolbar);
@@ -130,8 +128,8 @@ public class ComplaintDetail extends BaseAppCompatActivity {
 //                .findViewById(R.id.not_resolved);
 //        cta_feedback = (LinearLayout) ComplaintDetail.this
 //                .findViewById(R.id.resolved);
-        locationText = findViewById(R.id.locationText);
-        locationlandmark = findViewById(R.id.locationlandmark);
+//        locationText = findViewById(R.id.locationText);
+//        locationlandmark = findViewById(R.id.locationlandmark);
          changeStatus = findViewById(R.id.changeStatus);
         change_status.setVisibility(View.GONE);
         setToolbarAndCustomizeTitle(toolbar, " ");
@@ -161,7 +159,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     private void runGetComplaintWebService() {
         frameLoading.setVisibility(View.GONE);
         findViewById(R.id.parentLayout).setVisibility(View.GONE);
-        AppController.showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity);
         final String url = URLData.BASE_URL
                 + URLData.COMPLAINT_ID
                 + AppController.selectedComplaintData.getComplaintId()
@@ -174,7 +172,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
             @Override
             public void OnResponseFailure() {
                 frameLoading.setVisibility(View.GONE);
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,"Unknown error, please refresh complaints");
             }
 
@@ -224,7 +222,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
             super.onPostExecute(aVoid);
             frameLoading.setVisibility(View.GONE);
             findViewById(R.id.parentLayout).setVisibility(View.VISIBLE);
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
             loadDataIntoComponents();
             initiateChangeStatusEventListener();
         }
@@ -279,9 +277,9 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     }
 
     private void loadDataIntoComponents() {
-        AppController.hideProgressDialog(activity);
+        AppUtils.getInstance().hideProgressDialog(activity);
         setupViewPager();
-        AppController.customizeChangeStatusDropdown(activity, complaintDetailData, resolved, changeStatus, neutral, satisfaction, un_satisfied,
+        AppController.customizeChangeStatusDropdown(activity, complaintDetailData, changeStatus,
                 frameSpinner);
         setOffsetChangeListenerWhileScroll(true);
         appBarLayout.setExpanded(true);
@@ -316,40 +314,40 @@ public class ComplaintDetail extends BaseAppCompatActivity {
         share.setOnClickListener(
             m -> ParseComplaintData.shareComplaint(activity, complaintDetailData));
 
-        locateComplaint.setOnClickListener(v -> {
-            String uri = String.format(
-                    Locale.ENGLISH,
-                    "geo:0,0?q=" + complaintDetailData.getLatitude() + ","
-                            + complaintDetailData.getLongitude() + "&z=12 ("
-                            + complaintDetailData.getLocation() + ")");
-            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
-            // + cData.getLongitude());
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri
-                    .parse(uri));
-            mapIntent.setPackage("com.google.android.apps.maps");
-            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-            // }
-        });
-        navigateComplaint.setOnClickListener(v -> {
-            // TODO Auto-generated method stub
-
-            String uri = String.format(Locale.ENGLISH,
-                    "google.navigation:q=" + complaintDetailData.getLatitude() + ","
-                            + complaintDetailData.getLongitude());
-            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
-            // + cData.getLongitude());
-            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri
-                    .parse(uri));
-            mapIntent.setComponent(new ComponentName(
-                    "com.google.android.apps.maps",
-                    "com.google.android.maps.MapsActivity"));
-            mapIntent.setPackage("com.google.android.apps.maps");
-            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-            // }
-
-        });
+//        locateComplaint.setOnClickListener(v -> {
+//            String uri = String.format(
+//                    Locale.ENGLISH,
+//                    "geo:0,0?q=" + complaintDetailData.getLatitude() + ","
+//                            + complaintDetailData.getLongitude() + "&z=12 ("
+//                            + complaintDetailData.getLocation() + ")");
+//            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
+//            // + cData.getLongitude());
+//            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri
+//                    .parse(uri));
+//            mapIntent.setPackage("com.google.android.apps.maps");
+//            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(mapIntent);
+//            // }
+//        });
+//        navigateComplaint.setOnClickListener(v -> {
+//            // TODO Auto-generated method stub
+//
+//            String uri = String.format(Locale.ENGLISH,
+//                    "google.navigation:q=" + complaintDetailData.getLatitude() + ","
+//                            + complaintDetailData.getLongitude());
+//            // Uri uri = Uri.parse("geo:" + cData.getLatitude() + ","
+//            // + cData.getLongitude());
+//            Intent mapIntent = new Intent(Intent.ACTION_VIEW, Uri
+//                    .parse(uri));
+//            mapIntent.setComponent(new ComponentName(
+//                    "com.google.android.apps.maps",
+//                    "com.google.android.maps.MapsActivity"));
+//            mapIntent.setPackage("com.google.android.apps.maps");
+//            // if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivity(mapIntent);
+//            // }
+//
+//        });
         AppController.initiateCTAForShareComment();
         change_status.setOnClickListener(v -> inflateDialogtoShowChangeStatusMenu());
     }

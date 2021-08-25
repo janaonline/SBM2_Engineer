@@ -7,13 +7,16 @@ package com.ichangemycity.swachhbharatengineer;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.annotation.Nullable;
+import android.text.Editable;
+import android.text.Html;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -28,10 +31,7 @@ import com.ichangemycity.callback.OnTaskCompleted;
 import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.URLDataSwachhManch;
 import com.ichangemycity.webservice.WebserviceHelper;
-import com.mukesh.OtpView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -44,214 +44,248 @@ import static com.ichangemycity.webservice.URLDataSwachhManch.CHANNEL_KEY_VALUE;
 
 public class OTPVerification extends BaseAppCompatActivity {
 
-  public static Activity activity;
-  @Nullable
-  @BindView(R.id.otp)
-  OtpView otp;
-  @Nullable
-  @BindView(R.id.resendCode)
-  TextView resendCode;
-  @Nullable
-  @BindView(R.id.done)
-  Button done;
-  @Nullable
-  @BindView(R.id.enterotp)
-  TextView enterotp;
-  @Nullable
-  @BindView(R.id.parentLayout)
-  RelativeLayout parentLayout;
-//    public boolean isToShowOTPView = false;
+    public static Activity activity;
 
+    @BindView(R.id.enterotp)
+    EditText otpEditText;
 
-  @Override
-  public void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    AppController.assignLanguage(this);
-    setContentView(R.layout.otp_verify);
-    activity = OTPVerification.this;
-    ButterKnife.bind(this);
-    parentLayout.setVisibility(View.VISIBLE);
-    enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_)
-        + "\n(+91 - " + ICMyCPreferenceData
-        .getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, "") + ")");
-    done.setOnClickListener(new View.OnClickListener() {
-      /**
-       * Called when a view has been clicked.
-       *
-       * @param v The view that was clicked.
-       */
-      @Override
-      public void onClick(View v) {
-        if (otp.hasValidOTP()) {
-          runOTPWebService();
-        } else {
-        }
-      }
-    });
+    @BindView(R.id.resendCode)
+    TextView resendCode;
 
-    resendCode.setOnClickListener(new View.OnClickListener() {
-      /**
-       * Called when a view has been clicked.
-       *
-       * @param v The view that was clicked.
-       */
-      @Override
-      public void onClick(View v) {
-        AppUtils.showProgressDialog(activity);
-        onResendOtp();
-        //wait for 40 sec until receive resent otp
-        new CountDownTimer(60000, 1000) {
+    @BindView(R.id.done)
+    Button done;
 
-          public void onTick(long millisUntilFinished) {
-            resendCode.setClickable(false);
-            resendCode.setText("Please wait for " + (millisUntilFinished / 1000)
-                + " seconds,\n to resend OTP code");
-          }
+    @BindView(R.id.back)
+    ImageView back;
 
+    //    @BindView(R.id.enterotp)
+    //    TextView enterotp;
 
-          public void onFinish() {
-            resendCode.setClickable(true);
-            resendCode.setText("Resend code");
-          }
-        }.start();
-      }
-    });
-    enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_));
+    @BindView(R.id.parentLayout)
+    RelativeLayout parentLayout;
+    //    public boolean isToShowOTPView = false;
 
-    setToolbarAndCustomizeTitle();
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        AppController.assignLanguage(this);
+        setContentView(R.layout.otp_verify);
+        activity = OTPVerification.this;
+        ButterKnife.bind(this);
+        parentLayout.setVisibility(View.VISIBLE);
 
-  }
+        otpEditText.addTextChangedListener(new TextWatcher() {
 
-  @Nullable
-  @BindView(R.id.toolbar)
-  android.support.v7.widget.Toolbar toolbar;
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // TODO Auto-generated method stub
 
-  private void setToolbarAndCustomizeTitle() {
-    setSupportActionBar(toolbar);
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    toolbar.setNavigationOnClickListener(v -> activity.finish());
-    final Drawable upArrow = getResources().getDrawable(R.mipmap.back);
-    upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
-    getSupportActionBar().setHomeAsUpIndicator(upArrow);
-    getSupportActionBar().setTitle(" ");
-    toolbar.setTitleTextColor(Color.TRANSPARENT);
-  }
-
-  @Override
-  public void onStart() {
-    super.onStart();
-    AppUtils.hideProgressDialog(activity);
-//        if (!isToShowOTPView) {
-//            parentLayout.setVisibility(View.GONE);
-//        } else {
-//            isToShowOTPView = false;
-//            AppUtils.hideProgressDialog(activity);
-//            parentLayout.setVisibility(View.VISIBLE);
-//        }
-  }
-
-  private void runOTPWebService() { //1.2
-    HashMap<String, String> params = new HashMap<>();
-    params.put("mobile_number",
-        ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
-    params.put("otp", otp.getOTP());
-    params.put("device_token", AppConstant.deviceToken);
-    params.put("mac_address",
-        ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.deviceUniqueID, ""));
-    params.putAll(URLDataSwachhManch.getChannelParam());
-    new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, URLDataSwachhManch.BASE_URL_AUTH,
-        params, new OnResponseListener() {
-      @Override
-      public void OnResponseFailure() {
-        AppUtils.hideProgressDialog(activity);
-      }
-
-      @Override
-      public void OnResponseSuccess(JSONObject response) {
-        if (response.has("access_token")) {
-          ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.TOKEN_TYPE,
-              response.optString("token_type"));
-          ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.token,
-              response.optString("access_token"));
-          ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.refresh_token,
-              response.optString("refresh_token"));
-//                  getProfileAPICall
-          getProfileAPICall();
-        }
-      }
-    }, true, WebserviceHelper.HEADER_TYPE_AUTH);
-
-  }
-
-  private void getProfileAPICall() {
-    final String url = BASE_URL_PROFILE + CHANNEL_KEY_VALUE;
-    new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null,
-        new OnResponseListener() {
-
-          @Override
-          public void OnResponseFailure() {
-            AppUtils.hideProgressDialog(activity);
-          }
-
-          @Override
-          public void OnResponseSuccess(final JSONObject response) {
-            final Gson gson = new Gson();
-            final String json = gson.toJson(response);
-            ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.profileData, json);
-            new AppUtils().parseProfileGetResponse(activity, response, new OnTaskCompleted() {
-              @Override
-              public void onTaskSuccess() {
-//                                if (!jsonObject.optBoolean("has_password")) {
-//                                    // Goto Email,password and confirm password screen
-//                                    startActivity(new Intent(activity, SetEmailPasswordActivity.class).putExtra("type", AppConstant
-//                                            .ONBOARDING_TYPE_LOGIN));
-//                                }  else {
-                startActivity(new Intent(activity, MainActivity.class));
-//                                }
-              }
-
-              @Override
-              public void onTaskFailure() {
-
-              }
-            });
-
-          }
-        }, true, WebserviceHelper.HEADER_TYPE_PROFILE);
-  }
-
-  private void onResendOtp() {
-    AppUtils.showProgressDialog(activity);
-    HashMap<String, String> params = new HashMap<String, String>();
-    params.put("mobile_number",
-        ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
-    final String url = URLDataSwachhManch.BASE_URL_AUTH
-        + URLData.GENERATE_OTP + "?mobile_number=" + params.get("mobile_number").toString().trim();
-    new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, params,
-        new OnResponseListener() {
-          @Override
-          public void OnResponseFailure() {
-            AppUtils.hideProgressDialog(activity);
-          }
-
-          @Override
-          public void OnResponseSuccess(JSONObject responseJsonObject) {
-            try {
-              AppUtils.hideProgressDialog(activity);
-              if (responseJsonObject.optInt("httpCode") == 200
-                  || responseJsonObject.optInt("httpCode") == 201) {
-                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS,
-                    responseJsonObject.optString("message"));
-              } else {
-                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,
-                    responseJsonObject.optString("message"));
-              }
-            } catch (Exception e) {
-              e.printStackTrace();
             }
-//                        runCommentFeedWebService(true);
-          }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // TODO Auto-generated method stub
+                boolean isToEnableVerifyButton = (!TextUtils.isEmpty(otpEditText.getText().toString())) ? true : false;
+                if (s.toString().trim().length() >= 4) {
+                    AppController.getInstance().hideKeyboard(activity, otpEditText);
+                }
+                setButtonStyleEnabledOrDisabled(isToEnableVerifyButton);
+            }
+        });
+        //        enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_) + "\n(+91 - " + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, "") + ")");
+        done.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when a view has been clicked.
+             *
+             * @param v The view that was clicked.
+             */
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(otpEditText.getText().toString())) {
+                    runOTPWebService();
+                } else {
+                }
+            }
+        });
+
+        resendCode.setText(Html.fromHtml(getString(R.string.didn_t_receive_otp) + "<font color='" + getResources().getColor(R.color.primary) + "' >  " + getString(R.string.resend_code_) + "</font>"));
+
+        resendCode.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when a view has been clicked.
+             *
+             * @param v The view that was clicked.
+             */
+            @Override
+            public void onClick(View v) {
+                AppUtils.getInstance().showProgressDialog(activity);
+                onResendOtp();
+                //wait for 60 sec until receive resent otp
+                new CountDownTimer(60000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        resendCode.setClickable(false);
+                        resendCode.setText(activity.getResources().getString(R.string.please_wait_for) + (millisUntilFinished / 1000) + activity.getResources().getString(R.string.seconds_to_resend_otp));
+                    }
+
+                    public void onFinish() {
+                        resendCode.setClickable(true);
+                        resendCode.setText(activity.getResources().getString(R.string.resend_code_));
+                    }
+                }.start();
+            }
+        });
+        //        enterotp.setText(activity.getResources().getString(R.string.enter_verification_code_sent_to_));
+
+        //        setToolbarAndCustomizeTitle();
+
+        back.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Called when a view has been clicked.
+             *
+             * @param v The view that was clicked.
+             */
+            @Override
+            public void onClick(View v) {
+                activity.finish();
+            }
+        });
+
+    }
+
+    private void setButtonStyleEnabledOrDisabled(boolean isToEnable) {
+        if (isToEnable) {
+            done.setEnabled(true);
+            done.setTextColor(Color.WHITE);
+        } else {
+            done.setEnabled(false);
+            done.setTextColor(getResources().getColor(R.color.greySecondary));
+        }
+    }
+
+    //    @BindView(R.id.toolbar)
+    //    androidx.appcompat.widget.Toolbar toolbar;
+
+    //    private void setToolbarAndCustomizeTitle() {
+    //        setSupportActionBar(toolbar);
+    //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    //        toolbar.setNavigationOnClickListener(v -> activity.finish());
+    //        final Drawable upArrow = getResources().getDrawable(R.mipmap.back);
+    //        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+    //        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+    //        getSupportActionBar().setTitle(" ");
+    //        toolbar.setTitleTextColor(Color.TRANSPARENT);
+    //    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        AppUtils.getInstance().hideProgressDialog(activity);
+        //        if (!isToShowOTPView) {
+        //            parentLayout.setVisibility(View.GONE);
+        //        } else {
+        //            isToShowOTPView = false;
+        //            AppUtils.getInstance().hideProgressDialog(activity);
+        //            parentLayout.setVisibility(View.VISIBLE);
+        //        }
+    }
+
+    private void runOTPWebService() { //1.2
+        HashMap<String, String> params = new HashMap<>();
+        params.put("mobile_number", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
+        params.put("otp", otpEditText.getText().toString());
+        if (!TextUtils.isEmpty(AppConstant.deviceToken))
+            params.put("device_token", AppConstant.deviceToken);
+        params.put("mac_address", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.deviceUniqueID, ""));
+        params.putAll(URLDataSwachhManch.getChannelParam());
+        new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, URLDataSwachhManch.BASE_URL_AUTH, params, new OnResponseListener() {
+            @Override
+            public void OnResponseFailure() {
+                AppUtils.getInstance().hideProgressDialog(activity);
+            }
+
+            @Override
+            public void OnResponseSuccess(JSONObject response) {
+                if (response.has("access_token")) {
+                    ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.TOKEN_TYPE, response.optString("token_type"));
+                    ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.token, response.optString("access_token"));
+                    ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.refresh_token, response.optString("refresh_token"));
+                    //                  getProfileAPICall
+                    getProfileAPICall();
+                }
+            }
+        }, true, WebserviceHelper.HEADER_TYPE_AUTH);
+
+    }
+
+    private void getProfileAPICall() {
+        final String url = BASE_URL_PROFILE + CHANNEL_KEY_VALUE;
+        new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
+
+            @Override
+            public void OnResponseFailure() {
+                AppUtils.getInstance().hideProgressDialog(activity);
+            }
+
+            @Override
+            public void OnResponseSuccess(final JSONObject response) {
+                final Gson gson = new Gson();
+                final String json = gson.toJson(response);
+                ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.profileData, json);
+                new AppUtils().parseProfileGetResponse(activity, response, new OnTaskCompleted() {
+                    @Override
+                    public void onTaskSuccess() {
+                        //                                if (!jsonObject.optBoolean("has_password")) {
+                        //                                    // Goto Email,password and confirm password screen
+                        //                                    startActivity(new Intent(activity, SetEmailPasswordActivity.class).putExtra("type", AppConstant
+                        //                                            .ONBOARDING_TYPE_LOGIN));
+                        //                                }  else {
+                        startActivity(new Intent(activity, MainActivity.class));
+                        //                                }
+                    }
+
+                    @Override
+                    public void onTaskFailure() {
+
+                    }
+                });
+
+            }
+        }, true, WebserviceHelper.HEADER_TYPE_PROFILE);
+    }
+
+    private void onResendOtp() {
+        AppUtils.getInstance().showProgressDialog(activity);
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("mobile_number", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
+        final String url = URLDataSwachhManch.BASE_URL_AUTH + URLData.GENERATE_OTP + "?mobile_number=" + params.get("mobile_number").toString().trim();
+        new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, params, new OnResponseListener() {
+            @Override
+            public void OnResponseFailure() {
+                AppUtils.getInstance().hideProgressDialog(activity);
+            }
+
+            @Override
+            public void OnResponseSuccess(JSONObject responseJsonObject) {
+                try {
+                    AppUtils.getInstance().hideProgressDialog(activity);
+                    if (responseJsonObject.optInt("httpCode") == 200 || responseJsonObject.optInt("httpCode") == 201) {
+                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, responseJsonObject.optString("message"));
+                    } else {
+                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, responseJsonObject.optString("message"));
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //                        runCommentFeedWebService(true);
+            }
         }, true, WebserviceHelper.HEADER_TYPE_NORMAL);
-  }
+    }
 
 }

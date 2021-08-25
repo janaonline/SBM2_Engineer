@@ -2,8 +2,8 @@ package com.jude.easyrecyclerview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.ColorRes;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.ColorRes;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -44,7 +44,7 @@ public class EasyRecyclerView extends FrameLayout {
   protected ArrayList<RecyclerView.OnScrollListener> mExternalOnScrollListenerList = new ArrayList<>();
 
   protected SwipeRefreshLayout mPtrLayout;
-  protected android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener mRefreshListener;
+  protected androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener mRefreshListener;
 
   public SwipeRefreshLayout getSwipeToRefresh() {
     return mPtrLayout;
@@ -339,7 +339,7 @@ public class EasyRecyclerView extends FrameLayout {
    * Set the listener when refresh is triggered and enable the SwipeRefreshLayout
    */
   public void setRefreshListener(
-      android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener listener) {
+      androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener listener) {
     mPtrLayout.setEnabled(true);
     mPtrLayout.setOnRefreshListener(listener);
     this.mRefreshListener = listener;

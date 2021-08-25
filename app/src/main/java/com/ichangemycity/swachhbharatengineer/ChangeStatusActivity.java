@@ -1,15 +1,13 @@
 package com.ichangemycity.swachhbharatengineer;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,17 +17,20 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
-import com.bumptech.glide.Glide;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.base.BaseAppCompatActivity;
+import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.callback.OnResponseListener;
-import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.model.SelectedImageModel;
 import com.ichangemycity.webservice.AppHelper;
 import com.ichangemycity.webservice.URLData;
@@ -45,6 +46,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.ichangemycity.swachhbharatengineer.ComplaintDetail.isToRefresh;
 
 public class ChangeStatusActivity extends BaseAppCompatActivity {
@@ -58,16 +62,21 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     String mStatus = "";
     ListView list;
     ArrayList<String> listOfReasonToRejectComplaint = new ArrayList<>();
+    @BindView(R.id.cvimagePreview)
+    CardView cvimagePreview;
+    @BindView(R.id.clear)
+    ImageView clear;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppController.assignLanguage(ChangeStatusActivity.this);
         setContentView(R.layout.change_status_activity);
+
+        ButterKnife.bind(this);
         activity = ChangeStatusActivity.this;
         BaseAppCompatActivity.activity = activity;
 
-        clearSelectedImage();
         mStatus = AppController.selectedComplaintChangeStatusOptions.getStatusName();
         statusTitleValue = findViewById(R.id.statusTitleValue);
         imageToUpload = findViewById(R.id.imageToUpload);
@@ -79,23 +88,27 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         addImage = findViewById(R.id.addImage);
         addImage.setOnClickListener(v -> showAlertToPickImage());
-        setToolbarAndCustomizeTitle(getResources().getString(R.string.id_) + AppController.selectedComplaintData.getGeneric_id());
+        setToolbarAndCustomizeTitle(getString(R.string.change_status));
         send.setOnClickListener(v -> {
-            if (((EditText) findViewById(R.id.textComment)).getText().toString().trim().length() > 0) {
-                AppController.showProgressDialog(activity);
+            if(((EditText) findViewById(R.id.textComment)).getText().toString().trim().length() > 0) {
+                AppUtils.getInstance().showProgressDialog(activity);
                 new InitiateChangeStatus().execute();
             } else {
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, activity.getResources().getString(R.string.write_a_comment));
 
-//                    Toast.makeText(activity, getResources().getString(R.string.write_a_comment), Toast
-//                            .LENGTH_SHORT).show();
+                //                    Toast.makeText(activity, getResources().getString(R.string.write_a_comment), Toast
+                //                            .LENGTH_SHORT).show();
             }
 
         });
         postComm.setVisibility(View.VISIBLE);
-        messageToShow.setText(R.string
-                .you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_);
+        String statusText = ((String) activity.getResources().getString(R.string.you_re_changing_the_status_of_the_complaint_to_new_status));
+        statusText = statusText.replace("#NEW_STATUS", mStatus);
+        messageToShow.setText(statusText);
+        statusTitleValue.setText(getString(R.string.id_) + " " + AppController.selectedComplaintData.getGeneric_id());
         setStatusForTitle(AppController.selectedComplaintChangeStatusOptions.getStatusID());
+        clear.setOnClickListener(v -> initializeImageView());
+        initializeImageView();
     }
 
     private class InitiateChangeStatus extends AsyncTask<Void, Void, Void> {
@@ -112,7 +125,6 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
          * <p>
          * This method can call {@link #publishProgress} to publish updates
          * on the UI thread.
-         *
          * @param params The parameters of the task.
          * @return A result, defined by the subclass of this task.
          * @see #onPreExecute()
@@ -127,72 +139,59 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            AppController.hideProgressDialog(activity);
+            AppUtils.getInstance().hideProgressDialog(activity);
             /**
              * Image mandatory to resolve complaint
              * */
-           /* if (AppController.selectedComplaintChangeStatusOptions.getStatusID() == AppController.COMPLAINT_RESOLVED && TextUtils.isEmpty
-                    (AppController.mSelectedImageModels.getPathOfSelectedImage())) {
+            if(AppController.selectedComplaintChangeStatusOptions.getStatusID() == AppController.COMPLAINT_RESOLVED && TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
 
-                AppController.showAlert(activity, "", getResources().getString(R.string
-                        .please_upload_an_image_and_then_resolve_the_complaint_to_resolved), false, new OnButtonClick() {
+                AppController.showAlert(activity, "", getResources().getString(R.string.please_upload_an_image_and_then_resolve_the_complaint_to_resolved), false, new OnButtonClick() {
                     @Override
                     public void onPositiveButtonClicked(DialogInterface dialogInterface) {
+                        postComm.setVisibility(View.VISIBLE);
                         addImage.performClick();
                     }
-
                     @Override
-                    public void onNegativeButtonClicked(DialogInterface dialogInterface) {
+                    public void onNegativeButtonClicked() {
 
                     }
+
                 });
-            } else {*/
-                if (!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
+            } else {
+                if(!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
                     uploadImage();
                 } else {
-                    if (!TextUtils.isEmpty(((EditText) findViewById(R.id.textComment)).getText().toString()))
+                    if(!TextUtils.isEmpty(((EditText) findViewById(R.id.textComment)).getText().toString()))
                         changeStatus(false);
                     else
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, getResources().getString(R.string.write_a_comment));
-//                    Toast.makeText(activity, getResources().getString(R.string.write_a_comment), Toast.LENGTH_SHORT).show();
                 }
-            /*}*/
+            }
         }
     }
 
     private void changeStatus(final boolean hasImage) {
         //need clarify
-        AppController.showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity);
         final String url = URLData.BASE_URL + URLData.COMPLAINT_STATUS;
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("apiKey", URLData.API_KEY);
         params.put("statusId", "" + AppController.selectedComplaintChangeStatusOptions.getStatusID());
-        params.put("userId", ICMyCPreferenceData
-                .getPreferenceItem(activity,
-                        ICMyCPreferenceData.id, ""));
-        params.put("complaintId",
-                AppController.selectedComplaintData.getComplaintId());
-        params.put("commentDescription",
-                ((EditText) findViewById(R.id.textComment)).getText().toString());
+        params.put("userId", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.id, ""));
+        params.put("complaintId", AppController.selectedComplaintData.getComplaintId());
+        params.put("commentDescription", ((EditText) findViewById(R.id.textComment)).getText().toString());
 
-        if (hasImage)
-            params.put("fileId", ICMyCPreferenceData
-                    .getPreferenceItem(activity, ICMyCPreferenceData.commentUploadedImageFile, ""));
-        String URLParams =
-                "?apiKey=" + URLData.API_KEY +
-                        "&statusId=" + AppController.selectedComplaintChangeStatusOptions.getStatusID() +
-                        "&userId=" + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.id, "") +
-                        "&complaintId=" + AppController.selectedComplaintData.getComplaintId() +
-                        "&commentDescription=" + ((EditText) findViewById(R.id.textComment)).getText().toString().replace(" ", "%20");
-        if (hasImage)
-            URLParams = URLParams + "&fileId=" + ICMyCPreferenceData
-                    .getPreferenceItem(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
+        if(hasImage)
+            params.put("fileId", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.commentUploadedImageFile, ""));
+        String URLParams = "?apiKey=" + URLData.API_KEY + "&statusId=" + AppController.selectedComplaintChangeStatusOptions.getStatusID() + "&userId=" + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.id, "") + "&complaintId=" + AppController.selectedComplaintData.getComplaintId() + "&commentDescription=" + ((EditText) findViewById(R.id.textComment)).getText().toString().replace(" ", "%20");
+        if(hasImage)
+            URLParams = URLParams + "&fileId=" + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url + URLParams, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
-                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,"Unknown error, please refresh complaints");
+                AppUtils.getInstance().hideProgressDialog(activity);
+                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Unknown error, please refresh complaints");
                 activity.finish();
             }
 
@@ -201,23 +200,26 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
                 //  JSONObject responseJsonObject = null;
                 try {
-                    AppController.hideProgressDialog(activity);
+                    AppUtils.getInstance().hideProgressDialog(activity);
                     // responseJsonObject = new JSONObject(response);
 
                     try {
+                        try {
+                            ComplaintDetailNew.isToRefresh = true;
+                        } catch(Exception e) {}
+
                         int httpCode = response.getInt("httpCode");
-                        if (httpCode == 200 || httpCode == 201) {
-                            ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.commentUploadedImageFile,
-                                    "");
+                        if(httpCode == 200 || httpCode == 201) {
+                            ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
                             isToRefresh = true;
                             activity.finish();
                         }
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
-//                                Toast.makeText(activity,responseJsonObject.get("message").toString(),Toast.LENGTH_LONG).show();
-                    } catch (Exception e) {
+                        //                                Toast.makeText(activity,responseJsonObject.get("message").toString(),Toast.LENGTH_LONG).show();
+                    } catch(Exception e) {
                         e.printStackTrace();
                     }
-                } catch (Exception e) {
+                } catch(Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -230,7 +232,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                     public void onResponse(String response) {
                         JSONObject responseJsonObject = null;
                         try {
-                            AppController.hideProgressDialog(activity);
+                            AppUtils.getInstance().hideProgressDialog(activity);
                             responseJsonObject = new JSONObject(response);
                             try {
                                 int httpCode = responseJsonObject.getInt("httpCode");
@@ -258,7 +260,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                         AppController.handleVolleyError(activity, (RelativeLayout) activity.findViewById(R.id.parentLayout), error);
 
 
@@ -300,49 +302,38 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         AppController.getInstance().addToRequestQueue(stringRequest, TAG);*/
     }
 
-    private void clearSelectedImage() {
-        AppController.mSelectedImageModels = new SelectedImageModel();
-        ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
-    }
-
     private void uploadImage() {
         final String uploadImageURL = URLData.BASE_URL_UPLOAD_IMAGE;
-        AppController.showProgressDialog(activity);
-        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, uploadImageURL,
-            response -> {
-                String resultResponse = new String(response.data);
-                JSONObject mJsonObject;
-                try {
-                    mJsonObject = new JSONObject(resultResponse);
+        AppUtils.getInstance().showProgressDialog(activity);
+        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, uploadImageURL, response -> {
+            String resultResponse = new String(response.data);
+            JSONObject mJsonObject;
+            try {
+                mJsonObject = new JSONObject(resultResponse);
 
-                    switch (mJsonObject.optInt("httpCode")) {
-                        case 200:
-                        case 201:
-                            JSONObject fileJsonObject = (JSONObject) mJsonObject
-                                    .get("file");
-                            int fileId = fileJsonObject.optInt("id");
-                            ICMyCPreferenceData
-                                    .setPreference(
-                                            activity,
-                                            ICMyCPreferenceData.commentUploadedImageFile,
-                                            "" + fileId);
-                            // runCommentsWebService();
-                            break;
+                switch(mJsonObject.optInt("httpCode")) {
+                    case 200:
+                    case 201:
+                        JSONObject fileJsonObject = (JSONObject) mJsonObject.get("file");
+                        int fileId = fileJsonObject.optInt("id");
+                        ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.commentUploadedImageFile, "" + fileId);
+                        // runCommentsWebService();
+                        break;
 
-                        default:
-                            break;
-                    }
-
-                    AppController.hideProgressDialog(activity);
-                    changeStatus(true);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    AppController.hideProgressDialog(activity);
+                    default:
+                        break;
                 }
-            }, error -> {
-                AppController.hideProgressDialog(activity);
-                AppController.handleVolleyError(activity, error);
-            }) {
+
+                AppUtils.getInstance().hideProgressDialog(activity);
+                changeStatus(true);
+            } catch(JSONException e) {
+                e.printStackTrace();
+                AppUtils.getInstance().hideProgressDialog(activity);
+            }
+        }, error -> {
+            AppUtils.getInstance().hideProgressDialog(activity);
+            AppController.handleVolleyError(activity, error);
+        }) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -364,16 +355,12 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
             protected Map<String, DataPart> getByteData() {
                 Map<String, DataPart> params = new HashMap<>();
                 // file name could found file base or direct access from real path
-                params.put("file", new DataPart("image" + new Random().nextInt() + ".jpg", AppHelper
-                        .getFileDataFromDrawable(activity, AppController.mSelectedImageModels), "image/jpeg"));
+                params.put("file", new DataPart("image" + new Random().nextInt() + ".jpg", AppHelper.getFileDataFromDrawable(activity, AppController.mSelectedImageModels), "image/jpeg"));
 
                 return params;
             }
         };
-        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(
-                AppController.MY_SOCKET_TIMEOUT_MS,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(AppController.MY_SOCKET_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         VolleySingleton.getInstance(getBaseContext()).addToRequestQueue(multipartRequest);
     }
 
@@ -381,29 +368,37 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     protected void onResume() {
         super.onResume();
         try {
-            if (!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
-                showSelectedImage();
+            if(!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
+                previewImage();
             }
 
-        } catch (Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
     }
 
-
-    private void showSelectedImage() {
-        if (!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
-            imageToUpload.setVisibility(View.VISIBLE);
-            Glide.with(activity).load((AppController.mSelectedImageModels.getUriOfImage())).into(imageToUpload);
+    private void previewImage() {
+        if(AppController.mSelectedImageModels != null && AppController.mSelectedImageModels.getUriOfImage() != null) {
+            cvimagePreview.setVisibility(View.VISIBLE);
+            imageToUpload.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageToUpload.setImageURI(AppController.mSelectedImageModels.getUriOfImage());
+            clear.setVisibility(View.VISIBLE);
         } else {
-            imageToUpload.setVisibility(View.GONE);
+            initializeImageView();
         }
+    }
+
+    private void initializeImageView() {
+        AppController.mSelectedImageModels = new SelectedImageModel();
+        ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
+        clear.setVisibility(View.GONE);
+        cvimagePreview.setVisibility(View.GONE);
     }
 
     private void setToolbarAndCustomizeTitle(String title) {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        toolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.back));
+        //        toolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.back));
         toolbar.setNavigationOnClickListener(v -> {
             activity.finish();
             isToRefresh = false;
@@ -415,7 +410,6 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
     }
 
-
     private void showAlertToPickImage() {
         postComm.setVisibility(View.VISIBLE);
         AppController.selectedPurposeToUploadImage = AppController.PURPOSE_POST_COMMENT;
@@ -425,56 +419,50 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     private void setStatusForTitle(int complaintStatus) {
         int complaintStatusTextColor = 0;
         list.setVisibility(View.GONE);
-        if (complaintStatus > 0) {
-            switch (complaintStatus) {
-                case AppController.COMPLAINT_REOPEN:
+        if(complaintStatus > 0) {
+            switch(complaintStatus) {
+               /* case AppController.COMPLAINT_REOPEN:
                     complaintStatus = R.drawable.complaint_status_red;
-                    complaintStatusTextColor = activity.getResources().getColor(
-                            R.color.red_reopn_open);
+                    complaintStatusTextColor = activity.getResources().getColor(R.color.red_reopn_open);
                     break;
                 case AppController.COMPLAINT_OPEN:
                     complaintStatus = R.drawable.complaint_status_red;
-                    complaintStatusTextColor = activity.getResources().getColor(
-                            R.color.red_reopn_open);
+                    complaintStatusTextColor = activity.getResources().getColor(R.color.red_reopn_open);
                     break;
                 case AppController.COMPLAINT_ON_THE_JOB:
                     complaintStatus = R.drawable.complaint_status_on_the_job;
-                    complaintStatusTextColor = activity.getResources().getColor(
-                            R.color.blue_on_the_job);
+                    complaintStatusTextColor = activity.getResources().getColor(R.color.blue_on_the_job);
                     break;
                 case AppController.COMPLAINT_RESOLVED:
                     complaintStatus = R.drawable.complaint_status_resolved;
-                    complaintStatusTextColor = activity.getResources().getColor(
-                            R.color.green_resolved);
-                    break;
+                    complaintStatusTextColor = activity.getResources().getColor(R.color.green_resolved);
+                    break;*/
                 case AppController.COMPLAINT_REJECTED:
                     list.setVisibility(View.VISIBLE);
-                    complaintStatus = R.drawable.complaint_status_closed;
-                    complaintStatusTextColor = activity.getResources().getColor(
-                            R.color.gray_closed);
+                    messageToShow.setVisibility(View.GONE);
+                    findViewById(R.id.messageToShow1).setVisibility(View.GONE);
+                    //                    complaintStatus = R.drawable.complaint_status_closed;
+                    //                    complaintStatusTextColor = activity.getResources().getColor(R.color.gray_closed);
                     listOfReasonToRejectComplaint.add("Complaint out of the city");
                     listOfReasonToRejectComplaint.add("Image not clear");
                     listOfReasonToRejectComplaint.add("Location not correct");
-                    list.setAdapter(new ArrayAdapter<String>(this,
-                            android.R.layout.simple_list_item_1, android.R.id.text1, listOfReasonToRejectComplaint));
+                    list.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listOfReasonToRejectComplaint));
                     list.setOnItemClickListener((adapterView, view, i, l) -> {
                         view.setBackgroundColor(Color.LTGRAY);
                         ((EditText) findViewById(R.id.textComment)).setText(listOfReasonToRejectComplaint.get(i));
                         changeStatus(false);
                     });
-                    messageToShow.setText(R.string.change_status_rejected);
+                    final String rejectedStatus = getString(R.string.you_re_changing_the_status_of_the_complaint_to_new_status).replace("#New_STATUS", getString(R.string.change_status_rejected)) + "Please select a reason from below to reject this complaint";
+                    messageToShow.setText(rejectedStatus);
                     postComm.setVisibility(View.GONE);
                     break;
                 default:
-                    complaintStatus = R.drawable.complaint_status_closed;
-                    complaintStatusTextColor = activity.getResources().getColor(
-                            R.color.gray_closed);
+                    //                    complaintStatus = R.drawable.complaint_status_closed;
+                    //                    complaintStatusTextColor = activity.getResources().getColor(R.color.gray_closed);
                     break;
             }
-            statusTitleValue.setBackgroundDrawable(getResources().getDrawable(
-                    complaintStatus));
-            statusTitleValue.setTextColor(complaintStatusTextColor);
-            statusTitleValue.setText(mStatus.toUpperCase());
+            //            statusTitleValue.setBackgroundDrawable(getResources().getDrawable(complaintStatus));
+            //            statusTitleValue.setTextColor(complaintStatusTextColor);
         }
     }
 }

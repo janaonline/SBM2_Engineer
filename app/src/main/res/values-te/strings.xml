@@ -1,54 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Onboarding & Profile -->
+    <string name="welcome">స్వాగతం </string>
+    <string name="choose_your_preferred_language">మీ ప్రాధాన్య భాషను ఎంచుకోండి</string>
+    <string name="mobile_verification">ధ్రువీకరించు</string>
+    <string name="resend_code_">కోడ్ మళ్ళీ పంపించాలా?</string>
+    <string name="done">అయిపోయింది</string>
+    <string name="welcomes_you_some_text_goes_here">మొబైల్ నంబర్ ఎంటర్ చేయండి.</string>
+    <string name="enter_verification_code_sent_to_">మీకోడ్ నంబర్ కోడ్ ను మేము పంపాము</string>
+    <string name="your_mobile_number_is_safe_with_us">మీ మొబైల్ నంబర్ మావద్ద సురక్షితం</string>
+    <string name="we_won_t_share_your_details_with_any_one">మేము మీ వివరాలను ఎవరితోనూ పంచుకోము</string>
+    <string name="change">మార్పు</string>
+    <string name="enter_mobile_number">మొబైల్ నంబర్ నమోదు చేయండి</string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
+    <string name="login_to_your_account">Log in to your account</string>
 
-  <string name="app_name">స్వచ్ఛ భారత్</string>
-  <string name="welcome">సుస్వాగతం</string>
-  <string name="done">సరే</string>
-  <string name="welcomes_you_some_text_goes_here">మొబైల్ నంబర్ ఎంటర్ చేయండి.</string>
-  <string name="mobile_number_cannot_be_empty">మొబైల్ నంబరు ఖాళీగా ఉండకూడదు</string>
-  <string name="_10_digit_mobile_number">మొబైల్ నంబరు</string>
-  <string name="mobile_number_needs_10_digits">10 అంకెల మొబైల్ నంబర్ అవసరం</string>
-  <string name="mobile_verification">తనిఖీ చేయడం</string>
-  <string name="enter_verification_code_sent_to_">మీకోడ్ నంబర్ కోడ్ ను మేము పంపాము</string>
-  <string name="you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_">మీరు ఫిర్యాదు స్థితిని మారుస్తున్నారు. దయచేసి మీ అనుభవం గురించి లేదా మీకేవైనా విమర్శలుంటే, ఒక వ్యాఖ్యను చేయండి. మీరు ఫోటోలను మరియు మీ వ్యాఖ్యను</string>
-  <string name="enter_otp">ఓటిపి ఎంటర్ చేయండి</string>
-  <string name="loading">లోడ్ చేయబడుతోంది</string>
-  <string name="resend_code_">కోడ్ ను తిరిగి పంపు?</string>
-  <string name="your_mobile_number_is_safe_with_us">మీ మొబైల్ నంబర్ మావద్ద సురక్షితం</string>
-  <string name="we_won_t_share_your_details_with_any_one">మేము మీ వివరాలను ఎవరితోనూ పంచుకోము</string>
-  <string name="report_bug">ఒక బగ్ ను నివేదించండి</string>
-  <string name="comment">వ్యాఖ్య</string>
-  <string name="_votes">" ఓట్లు"</string>
-  <string name="_comments">" మీరు"</string>
-  <string name="you">మీరు</string>
-  <string name="vote_up">ఓటు చేయండి</string>
-  <string name="previously_read">ఇదివరకు చదివినది</string>
-  <string name="load_more">మరిన్ని లోడ్ చేయండి</string>
-  <string name="take_a_picture">ఒక చిత్రాన్ని తీసుకోండి</string>
-  <string name="gallery">గ్యాలరీ</string>
-  <string name="comments">వ్యాఖ్యలు</string>
-  <string name="no_complaints">ఫిర్యాదులు లేవు</string>
-  <string name="no_read_notification">రీడ్ నోటిఫికేషన్ లేదు</string>
-  <string name="no_data">డేటా లేదు</string>
-  <string name="rejected">తిరస్కరించబడింది</string>
-  <string name="address">చిరునామా</string>
-  <string name="landmark">ల్యాండ్ మార్క్</string>
-  <string name="notification">"నోటిఫికేషన్ "</string>
-  <string name="all_complaints">అన్ని ఫిర్యాదులు</string>
-  <string name="high_priority_complaints">అధిక ప్రాధాన్యతా ఫిర్యాదులు</string>
-  <string name="on_the_job_complaints">ఆన్-ద-జాబ్ ఫిర్యాదులు</string>
-  <string name="re_opened_complaints">తిరిగి-తెరువబడిన ఫిర్యాదులు</string>
-  <string name="resolved_complaints">పరిష్కరించబడిన ఫిర్యాదులు</string>
-  <string name="rejected_complaints">తిరస్కరించబడిన ఫిర్యాదులు</string>
-  <string name="write_a_comment">వ్యాఖ్యను వ్రాయండి </string>
-  <string name="rate_us_on_playstore">ప్లేస్టోర్ లో రేట్ చేయండి</string>
-  <string name="on_the_job">ఆన్ ద జాబ్</string>
-  <string name="resolved">పరిష్కరించబడింది</string>
-  <string name="id_">"ఐడి: "</string>
-  <string name="change_status">స్థితి మార్చండి</string>
-  <string name="get_started">ఆరంభించండి</string>
-  <string name="yes">అవును</string>
-  <string name="no">కాదు</string>
-  <string name="more_information">మరింత సమాచారం</string>
+    <!-- Home tab -->
+    <string name="app_name">స్వచ్ఛత </string>
+    <string name="post_a_complaint">ఒక ఫిర్యాదును పోస్ట్చేయండి</string>
+
+    <!--Grievance-->
+    <string name="more_information">మరింత సమాచారం జోడించండి</string>
+    <string name="thank_you">ధన్యవాదాలు!</string>
+    <string name="no_complaints">ఫిర్యాదులు లేవు</string>
+    <string name="complaint_details">వివరాలు</string>
+    <string name="resolve">పరిష్కరించబడింది</string>
+    <string name="_votes">" ఓట్లు" </string>
+    <string name="_comments">" వ్యాఖ్యానాలు" </string>
+    <string name="be_the_first_to_comment">వ్యాఖ్యానించే మొదటి వ్యక్తి అవ్వండి</string>
+    <string name="change_status">స్థితి మార్చండి</string>
+    <string name="you_re_changing_the_status_of_the_complaint_to_new_status">మీరు ఫిర్యాదు యొక్క స్థితినికి మారుస్తున్నారు #NEW_STATUS. </string>
+    <string name="submit">సమర్పించండి </string>
+    <string name="notification">నోటిఫికేషన్స్</string>
+    <string name="previously_read">మునుపు చదివినవి</string>
+    <string name="no_read_notification">నోటిఫికేషన్స్ లేవు</string>
+
+    <!--    Messages-->
+    <string name="ok">సరే</string>
+    <string name="error">పొరపాటు</string>
+    <string name="cancel">రద్దు చేయండి</string>
+    <string name="loading">లోడింగ్</string>
+    <string name="could_not_connect_to_internet">ఇంటర్</string>
+    <string name="something_went_wrong">ఏదో తప్పు జరిగింది. response code -   </string>
+    <string name="select_an_image">చిత్రం ఎంచుకోండి</string>
+
+    <!--sidemenu-->
+    <string name="rate_us_on_playstore">మమ్మల్ని ప్లే స్టొర్ మీద రేట్చేయండి</string>
+    <string name="report_bug">బగ్ రిపోర్ట్ చేయండి</string>
+    <string name="privacy_policy">గోప్యతా విధానం</string>
+    <string name="logout">లాగ్ఔట్</string>
+
+    <!--change_status-->
+    <string name="you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_">మీరు ఫిర్యాదు స్థితిని మారుస్తున్నారు. దయచేసి మీ అనుభవం గురించి లేదా మీకేవైనా విమర్శలుంటే, ఒక వ్యాఖ్యను చేయండి. మీరు ఫోటోలను మరియు మీ వ్యాఖ్యను</string>
+    <string name="rejected">తిరస్కరించబడింది</string>
+    <string name="address">చిరునామా</string>
+    <string name="all_complaints">అన్ని ఫిర్యాదులు</string>
+    <string name="high_priority_complaints">అధిక ప్రాధాన్యతా ఫిర్యాదులు</string>
+    <string name="on_the_job_complaints">ఆన్-ద-జాబ్ ఫిర్యాదులు</string>
+    <string name="re_opened_complaints">తిరిగి-తెరువబడిన ఫిర్యాదులు</string>
+    <string name="resolved_complaints">పరిష్కరించబడిన ఫిర్యాదులు</string>
+    <string name="rejected_complaints">తిరస్కరించబడిన ఫిర్యాదులు</string>
+    <string name="id_">"ఐడి: "</string>
+    <string name="get_started">ఆరంభించండి</string>
+
+    <!--OTHERS-->
+    <string name="mobile_number_cannot_be_empty">మొబైల్ నంబరు ఖాళీగా ఉండకూడదు</string>
+    <string name="_10_digit_mobile_number">మొబైల్ నంబరు</string>
+    <string name="mobile_number_needs_10_digits">10 అంకెల మొబైల్ నంబర్ అవసరం</string>
+    <string name="enter_otp">ఓటిపి ఎంటర్ చేయండి</string>
+    <string name="comment">వ్యాఖ్య</string>
+    <string name="you">మీరు</string>
+    <string name="vote_up">ఓటు చేయండి</string>
+    <string name="load_more">మరిన్ని లోడ్ చేయండి</string>
+    <string name="take_a_picture">ఒక చిత్రాన్ని తీసుకోండి</string>
+    <string name="gallery">గ్యాలరీ</string>
+    <string name="no_data">డేటా లేదు</string>
+    <string name="notifs">నోటిఫ్స్ </string>
+    <string name="write_a_comment">వ్యాఖ్యను వ్రాయండి </string>
+    <string name="language"> భాష </string>
+    <string name="yes">అవును</string>
+    <string name="no">కాదు </string>
+    <string name="comments">వ్యాఖ్యలు</string>
+    <string name="landmark">ల్యాండ్ మార్క్</string>
+    <string name="resolved">పరిష్కరించబడింది</string>
+    <string name="on_the_job">ఆన్ ద జాబ్</string>
+
+    <!--COVID-19-->
+    <string name="skip">స్కిప్ </string>
+    <string name="more_information_landmark_contact">పేరు, ఫోను నంబరు, చిరునామా, మైలురాయి, లేదా రోగి యొక్క ప్రాథమిక లక్షణాలు </string>
+    <string name="please_wait_for">"Please wait for "</string>
+    <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
+
 
 </resources>

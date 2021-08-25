@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RippleEffectLibrary/RippleEffectLibrary.iml" filepath="$PROJECT_DIR$/RippleEffectLibrary/RippleEffectLibrary.iml" group="SBM-Engineer/RippleEffectLibrary" />
-      <module fileurl="file://$PROJECT_DIR$/SBM-Engineer.iml" filepath="$PROJECT_DIR$/SBM-Engineer.iml" group="SBM-Engineer" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="SBM-Engineer/app" />
-      <module fileurl="file://$PROJECT_DIR$/circleimageview/circleimageview.iml" filepath="$PROJECT_DIR$/circleimageview/circleimageview.iml" group="SBM-Engineer/circleimageview" />
-      <module fileurl="file://$PROJECT_DIR$/easyrecyclerview/easyrecyclerview.iml" filepath="$PROJECT_DIR$/easyrecyclerview/easyrecyclerview.iml" group="SBM-Engineer/easyrecyclerview" />
-      <module fileurl="file://$PROJECT_DIR$/multispinner/multispinner.iml" filepath="$PROJECT_DIR$/multispinner/multispinner.iml" group="SBM-Engineer/multispinner" />
-      <module fileurl="file://$PROJECT_DIR$/otpview/otpview.iml" filepath="$PROJECT_DIR$/otpview/otpview.iml" group="SBM-Engineer/otpview" />
-      <module fileurl="file://$PROJECT_DIR$/permission_manager/permission_manager.iml" filepath="$PROJECT_DIR$/permission_manager/permission_manager.iml" group="SBM-Engineer/permission_manager" />
-      <module fileurl="file://$PROJECT_DIR$/secureprefs/secureprefs.iml" filepath="$PROJECT_DIR$/secureprefs/secureprefs.iml" group="SBM-Engineer/secureprefs" />
-      <module fileurl="file://$PROJECT_DIR$/shoot-lib/shoot-lib.iml" filepath="$PROJECT_DIR$/shoot-lib/shoot-lib.iml" group="SBM-Engineer/shoot-lib" />
-      <module fileurl="file://$PROJECT_DIR$/toasty/toasty.iml" filepath="$PROJECT_DIR$/toasty/toasty.iml" group="SBM-Engineer/toasty" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SBM2Engineer.iml" filepath="$PROJECT_DIR$/.idea/modules/SBM2Engineer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SBM2Engineer.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SBM2Engineer.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/otpview/SBM2Engineer.otpview.iml" filepath="$PROJECT_DIR$/.idea/modules/otpview/SBM2Engineer.otpview.iml" />
     </modules>
   </component>
 </project>

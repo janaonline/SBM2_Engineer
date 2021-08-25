@@ -13,15 +13,7 @@ public class ComplaintData {
         return instance;
     }
 
-    private String complaintId, generic_id, city_id, created_at, user_id,
-            category_id, location, landmark, parent_id, full_name,
-            complaint_status_id, complaint_status, feed_id, feed_module_id,
-            feed_user_activity_id, feed_content_id, feed_created_at,
-            feed_user_id, feed_title, feed_full_name, feed_description,
-            feed_color, is_feed_high_priority = "0", category_name,
-            complaint_image, complaint_image_height, user_image,   radius, affected, neutral, satisfaction,
-            un_satisfied, complaint_url, complaint_image_l1,
-            complaint_image_l2, latitude, longitude;
+    private String complaintId, generic_id, city_id, created_at, user_id, category_id, location, landmark, parent_id, full_name, complaint_status_id, complaint_status, feed_id, feed_module_id, feed_user_activity_id, feed_content_id, feed_created_at, feed_user_id, feed_title, feed_full_name, feed_description, feed_color, is_feed_high_priority = "0", category_name, complaint_image, complaint_image_height, user_image, radius, affected, neutral, satisfaction, un_satisfied, complaint_url, complaint_image_l1, complaint_image_l2, latitude, longitude;
     boolean hasFeed;
     private ArrayList<CommentsData> commentsData = new ArrayList<>();
 
@@ -41,7 +33,7 @@ public class ComplaintData {
         this.votedUpData = votedUpData;
     }
 
-    private  ArrayList<VotedUpData> votedUpData = new ArrayList<>();
+    private ArrayList<VotedUpData> votedUpData = new ArrayList<>();
 
     /**
      * @return the hasFeed
@@ -65,8 +57,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param latitude
-     *            the latitude to set
+     * @param latitude the latitude to set
      */
     public void setLatitude(String latitude) {
         this.latitude = latitude;
@@ -80,22 +71,20 @@ public class ComplaintData {
     }
 
     /**
-     * @param longitude
-     *            the longitude to set
+     * @param longitude the longitude to set
      */
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-  /**
-     * @param complaint_image_l1
-     *            the complaint_image_l1 to set
+    /**
+     * @param complaint_image_l1 the complaint_image_l1 to set
      */
     public void setComplaint_image_l1(String complaint_image_l1) {
         this.complaint_image_l1 = complaint_image_l1;
     }
 
-  /**
+    /**
      * @return the complaint_url
      */
     public String getComplaint_url() {
@@ -103,8 +92,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param complaint_url
-     *            the complaint_url to set
+     * @param complaint_url the complaint_url to set
      */
     public void setComplaint_url(String complaint_url) {
         this.complaint_url = complaint_url;
@@ -113,9 +101,8 @@ public class ComplaintData {
     private String comment_count, vote_up_count, posted_on, access_token;
     private boolean isToChangeStatus;
 
-  /**
-     * @param isToChangeStatus
-     *            the isToChangeStatus to set
+    /**
+     * @param isToChangeStatus the isToChangeStatus to set
      */
     public void setToChangeStatus(boolean isToChangeStatus) {
         this.isToChangeStatus = isToChangeStatus;
@@ -129,8 +116,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param comment_count
-     *            the comment_count to set
+     * @param comment_count the comment_count to set
      */
     public void setComment_count(String comment_count) {
         this.comment_count = comment_count;
@@ -144,8 +130,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param vote_up_count
-     *            the vote_up_count to set
+     * @param vote_up_count the vote_up_count to set
      */
     public void setVote_up_count(String vote_up_count) {
         this.vote_up_count = vote_up_count;
@@ -159,16 +144,14 @@ public class ComplaintData {
     }
 
     /**
-     * @param posted_on
-     *            the posted_on to set
+     * @param posted_on the posted_on to set
      */
     public void setPosted_on(String posted_on) {
         this.posted_on = posted_on;
     }
 
-  /**
-     * @param access_token
-     *            the access_token to set
+    /**
+     * @param access_token the access_token to set
      */
     public void setAccess_token(String access_token) {
         this.access_token = access_token;
@@ -184,8 +167,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param neutral
-     *            the neutral to set
+     * @param neutral the neutral to set
      */
     public void setNeutral(String neutral) {
         this.neutral = neutral;
@@ -199,8 +181,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param satisfaction
-     *            the satisfaction to set
+     * @param satisfaction the satisfaction to set
      */
     public void setSatisfaction(String satisfaction) {
         this.satisfaction = satisfaction;
@@ -214,8 +195,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param un_satisfied
-     *            the un_satisfied to set
+     * @param un_satisfied the un_satisfied to set
      */
     public void setUn_satisfied(String un_satisfied) {
         this.un_satisfied = un_satisfied;
@@ -229,14 +209,13 @@ public class ComplaintData {
     }
 
     /**
-     * @param feedback_count
-     *            the feedback_count to set
+     * @param feedback_count the feedback_count to set
      */
     public void setFeedback_count(boolean feedback_count) {
         this.feedback_count = feedback_count;
     }
 
-  /**
+    /**
      * @return the affected
      */
     public String getAffected() {
@@ -244,16 +223,14 @@ public class ComplaintData {
     }
 
     /**
-     * @param affected
-     *            the affected to set
+     * @param affected the affected to set
      */
     public void setAffected(String affected) {
         this.affected = affected;
     }
 
     /**
-     * @param radius
-     *            the radius to set
+     * @param radius the radius to set
      */
     public void setRadius(String radius) {
         this.radius = radius;
@@ -267,8 +244,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param feed_description
-     *            the feed_description to set
+     * @param feed_description the feed_description to set
      */
     public void setFeed_description(String feed_description) {
         this.feed_description = feed_description;
@@ -282,16 +258,14 @@ public class ComplaintData {
     }
 
     /**
-     * @param complaint_image
-     *            the complaint_image to set
+     * @param complaint_image the complaint_image to set
      */
     public void setComplaint_image(String complaint_image) {
         this.complaint_image = complaint_image;
     }
 
-  /**
-     * @param complaint_image_height
-     *            the complaint_image_height to set
+    /**
+     * @param complaint_image_height the complaint_image_height to set
      */
     public void setComplaint_image_height(String complaint_image_height) {
         this.complaint_image_height = complaint_image_height;
@@ -305,8 +279,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param user_image
-     *            the user_image to set
+     * @param user_image the user_image to set
      */
     public void setUser_image(String user_image) {
         this.user_image = user_image;
@@ -320,8 +293,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param complaint_status
-     *            the complaint_status to set
+     * @param complaint_status the complaint_status to set
      */
     public void setComplaint_status(String complaint_status) {
         this.complaint_status = complaint_status;
@@ -335,8 +307,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param category_name
-     *            the category_name to set
+     * @param category_name the category_name to set
      */
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
@@ -350,8 +321,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param complaintId
-     *            the complaintId to set
+     * @param complaintId the complaintId to set
      */
     public void setComplaintId(String complaintId) {
         this.complaintId = complaintId;
@@ -365,16 +335,14 @@ public class ComplaintData {
     }
 
     /**
-     * @param generic_id
-     *            the generic_id to set
+     * @param generic_id the generic_id to set
      */
     public void setGeneric_id(String generic_id) {
         this.generic_id = generic_id;
     }
 
-  /**
-     * @param city_id
-     *            the city_id to set
+    /**
+     * @param city_id the city_id to set
      */
     public void setCity_id(String city_id) {
         this.city_id = city_id;
@@ -388,8 +356,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param created_at
-     *            the created_at to set
+     * @param created_at the created_at to set
      */
     public void setCreated_at(String created_at) {
         this.created_at = created_at;
@@ -403,19 +370,20 @@ public class ComplaintData {
     }
 
     /**
-     * @param user_id
-     *            the user_id to set
+     * @param user_id the user_id to set
      */
     public void setUser_id(String user_id) {
         this.user_id = user_id;
     }
 
-  /**
-     * @param category_id
-     *            the category_id to set
+    /**
+     * @param category_id the category_id to set
      */
     public void setCategory_id(String category_id) {
         this.category_id = category_id;
+    }
+    public String getCategory_id() {
+        return this.category_id;
     }
 
     /**
@@ -426,8 +394,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param location
-     *            the location to set
+     * @param location the location to set
      */
     public void setLocation(String location) {
         this.location = location;
@@ -441,16 +408,14 @@ public class ComplaintData {
     }
 
     /**
-     * @param landmark
-     *            the landmark to set
+     * @param landmark the landmark to set
      */
     public void setLandmark(String landmark) {
         this.landmark = landmark;
     }
 
-  /**
-     * @param parent_id
-     *            the parent_id to set
+    /**
+     * @param parent_id the parent_id to set
      */
     public void setParent_id(String parent_id) {
         this.parent_id = parent_id;
@@ -464,8 +429,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param full_name
-     *            the full_name to set
+     * @param full_name the full_name to set
      */
     public void setFull_name(String full_name) {
         this.full_name = full_name;
@@ -479,22 +443,20 @@ public class ComplaintData {
     }
 
     /**
-     * @param complaint_status_id
-     *            the complaint_status_id to set
+     * @param complaint_status_id the complaint_status_id to set
      */
     public void setComplaint_status_id(String complaint_status_id) {
         this.complaint_status_id = complaint_status_id;
     }
 
-  /**
-     * @param feed_id
-     *            the feed_id to set
+    /**
+     * @param feed_id the feed_id to set
      */
     public void setFeed_id(String feed_id) {
         this.feed_id = feed_id;
     }
 
-  /**
+    /**
      * @return the feed_full_name
      */
     public String getFeed_full_name() {
@@ -502,8 +464,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param feed_full_name
-     *            the feed_full_name to set
+     * @param feed_full_name the feed_full_name to set
      */
     public void setFeed_full_name(String feed_full_name) {
         this.feed_full_name = feed_full_name;
@@ -517,8 +478,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param feed_color
-     *            the feed_color to set
+     * @param feed_color the feed_color to set
      */
     public void setFeed_color(String feed_color) {
         this.feed_color = feed_color;
@@ -532,8 +492,7 @@ public class ComplaintData {
     }
 
     /**
-     * @param is_feed_high_priority
-     *            the is_feed_high_priority to set
+     * @param is_feed_high_priority the is_feed_high_priority to set
      */
     public void set_is_feed_high_priority(String is_feed_high_priority) {
         this.is_feed_high_priority = is_feed_high_priority;

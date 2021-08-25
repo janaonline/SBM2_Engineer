@@ -7,7 +7,6 @@ import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.swachhbharatengineer.Splashscreen;
-import com.prashantsolanki.secureprefmanager.SecurePrefManager;
 
 
 /**

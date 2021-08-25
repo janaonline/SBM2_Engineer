@@ -5,34 +5,38 @@ package com.ichangemycity.adapter;
  */
 
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ichangemycity.model.VotedUpData;
 import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.webservice.ParseComplaintData;
+import com.ichangemycity.webservice.URLData;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class VoteupsAdapter extends RecyclerView.Adapter<VoteupsAdapter.AddRemarkViewHolder> {
 
-    private  ArrayList<VotedUpData>  arrayList;
+    private ArrayList<VotedUpData> arrayList;
     private Activity activity;
     private boolean isToShowLoadMore;
 
     public VoteupsAdapter(Activity mAct, ArrayList<VotedUpData> arrayList, boolean isToShowLoadMore) {
         activity = mAct;
-       this.arrayList = arrayList;
+        this.arrayList = arrayList;
         this.isToShowLoadMore = isToShowLoadMore;
     }
 
     @Override
     public AddRemarkViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.inflate_comment, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.inflate_voteups_list_item, parent, false);
         return new AddRemarkViewHolder(view);
     }
 
@@ -40,11 +44,11 @@ public class VoteupsAdapter extends RecyclerView.Adapter<VoteupsAdapter.AddRemar
     public void onBindViewHolder(AddRemarkViewHolder holder, int position) {
         VotedUpData voteupData = arrayList.get(position);
 
-        holder.mDescription.setText(voteupData.getComplaint_count());
+        holder.mDescription.setText(voteupData.getComplaint_count() + " posted");
         holder.mName.setText(voteupData.getFull_name());
         holder.postedOn.setText(voteupData.getVoted_up_on());
-        holder.imageLayout.setVisibility(View.GONE);
-        ParseComplaintData.setImage(activity, holder.mUserImage, null, voteupData.getUser_image_url(), true);
+        ParseComplaintData.getInstance().setImage(activity, holder.mUserImage, null,
+                URLData.TIMTHUMB_SMALL + voteupData.getUser_image_url(), true);
     }
 
     @Override
@@ -56,18 +60,21 @@ public class VoteupsAdapter extends RecyclerView.Adapter<VoteupsAdapter.AddRemar
     }
 
     class AddRemarkViewHolder extends RecyclerView.ViewHolder {
-        private TextView mName, mDescription, postedOn;
-        private de.hdodenhof.circleimageview.CircleImageView mUserImage;
-        private HorizontalScrollView imageLayout;
+        @BindView(R.id.userName)
+        TextView mName;
+
+        @BindView(R.id.description_count)
+        TextView mDescription;
+
+        @BindView(R.id.postedOn)
+        TextView postedOn;
+
+        @BindView(R.id.userImage)
+        de.hdodenhof.circleimageview.CircleImageView mUserImage;
 
         public AddRemarkViewHolder(View itemView) {
             super(itemView);
-            mDescription = itemView.findViewById(R.id.description_count);
-            mName = itemView.findViewById(R.id.userName);
-            postedOn = itemView.findViewById(R.id.postedOn);
-            mUserImage = itemView.findViewById(R.id.userImage);
-            imageLayout = itemView.findViewById(R.id.imageLayout);
-
+            ButterKnife.bind(this, itemView);
         }
     }
 }

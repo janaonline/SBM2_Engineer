@@ -1,83 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/comment_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
   <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+      android:id="@+id/relativeLayout1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center_vertical"
+      android:orientation="horizontal"
+      android:padding="16dp">
+
 
     <de.hdodenhof.circleimageview.CircleImageView
-      android:id="@+id/userImage"
-      android:layout_width="48dp"
-      android:layout_height="48dp"
-      android:src="@mipmap/ic_launcher"
-      app:civ_border_color="@color/gray_closed"
-      app:civ_border_width="0.2dp" />
+        android:id="@+id/userImage"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@mipmap/ic_launcher"
+        app:civ_border_color="@color/gray_closed"
+        app:civ_border_width="0.2dp" />
 
     <TextView
-      android:id="@+id/userName"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginLeft="8dp"
-      android:layout_toEndOf="@+id/userImage"
-      android:layout_toRightOf="@+id/userImage"
-      android:text="ICMyC Engineer ICMyC Engineer ICMyC Engineer "
-      android:textColor="@color/black"
-      android:textSize="14dp"
-      android:textStyle="bold" />
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/horizontal_vertical_spacing"
+        android:layout_toLeftOf="@+id/postedOn"
+        android:layout_toEndOf="@+id/userImage"
+        android:layout_toRightOf="@+id/userImage"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/app_name"
+        android:textColor="@color/primerColorBlack"
+        android:textSize="@dimen/textSize16dp" />
 
     <TextView
-      android:id="@+id/postedOn"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_below="@+id/userName"
-      android:layout_alignParentRight="true"
-      android:layout_alignLeft="@+id/userName"
-      android:text="2hours ago"
-      android:textColor="@color/lt_gray"
-      android:textSize="14sp"  />
-    <HorizontalScrollView
-      android:id="@+id/imageLayout"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_below="@+id/postedOn"
-      android:layout_alignLeft="@+id/userName"
-      android:layout_marginTop="8dp"
-      android:scrollbars="none">
+        android:id="@+id/postedOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userName"
+        android:layout_alignLeft="@+id/userName"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/roboto_regular"
+        android:maxLines="1"
+        android:text="2 hours ago"
+        android:textColor="@color/lt_gray"
+        android:textSize="@dimen/textSize14dp" />
 
-      <LinearLayout
-        android:id="@+id/imageLinear"
+    <TextView
+        android:id="@+id/description_count"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_gravity="left"
-        android:layout_marginBottom="8dp"
-        android:background="@color/transparent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/postedOn"
+        android:layout_alignLeft="@+id/userName"
+        android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+        android:autoLink="all"
+        android:fontFamily="@font/roboto_regular"
         android:gravity="left"
-        android:orientation="horizontal"></LinearLayout>
-    </HorizontalScrollView>
-    <TextView
-      android:id="@+id/description_count"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_below="@+id/imageLayout"
-      android:layout_alignLeft="@+id/userName"
-      android:layout_marginTop="4dp"
-      android:gravity="left"
-      android:text="@string/mr_button_content_description"
-      android:textColor="@color/secondary_text_color"
-      android:textSize="14sp"
-      android:visibility="visible" />
+        android:text="@string/write_a_comment"
+        android:textColor="@color/secondary"
+        android:textSize="@dimen/textSize16dp"
+        android:visibility="visible" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCommentImage"
+        android:layout_width="120dp"
+        android:visibility="gone"
+        android:layout_height="120dp"
+        android:layout_below="@id/description_count"
+        android:layout_alignLeft="@+id/description_count"
+        android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+        app:cardBackgroundColor="@color/secondaryLight"
+        app:cardCornerRadius="15dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+
+      <ImageView
+          android:id="@+id/comment_image"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:scaleType="centerCrop" />
+    </androidx.cardview.widget.CardView>
 
 
   </RelativeLayout>
-
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_below="@+id/relativeLayout1"
+      android:layout_marginStart="@dimen/margin64dp"
+      android:background="@color/view_color" />
 
 </RelativeLayout>

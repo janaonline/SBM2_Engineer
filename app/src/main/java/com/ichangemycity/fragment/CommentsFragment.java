@@ -3,25 +3,22 @@ package com.ichangemycity.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.ichangemycity.adapter.CommentsAdapter;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.swachhbharatengineer.CommentsActivity;
 import com.ichangemycity.swachhbharatengineer.ComplaintDetail;
 import com.ichangemycity.swachhbharatengineer.R;
-import com.jude.easyrecyclerview.EasyRecyclerView;
 
 public class CommentsFragment extends Fragment {
     View v;
@@ -43,17 +40,17 @@ public class CommentsFragment extends Fragment {
     }
 
 
-    EasyRecyclerView mRecyclerview;
+    RecyclerView mRecyclerview;
 
     private void addRemark() {
-        final CommentsAdapter commentsAdapter = new CommentsAdapter(ComplaintDetail.activity , true);
+        final CommentsAdapter commentsAdapter = new CommentsAdapter(ComplaintDetail.activity );
         mRecyclerview = v.findViewById(R.id.mRecyclerview);
         RecyclerView.LayoutManager manager = new LinearLayoutManager(ComplaintDetail.activity);
         mRecyclerview.setLayoutManager(manager);
         mRecyclerview.addItemDecoration(new DividerItemDecoration(ComplaintDetail.activity, LinearLayoutManager.VERTICAL));
         mRecyclerview.setItemAnimator(new DefaultItemAnimator());
         mRecyclerview.setAdapter(commentsAdapter);
-        AppController.setEmptyViewForRecyclerViewFragments(ComplaintDetail.activity,mRecyclerview,
+        AppController.getInstance().setEmptyViewForRecyclerViewFragments(ComplaintDetail.activity,mRecyclerview,
             v.findViewById(R.id.viewEmpty));
 
         if (Integer.parseInt(AppController.selectedComplaintData.getComment_count()) > 5) {

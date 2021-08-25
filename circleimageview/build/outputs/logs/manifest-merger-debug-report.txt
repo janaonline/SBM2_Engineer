@@ -1,27 +1,27 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml:2:1-7:12
-INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml:2:1-7:12
-INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml:2:1-7:12
+ADDED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml:2:1-7:12
+INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml:2:1-7:12
 	package
-		ADDED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml:3:5-43
-		INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
-		INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
+		ADDED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml:3:5-43
+		INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
+		INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml:2:11-69
+		ADDED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml:5:5-20
+ADDED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml:5:5-20
 uses-sdk
-INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
-INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
-INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
-INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
+INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
+INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
+INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
+INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
-		ADDED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
-		INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
+		INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
+		ADDED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
+		INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
-		ADDED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
-		INJECTED from D:\SBM-Engineer\circleimageview\src\main\AndroidManifest.xml
+		INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
+		ADDED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml
+		INJECTED from D:\jana_workspace\SBM2Engineer\circleimageview\src\main\AndroidManifest.xml

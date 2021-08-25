@@ -2,7 +2,6 @@ package com.ichangemycity.webservice;
 
 import android.app.Activity;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
-import com.prashantsolanki.secureprefmanager.SecurePrefManager;
 import java.util.HashMap;
 
 public class URLData {
@@ -20,14 +19,14 @@ public class URLData {
 //        public static final String BASE_URL_UPLOAD_IMAGE= "http://qaapi.ichangemycity.in/sbm/v1/"+"file";
 
   //    QA
-  public static final String GET_LANGUAGES = "http://sbmapi.swachh.city/languages";
-  public static final String BASE_URL = "http://sbmapi.swachh.city/engineer/v1/";
-  public static final String BASE_URL_UPLOAD_IMAGE = "http://filesj.swachhmanch.in/swachhata/complaints";
+//  public static final String GET_LANGUAGES = "http://sbmapi.swachh.city/languages";
+//  public static final String BASE_URL = "http://sbmapi.swachh.city/engineer/v1/";
+//  public static final String BASE_URL_UPLOAD_IMAGE = "http://filesj.swachhmanch.in/swachhata/complaints";
 
 //    LIVE
-//  public static final String GET_LANGUAGES = "http://api.swachh.city/languages";
-//  public static final String BASE_URL = "http://api.swachh.city/engineer/v1/";
-//  public static final String BASE_URL_UPLOAD_IMAGE = "https://files.ichangemycity.com/swachhata/complaints";
+  public static final String GET_LANGUAGES = "http://api.swachh.city/languages";
+  public static final String BASE_URL = "http://api.swachh.city/engineer/v1/";
+  public static final String BASE_URL_UPLOAD_IMAGE = "https://files.ichangemycity.com/swachhata/complaints";
 
 //    Old API call to upload image
 //    public static final String BASE_URL_UPLOAD_IMAGE = "http://api.swachh.city/sbm/v1/" + URLData.FILE;
@@ -72,6 +71,10 @@ public class URLData {
   public static final String BEARER_TOKEN = "";
   public static final String CONTENT_TYPE = "application/json";
 
+  public static final String TIMTHUMB_MEDIUM = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=72&src=";
+  public static final String TIMTHUMB_SMALL = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=48&src=";
+  public static final String TIMTHUMB_XXLARGE = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=1024&src=";
+
 
   public static HashMap<String, String> getHeaders(final Activity activity, final int headerType) {
     final HashMap<String, String> headers = new HashMap<String, String>();
@@ -93,8 +96,7 @@ public class URLData {
     String token =
         ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.TOKEN_TYPE, "Bearer")
             + " "
-            + SecurePrefManager.with(activity).get(ICMyCPreferenceData.token)
-            .defaultValue(BEARER_TOKEN).go();
+            + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.token, "");
 //        token = "Bearer 1167303F-A8D9-0248-C9EF-130090242980"; //qa
     final HashMap<String, String> headers = new HashMap<String, String>();
     if (token != null) {

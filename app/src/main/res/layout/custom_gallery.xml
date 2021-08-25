@@ -7,7 +7,7 @@
                 android:layout_height="fill_parent"
                 android:background="@color/layout_bg">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -15,9 +15,9 @@
         android:focusableInTouchMode="true"
         android:titleTextColor="@color/white"
         app:layout_collapseMode="pin"
+        android:theme="@style/ToolbarTheme"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:subtitleTextColor="@color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        app:subtitleTextColor="@color/white"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:layout_gravity="right|top"
             android:layout_margin="16dp"
             android:background="@drawable/change_pic"
-            android:text="Change"
+            android:text="@string/change"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="12sp"/>

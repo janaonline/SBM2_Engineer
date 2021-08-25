@@ -6,11 +6,11 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,7 +49,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
     private SwipeRefreshLayout refreshLayout;
     ProgressWheel pb_loader = null;
 
-    private com.jude.easyrecyclerview.EasyRecyclerView mRecyclerView,
+    private RecyclerView mRecyclerView,
             mRecyclerView2;
 
     public static RecyclerView.Adapter mAdapter, mAdapter2;
@@ -129,7 +129,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
             @Override
             public void OnResponseFailure() {
                 setSwipeProgress(false);
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
                 //  AppController.handleVolleyError(activity, (RelativeLayout) findViewById(R.id.parentLayout), error);
             }
 
@@ -153,7 +153,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -477,7 +477,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
                 setSwipeProgress(false);
             }
 
@@ -500,7 +500,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override
@@ -686,7 +686,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url,params, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
             }
 
             @Override

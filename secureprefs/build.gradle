@@ -29,7 +29,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-annotations:23.1.1'
+    compile 'androidx.annotation:annotation:1.0.0'
     compile 'com.scottyab:aescrypt:0.0.1'
     compile 'com.google.code.gson:gson:2.4'
     compile 'javax.inject:javax.inject:1'

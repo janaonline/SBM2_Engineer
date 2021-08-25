@@ -57,7 +57,7 @@ public class WebserviceHelper {
 
     public WebserviceHelper(final Activity activity, final int methodType, final String url, HashMap<String, String> params,
         OnResponseListener onResponseListener, final boolean isToShowProgressDialog, final int headerType) {
-        AppUtils.hideProgressDialog(activity);
+        AppUtils.getInstance().hideProgressDialog(activity);
         switch (methodType) {
             case METHOD_GET:
                 doGet(activity, url, onResponseListener, isToShowProgressDialog, headerType);
@@ -82,14 +82,14 @@ public class WebserviceHelper {
 
     private void doPut(final Activity activity, final String url, final HashMap<String, String> params, final OnResponseListener onResponseListener,
         final boolean isToShowProgressDialog, final int headerType) {
-        AppController.showProgressDialog(activity);
+        AppUtils.getInstance().showProgressDialog(activity);
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response0) {
                 try {
                         JSONObject response = new JSONObject(response0);
                     if (isToShowProgressDialog)
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     if (response.has("httpCode")) {
                         if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, response.optString("message"));
@@ -116,7 +116,7 @@ public class WebserviceHelper {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     if (isToShowProgressDialog)
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     onResponseListener.OnResponseFailure();
                     AppController.handleVolleyError(activity, error);
                 }
@@ -144,12 +144,12 @@ public class WebserviceHelper {
         onResponseListener, final boolean
         isToShowProgressDialog, final int headerType) {
         if (isToShowProgressDialog)
-            AppController.showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity);
         JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.DELETE, url,
             (String) null, response -> {
                 try {
                     if (isToShowProgressDialog)
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     if (response.has("httpCode")) {
                         if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, response.optString("message"));
@@ -176,7 +176,7 @@ public class WebserviceHelper {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     if (isToShowProgressDialog)
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     AppController.handleVolleyError(activity, error);
                     onResponseListener.OnResponseFailure();
 
@@ -202,13 +202,13 @@ public class WebserviceHelper {
 
     private static void doGet(final Activity activity, final String url, final OnResponseListener onResponseListener,
         final boolean isToShowProgressDialog, final int headerType) {
-        AppUtils.hideProgressDialog(activity);
+        AppUtils.getInstance().hideProgressDialog(activity);
         if (isToShowProgressDialog)
-            AppController.showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
             url, (String) null,
             response -> {
-                AppController.hideProgressDialog(activity);
+                AppUtils.getInstance().hideProgressDialog(activity);
                 AppController.traceLog("URL : ", url);
                 AppController.traceLog("Response : ", response + "");
                 if (response.has("httpCode")) {
@@ -250,7 +250,7 @@ public class WebserviceHelper {
             @Override
             public void onErrorResponse(final VolleyError volleyError) {
                 if (isToShowProgressDialog)
-                    AppController.hideProgressDialog(activity);
+                    AppUtils.getInstance().hideProgressDialog(activity);
                 onResponseListener.OnResponseFailure();
                 AppController.handleVolleyError(activity, volleyError);
             }
@@ -285,12 +285,12 @@ public class WebserviceHelper {
     private static void doPatch(final Activity activity, final String url, final OnResponseListener onResponseListener,
         final boolean isToShowProgressDialog, final int headerType) {
         if (isToShowProgressDialog)
-            AppController.showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity);
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.PATCH,
             url, (String) null,
             response -> {
                 if (isToShowProgressDialog)
-                    AppController.hideProgressDialog(activity);
+                    AppUtils.getInstance().hideProgressDialog(activity);
                 AppController.traceLog("URL : ", url);
                 AppController.traceLog("Response : ", response + "");
                 if (response.has("httpCode")) {
@@ -333,7 +333,7 @@ public class WebserviceHelper {
             @Override
             public void onErrorResponse(final VolleyError volleyError) {
                 if (isToShowProgressDialog)
-                    AppController.hideProgressDialog(activity);
+                    AppUtils.getInstance().hideProgressDialog(activity);
                 onResponseListener.OnResponseFailure();
                 AppController.handleVolleyError(activity, volleyError);
             }
@@ -370,7 +370,7 @@ public class WebserviceHelper {
     private static void doPost(final Activity activity, final String url, final HashMap<String, String> requestParams, final OnResponseListener
         onResponseListener, final boolean isToShowProgressDialog, final int headerType) {
         if (isToShowProgressDialog)
-            AppController.showProgressDialog(activity);
+            AppUtils.getInstance().showProgressDialog(activity);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
 
@@ -380,7 +380,7 @@ public class WebserviceHelper {
                 AppController.traceLog("Response : ", response + "");
                 try {
                     if (isToShowProgressDialog)
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     final JSONObject mJsonObject = new JSONObject(response);
 
                     if (mJsonObject.optInt("httpCode") == 201 || mJsonObject.optInt("httpCode") == 200) {
@@ -434,7 +434,7 @@ public class WebserviceHelper {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     if (isToShowProgressDialog)
-                        AppController.hideProgressDialog(activity);
+                        AppUtils.getInstance().hideProgressDialog(activity);
                     AppController.handleVolleyError(activity, error);
 
                 }
