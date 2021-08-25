@@ -112,7 +112,12 @@ public class UserMobileNumber extends BaseAppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
+                ICMyCPreferenceData.setPreference(activity,
+                        ICMyCPreferenceData.selectedLanguage,
+                        "en");
+                ICMyCPreferenceData.setPreference(activity,
+                        ICMyCPreferenceData.selectedLanguagePosition,
+                        "0");
                 startActivityForResult(new Intent(activity, SelectLanguage.class), 102);
             }
         });

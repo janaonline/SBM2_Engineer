@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Onboarding & Profile -->
-    <string name="welcome">வணக்கம்</string>
+    <string name="welcome">நல்வரவு</string>
     <string name="choose_your_preferred_language">நீங்கள் விரும்பும்மொழியைத் தேர்வு செய்க</string>
     <string name="mobile_verification">சரிபார்க்க</string>
     <string name="resend_code_">குறியீட்டை மீண்டும் அனுப்புக?</string>
@@ -12,6 +12,8 @@
     <string name="we_won_t_share_your_details_with_any_one">உங்கள் விவரங்களை நாங்கள் யாருடனும் பகிரமாட்டோம்.</string>
     <string name="change">மாற்றுக</string>
     <string name="enter_mobile_number">செல்பேசி எண்ணை உள்ளிடுக</string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
+    <string name="login_to_your_account">Log in to your account</string>
 
     <!-- Home tab -->
     <string name="app_name">தூய்மை இந்தியா</string>
@@ -86,6 +88,8 @@
     <!--COVID-19-->
     <string name="skip">தவிர்</string>
     <string name="more_information_landmark_contact">பெயர், தொலைபேசி எண், முகவரி, நில எல்லைக்குறி, அல்லது நோயாளியின் அடிப்படை அறிகுறிகள்</string>
+    <string name="please_wait_for">"Please wait for "</string>
+    <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
 
 
 </resources>
