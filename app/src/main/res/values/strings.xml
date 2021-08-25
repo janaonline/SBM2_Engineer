@@ -111,6 +111,6 @@
     <!--COVID-19-->
     <string name="skip">Skip Selection</string>
     <string name="more_information_landmark_contact">Landmark, name, phone number, address</string>
-    <string name="assigned_complaints">Assigned Complaints</string>
+    <string name="assigned_complaints" translatable="false">Assigned Complaints</string>
 
 </resources>
