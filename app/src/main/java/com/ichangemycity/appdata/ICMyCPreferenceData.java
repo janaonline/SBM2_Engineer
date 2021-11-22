@@ -61,6 +61,8 @@ public class ICMyCPreferenceData {
     public static final String COMPLAINTVIEWID = "complaintviewid";
     public static final String isResolved = "isResolved";
 
+    public static final String validate_location_json_object = "validate_location_json_object";
+
     public static void setPreference(Context activity, String key, String value) {
 //        SecurePrefManager.with(activity).set(key).value(value).go();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);

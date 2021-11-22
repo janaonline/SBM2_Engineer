@@ -16,7 +16,6 @@ import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
@@ -31,6 +30,8 @@ import com.ichangemycity.webservice.WebserviceHelper;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -103,7 +104,6 @@ public class Splashscreen extends BaseAppCompatActivity {
         new RegisterBackground().execute();
     }
 
-    GoogleCloudMessaging gcm;
     private static String regid = "";
 
     public class RegisterBackground extends AsyncTask<String, String, String> {
@@ -143,6 +143,23 @@ public class Splashscreen extends BaseAppCompatActivity {
                 @Override
                 public void OnResponseSuccess(JSONObject response) {
                     new GetParsedData(activity, response.optJSONArray("languages")).execute();
+                }
+            }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
+
+            final String urlToValidateLocationForResolution = URLData.URL_VALIDATE_LOCATION;
+            new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, urlToValidateLocationForResolution, null, new OnResponseListener() {
+                @Override
+                public void OnResponseFailure() {
+                    AppUtils.getInstance().hideProgressDialog(activity);
+                }
+
+                @Override
+                public void OnResponseSuccess(JSONObject response) {
+                    try {
+                        ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.validate_location_json_object, Objects.requireNonNull(response.optJSONObject("geo-fencing")).toString());
+                    } catch (Exception e) {
+                        ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.validate_location_json_object, new JSONObject().toString());
+                    }
                 }
             }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
         }

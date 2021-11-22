@@ -21,6 +21,8 @@ import com.android.volley.NetworkResponse;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.SphericalUtil;
 import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.callback.OnTaskCompleted;
 import com.ichangemycity.swachhbharatengineer.OTPVerification;
@@ -28,6 +30,7 @@ import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.swachhbharatengineer.SetEmailPasswordActivity;
 import com.ichangemycity.swachhbharatengineer.Splashscreen;
 import com.ichangemycity.swachhbharatengineer.UserMobileNumber;
+import com.ichangemycity.webservice.GPSTracker;
 import com.ichangemycity.webservice.GenerateNewAccessToken;
 import com.ichangemycity.webservice.HTTPResponseCode;
 
@@ -57,7 +60,7 @@ public class AppUtils {
     public static void setImage(final CircleImageView circleImageView, final NetworkImageView imageView, final String imageUrl, final boolean isCircularImageView) {
         final ImageLoader imageLoader = AppController.getInstance().getImageLoader();
 
-        if(isCircularImageView) {
+        if (isCircularImageView) {
             circleImageView.setTag(imageUrl);
             final ImageLoader.ImageContainer container = imageLoader.get(imageUrl, new ImageLoader.ImageListener() {
                 @Override
@@ -89,7 +92,7 @@ public class AppUtils {
     }
 
     public static void showToast(final Activity activity, final int type, final String message) {
-        switch(type) {
+        switch (type) {
             case AppConstant.TOAST_TYPE_ERROR:
                 //                Toasty.error(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
                 Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
@@ -110,12 +113,12 @@ public class AppUtils {
         String mobnobegin = "";
         try {
             mobnobegin = mobileNumber.getText().toString().substring(0, 1);
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             mobnobegin = "";
         }
         boolean isValid = true;
-        if(mobnobegin == null || mobnobegin.length() <= 0) {
+        if (mobnobegin == null || mobnobegin.length() <= 0) {
             isValid = false;
             AppController.showAlert(activity, "", activity.getResources().getString(R.string.mobile_number_cannot_be_empty), false, new OnButtonClick() {
                 @Override
@@ -135,7 +138,7 @@ public class AppUtils {
             // mMobileNumber.setError("Password cannot be empty");
             mobileNumber.setFocusable(true);
             mobileNumber.requestFocus();
-        } else if(mobileNumber.getText().toString().length() > 0 && mobileNumber.getText().toString().length() < 10) {
+        } else if (mobileNumber.getText().toString().length() > 0 && mobileNumber.getText().toString().length() < 10) {
             isValid = false;
             AppController.showAlert(activity, "", activity.getResources().getString(R.string.mobile_number_needs_10_digits), false, new OnButtonClick() {
                 @Override
@@ -195,8 +198,9 @@ public class AppUtils {
     //
     //    }
     private static View view;
+
     public void showProgressDialog(final Activity activity) {
-        if(view != null) {
+        if (view != null) {
             hideProgressDialog(activity);
         }
         view = ((LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_loading, null);
@@ -210,16 +214,16 @@ public class AppUtils {
 
         try {
             ViewGroup rootView = activity.findViewById(android.R.id.content);
-            for(int i = 0; i < rootView.getChildCount(); i++) {
-                if(rootView.getChildAt(i) == view) {
+            for (int i = 0; i < rootView.getChildCount(); i++) {
+                if (rootView.getChildAt(i) == view) {
                     rootView.removeView(view);
                 }
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
         }
         try {
             (activity.findViewById(R.id.progress)).setVisibility(View.GONE);
-        } catch(Exception e) {
+        } catch (Exception e) {
         }
     }
 
@@ -236,7 +240,7 @@ public class AppUtils {
                 JSONObject data = jsonObject.optJSONObject("data") == null ? null : jsonObject.optJSONObject("data");
                 JSONObject location = data.optJSONObject("location") == null ? null : data.optJSONObject("location");
 
-                if(data != null) {
+                if (data != null) {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.id, data.optString("id"));
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.user_full_name, data.optString("full_name"));
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.Mobile_No, data.optString("mobile_number"));
@@ -244,19 +248,19 @@ public class AppUtils {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.organization, data.optString("organization"));
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.email, data.optString("email"));
                 }
-                if(location != null) {
+                if (location != null) {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.location, location.optString("name"));
                     JSONArray coordinates = location.optJSONArray("coordinates");
-                    if(coordinates.length() == 2) {
+                    if (coordinates.length() == 2) {
                         try {
                             ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.Latitude, coordinates.get(1) + "");
-                        } catch(JSONException e) {
+                        } catch (JSONException e) {
                             e.printStackTrace();
                             ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.Latitude, "0.0");
                         }
                         try {
                             ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.Longitude, coordinates.get(0) + "");
-                        } catch(JSONException e) {
+                        } catch (JSONException e) {
                             e.printStackTrace();
                             ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.Longitude, "0.0");
                         }
@@ -264,13 +268,13 @@ public class AppUtils {
 
                     try {
                         ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.ward_id, location.optString("ward_id"));
-                    } catch(Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                         ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.ward_id, "");
                     }
                     try {
                         ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.city_id, location.optString("city_id"));
-                    } catch(Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                         ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.city_id, "");
                     }
@@ -299,11 +303,11 @@ public class AppUtils {
         errors = "";
         try {
             responseObject = new JSONObject(new String(response.data));
-        } catch(JSONException e) {
-        } catch(NullPointerException ex) {
+        } catch (JSONException e) {
+        } catch (NullPointerException ex) {
             errors = ex.getMessage();
         }
-        if(response != null) switch(response.statusCode) {
+        if (response != null) switch (response.statusCode) {
             case HTTPResponseCode.HTTP_SUCCESS_OK:
             case HTTPResponseCode.HTTP_SUCCESS_OK_:
                 break;
@@ -312,18 +316,18 @@ public class AppUtils {
             case HTTPResponseCode.HTTP_VALIDATION_ERROR:
                 try {
                     Iterator<String> iterator = responseObject.keys();
-                    while(iterator.hasNext()) {
+                    while (iterator.hasNext()) {
                         String key = iterator.next();
                         try {
-                            if(key.equalsIgnoreCase("errors")) {
+                            if (key.equalsIgnoreCase("errors")) {
                                 JSONObject value = (responseObject.optJSONObject(key));
                                 Iterator<String> iterator1 = value.keys();
-                                while(iterator1.hasNext()) {
+                                while (iterator1.hasNext()) {
                                     String key1 = iterator1.next();
                                     errors += value.optJSONArray(key1).get(0) + "\n";
                                 }
                             }
-                        } catch(Exception e) {
+                        } catch (Exception e) {
                             errors = "Error Parsing Failed!\n";
                             errors += responseObject.optJSONArray("errors");
                         }
@@ -339,12 +343,12 @@ public class AppUtils {
 
                         }
                     });
-                } catch(Exception e) {
+                } catch (Exception e) {
                 }
                 break;
             case HTTPResponseCode.HTTP_TOO_MANY_ATTEMPTS:
                 errors = responseObject.optString("message") + "";
-                if(errors != null) if(errors.trim().length() > 0)
+                if (errors != null) if (errors.trim().length() > 0)
                     AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
                 break;
             case HTTPResponseCode.HTTP_BAD_REQUEST:
@@ -355,7 +359,7 @@ public class AppUtils {
                 break;
             case HTTPResponseCode.HTTP_UNAUTHENTICATED:
                 errors = responseObject.optString("message") + "";
-                if(errors != null) if(errors.trim().length() > 0)
+                if (errors != null) if (errors.trim().length() > 0)
                     AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
                 new GenerateNewAccessToken().generateNewAccessToken(act, new OnTaskCompleted() {
                     @Override
@@ -365,7 +369,7 @@ public class AppUtils {
 
                     @Override
                     public void onTaskFailure() {
-                        if((act.getClass().getSimpleName().equalsIgnoreCase(UserMobileNumber.class.getSimpleName()) || act.getClass().getSimpleName().equalsIgnoreCase(SetEmailPasswordActivity.class.getSimpleName()) || act.getClass().getSimpleName().equalsIgnoreCase(OTPVerification.class.getSimpleName()))) {
+                        if ((act.getClass().getSimpleName().equalsIgnoreCase(UserMobileNumber.class.getSimpleName()) || act.getClass().getSimpleName().equalsIgnoreCase(SetEmailPasswordActivity.class.getSimpleName()) || act.getClass().getSimpleName().equalsIgnoreCase(OTPVerification.class.getSimpleName()))) {
                             errors = responseObject.optString("message") + "";
                             AppController.traceLog("error", responseObject + "");
                             AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
@@ -388,15 +392,40 @@ public class AppUtils {
 
         }
     }
+
     public Bitmap getBitmapFromURI(Activity activity, final Uri imageURI) {
         final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         Bitmap bitmap = null;
         try {
             bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), imageURI);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 80, byteArrayOutputStream);
-        } catch(IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return bitmap;
+    }
+
+    public boolean setLatitudeLongitude(Activity activity) {
+        GPSTracker gps = new GPSTracker(activity);
+        // check if GPS enabled
+        if (gps.canGetLocation()) {
+            AppController.latitude = gps.getLatitude();
+            AppController.longitude = gps.getLongitude();
+            return true;
+        } else {
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gps.showSettingsAlert();
+            return false;
+        }
+    }
+
+    /***
+     * return distance between current location LatLng (latlng1) and target coordinates LatLng
+     * (latlng2) in metres
+     */
+    public double computeDistanceBetweenLatLngs(LatLng latlng1, LatLng latlng2) {
+        return SphericalUtil.computeDistanceBetween(latlng1, latlng2);
     }
 }

@@ -1,11 +1,15 @@
 package com.ichangemycity.swachhbharatengineer;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,6 +28,9 @@ import androidx.cardview.widget.CardView;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
@@ -32,19 +39,26 @@ import com.ichangemycity.base.BaseAppCompatActivity;
 import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.callback.OnResponseListener;
 import com.ichangemycity.model.SelectedImageModel;
+import com.ichangemycity.permission.GetPermissionResult;
 import com.ichangemycity.webservice.AppHelper;
+import com.ichangemycity.webservice.MyLocation;
 import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.VolleyMultipartRequest;
 import com.ichangemycity.webservice.VolleySingleton;
 import com.ichangemycity.webservice.WebserviceHelper;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Timer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -67,6 +81,8 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     @BindView(R.id.clear)
     ImageView clear;
 
+    private JSONObject geoFencingJsonObject = new JSONObject();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +92,11 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         ButterKnife.bind(this);
         activity = ChangeStatusActivity.this;
         BaseAppCompatActivity.activity = activity;
+        try {
+            geoFencingJsonObject = new JSONObject(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.validate_location_json_object, ""));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         mStatus = AppController.selectedComplaintChangeStatusOptions.getStatusName();
         statusTitleValue = findViewById(R.id.statusTitleValue);
@@ -90,18 +111,20 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         addImage.setOnClickListener(v -> showAlertToPickImage());
         setToolbarAndCustomizeTitle(getString(R.string.change_status));
         send.setOnClickListener(v -> {
-            if(((EditText) findViewById(R.id.textComment)).getText().toString().trim().length() > 0) {
-                AppUtils.getInstance().showProgressDialog(activity);
-                new InitiateChangeStatus().execute();
+            JSONArray statusIdsArray = geoFencingJsonObject.optJSONArray("status_ids");
+            Type type = new TypeToken<List<Integer>>() {
+            }.getType();
+
+            assert statusIdsArray != null;
+            ArrayList<Integer> statusIds = new Gson().fromJson(statusIdsArray.toString(), type);
+            if (geoFencingJsonObject.optBoolean("validate_location") && statusIds.contains(AppController.selectedComplaintChangeStatusOptions.getStatusID())) {
+                checkForLocationPermission();
             } else {
-                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, activity.getResources().getString(R.string.write_a_comment));
-
-                //                    Toast.makeText(activity, getResources().getString(R.string.write_a_comment), Toast
-                //                            .LENGTH_SHORT).show();
+                changeStatusCTA();
             }
-
         });
         postComm.setVisibility(View.VISIBLE);
+
         String statusText = ((String) activity.getResources().getString(R.string.you_re_changing_the_status_of_the_complaint_to_new_status));
         statusText = statusText.replace("#NEW_STATUS", mStatus);
         messageToShow.setText(statusText);
@@ -109,6 +132,83 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         setStatusForTitle(AppController.selectedComplaintChangeStatusOptions.getStatusID());
         clear.setOnClickListener(v -> initializeImageView());
         initializeImageView();
+    }
+
+    private void changeStatusCTA() {
+        if (((EditText) findViewById(R.id.textComment)).getText().toString().trim().length() > 0) {
+            AppUtils.getInstance().showProgressDialog(activity);
+            new InitiateChangeStatus().execute();
+        } else {
+            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, activity.getResources().getString(R.string.write_a_comment));
+        }
+    }
+
+    private void checkForLocationPermission() {
+
+        ArrayList<String> permissionsRequired = new ArrayList<>();
+        permissionsRequired.add(android.Manifest.permission.INTERNET);
+        permissionsRequired.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        permissionsRequired.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        permissionsRequired.add(android.Manifest.permission.CAMERA);
+        runtimePermissionManager(activity, permissionsRequired, new GetPermissionResult() {
+            @Override
+            public void resultPermissionSuccess() {
+                if (AppUtils.getInstance().setLatitudeLongitude(activity)) {
+                    AppUtils.getInstance().showProgressDialog(activity);
+                    validateLocationGeofencingToResolveComplaint();
+                } else {
+
+                    AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Please wait until we fetch your location");
+                }
+            }
+
+            @Override
+            public void resultPermissionRevoked() {
+                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "We suggest to allow permissions to make app work as expected");
+            }
+        });
+    }
+
+    private void validateLocationGeofencingToResolveComplaint() {
+        try {
+            MyLocation myLocation = new MyLocation();
+            MyLocation.LocationResult locationResult = new MyLocation.LocationResult() {
+                @SuppressLint("DefaultLocale")
+                @Override
+                public void gotLocation(Location location, Timer timer, LocationManager lm) {
+                    AppUtils.getInstance().hideProgressDialog(activity);
+                    if (location != null) {
+                        myLocation.removePendingIntentAndLocationUpdates();
+                        AppController.latitude = location.getLatitude();
+                        AppController.longitude = location.getLongitude();
+                        final double distanceInMetresFromComplaintLocation = AppUtils.getInstance().computeDistanceBetweenLatLngs(new LatLng(AppController.latitude, AppController.longitude), new LatLng(Double.parseDouble(AppController.selectedComplaintData.getLatitude()), Double.parseDouble(AppController.selectedComplaintData.getLongitude())));
+                        if (distanceInMetresFromComplaintLocation <= geoFencingJsonObject.optInt("radius_for_validation_in_mtr")) {
+                            changeStatusCTA();
+                        } else {
+                            String distance = String.format("%.2f", (distanceInMetresFromComplaintLocation / 1000)) + " metre(s)";
+                            if (distanceInMetresFromComplaintLocation > 1000) {
+                                distance = String.format("%.2f", (distanceInMetresFromComplaintLocation / 1000)) + " Kilometre(s)";
+                            }
+                            AppController.showAlert(activity, "Geo-fencing Alert", "You are " + distance + " away from complaint location :\n" + AppController.selectedComplaintData.getLocation() + ".\n\n Move closer to complaint location and try to change the status of complaint to " + AppController.selectedComplaintChangeStatusOptions.getStatusName(), false, new OnButtonClick() {
+                                @Override
+                                public void onPositiveButtonClicked(DialogInterface dialogInterface) {
+
+                                }
+
+                                @Override
+                                public void onNegativeButtonClicked() {
+
+                                }
+                            });
+                        }
+                    }
+                }
+            };
+            myLocation.getLocation(activity, locationResult);
+        } catch (Exception e) {
+            e.printStackTrace();
+            AppUtils.getInstance().hideProgressDialog(activity);
+        }
     }
 
     private class InitiateChangeStatus extends AsyncTask<Void, Void, Void> {
@@ -125,6 +225,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
          * <p>
          * This method can call {@link #publishProgress} to publish updates
          * on the UI thread.
+         *
          * @param params The parameters of the task.
          * @return A result, defined by the subclass of this task.
          * @see #onPreExecute()
@@ -143,7 +244,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
             /**
              * Image mandatory to resolve complaint
              * */
-            if(AppController.selectedComplaintChangeStatusOptions.getStatusID() == AppController.COMPLAINT_RESOLVED && TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
+            if (AppController.selectedComplaintChangeStatusOptions.getStatusID() == AppController.COMPLAINT_RESOLVED && TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
 
                 AppController.showAlert(activity, "", getResources().getString(R.string.please_upload_an_image_and_then_resolve_the_complaint_to_resolved), false, new OnButtonClick() {
                     @Override
@@ -151,6 +252,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                         postComm.setVisibility(View.VISIBLE);
                         addImage.performClick();
                     }
+
                     @Override
                     public void onNegativeButtonClicked() {
 
@@ -158,10 +260,10 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
                 });
             } else {
-                if(!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
+                if (!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
                     uploadImage();
                 } else {
-                    if(!TextUtils.isEmpty(((EditText) findViewById(R.id.textComment)).getText().toString()))
+                    if (!TextUtils.isEmpty(((EditText) findViewById(R.id.textComment)).getText().toString()))
                         changeStatus(false);
                     else
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, getResources().getString(R.string.write_a_comment));
@@ -181,10 +283,10 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         params.put("complaintId", AppController.selectedComplaintData.getComplaintId());
         params.put("commentDescription", ((EditText) findViewById(R.id.textComment)).getText().toString());
 
-        if(hasImage)
+        if (hasImage)
             params.put("fileId", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.commentUploadedImageFile, ""));
         String URLParams = "?apiKey=" + URLData.API_KEY + "&statusId=" + AppController.selectedComplaintChangeStatusOptions.getStatusID() + "&userId=" + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.id, "") + "&complaintId=" + AppController.selectedComplaintData.getComplaintId() + "&commentDescription=" + ((EditText) findViewById(R.id.textComment)).getText().toString().replace(" ", "%20");
-        if(hasImage)
+        if (hasImage)
             URLParams = URLParams + "&fileId=" + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url + URLParams, null, new OnResponseListener() {
@@ -206,20 +308,21 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                     try {
                         try {
                             ComplaintDetailNew.isToRefresh = true;
-                        } catch(Exception e) {}
+                        } catch (Exception e) {
+                        }
 
                         int httpCode = response.getInt("httpCode");
-                        if(httpCode == 200 || httpCode == 201) {
+                        if (httpCode == 200 || httpCode == 201) {
                             ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
                             isToRefresh = true;
                             activity.finish();
                         }
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
                         //                                Toast.makeText(activity,responseJsonObject.get("message").toString(),Toast.LENGTH_LONG).show();
-                    } catch(Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-                } catch(Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -311,7 +414,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
             try {
                 mJsonObject = new JSONObject(resultResponse);
 
-                switch(mJsonObject.optInt("httpCode")) {
+                switch (mJsonObject.optInt("httpCode")) {
                     case 200:
                     case 201:
                         JSONObject fileJsonObject = (JSONObject) mJsonObject.get("file");
@@ -326,7 +429,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
                 AppUtils.getInstance().hideProgressDialog(activity);
                 changeStatus(true);
-            } catch(JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
@@ -368,17 +471,17 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     protected void onResume() {
         super.onResume();
         try {
-            if(!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
+            if (!TextUtils.isEmpty(AppController.mSelectedImageModels.getPathOfSelectedImage())) {
                 previewImage();
             }
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     private void previewImage() {
-        if(AppController.mSelectedImageModels != null && AppController.mSelectedImageModels.getUriOfImage() != null) {
+        if (AppController.mSelectedImageModels != null && AppController.mSelectedImageModels.getUriOfImage() != null) {
             cvimagePreview.setVisibility(View.VISIBLE);
             imageToUpload.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageToUpload.setImageURI(AppController.mSelectedImageModels.getUriOfImage());
@@ -419,8 +522,8 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     private void setStatusForTitle(int complaintStatus) {
         int complaintStatusTextColor = 0;
         list.setVisibility(View.GONE);
-        if(complaintStatus > 0) {
-            switch(complaintStatus) {
+        if (complaintStatus > 0) {
+            switch (complaintStatus) {
                /* case AppController.COMPLAINT_REOPEN:
                     complaintStatus = R.drawable.complaint_status_red;
                     complaintStatusTextColor = activity.getResources().getColor(R.color.red_reopn_open);
