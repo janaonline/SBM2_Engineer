@@ -185,7 +185,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                         if (distanceInMetresFromComplaintLocation <= geoFencingJsonObject.optInt("radius_for_validation_in_mtr")) {
                             changeStatusCTA();
                         } else {
-                            String distance = String.format("%.2f", (distanceInMetresFromComplaintLocation / 1000)) + " metre(s)";
+                            String distance = String.format("%.2f", distanceInMetresFromComplaintLocation) + " metre(s)";
                             if (distanceInMetresFromComplaintLocation > 1000) {
                                 distance = String.format("%.2f", (distanceInMetresFromComplaintLocation / 1000)) + " Kilometre(s)";
                             }
