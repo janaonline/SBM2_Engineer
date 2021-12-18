@@ -23,7 +23,6 @@ import org.json.JSONObject;
 import java.util.Random;
 
 public class SBM2Utils {
-
     /*Constants*/
     private static SBM2Utils mInstance;
     public View view; // to show/hide progress dialog view
