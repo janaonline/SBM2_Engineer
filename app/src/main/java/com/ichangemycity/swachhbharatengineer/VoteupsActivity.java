@@ -99,7 +99,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, urlm, null,
                 new OnResponseListener() {
                     @Override
-                    public void OnResponseFailure() {
+                    public void OnResponseFailure(JSONObject response) {
                         AppUtils.getInstance().hideProgressDialog(activity);
                     }
 

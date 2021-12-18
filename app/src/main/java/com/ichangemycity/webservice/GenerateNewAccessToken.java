@@ -21,7 +21,7 @@ public class GenerateNewAccessToken {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, requestParams, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 ICMyCPreferenceData.clearPreferences(activity);
                 onTaskCompleted.onTaskFailure();
             }

@@ -28,6 +28,9 @@ public class AppConstant {
     public static String USER_TEMP_MOBILE_NUMBER = "";
 
 
+
+    public static final int FROM_SIGN_IN=8;
+
     public ArrayList<String> imagePreviewList = new ArrayList<>();
 
 

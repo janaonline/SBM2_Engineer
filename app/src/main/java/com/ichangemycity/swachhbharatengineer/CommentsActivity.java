@@ -198,7 +198,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url + urlParams, params, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
 
                 //                        Toast.makeText(UserMobileNumber.this, error.toString(), Toast.LENGTH_LONG).show();
                 AppUtils.getInstance().hideProgressDialog(activity);
@@ -368,7 +368,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, getCommentRequestUrl, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 if(isToScroll) {
                     AppUtils.getInstance().hideProgressDialog(activity);
                 }

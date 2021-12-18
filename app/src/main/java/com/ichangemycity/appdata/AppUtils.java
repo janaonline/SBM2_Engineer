@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 
 import com.android.volley.NetworkResponse;
@@ -427,5 +428,24 @@ public class AppUtils {
      */
     public double computeDistanceBetweenLatLngs(LatLng latlng1, LatLng latlng2) {
         return SphericalUtil.computeDistanceBetween(latlng1, latlng2);
+    }
+
+    public void showAlert(final Context activity, final String title, final String message,
+                          final boolean isToShowNegativeButton, final
+                          OnButtonClick onButtonClick) {
+        AlertDialog.Builder ab = new AlertDialog.Builder(activity);
+        ab.setTitle(title);
+        ab.setMessage(message);
+        ab.setPositiveButton("Ok",
+                (dialogInterface, i) -> onButtonClick.onPositiveButtonClicked(dialogInterface));
+        if (isToShowNegativeButton) {
+            ab.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    onButtonClick.onNegativeButtonClicked();
+                }
+            });
+        }
+        ab.show();
     }
 }

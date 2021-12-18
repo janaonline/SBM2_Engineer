@@ -291,7 +291,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url + URLParams, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Unknown error, please refresh complaints");
                 activity.finish();

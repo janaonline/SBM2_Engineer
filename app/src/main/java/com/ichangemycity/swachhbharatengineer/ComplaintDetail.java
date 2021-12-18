@@ -174,7 +174,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 frameLoading.setVisibility(View.GONE);
                 AppUtils.getInstance().hideProgressDialog(activity);
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Unknown error, please refresh complaints");

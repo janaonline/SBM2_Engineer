@@ -169,7 +169,7 @@ public class NotificationAdapter extends
     new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url, params,
         new OnResponseListener() {
           @Override
-          public void OnResponseFailure() {
+          public void OnResponseFailure(JSONObject response) {
             AppUtils.getInstance().hideProgressDialog(activity);
             //  AppController.handleVolleyError(activity, (RelativeLayout) activity.findViewById(R.id.parentLayout), error);
             try {

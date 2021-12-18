@@ -127,7 +127,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
                 + current_page + URLData.NOTIFICATION_STATUS + URLData.UNREAD;
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 setSwipeProgress(false);
                 AppUtils.getInstance().hideProgressDialog(activity);
                 //  AppController.handleVolleyError(activity, (RelativeLayout) findViewById(R.id.parentLayout), error);
@@ -152,7 +152,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         // currentPosition = data.size() - 1;
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 
@@ -476,7 +476,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
                 + URLData.READ;
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
                 setSwipeProgress(false);
             }
@@ -499,7 +499,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
                 + URLData.READ;
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 
@@ -685,7 +685,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
         //return params;
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url,params, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 

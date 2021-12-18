@@ -206,7 +206,7 @@ public class OTPVerification extends BaseAppCompatActivity {
         params.putAll(URLDataSwachhManch.getChannelParam());
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, URLDataSwachhManch.BASE_URL_AUTH, params, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 
@@ -229,7 +229,7 @@ public class OTPVerification extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
 
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 
@@ -267,7 +267,7 @@ public class OTPVerification extends BaseAppCompatActivity {
         final String url = URLDataSwachhManch.BASE_URL_AUTH + URLData.GENERATE_OTP + "?mobile_number=" + params.get("mobile_number").toString().trim();
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, params, new OnResponseListener() {
             @Override
-            public void OnResponseFailure() {
+            public void OnResponseFailure(JSONObject response) {
                 AppUtils.getInstance().hideProgressDialog(activity);
             }
 

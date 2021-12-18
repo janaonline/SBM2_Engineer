@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 31
@@ -89,7 +90,6 @@ allprojects {
         }
     }
 }
-apply plugin: 'com.google.gms.google-services'
 
 repositories {
     mavenCentral()
