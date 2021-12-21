@@ -84,6 +84,10 @@ public class Splashscreen extends BaseAppCompatActivity {
         Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.splash_screen);
         videoView.setVideoURI(video);
         videoView.start();
+
+        /*comment below lines - dummy*/
+//        AppController.selectedComplaintData.setComplaintId("26216907");
+
     }
 
     protected void unregisterNetworkChanges() {

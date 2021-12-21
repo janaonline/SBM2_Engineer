@@ -24,6 +24,7 @@ import com.ichangemycity.callback.OnResponseListener;
 import com.ichangemycity.customui.RoundedBackgroundSpan;
 import com.ichangemycity.model.NotificationHeaderData;
 import com.ichangemycity.swachhbharatengineer.ComplaintDetail;
+import com.ichangemycity.swachhbharatengineer.ComplaintDetailNew;
 import com.ichangemycity.swachhbharatengineer.NotificationActivity;
 import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.webservice.URLData;
@@ -216,7 +217,7 @@ public class NotificationAdapter extends
     String redirectTo = notifData.getRedirectTo();
     AppController.selectedComplaintData.setComplaintId(notifData
         .getContentId() + "");
-    activity.startActivity(new Intent(activity, ComplaintDetail.class));
+    activity.startActivity(new Intent(activity, ComplaintDetailNew.class));
 
   }
 

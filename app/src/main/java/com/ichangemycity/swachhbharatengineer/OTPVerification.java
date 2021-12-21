@@ -276,7 +276,7 @@ public class OTPVerification extends BaseAppCompatActivity {
                 try {
                     AppUtils.getInstance().hideProgressDialog(activity);
                     if (responseJsonObject.optInt("httpCode") == 200 || responseJsonObject.optInt("httpCode") == 201) {
-                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, responseJsonObject.optString("message"));
+//                        AppUtils.showToast(activity, AppConstant.TOAST_TYPE_SUCCESS, responseJsonObject.optString("message"));
                     } else {
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, responseJsonObject.optString("message"));
                     }

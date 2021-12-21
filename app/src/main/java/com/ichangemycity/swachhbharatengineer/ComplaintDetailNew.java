@@ -107,9 +107,6 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
     //    @BindView(R.id.feedbackBtn)
     //    TextView feedback;
 
-    @BindView(R.id.view)
-    View viewLine;
-
     @BindView(R.id.locationImage)
     ImageView locationImage;
 
@@ -192,7 +189,7 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
             public void OnResponseFailure() {
                 //                frameLoading.setVisibility(View.GONE);
                 AppUtils.getInstance().hideProgressDialog(activity);
-                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Unknown error, please refresh complaints");
+               activity.finish();
             }
 
             @Override
@@ -465,7 +462,7 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
             }
         });
 
-        share.setOnClickListener(m -> ParseComplaintData.shareComplaint(activity, complaintDetailData));
+        share.setOnClickListener(m -> ParseComplaintData.getInstance().shareComplaintAction(activity, complaintDetailData));
         //        share.setOnClickListener(
         //                m -> ParseComplaintData.shareComplaint(activity, complaintDetailData));
 

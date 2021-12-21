@@ -316,7 +316,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
                 activity.startActivity(toCommentsActivity);
             });
             share.setOnClickListener(
-                    m -> ParseComplaintData.shareComplaint(activity, complaintDetailData));
+                    m -> ParseComplaintData.getInstance().shareComplaintAction(activity, complaintDetailData));
 
 //        locateComplaint.setOnClickListener(v -> {
 //            String uri = String.format(

@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (data != null) {
             if (Intent.ACTION_VIEW.equals(action) && data != null) {
                 AppController.selectedComplaintData.setComplaintId(data.substring(data.lastIndexOf("/") + 1));
-                startActivity(new Intent(activity, ComplaintDetail.class));
+                startActivity(new Intent(activity, ComplaintDetailNew.class));
             }
         } else {
             // do nothing
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         try {
             if (!TextUtils.isEmpty(AppController.selectedComplaintData.getComplaintId())) {
-                startActivity(new Intent(MainActivity.activity, ComplaintDetail.class));
+                startActivity(new Intent(MainActivity.activity, ComplaintDetailNew.class));
             }
 
         } catch (Exception e) {

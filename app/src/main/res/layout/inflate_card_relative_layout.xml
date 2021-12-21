@@ -33,7 +33,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="10dip"
-            android:layout_toRightOf="@+id/user_image"
+            android:layout_toEndOf="@+id/user_image"
             android:fontFamily="@font/roboto_regular"
             android:lineSpacingMultiplier="1.2"
             android:text="Patriatic User has voted up on your complaint - Defacement Of Buildings And Public Property-Vasanth Nagar,Bengaluru"

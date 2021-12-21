@@ -24,9 +24,8 @@
                     android:id="@+id/maintoolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?android:attr/actionBarSize"
-                    android:layout_alignParentTop="true"
-                    android:theme="@style/ToolbarTheme"
-                    android:background="@color/primaryDark" />
+                    android:background="@color/primaryDark"
+                    android:theme="@style/ToolbarTheme" />
 
                 <ImageView
                     android:id="@+id/share"
@@ -49,8 +48,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:foregroundGravity="fill">
+                    android:layout_height="wrap_content">
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -99,9 +97,9 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="10dip"
-                                    android:layout_toRightOf="@+id/user_image"
+                                    android:layout_toEndOf="@+id/user_image"
                                     android:fontFamily="@font/roboto_bold"
-                                    android:text="Paul Walker"
+                                    tools:text="Paul Walker"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/textSize16dp" />
 
@@ -111,11 +109,11 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/tv_username"
-                                    android:layout_alignLeft="@+id/tv_username"
+                                    android:layout_alignStart="@+id/tv_username"
                                     android:layout_marginTop="@dimen/horizontal_vertical_spacing"
                                     android:fontFamily="@font/roboto_regular"
                                     android:maxLines="1"
-                                    android:text="2 hours ago"
+                                    tools:text="2 hours ago"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/textSize14dp" />
 
@@ -124,14 +122,13 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_below="@+id/user_image"
-                                    android:layout_alignLeft="@+id/user_image"
                                     android:layout_gravity="bottom"
                                     android:layout_marginTop="@dimen/margin16dp"
                                     android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
                                     android:fontFamily="@font/roboto_bold"
                                     android:gravity="center_vertical"
                                     android:paddingBottom="@dimen/horizontal_vertical_spacing"
-                                    android:text="Urination in Public/Open Defecation"
+                                    tools:text="Urination in Public/Open Defecation"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/textSize16dp" />
 
@@ -143,332 +140,267 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.core.widget.NestedScrollView
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/cv"
-                android:focusableInTouchMode="true"
+                android:orientation="vertical"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <LinearLayout
+
+                <RelativeLayout
+                    android:id="@+id/parentLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+                    android:background="@color/white"
+                    android:fitsSystemWindows="true">
 
-
-                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
-                        android:id="@+id/parentLayout"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:fitsSystemWindows="true">
+                        android:orientation="vertical">
 
-                        <com.google.android.material.appbar.AppBarLayout
+
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content">
 
-                            android:theme="@style/AppTheme.AppBarOverlay">
-
-                            <!--  <ScrollView
-                                  android:id="@+id/scrollView1"
-                                  android:layout_width="match_parent"
-                                  android:layout_height="wrap_content"
-                                  android:layout_alignParentBottom="true"
-                                  android:layout_alignParentLeft="true"
-                                  android:layout_alignParentStart="true"
-
-                                  android:scrollbars="none">-->
-
-                            <LinearLayout
+                            <RelativeLayout
+                                android:id="@+id/shadow"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
+                                android:layout_height="wrap_content"
+                                android:elevation="2dp">
 
-
-                                <RelativeLayout
+                                <LinearLayout
+                                    android:id="@+id/category_layout"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_centerVertical="true"
-                                    android:background="@color/white"
-                                    android:gravity="center"
                                     android:orientation="vertical">
-
-                                    <View
-                                        android:id="@+id/view"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="1px"
-                                        android:background="#e6e6e6" />
-
 
 
                                     <RelativeLayout
-                                        android:id="@+id/rl_top_cc"
-                                        android:layout_width="match_parent"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_below="@+id/view"
-                                        android:layout_centerVertical="true"
-                                        android:background="@color/white"
-                                        android:gravity="center"
-                                        android:orientation="vertical">
+                                        android:layout_marginStart="16dp"
+                                        android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+                                        android:layout_marginEnd="16dp">
 
-                                        <RelativeLayout
+                                        <TextView
+                                            android:id="@+id/complaint_status"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_alignParentTop="true"
+                                            android:drawablePadding="@dimen/horizontal_vertical_spacing"
+                                            android:fontFamily="@font/roboto_regular"
+                                            android:text="Status : Open"
+                                            android:textAllCaps="false"
+                                            android:textColor="@color/secondary"
+                                            android:textSize="@dimen/textSize16dp"
+                                            app:drawableStartCompat="@mipmap/round_check_circle_white_24"
+                                            app:drawableTint="@color/secondary" />
+
+                                        <TextView
+                                            android:id="@+id/location"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_below="@+id/rl_cc_top">
-
-                                            <RelativeLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="wrap_content">
-
-                                                <RelativeLayout
-                                                    android:id="@+id/shadow"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:elevation="2dp">
-
-                                                    <LinearLayout
-                                                        android:id="@+id/category_layout"
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:orientation="vertical">
+                                            android:layout_below="@+id/complaint_status"
+                                            android:layout_gravity="bottom"
+                                            android:layout_marginTop="@dimen/margin16dp"
+                                            android:autoLink="all"
+                                            android:drawablePadding="@dimen/horizontal_vertical_spacing"
+                                            android:ellipsize="end"
+                                            android:fontFamily="@font/roboto_regular"
+                                            android:gravity="center_vertical"
+                                            android:lineSpacingMultiplier="1.2"
+                                            android:text="Dirty Smelly Unhygenic"
+                                            android:textColor="@color/secondary"
+                                            android:textIsSelectable="true"
+                                            android:textSize="@dimen/textSize16dp"
+                                            app:drawableStartCompat="@mipmap/baseline_room_white_24"
+                                            app:drawableTint="@color/secondary" />
 
 
-                                                        <RelativeLayout
-                                                            android:layout_width="wrap_content"
-                                                            android:layout_height="wrap_content"
-                                                            android:layout_below="@+id/rl_cc_middle"
-                                                            android:layout_alignParentRight="true"
-                                                            android:layout_marginStart="16dp"
-                                                            android:layout_marginTop="@dimen/horizontal_vertical_spacing"
-                                                            android:layout_marginEnd="16dp">
-
-                                                            <TextView
-                                                                android:id="@+id/complaint_status"
-                                                                android:layout_width="wrap_content"
-                                                                android:layout_height="wrap_content"
-                                                                android:layout_alignParentLeft="true"
-                                                                android:layout_alignParentTop="true"
-                                                                android:drawableLeft="@mipmap/round_check_circle_white_24"
-                                                                android:drawablePadding="@dimen/horizontal_vertical_spacing"
-                                                                android:drawableTint="@color/secondary"
-                                                                android:fontFamily="@font/roboto_regular"
-                                                                android:text="Status : Open"
-                                                                android:textAllCaps="false"
-                                                                android:textColor="@color/secondary"
-                                                                android:textSize="@dimen/textSize16dp" />
-
-                                                            <TextView
-                                                                android:id="@+id/location"
-                                                                android:layout_width="match_parent"
-                                                                android:layout_height="wrap_content"
-                                                                android:layout_below="@+id/complaint_status"
-                                                                android:layout_gravity="bottom"
-                                                                android:layout_marginTop="@dimen/margin16dp"
-                                                                android:autoLink="all"
-                                                                android:drawableLeft="@mipmap/baseline_room_white_24"
-                                                                android:drawablePadding="@dimen/horizontal_vertical_spacing"
-                                                                android:drawableTint="@color/secondary"
-                                                                android:ellipsize="end"
-                                                                android:fontFamily="@font/roboto_regular"
-                                                                android:gravity="center_vertical"
-                                                                android:lineSpacingMultiplier="1.2"
-                                                                android:text="Dirty Smelly Unhygenic"
-                                                                android:textColor="@color/secondary"
-                                                                android:textIsSelectable="true"
-                                                                android:textSize="@dimen/textSize16dp" />
+                                        <TextView
+                                            android:id="@+id/moreInfo"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_below="@+id/location"
+                                            android:layout_gravity="bottom"
+                                            android:layout_marginTop="@dimen/margin16dp"
+                                            android:autoLink="all"
+                                            android:drawablePadding="@dimen/horizontal_vertical_spacing"
+                                            android:ellipsize="end"
+                                            android:fontFamily="@font/roboto_regular"
+                                            android:gravity="center_vertical"
+                                            android:lineSpacingMultiplier="1.2"
+                                            android:text="Dirty Smelly Unhygenic"
+                                            android:textColor="@color/secondary"
+                                            android:textIsSelectable="true"
+                                            android:textSize="@dimen/textSize16dp"
+                                            app:drawableStartCompat="@mipmap/round_info_white_36"
+                                            app:drawableTint="@color/secondary" />
 
 
-                                                            <TextView
-                                                                android:id="@+id/moreInfo"
-                                                                android:layout_width="match_parent"
-                                                                android:layout_height="wrap_content"
-                                                                android:layout_below="@+id/location"
-                                                                android:layout_gravity="bottom"
-                                                                android:layout_marginTop="@dimen/margin16dp"
-                                                                android:autoLink="all"
-                                                                android:drawableLeft="@mipmap/round_info_white_36"
-                                                                android:drawablePadding="@dimen/horizontal_vertical_spacing"
-                                                                android:drawableTint="@color/secondary"
-                                                                android:ellipsize="end"
-                                                                android:fontFamily="@font/roboto_regular"
-                                                                android:gravity="center_vertical"
-                                                                android:lineSpacingMultiplier="1.2"
-                                                                android:text="Dirty Smelly Unhygenic"
-                                                                android:textColor="@color/secondary"
-                                                                android:textIsSelectable="true"
-                                                                android:textSize="@dimen/textSize16dp" />
+                                        <RelativeLayout
+                                            android:id="@+id/rl_top_feed"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_below="@+id/moreInfo"
+                                            android:layout_marginStart="28dp"
+                                            android:layout_marginTop="@dimen/margin16dp"
+                                            android:orientation="vertical">
 
+                                            <TextView
+                                                android:id="@+id/tv_feed_user_name"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginEnd="2dp"
+                                                android:fontFamily="@font/roboto_bold"
+                                                android:gravity="center_vertical"
+                                                android:singleLine="true"
+                                                android:text="@string/id_"
+                                                android:textColor="@color/secondary_text_color"
+                                                android:textSize="@dimen/textSize14dp" />
 
-                                                            <RelativeLayout
-                                                                android:id="@+id/rl_top_feed"
-                                                                android:layout_width="wrap_content"
-                                                                android:layout_height="wrap_content"
-                                                                android:layout_below="@+id/moreInfo"
-                                                                android:layout_marginStart="28dp"
-                                                                android:layout_marginTop="@dimen/margin16dp"
-                                                                android:orientation="vertical">
+                                            <TextView
+                                                android:id="@+id/tv_feed"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginStart="2dp"
+                                                android:layout_toEndOf="@+id/tv_feed_user_name"
+                                                android:ellipsize="marquee"
+                                                android:focusable="true"
+                                                android:focusableInTouchMode="true"
+                                                android:fontFamily="@font/roboto_bold"
+                                                android:gravity="center_vertical"
+                                                android:marqueeRepeatLimit="marquee_forever"
+                                                android:singleLine="true"
+                                                android:text="W02334C45475432"
+                                                android:textColor="@color/secondary_text_color"
+                                                android:textIsSelectable="true"
+                                                android:textSize="@dimen/textSize14dp" />
 
-                                                                <TextView
-                                                                    android:id="@+id/tv_feed_user_name"
-                                                                    android:layout_width="wrap_content"
-                                                                    android:layout_height="wrap_content"
-                                                                    android:layout_centerVertical="true"
-                                                                    android:layout_marginEnd="2dp"
-                                                                    android:fontFamily="@font/roboto_bold"
-                                                                    android:gravity="center_vertical"
-                                                                    android:singleLine="true"
-                                                                    android:text="@string/id_"
-                                                                    android:textColor="@color/secondary_text_color"
-                                                                    android:textSize="@dimen/textSize14dp" />
-
-                                                                <TextView
-                                                                    android:id="@+id/tv_feed"
-                                                                    android:layout_width="wrap_content"
-                                                                    android:layout_height="wrap_content"
-                                                                    android:layout_centerVertical="true"
-                                                                    android:layout_marginStart="2dp"
-                                                                    android:layout_toRightOf="@+id/tv_feed_user_name"
-                                                                    android:ellipsize="marquee"
-                                                                    android:focusable="true"
-                                                                    android:focusableInTouchMode="true"
-                                                                    android:fontFamily="@font/roboto_bold"
-                                                                    android:gravity="center_vertical"
-                                                                    android:marqueeRepeatLimit="marquee_forever"
-                                                                    android:singleLine="true"
-                                                                    android:text="W02334C45475432"
-                                                                    android:textColor="@color/secondary_text_color"
-                                                                    android:textIsSelectable="true"
-                                                                    android:textSize="@dimen/textSize14dp" />
-
-
-                                                            </RelativeLayout>
-
-                                                        </RelativeLayout>
-
-                                                        <TextView
-                                                            android:id="@+id/convertedtoEvent"
-                                                            android:layout_width="wrap_content"
-                                                            android:layout_height="wrap_content"
-                                                            android:layout_alignParentRight="true"
-                                                            android:layout_centerVertical="true"
-                                                            android:layout_marginStart="@dimen/margin24dp"
-                                                            android:layout_marginTop="@dimen/horizontal_vertical_spacing"
-                                                            android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
-                                                            android:background="@drawable/complaint_status_closed"
-                                                            android:fontFamily="@font/roboto_bold"
-                                                            android:gravity="center"
-                                                            android:text="Converted to Event"
-                                                            android:textColor="@color/secondaryDark"
-                                                            android:textSize="@dimen/textSize16dp"
-                                                            android:visibility="gone" />
-                                                    </LinearLayout>
-
-
-                                                    <LinearLayout
-                                                        android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:layout_below="@+id/category_layout"
-                                                        android:layout_marginStart="4dp"
-                                                        android:layout_marginTop="@dimen/horizontal_vertical_spacing"
-                                                        android:orientation="vertical">
-
-
-                                                        <FrameLayout
-                                                            android:id="@+id/locationMap"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:layout_marginTop="@dimen/margin16dp"
-                                                            android:layout_marginBottom="@dimen/horizontal_vertical_spacing">
-
-                                                            <ImageView
-                                                                android:id="@+id/locationImage"
-                                                                android:layout_width="match_parent"
-                                                                android:layout_height="160dp"
-                                                                android:scaleType="centerCrop" />
-
-                                                            <ImageView
-                                                                android:id="@+id/directionsbtn"
-                                                                style="@style/Widget.AppCompat.Button"
-                                                                android:layout_width="48dp"
-                                                                android:layout_height="48dp"
-                                                                android:layout_alignParentRight="true"
-                                                                android:layout_gravity="bottom|right"
-                                                                android:layout_margin="18dp"
-                                                                android:background="@drawable/secondary_round_bg"
-                                                                android:padding="@dimen/horizontal_vertical_spacing"
-                                                                android:scaleType="fitCenter"
-                                                                android:src="@mipmap/baseline_directions_black_24"
-                                                                app:tint="@color/white" />
-                                                        </FrameLayout>
-
-                                                        <TextView
-                                                            android:id="@+id/complaintLocation"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content"
-                                                            android:layout_centerVertical="true"
-                                                            android:layout_marginStart="@dimen/margin16dp"
-                                                            android:layout_marginEnd="@dimen/margin16dp"
-                                                            android:layout_marginBottom="@dimen/margin16dp"
-                                                            android:layout_toLeftOf="@+id/directionsbtn"
-                                                            android:fontFamily="@font/roboto_regular"
-                                                            android:text="Cunningham road, vasanth nagar, bengaluru, karnataka, india"
-                                                            android:textColor="@color/secondary_text_color"
-                                                            android:textSize="@dimen/textSize16dp" />
-
-
-                                                        <include
-                                                            layout="@layout/inflate_cta_change_stats_directions"
-                                                            android:layout_width="match_parent"
-                                                            android:layout_height="wrap_content" />
-                                                    </LinearLayout>
-                                                </RelativeLayout>
-
-                                                <TextView
-                                                    android:id="@+id/commentsText"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_below="@+id/shadow"
-                                                    android:layout_margin="@dimen/margin16dp"
-                                                    android:text="@string/comments"
-                                                    android:textColor="@color/secondaryDark"
-                                                    android:textSize="@dimen/textSize16dp" />
-
-                                                <androidx.recyclerview.widget.RecyclerView
-                                                    android:id="@+id/mRecyclerviewComments"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_below="@+id/commentsText"
-                                                    android:nestedScrollingEnabled="false" />
-
-                                                <TextView
-                                                    android:id="@+id/viewEmpty"
-                                                    android:layout_width="wrap_content"
-                                                    android:layout_height="match_parent"
-                                                    android:layout_below="@+id/commentsText"
-                                                    android:layout_centerInParent="true"
-                                                    android:layout_gravity="center"
-                                                    android:layout_margin="32dp"
-                                                    android:background="@color/transparent"
-                                                    android:fontFamily="@font/roboto_bold"
-                                                    android:gravity="center"
-                                                    android:text="@string/be_the_first_to_comment"
-                                                    android:textColor="@color/primerColorBlack"
-                                                    android:textSize="@dimen/textSize16dp" />
-                                            </RelativeLayout>
 
                                         </RelativeLayout>
+
                                     </RelativeLayout>
-                                </RelativeLayout>
-                            </LinearLayout>
-                        </com.google.android.material.appbar.AppBarLayout>
 
-                    </RelativeLayout>
+                                    <TextView
+                                        android:id="@+id/convertedtoEvent"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin24dp"
+                                        android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+                                        android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
+                                        android:background="@drawable/complaint_status_closed"
+                                        android:fontFamily="@font/roboto_bold"
+                                        android:gravity="center"
+                                        android:text="Converted to Event"
+                                        android:textColor="@color/secondaryDark"
+                                        android:textSize="@dimen/textSize16dp"
+                                        android:visibility="gone" />
+                                </LinearLayout>
 
-                </LinearLayout>
 
-            </androidx.core.widget.NestedScrollView>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/category_layout"
+                                    android:layout_marginStart="4dp"
+                                    android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+                                    android:orientation="vertical">
+
+
+                                    <FrameLayout
+                                        android:id="@+id/locationMap"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/margin16dp"
+                                        android:layout_marginBottom="@dimen/horizontal_vertical_spacing">
+
+                                        <ImageView
+                                            android:id="@+id/locationImage"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="160dp"
+                                            android:scaleType="centerCrop" />
+
+                                        <ImageView
+                                            android:id="@+id/directionsbtn"
+                                            style="@style/Widget.AppCompat.Button"
+                                            android:layout_width="48dp"
+                                            android:layout_height="48dp"
+                                            android:layout_gravity="bottom|right"
+                                            android:layout_margin="18dp"
+                                            android:background="@drawable/secondary_round_bg"
+                                            android:padding="@dimen/horizontal_vertical_spacing"
+                                            android:scaleType="fitCenter"
+                                            android:src="@mipmap/baseline_directions_black_24"
+                                            app:tint="@color/white" />
+                                    </FrameLayout>
+
+                                    <TextView
+                                        android:id="@+id/complaintLocation"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin16dp"
+                                        android:layout_marginEnd="@dimen/margin16dp"
+                                        android:layout_marginBottom="@dimen/margin16dp"
+                                        android:fontFamily="@font/roboto_regular"
+                                        android:text="Cunningham road, vasanth nagar, bengaluru, karnataka, india"
+                                        android:textColor="@color/secondary_text_color"
+                                        android:textSize="@dimen/textSize16dp" />
+
+
+                                    <include
+                                        layout="@layout/inflate_cta_change_stats_directions"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+                            </RelativeLayout>
+
+                            <TextView
+                                android:id="@+id/commentsText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/shadow"
+                                android:layout_margin="@dimen/margin16dp"
+                                android:text="@string/comments"
+                                android:textColor="@color/secondaryDark"
+                                android:textSize="@dimen/textSize16dp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/mRecyclerviewComments"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/commentsText"
+                                android:nestedScrollingEnabled="false"
+                                card_view:targetApi="lollipop" />
+
+                            <TextView
+                                android:id="@+id/viewEmpty"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_below="@+id/commentsText"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:layout_margin="32dp"
+                                android:background="@color/transparent"
+                                android:fontFamily="@font/roboto_bold"
+                                android:gravity="center"
+                                android:text="@string/be_the_first_to_comment"
+                                android:textColor="@color/primerColorBlack"
+                                android:textSize="@dimen/textSize16dp" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
 
         </LinearLayout>
