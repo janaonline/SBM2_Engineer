@@ -15,35 +15,61 @@ import androidx.cardview.widget.CardView;
 
 import com.ichangemycity.callback.OnResponseListener;
 import com.ichangemycity.swachhbharatengineer.R;
-import com.ichangemycity.webservice.URLDataConstants;
-import com.ichangemycity.webservice.WebServiceUtils;
+import com.ichangemycity.webservice.sbm2.URLDataConstants;
+import com.ichangemycity.webservice.sbm2.WebServiceUtils;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Objects;
 import java.util.Random;
 
-public class SBM2Utils {
+public class SBMUtils {
     /*Constants*/
-    private static SBM2Utils mInstance;
+    private static SBMUtils mInstance;
     public View view; // to show/hide progress dialog view
 
     /*get instance*/
-    public static SBM2Utils getInstance() {
-        return mInstance == null ? mInstance = new SBM2Utils() : mInstance;
+    public static SBMUtils getInstance() {
+        return mInstance == null ? mInstance = new SBMUtils() : mInstance;
     }
 
     public void showErrorResponse(final Activity activity, final int MESSAGE_TYPE, final JSONObject errorObject) {
-        String message = "", title = "";
-        message = errorObject.optString("msg");
-        if(errorObject.has("errorDetails") && !TextUtils.isEmpty(errorObject.optString("errorDetails")) && errorObject.optBoolean("error")) {
-            if(errorObject.optJSONObject("errorDetails") instanceof JSONObject) {
-                message = errorObject.optJSONObject("errorDetails").optString("message");
-                title = errorObject.optString("msg");
-            }
-
-            showMessage(activity, MESSAGE_TYPE, title, message);
+        StringBuilder message = new StringBuilder();
+        String title = "";
+        message = new StringBuilder(errorObject.optString("msg"));
+        title = errorObject.optString("msg");
+    /*if(errorObject.has("errors") && !TextUtils.isEmpty(errorObject.optString("errors"))
+            && errorObject.optBoolean("error")) {
+      if((errorObject.optJSONObject("errors") != null) && (errorObject.optJSONObject("errors") != null)) {
+        message = Objects.requireNonNull(errorObject.optJSONObject("errors")).optString("msg");
+      } else if(errorObject.optJSONArray("errors") != null) {
+        message = "";
+        for(int i = 0; i < errorObject.optJSONArray("errors").length(); i++) {
+          message += Objects.requireNonNull(errorObject.optJSONArray("errors")).optJSONObject(i).optString("msg") + ".\n\n";
         }
+      }
+    }*/
+        if (errorObject.has("msg")) {
+            if (errorObject.has("errorDetails")
+                    && (errorObject.optJSONObject("errorDetails") != null && (errorObject.optJSONObject("errorDetails") instanceof JSONObject))) {
+                message = new StringBuilder(Objects.requireNonNull(errorObject.optJSONObject("errorDetails")).optString("msg"));
+            } else if (errorObject.optJSONArray("errors") != null && errorObject.optJSONArray("errors") instanceof JSONArray) {
+                message = new StringBuilder();
+                for (int i = 0; i < errorObject.optJSONArray("errors").length(); i++) {
+                    message.append(Objects.requireNonNull(errorObject.optJSONArray("errors")).optJSONObject(i).optString("msg")).append(".\n\n");
+                }
+            } else {
+                title = "";
+                message = new StringBuilder(errorObject.optString("msg"));
+            }
+        }else{
+            message =new StringBuilder();
+            message.append("Something went wrong!");
+        }
+        showMessage(activity, MESSAGE_TYPE, title, message.toString());
     }
+
     /* show alert / toast based on usability*/
     public void showMessage(final Context activity, int METHOD_TYPE, final String title, final String message) {
         switch(METHOD_TYPE) {
@@ -111,13 +137,13 @@ public class SBM2Utils {
         new WebServiceUtils(activity, WebServiceUtils.METHOD_POST, URL, requestParams, new OnResponseListener() {
             @Override
             public void OnResponseFailure(JSONObject response) {
-                SBM2Utils.getInstance().hideProgressDialog(activity);
+                SBMUtils.getInstance().hideProgressDialog(activity);
                 onResponseListener.OnResponseFailure(response);
             }
 
             @Override
             public void OnResponseSuccess(JSONObject response) {
-                SBM2Utils.getInstance().hideProgressDialog(activity);
+                SBMUtils.getInstance().hideProgressDialog(activity);
                 onResponseListener.OnResponseSuccess(response);
 
             }
@@ -136,13 +162,13 @@ public class SBM2Utils {
         new WebServiceUtils(activity, WebServiceUtils.METHOD_POST, URL, requestParams, new OnResponseListener() {
             @Override
             public void OnResponseFailure(JSONObject response) {
-                SBM2Utils.getInstance().hideProgressDialog(activity);
+                SBMUtils.getInstance().hideProgressDialog(activity);
                 onResponseListener.OnResponseFailure(response);
             }
 
             @Override
             public void OnResponseSuccess(JSONObject response) {
-                SBM2Utils.getInstance().hideProgressDialog(activity);
+                SBMUtils.getInstance().hideProgressDialog(activity);
                 onResponseListener.OnResponseSuccess(response);
             }
         }, true, WebServiceUtils.HEADER_TYPE_NONE);

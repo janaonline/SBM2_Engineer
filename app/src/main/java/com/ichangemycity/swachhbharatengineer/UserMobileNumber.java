@@ -26,7 +26,7 @@ import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
-import com.ichangemycity.appdata.SBM2Utils;
+import com.ichangemycity.appdata.sbm2.SBM2Utils;
 import com.ichangemycity.appdata.SBMPreferenceData;
 import com.ichangemycity.base.BaseAppCompatActivity;
 import com.ichangemycity.callback.OnButtonClick;

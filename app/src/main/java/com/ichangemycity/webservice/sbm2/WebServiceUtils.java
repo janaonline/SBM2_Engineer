@@ -1,4 +1,4 @@
-package com.ichangemycity.webservice;
+package com.ichangemycity.webservice.sbm2;
 
 import android.app.Activity;
 
@@ -15,6 +15,7 @@ import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.SBM2Constants;
 import com.ichangemycity.appdata.sbm2.SBM2Utils;
 import com.ichangemycity.callback.OnResponseListener;
+import com.ichangemycity.webservice.URLData;
 
 import org.json.JSONException;
 import org.json.JSONObject;

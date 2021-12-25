@@ -211,6 +211,8 @@ public class AppUtils {
 
     }
 
+
+
     public void hideProgressDialog(final Activity activity) {
 
         try {
