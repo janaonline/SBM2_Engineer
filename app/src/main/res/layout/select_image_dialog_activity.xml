@@ -68,7 +68,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:padding="@dimen/horizontal_vertical_spacing"
-            android:text="SKIP"
+            android:text="@string/skip"
             android:textColor="@color/black"
             android:visibility="gone" />
 

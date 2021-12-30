@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:background="@color/primaryDark"
             android:focusableInTouchMode="true"
@@ -93,15 +92,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:background="@drawable/previously_read"
-                android:drawableRight="@mipmap/ic_schedule_white_24dp"
-                android:drawableTint="@color/white"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="center"
-                android:paddingRight="16dp"
+                android:paddingEnd="16dp"
                 android:text="@string/previously_read"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:textSize="@dimen/textSize16dp" />
+                android:textSize="@dimen/textSize16dp"
+                app:drawableRightCompat="@mipmap/ic_schedule_white_24dp"
+                app:drawableTint="@color/white" />
 
 
             <RelativeLayout

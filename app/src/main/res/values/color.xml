@@ -58,4 +58,10 @@
 	<color name="greySecondary">#727272</color>
 	<color name="greyDark">#A9A9A9</color>
 	<color name="greyLight">#e5e5e5</color>
+	<color name="complaint_stats_card_acknowledged">#8F9758</color>
+	<color name="complaint_stats_card_open">#8D2814</color>
+	<color name="complaint_stats_card_on_the_job">#DF7D18</color>
+	<color name="complaint_stats_card_resolved">#7E318A</color>
+	<color name="complaint_stats_card_escalated">#0B8CC2</color>
+	<color name="complaint_stats_card_rejected">#529021</color>
 </resources>

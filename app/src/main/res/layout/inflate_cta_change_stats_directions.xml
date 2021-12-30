@@ -32,7 +32,6 @@
                 android:id="@+id/changeStatus"
                 android:layout_width="match_parent"
                 android:layout_height="52dp"
-                android:layout_alignParentLeft="true"
                 android:background="@color/transparent"
                 android:popupBackground="@color/white" />
         </FrameLayout>
@@ -45,16 +44,16 @@
             android:layout_marginStart="@dimen/horizontal_vertical_spacing"
             android:layout_marginLeft="@dimen/horizontal_vertical_spacing"
             android:layout_weight="0.25"
-            android:drawableStart="@mipmap/outline_thumb_up_white_36_before_voteup"
-            android:drawableLeft="@mipmap/outline_thumb_up_white_36_before_voteup"
-            android:drawableTint="@color/secondary"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
             android:maxLines="1"
             android:padding="@dimen/horizontal_vertical_spacing"
             android:text="0"
             android:textColor="@color/secondary"
-            android:textSize="@dimen/textSize16dp" />
+            android:textSize="@dimen/textSize16dp"
+            app:drawableStartCompat="@mipmap/outline_thumb_up_white_36_before_voteup"
+            app:drawableLeftCompat="@mipmap/outline_thumb_up_white_36_before_voteup"
+            app:drawableTint="@color/secondary" />
 
         <TextView
             android:id="@+id/commentedCount"
@@ -65,8 +64,8 @@
             android:layout_marginLeft="@dimen/horizontal_vertical_spacing"
             android:layout_weight="0.25"
             android:drawableStart="@mipmap/round_comment_white_36"
-            android:drawableLeft="@mipmap/round_comment_white_36"
-            android:drawableTint="@color/secondary"
+            app:drawableStartCompat="@mipmap/round_comment_white_36"
+            app:drawableTint="@color/secondary"
             android:fontFamily="@font/roboto_bold"
             android:gravity="center"
             android:maxLines="1"

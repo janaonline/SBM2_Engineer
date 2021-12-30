@@ -33,7 +33,7 @@
             android:maxLength="30"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            android:text="on-the-job"
+            android:text="@string/on_the_job"
             android:textColor="@color/primerColorBlack"
             android:textSize="@dimen/textSize16dp" />
     </LinearLayout>

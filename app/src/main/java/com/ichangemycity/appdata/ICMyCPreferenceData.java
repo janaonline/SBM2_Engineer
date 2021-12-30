@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 
 /**
@@ -61,6 +60,8 @@ public class ICMyCPreferenceData {
     public static final String REDIRECT_TYPE = "REDIRECT_TYPE";
     public static final String COMPLAINTVIEWID = "complaintviewid";
     public static final String isResolved = "isResolved";
+
+    public static final String validate_location_json_object = "validate_location_json_object";
 
     public static void setPreference(Context activity, String key, String value) {
 //        SecurePrefManager.with(activity).set(key).value(value).go();

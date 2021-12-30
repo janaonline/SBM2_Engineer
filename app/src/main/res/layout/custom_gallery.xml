@@ -39,7 +39,7 @@
             android:layout_gravity="right|top"
             android:layout_margin="16dp"
             android:background="@drawable/change_pic"
-            android:text="Change"
+            android:text="@string/change"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="12sp"/>

@@ -27,14 +27,15 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <RelativeLayout android:visibility="gone"
+            <RelativeLayout
                 android:id="@+id/rl_top_feed"
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="0dp"
                 android:background="#f5f6f8"
                 android:orientation="vertical"
-                android:paddingBottom="5dp">
+                android:paddingBottom="5dp"
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/feed_flag"
@@ -56,10 +57,10 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="16dp"
-                    android:layout_toRightOf="@+id/feed_flag"
+                    android:layout_toEndOf="@+id/feed_flag"
                     android:gravity="center_vertical"
                     android:singleLine="true"
-                    android:text="Jagadeesh"
+                    android:text=""
                     android:textColor="#0a80f4"
                     android:textSize="14dp"
                     android:textStyle="bold" />
@@ -70,18 +71,17 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="2dp"
-                    android:layout_toRightOf="@+id/tv_feed_user_name"
+                    android:layout_toEndOf="@+id/tv_feed_user_name"
                     android:ellipsize="marquee"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:gravity="center_vertical"
                     android:marqueeRepeatLimit="marquee_forever"
                     android:singleLine="true"
-                    android:text="posted a complaint"
+                    android:text="@string/post_a_complaint"
                     android:textColor="@color/black"
                     android:textSize="14dp" />
             </RelativeLayout>
-
 
 
             <RelativeLayout
@@ -90,8 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/rl_top_feed"
                 android:layout_centerVertical="true"
-                 android:gravity="center"
                 android:layout_marginTop="@dimen/horizontal_vertical_spacing"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -117,10 +117,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/horizontal_vertical_spacing"
                         android:layout_marginTop="@dimen/horizontal_vertical_spacing"
-                        android:layout_toRightOf="@+id/user_image"
+                        android:layout_toEndOf="@+id/user_image"
                         android:fontFamily="@font/roboto_bold"
                         android:maxLines="1"
-                        android:text="Sudhakar Varma Dasari"
+                        android:text=""
                         android:textColor="@color/primerColorBlack"
                         android:textSize="@dimen/textSize16dp"
                         android:textStyle="bold" />
@@ -130,14 +130,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_username"
-                        android:layout_alignLeft="@+id/tv_username"
+                        android:layout_alignStart="@+id/tv_username"
                         android:scaleType="fitCenter">
 
                         <TextView
                             android:id="@+id/created_on"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
                             android:layout_alignParentRight="true"
                             android:fontFamily="@font/roboto_regular"
                             android:maxLines="1"
@@ -182,8 +182,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentStart="true"
-                                android:layout_alignParentLeft="true"
-                                android:layout_alignParentTop="true"
                                 android:layout_gravity="bottom"
                                 android:layout_marginStart="@dimen/horizontal_vertical_spacing"
                                 android:fontFamily="@font/roboto_bold"
@@ -200,16 +198,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/categoryLL"
-                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
                             android:layout_marginTop="@dimen/horizontal_vertical_spacing"
-                            android:drawableLeft="@mipmap/round_check_circle_white_24"
                             android:drawablePadding="@dimen/horizontal_vertical_spacing"
-                            android:drawableTint="@color/secondary"
                             android:fontFamily="@font/roboto_regular"
                             android:text="Status : Open"
                             android:textAllCaps="false"
                             android:textColor="@color/secondary"
-                            android:textSize="@dimen/textSize16dp" />
+                            android:textSize="@dimen/textSize16dp"
+                            app:drawableStartCompat="@mipmap/round_check_circle_white_24"
+                            app:drawableTint="@color/secondary" />
 
                         <TextView
                             android:id="@+id/complaint_location"
@@ -219,15 +217,15 @@
                             android:layout_gravity="bottom"
                             android:layout_marginTop="@dimen/horizontal_vertical_spacing"
                             android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
-                            android:drawableLeft="@mipmap/baseline_room_white_24"
                             android:drawablePadding="@dimen/horizontal_vertical_spacing"
-                            android:drawableTint="@color/secondary"
                             android:ellipsize="end"
                             android:gravity="center_vertical"
                             android:maxLines="1"
                             android:text="Outer Ring Rd, Dollar scheme colony, Stage1, BTM Layout, Bengaluru"
                             android:textColor="@color/secondary"
-                            android:textSize="@dimen/textSize16dp" />
+                            android:textSize="@dimen/textSize16dp"
+                            app:drawableStartCompat="@mipmap/baseline_room_white_24"
+                            app:drawableTint="@color/secondary" />
 
                         <TextView
                             android:id="@+id/moreInfo"
@@ -236,16 +234,16 @@
                             android:layout_below="@+id/complaint_location"
                             android:layout_gravity="bottom"
                             android:autoLink="all"
-                            android:drawableLeft="@mipmap/round_info_white_36"
                             android:drawablePadding="@dimen/horizontal_vertical_spacing"
-                            android:drawableTint="@color/secondary"
                             android:ellipsize="end"
                             android:gravity="center_vertical"
                             android:lineSpacingMultiplier="1.2"
                             android:maxLines="2"
                             android:text="@string/landmark"
                             android:textColor="@color/secondary"
-                            android:textSize="@dimen/textSize16dp" />
+                            android:textSize="@dimen/textSize16dp"
+                            app:drawableStartCompat="@mipmap/round_info_white_36"
+                            app:drawableTint="@color/secondary" />
 
                         <TextView
                             android:id="@+id/complaintId"

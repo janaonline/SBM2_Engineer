@@ -82,13 +82,14 @@ public class AppController extends MultiDexApplication {
     public static final int PURPOSE_POST_COMMENT = 1;
     public static final int PURPOSE_CHANGE_STATUS = 2;
     public static int selectedPurposeToUploadImage;
-    public static final int[] BG_COLOR_DEFAULT = new int[]{ R.color.primaryDark, R.color.secondaryDark, R.color.tertiaryDark, R.color.secondaryLight, R.color.greyDark, R.color.secondary, R.color.tertiary, R.color.primaryLight, R.color.tertiaryLight, R.color.secondaryLight, R.color.primerColorBlack };
+    public static final int[] BG_COLOR_DEFAULT = new int[]{R.color.primaryDark, R.color.secondaryDark, R.color.tertiaryDark, R.color.secondaryLight, R.color.greyDark, R.color.secondary, R.color.tertiary, R.color.primaryLight, R.color.tertiaryLight, R.color.secondaryLight, R.color.primerColorBlack};
 
     private Locale locale = null;
 
     public static void traceLog(String key, String value) {
-        Log.i(key, value);
+//        Log.i(key, value);
     }
+
     public static void hideKeyboard(Activity activity, EditText et) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
@@ -97,7 +98,7 @@ public class AppController extends MultiDexApplication {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if(locale != null) {
+        if (locale != null) {
             newConfig.locale = locale;
             Locale.setDefault(locale);
             getBaseContext().getResources().updateConfiguration(newConfig, getBaseContext().getResources().getDisplayMetrics());
@@ -126,7 +127,7 @@ public class AppController extends MultiDexApplication {
             AnalyticsTracker.initialize(this);
             AnalyticsTracker.getInstance().get(AnalyticsTracker.Target.APP);
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -137,7 +138,7 @@ public class AppController extends MultiDexApplication {
     }
 
     public RequestQueue getRequestQueue() {
-        if(mRequestQueue == null) {
+        if (mRequestQueue == null) {
             mRequestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
@@ -146,7 +147,7 @@ public class AppController extends MultiDexApplication {
 
     public ImageLoader getImageLoader() {
         getRequestQueue();
-        if(mImageLoader == null) {
+        if (mImageLoader == null) {
             mImageLoader = new ImageLoader(this.mRequestQueue, new LruBitmapCache());
         }
         return this.mImageLoader;
@@ -160,119 +161,125 @@ public class AppController extends MultiDexApplication {
     }
 
     public void cancelPendingRequests(Object tag) {
-        if(mRequestQueue != null) {
+        if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
     }
 
     public static void handleVolleyError(Activity act, VolleyError volleyError) {
         try {
-            if(act.getClass().getSimpleName().equalsIgnoreCase(OTPVerification.class.getSimpleName()) || act.getClass().getSimpleName().equalsIgnoreCase(UserMobileNumber.class.getSimpleName())) {
+            if (act.getClass().getSimpleName().equalsIgnoreCase(OTPVerification.class.getSimpleName()) || act.getClass().getSimpleName().equalsIgnoreCase(UserMobileNumber.class.getSimpleName())) {
                 //Swachh Manch api error handling
                 AppUtils.handleVolleyError(act, volleyError);
             } else {
                 //            SBM Engineer api error handling
                 VolleyLog.d(AppController.TAG, "Error: " + volleyError.getMessage());
-                int statusCode = volleyError.networkResponse.statusCode;
-                if(statusCode == 500 || statusCode == 504) {
-                    AppUtils.showToast(act, TOAST_TYPE_ERROR, "Server Error / Too many Connections at a time. Please try again after sometime.");
-                } else {
-                    String message = "";
-                    boolean isToLogOut = false;
-                    int type = AppConstant.TOAST_TYPE_INFO;
-                    try {
-                        JSONObject responseObject = new JSONObject(new String(volleyError.networkResponse.data));
-                        JSONArray mData = null;
-                        if(responseObject.has("data")) {
-                            try {
-                                mData = responseObject.getJSONArray("data");
-                            } catch(JSONException e1) {
-                                // TODO Auto-generated catch
-                                // block
-                                e1.printStackTrace();
-                            }
-                            for(int i = 0; i < mData.length(); i++) {
-                                try {
-                                    message += mData.getJSONObject(i).optString("message") + " ";
-                                } catch(JSONException e) {
-                                    // TODO Auto-generated catch
-                                    // block
-                                    e.printStackTrace();
-                                }
-                            }
-                        } else if(responseObject.has("errors")) {
-                            try {
-                                mData = responseObject.getJSONArray("errors");
-                            } catch(JSONException e1) {
-                                // TODO Auto-generated catch
-                                // block
-                                e1.printStackTrace();
-                            }
-                            for(int i = 0; i < mData.length(); i++) {
-                                try {
-                                    message += mData.getJSONObject(i).optString("message") + " ";
-                                } catch(JSONException e) {
-                                    // TODO Auto-generated catch
-                                    // block
-                                    e.printStackTrace();
-                                }
-                            }
-                        } else {
-                            message = new JSONObject(new String(volleyError.networkResponse.data)).optString("message");
-                        }
-                        if(new JSONObject(new String(volleyError.networkResponse.data)).optInt("httpCode") == 401) {
-                            isToLogOut = true;
-                        }
-                        AppController.traceLog("vollyErrorTrace", responseObject + "");
-                    } catch(JSONException e) {
-                        e.printStackTrace();
-                        message = "Error : " + e.getMessage();
-                        type = TOAST_TYPE_ERROR;
-                    } catch(NullPointerException ex) {
-                        if(volleyError instanceof NetworkError) {
-                            message = volleyError.getLocalizedMessage();//act.getString(R.string.network_error);
-                        } else if(volleyError instanceof ServerError) {
-                            message = "The server could not be found. Please try again after some time!!";
-                            type = TOAST_TYPE_ERROR;
-                        } else if(volleyError instanceof AuthFailureError) {
-                            message = volleyError.getLocalizedMessage();
-                            //                message = "Cannot connect to Internet...Please check your connection!";
-                            type = TOAST_TYPE_ERROR;
-                        } else if(volleyError instanceof ParseError) {
-                            message = "Parsing error! Please try again after some time!!";
-                            type = TOAST_TYPE_ERROR;
-                        } else if(volleyError instanceof NoConnectionError) {
-                            message = "Cannot connect to Internet...Please check your connection!";
-                            type = AppConstant.TOAST_TYPE_INFO;
-                        } else if(volleyError instanceof TimeoutError) {
-                            message = "Connection TimeOut";
-                            type = AppConstant.TOAST_TYPE_INFO;
-                        }
-                    }
-
-                    if(message != null) {
+                if(volleyError.networkResponse !=null) {
+                    int statusCode = volleyError.networkResponse.statusCode;
+                    if (statusCode == 500 || statusCode == 504) {
+                        AppUtils.showToast(act, TOAST_TYPE_ERROR, "Server Error / Too many Connections at a time. Please try again after sometime.");
+                    } else {
+                        String message = "";
+                        boolean isToLogOut = false;
+                        int type = AppConstant.TOAST_TYPE_INFO;
                         try {
-                            if(message.trim().length() <= 0) {
-                                message = volleyError.getMessage();
-                                type = TOAST_TYPE_ERROR;
+                            JSONObject responseObject = new JSONObject(new String(volleyError.networkResponse.data));
+                            JSONArray mData = null;
+                            if (responseObject.has("data")) {
+                                try {
+                                    mData = responseObject.getJSONArray("data");
+                                } catch (JSONException e1) {
+                                    // TODO Auto-generated catch
+                                    // block
+                                    e1.printStackTrace();
+                                }
+                                for (int i = 0; i < mData.length(); i++) {
+                                    try {
+                                        message += mData.getJSONObject(i).optString("message") + " ";
+                                    } catch (JSONException e) {
+                                        // TODO Auto-generated catch
+                                        // block
+                                        e.printStackTrace();
+                                    }
+                                }
+                            } else if (responseObject.has("errors")) {
+                                try {
+                                    mData = responseObject.getJSONArray("errors");
+                                } catch (JSONException e1) {
+                                    // TODO Auto-generated catch
+                                    // block
+                                    e1.printStackTrace();
+                                }
+                                for (int i = 0; i < mData.length(); i++) {
+                                    try {
+                                        message += mData.getJSONObject(i).optString("message") + " ";
+                                    } catch (JSONException e) {
+                                        // TODO Auto-generated catch
+                                        // block
+                                        e.printStackTrace();
+                                    }
+                                }
+                            } else {
+                                message = new JSONObject(new String(volleyError.networkResponse.data)).optString("message");
                             }
-                            AppUtils.showToast(act, type, message);
-                            //                Snackbar.make(layout, message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).show();
-                        } catch(Exception e) {
-                            AppController.traceLog("ERROR_VOLLEYERROR", message);
-                            //                Toast.makeText(act, message, Toast.LENGTH_SHORT).show();
+                            if (new JSONObject(new String(volleyError.networkResponse.data)).optInt("httpCode") == 401) {
+                                isToLogOut = true;
+                            }
+                            AppController.traceLog("vollyErrorTrace", responseObject + "");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            message = "Error : " + e.getMessage();
                             type = TOAST_TYPE_ERROR;
-                            AppUtils.showToast(act, type, message);
+                        } catch (NullPointerException ex) {
+                            if (volleyError instanceof NetworkError) {
+                                message = volleyError.getLocalizedMessage();//act.getString(R.string.network_error);
+                            } else if (volleyError instanceof ServerError) {
+                                message = "The server could not be found. Please try again after some time!!";
+                                type = TOAST_TYPE_ERROR;
+                            } else if (volleyError instanceof AuthFailureError) {
+                                message = volleyError.getLocalizedMessage();
+                                //                message = "Cannot connect to Internet...Please check your connection!";
+                                type = TOAST_TYPE_ERROR;
+                            } else if (volleyError instanceof ParseError) {
+                                message = "Parsing error! Please try again after some time!!";
+                                type = TOAST_TYPE_ERROR;
+                            } else if (volleyError instanceof NoConnectionError) {
+                                message = "Cannot connect to Internet...Please check your connection!";
+                                type = AppConstant.TOAST_TYPE_INFO;
+                            } else if (volleyError instanceof TimeoutError) {
+                                message = "Connection TimeOut";
+                                type = AppConstant.TOAST_TYPE_INFO;
+                            }
                         }
-                        if(isToLogOut && !ICMyCPreferenceData.getPreferenceItem(act, ICMyCPreferenceData.token, "NA").equalsIgnoreCase("NA")) {
-                            act.startActivity(new Intent(act, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            ICMyCPreferenceData.clearPreferences(act);
-                            act.finish();
+
+                        if (message != null) {
+                            try {
+                                if (message.trim().length() <= 0) {
+                                    message = volleyError.getMessage();
+                                    type = TOAST_TYPE_ERROR;
+                                }
+                                AppUtils.showToast(act, type, message);
+                                //                Snackbar.make(layout, message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).show();
+                            } catch (Exception e) {
+                                AppController.traceLog("ERROR_VOLLEYERROR", message);
+                                //                Toast.makeText(act, message, Toast.LENGTH_SHORT).show();
+                                type = TOAST_TYPE_ERROR;
+                                AppUtils.showToast(act, type, message);
+                            }
+                            if (isToLogOut && !ICMyCPreferenceData.getPreferenceItem(act, ICMyCPreferenceData.token, "NA").equalsIgnoreCase("NA")) {
+                                act.startActivity(new Intent(act, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                ICMyCPreferenceData.clearPreferences(act);
+                                act.finish();
+                            }
                         }
                     }
+                }else{
+                    AppUtils.showToast(act,AppConstant.TOAST_TYPE_INFO,"Server isn't responding... please try again later!");
                 }
             }
-        } catch(Exception e) {}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
@@ -292,7 +299,7 @@ public class AppController extends MultiDexApplication {
          * AnalyticsTracker analyticsTrackers = AnalyticsTracker.getInstance(); return
          * analyticsTrackers.get(AnalyticsTracker.Target.APP);
          */
-        if(mTracker == null) {
+        if (mTracker == null) {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
             analytics.getInstance(this).setDryRun(true);
             analytics.getInstance(this).getLogger().setLogLevel(Logger.LogLevel.VERBOSE);
@@ -316,7 +323,7 @@ public class AppController extends MultiDexApplication {
             config.locale = locale;
             activity.getBaseContext().getResources().updateConfiguration(config, activity.getBaseContext().getResources().getDisplayMetrics());
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -333,7 +340,7 @@ public class AppController extends MultiDexApplication {
         ab.setTitle(title);
         ab.setMessage(message);
         ab.setPositiveButton("Ok", (dialogInterface, i) -> onButtonClick.onPositiveButtonClicked(dialogInterface));
-        if(isToShowNegativeButton)
+        if (isToShowNegativeButton)
             ab.setNegativeButton("Cancel", (dialogInterface, i) -> onButtonClick.onNegativeButtonClicked());
         ab.show();
     }
@@ -357,21 +364,21 @@ public class AppController extends MultiDexApplication {
 
     public void setEmptyViewForRecyclerView(final Activity activity, final RecyclerView recyclerView) {
 
-        if(recyclerView.getAdapter() != null) {
-            if(recyclerView.getAdapter().getItemCount() <= 0) {
+        if (recyclerView.getAdapter() != null) {
+            if (recyclerView.getAdapter().getItemCount() <= 0) {
                 try {
                     (activity.findViewById(R.id.viewEmpty)).setVisibility(View.VISIBLE);
                     ((TextView) activity.findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_data));
-                } catch(Exception e) {
+                } catch (Exception e) {
                 }
             } else {
                 try {
                     (activity.findViewById(R.id.viewEmpty)).setVisibility(View.GONE);
-                } catch(Exception e) {
+                } catch (Exception e) {
                 }
                 try {
                     //                    recyclerView.setEmptyView(null);
-                } catch(Exception e) {
+                } catch (Exception e) {
 
                 }
             }
@@ -380,8 +387,8 @@ public class AppController extends MultiDexApplication {
 
     public void setEmptyViewForRecyclerViewFragments(final Activity activity, final RecyclerView recyclerView, final TextView textview) {
         try {
-            if(recyclerView.getAdapter() != null) {
-                if(recyclerView.getAdapter().getItemCount() <= 0) {
+            if (recyclerView.getAdapter() != null) {
+                if (recyclerView.getAdapter().getItemCount() <= 0) {
                     (textview).setVisibility(View.VISIBLE);
                     textview.setText(activity.getResources().getString(R.string.no_data));
                 } else {
@@ -389,7 +396,7 @@ public class AppController extends MultiDexApplication {
                     textview.setVisibility(View.GONE);
                 }
             }
-        } catch(Exception e) {
+        } catch (Exception e) {
         }
     }
 
@@ -404,7 +411,7 @@ public class AppController extends MultiDexApplication {
         ArrayList<ChangeStatusModel> changeStatusModel = new ArrayList<ChangeStatusModel>();
         ChangeStatusModel changeStatus = new ChangeStatusModel();
 
-        if(Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_OPEN || Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_REOPEN) {
+        if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_OPEN || Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_REOPEN) {
             changeStatus = new ChangeStatusModel();
             changeStatus.setStatusID(COMPLAINT_ON_THE_JOB);
             changeStatus.setStatusName(activity.getString(R.string.on_the_job).toUpperCase());
@@ -419,7 +426,7 @@ public class AppController extends MultiDexApplication {
             changeStatusModel.add(changeStatus);
             changeStatusSpinner.setVisibility(View.VISIBLE);
             frameSpinner.setVisibility(View.VISIBLE);
-        } else if(Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_ON_THE_JOB) {
+        } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_ON_THE_JOB) {
             changeStatus = new ChangeStatusModel();
             changeStatus.setStatusID(COMPLAINT_RESOLVED);
             changeStatus.setCurrentStatusColor(activity.getResources().getColor(R.color.blue_on_the_job));
@@ -435,15 +442,15 @@ public class AppController extends MultiDexApplication {
             changeStatusModel.add(changeStatus);
             changeStatusSpinner.setVisibility(View.VISIBLE);
             frameSpinner.setVisibility(View.VISIBLE);
-        } else if(Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_REJECTED) {
+        } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_REJECTED) {
             changeStatusSpinner.setVisibility(View.INVISIBLE);
             frameSpinner.setVisibility(View.INVISIBLE);
-        } else if(Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_RESOLVED) {
+        } else if (Integer.parseInt(cData.getComplaint_status_id()) == COMPLAINT_RESOLVED) {
             changeStatusSpinner.setVisibility(View.INVISIBLE);
             frameSpinner.setVisibility(View.INVISIBLE);
         }
 
-        if(changeStatusSpinner.getVisibility() == View.VISIBLE) {
+        if (changeStatusSpinner.getVisibility() == View.VISIBLE) {
 
             ChangeStatusSpinnerAdapter mAdapter = new ChangeStatusSpinnerAdapter(activity, cData, changeStatusModel);
             changeStatusSpinner.setAdapter(mAdapter);
@@ -456,7 +463,7 @@ public class AppController extends MultiDexApplication {
         cStatusListData.clear();
         ChangeStatusListData temp = new ChangeStatusListData();
         int complaintStatusId = Integer.parseInt(AppController.selectedComplaintData.getComplaint_status_id());
-        if(complaintStatusId == COMPLAINT_OPEN || complaintStatusId == COMPLAINT_REOPEN) {
+        if (complaintStatusId == COMPLAINT_OPEN || complaintStatusId == COMPLAINT_REOPEN) {
             temp = new ChangeStatusListData();
             temp.setStatus(activity.getResources().getString(R.string.on_the_job));
             temp.setStatusID(COMPLAINT_ON_THE_JOB);
@@ -467,7 +474,7 @@ public class AppController extends MultiDexApplication {
             temp.setStatusID(COMPLAINT_REJECTED);
             cStatusListData.add(temp);
 
-        } else if(complaintStatusId == COMPLAINT_ON_THE_JOB) {
+        } else if (complaintStatusId == COMPLAINT_ON_THE_JOB) {
             temp = new ChangeStatusListData();
             temp.setStatus(activity.getResources().getString(R.string.resolved));
             temp.setStatusID(COMPLAINT_RESOLVED);
@@ -477,7 +484,7 @@ public class AppController extends MultiDexApplication {
             temp.setStatus(activity.getResources().getString(R.string.rejected));
             temp.setStatusID(COMPLAINT_REJECTED);
             cStatusListData.add(temp);
-        } else if(complaintStatusId == COMPLAINT_REJECTED || complaintStatusId == COMPLAINT_RESOLVED) {
+        } else if (complaintStatusId == COMPLAINT_REJECTED || complaintStatusId == COMPLAINT_RESOLVED) {
             cStatusListData.clear();
         } else {
             cStatusListData.clear();

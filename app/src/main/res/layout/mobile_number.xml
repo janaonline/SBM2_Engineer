@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parentLayout"
     android:layout_width="fill_parent"
@@ -20,11 +21,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="@dimen/margin16dp"
             android:background="@drawable/select_language_bg"
-            android:drawableStart="@drawable/ic_baseline_language_24"
-            android:drawableLeft="@drawable/ic_baseline_language_24"
-            android:drawableEnd="@mipmap/ic_arrow_drop_down_black_24dp"
-            android:drawableRight="@mipmap/ic_arrow_drop_down_black_24dp"
-            android:drawableTint="@color/white"
             android:elevation="@dimen/horizontal_vertical_spacing"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
@@ -33,6 +29,10 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/textSize16dp"
+            app:drawableEndCompat="@mipmap/ic_arrow_drop_down_black_24dp"
+            app:drawableRightCompat="@mipmap/ic_arrow_drop_down_black_24dp"
+            app:drawableStartCompat="@drawable/ic_baseline_language_24"
+            app:drawableTint="@color/white"
             tools:targetApi="m" />
 
         <ImageView
@@ -68,7 +68,7 @@
                 android:layout_marginTop="@dimen/margin16dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="left"
-                android:text="@string/welcome_back"
+                android:text="@string/welcome"
                 android:textColor="@color/primerColorBlack"
                 android:textSize="@dimen/textSize30dp"
                 tools:ignore="RtlHardcoded" />
@@ -96,7 +96,7 @@
                 android:ems="10"
                 android:fontFamily="@font/montserrat_bold"
                 android:gravity="start"
-                android:hint="@string/mobile_number"
+                android:hint="@string/enter_mobile_number"
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:includeFontPadding="true"
@@ -116,7 +116,7 @@
                 android:id="@+id/done"
                 style="@style/ButtonTheme"
                 android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
-                android:text="@string/login" />
+                android:text="@string/get_started" />
 
             <TextView
                 android:id="@+id/signupLinkBtn"

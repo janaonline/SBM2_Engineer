@@ -1,53 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Onboarding & Profile -->
+    <string name="welcome">स्वागत आहे </string>
+    <string name="choose_your_preferred_language">तुमच्या पसंतीची भाषा निवडा </string>
+    <string name="mobile_verification">पडताळणी करा </string>
+    <string name="resend_code_">कोड पुन्हापाठवायचा? </string>
+    <string name="done">केले </string>
+    <string name="welcomes_you_some_text_goes_here">तुमचा मोबाईल क्रमांक घाला</string>
+    <string name="enter_verification_code_sent_to_">आम्ही तुमच्या क्रमांकावर कोड पाठवला आहे</string>
+    <string name="your_mobile_number_is_safe_with_us">तुमचा क्रमांक आमच्यासोबत सुरक्षीत आहे</string>
+    <string name="we_won_t_share_your_details_with_any_one">आम्ही तुमची माहिती कोणालाही देत नाही</string>
+    <string name="change">बदल करा </string>
+    <string name="enter_mobile_number">मोबाइल नंबर एन्टर करा  </string>
+    <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
+    <string name="login_to_your_account">Log in to your account</string>
 
-	<string name="app_name">स्वच्छ भारत </string>
-  <string name="welcome">स्वागत आहे </string>
-    <string name="done">झाले</string>
-	<string name="welcomes_you_some_text_goes_here">तुमचा मोबाईल क्रमांक घाला</string>
-	<string name="mobile_number_cannot_be_empty">मोबाईल क्रमांक रिकामा असु शकत नाही </string>
-  <string name="_10_digit_mobile_number">मोबाईल क्रमांक </string>
-	<string name="mobile_number_needs_10_digits">10 अंकी मोबाईल क्रमांक आवश्यक आहे </string>
-	<string name="mobile_verification">पडताळा</string>
-	<string name="enter_verification_code_sent_to_">आम्ही तुमच्या क्रमांकावर कोड पाठवला आहे</string>
-	<string name="you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_">तुम्ही तक्रारीचे स्टेटस बदलत आहात आणि त्याला ....... याप्रमाणे खूण करत आहात. तुमचे अनुभव किंवा तुम्हाला काही कमेंट द्यायचा असल्यास त्याबद्दल कृपया कमेंट द्या. तुम्ही तुमच्या कमेंट सोबत तुमचा फोटो सुद्धा समाविष्ट करू शकता.</string>
-	<string name="_comments"> शेरा</string>
-  <string name="enter_otp">OTP घाला </string>
-	<string name="loading">लोड होत आहे </string>
-	<string name="resend_code_">कोड पुन्हा पाठवायचा का?</string>
-	<string name="your_mobile_number_is_safe_with_us">तुमचा क्रमांक आमच्यासोबत सुरक्षीत आहे</string>
-	<string name="we_won_t_share_your_details_with_any_one">आम्ही तुमची माहिती कोणालाही देत नाही</string>
-  <string name="report_bug">बग रिपोर्ट करा </string>
-	<string name="comment">शेरा</string>
-  <string name="_votes">" मते"</string>
-	<string name="comments">शेरा</string>
-	<string name="you">तुम्ही</string>
-	<string name="vote_up">मत घ्या</string>
-  <string name="previously_read">आधी वाचलेले </string>
-	<string name="load_more">अधिक लोड करा </string>
-  <string name="take_a_picture">कॅमेराच्या सहाय्याने पिक्चर घ्या </string>
-	<string name="gallery">गॅलरी </string>
-  <string name="no_complaints">तक्रार नाही </string>
-	<string name="no_read_notification">वाचलेले नोटिफीकेशन नाहीत </string>
-  <string name="no_data">डेटा नाही </string>
-  <string name="rejected">नाकारले </string>
-  <string name="address">पत्ता </string>
-	<string name="landmark">आसपासची खूण </string>
-	<string name="notification">नोटिफीकेशन</string>
-  <string name="all_complaints">सर्व तक्रारी </string>
-	<string name="high_priority_complaints">जास्त प्राधान्य असलेल्या तक्रारी </string>
-	<string name="on_the_job_complaints">कामावरच्या तक्रारींवर </string>
-	<string name="re_opened_complaints">पुन्हा चालु झालेल्या तक्रारी </string>
-	<string name="resolved_complaints">सुटलेल्या तक्रारी </string>
-	<string name="rejected_complaints">नाकारलेल्या तक्रारी </string>
-	<string name="write_a_comment">शेरा लिहा.</string>
-	<string name="rate_us_on_playstore">प्लेस्टोअर वर आम्हाला रेट द्या</string>
-  <string name="on_the_job">कामावर</string>
-	<string name="resolved">अडचण सुटली </string>
-	<string name="id_">"आयडी : "</string>
-	<string name="change_status">स्थिती बदला</string>
-  <string name="get_started">चालु करा </string>
-  <string name="yes"> हो </string>
-	<string name="no">नाही</string>
-	<string name="more_information">अधिक माहिती</string>
+    <!-- Home tab -->
+    <string name="app_name">स्वच्छता </string>
+    <string name="post_a_complaint">तक्रार पाठवा</string>
+
+    <!--Grievance-->
+    <string name="more_information">अधिक माहितीद्या</string>
+    <string name="thank_you">धन्यवाद !</string>
+    <string name="no_complaints">तक्रारी नाहीत</string>
+    <string name="complaint_details">तपशील</string>
+    <string name="resolve">निराकरण करा</string>
+    <string name="_votes">" मते" </string>
+    <string name="_comments">" कमेंट्स" </string>
+    <string name="be_the_first_to_comment">पहिली कमेंटकरणारे व्हा</string>
+    <string name="change_status">स्टेटस बदला</string>
+    <string name="you_re_changing_the_status_of_the_complaint_to_new_status">तुम्ही तक्रारीचेस्टेटस बदलून ते  #NEW_STATUS करत आहात. </string>
+    <string name="submit">सादर करा</string>
+    <string name="notification">सूचना</string>
+    <string name="previously_read">आधी वाचलेल्या</string>
+    <string name="no_read_notification">सूचना नाहीत</string>
+
+    <!--    Messages-->
+    <string name="ok">ठीक आहे</string>
+    <string name="error">एरर </string>
+    <string name="cancel">कॅन्सल करा </string>
+    <string name="loading">लोड करतआहे</string>
+    <string name="could_not_connect_to_internet">इंटरनेट कनेक्टिव्हिटी नाही</string>
+    <string name="something_went_wrong">काहीतरी चूकझाली आहे. response code -   </string>
+    <string name="select_an_image">इमेज निवडा</string>
+
+    <!--sidemenu-->
+    <string name="rate_us_on_playstore">प्ले स्टोअरवरआम्हाला रेटिंगद्या</string>
+    <string name="report_bug">उणिव कळवा</string>
+    <string name="privacy_policy">गोपनीयता धोरण</string>
+    <string name="logout">लॉगआऊट</string>
+
+    <!--change_status-->
+    <string name="you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_">तुम्ही तक्रारीचे स्टेटस बदलत आहात आणि त्याला ....... याप्रमाणे खूण करत आहात. तुमचे अनुभव किंवा तुम्हाला काही कमेंट द्यायचा असल्यास त्याबद्दल कृपया कमेंट द्या. तुम्ही तुमच्या कमेंट सोबत तुमचा फोटो सुद्धा समाविष्ट करू शकता.</string>
+    <string name="rejected">नाकारले </string>
+    <string name="address">पत्ता </string>
+    <string name="all_complaints">सर्व तक्रारी </string>
+    <string name="high_priority_complaints">जास्त प्राधान्य असलेल्या तक्रारी </string>
+    <string name="on_the_job_complaints">कामावरच्या तक्रारींवर </string>
+    <string name="re_opened_complaints">पुन्हा चालु झालेल्या तक्रारी </string>
+    <string name="resolved_complaints">सुटलेल्या तक्रारी </string>
+    <string name="rejected_complaints">नाकारलेल्या तक्रारी </string>
+    <string name="id_">"आयडी : "</string>
+    <string name="get_started">चालु करा </string>
+
+    <!--OTHERS-->
+    <string name="mobile_number_cannot_be_empty">मोबाईल क्रमांक रिकामा असु शकत नाही </string>
+    <string name="_10_digit_mobile_number">मोबाईल क्रमांक </string>
+    <string name="mobile_number_needs_10_digits">10 अंकी मोबाईल क्रमांक आवश्यक आहे </string>
+    <string name="enter_otp">OTP घाला </string>
+    <string name="comment">शेरा</string>
+    <string name="you">तुम्ही</string>
+    <string name="vote_up">मत घ्या</string>
+    <string name="load_more">अधिक लोड करा </string>
+    <string name="take_a_picture">कॅमेराच्या सहाय्याने पिक्चर घ्या </string>
+    <string name="gallery">गॅलरी </string>
+    <string name="no_data">डेटा नाही </string>
+    <string name="notifs">नोटिफीकेशन</string>
+    <string name="write_a_comment">शेरा लिहा.</string>
+    <string name="language">भाषा </string>
+    <string name="yes"> हो </string>
+    <string name="no">नाही</string>
+    <string name="comments">शेरा</string>
+    <string name="landmark">आसपासची खूण </string>
+    <string name="resolved">अडचण सुटली </string>
+    <string name="on_the_job">कामावर</string>
+
+    <!--COVID-19-->
+    <string name="skip">वगळा</string>
+    <string name="more_information_landmark_contact">नाव, फोन नंबर, पत्ता, महत्त्वाची खूण किंवा रुग्णाची मूलभूत लक्षणे</string>
+    <string name="please_wait_for">"Please wait for "</string>
+    <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
+
 </resources>

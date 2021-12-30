@@ -10,15 +10,19 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.widget.Toolbar;
+
 import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,7 +108,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
 //        locateComplaint = findViewById(R.id.locateComplaint);
 //        navigateComplaint = findViewById(R.id.navigateComplaint);
         change_status = findViewById(R.id.change_status);
-         complaint_image = findViewById(R.id.complaint_image);
+        complaint_image = findViewById(R.id.complaint_image);
         collapsingToolbar = findViewById(R.id.collapsingToolbar);
         toolbar = findViewById(R.id.maintoolbar);
         tabLayout = findViewById(R.id.tabs);
@@ -130,7 +134,7 @@ public class ComplaintDetail extends BaseAppCompatActivity {
 //                .findViewById(R.id.resolved);
 //        locationText = findViewById(R.id.locationText);
 //        locationlandmark = findViewById(R.id.locationlandmark);
-         changeStatus = findViewById(R.id.changeStatus);
+        changeStatus = findViewById(R.id.changeStatus);
         change_status.setVisibility(View.GONE);
         setToolbarAndCustomizeTitle(toolbar, " ");
         runGetComplaintWebService();
@@ -173,19 +177,18 @@ public class ComplaintDetail extends BaseAppCompatActivity {
             public void OnResponseFailure() {
                 frameLoading.setVisibility(View.GONE);
                 AppUtils.getInstance().hideProgressDialog(activity);
-                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,"Unknown error, please refresh complaints");
+                AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Unknown error, please refresh complaints");
             }
 
             @Override
             public void OnResponseSuccess(JSONObject response) {
-               // AppController.logTrace(activity, url + " ---> " + response);
+                // AppController.logTrace(activity, url + " ---> " + response);
 
                 new ParseComplaintDetailResponse(response).execute();
             }
 
-        },false,WebserviceHelper.HEADER_TYPE_NORMAL);
-}
-
+        }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
+    }
 
 
     private class ParseComplaintDetailResponse extends AsyncTask<Void, Void, Void> {
@@ -277,42 +280,43 @@ public class ComplaintDetail extends BaseAppCompatActivity {
     }
 
     private void loadDataIntoComponents() {
-        AppUtils.getInstance().hideProgressDialog(activity);
-        setupViewPager();
-        AppController.customizeChangeStatusDropdown(activity, complaintDetailData, changeStatus,
-                frameSpinner);
-        setOffsetChangeListenerWhileScroll(true);
-        appBarLayout.setExpanded(true);
+        try {
+            AppUtils.getInstance().hideProgressDialog(activity);
+            setupViewPager();
+            AppController.customizeChangeStatusDropdown(activity, complaintDetailData, changeStatus,
+                    frameSpinner);
+            setOffsetChangeListenerWhileScroll(true);
+            appBarLayout.setExpanded(true);
 
 //        setOffsetChangeListenerWhileScroll();
-        locationText.setText(complaintDetailData.getLocation());
-        locationlandmark.setText(complaintDetailData.getLandmark());
-        tv_username = findViewById(R.id.tv_username);
-        complaint_landmark.setText(complaintDetailData.getLandmark());
-        complaint_landmark
-            .setText(
-                Html.fromHtml("<font><b>"+getString(R.string.more_information) + "</font></b> - " + complaintDetailData.getLandmark()));
+            locationText.setText(complaintDetailData.getLocation());
+            locationlandmark.setText(complaintDetailData.getLandmark());
+            tv_username = findViewById(R.id.tv_username);
+            complaint_landmark.setText(complaintDetailData.getLandmark());
+            complaint_landmark
+                    .setText(
+                            Html.fromHtml("<font><b>" + getString(R.string.more_information) + "</font></b> - " + complaintDetailData.getLandmark()));
 
-        tv_username.setText(complaintDetailData.getFull_name());
-        hours_ago.setText(complaintDetailData.getPosted_on());
-        ParseComplaintData.setImage(activity, user_image, null, complaintDetailData.getUser_image(), true);
-        complaint_category.setText(complaintDetailData.getCategory_name());
-        complaintLocation.setText(complaintDetailData.getLocation());
-        voteup.setText(complaintDetailData.getVote_up_count() + " " + getString(R.string.vote_up));
-        comments.setText(complaintDetailData.getComment_count() + " " + getString(R.string.comments));
-        ParseComplaintData.setImage(activity, null, complaint_image, complaintDetailData.getComplaint_image(), false);
-        ParseComplaintData.setBgDrawableForComplaintStatus(activity, complaintDetailData, complaint_status);
-        comment.setOnClickListener(m -> {
-            // TODO Auto-generated method stub
-            ComplaintData mCData = complaintDetailData;
-            AppController.selectedComplaintData = mCData;
-            AppController.selectedComplaintData.setToChangeStatus(false);
-            Intent toCommentsActivity = new Intent(activity,
-                    CommentsActivity.class);
-            activity.startActivity(toCommentsActivity);
-        });
-        share.setOnClickListener(
-            m -> ParseComplaintData.shareComplaint(activity, complaintDetailData));
+            tv_username.setText(complaintDetailData.getFull_name());
+            hours_ago.setText(complaintDetailData.getPosted_on());
+            ParseComplaintData.setImage(activity, user_image, null, complaintDetailData.getUser_image(), true);
+            complaint_category.setText(complaintDetailData.getCategory_name());
+            complaintLocation.setText(complaintDetailData.getLocation());
+            voteup.setText(complaintDetailData.getVote_up_count() + " " + getString(R.string.vote_up));
+            comments.setText(complaintDetailData.getComment_count() + " " + getString(R.string.comments));
+            ParseComplaintData.setImage(activity, null, complaint_image, complaintDetailData.getComplaint_image(), false);
+            ParseComplaintData.setBgDrawableForComplaintStatus(activity, complaintDetailData, complaint_status);
+            comment.setOnClickListener(m -> {
+                // TODO Auto-generated method stub
+                ComplaintData mCData = complaintDetailData;
+                AppController.selectedComplaintData = mCData;
+                AppController.selectedComplaintData.setToChangeStatus(false);
+                Intent toCommentsActivity = new Intent(activity,
+                        CommentsActivity.class);
+                activity.startActivity(toCommentsActivity);
+            });
+            share.setOnClickListener(
+                    m -> ParseComplaintData.getInstance().shareComplaintAction(activity, complaintDetailData));
 
 //        locateComplaint.setOnClickListener(v -> {
 //            String uri = String.format(
@@ -348,15 +352,18 @@ public class ComplaintDetail extends BaseAppCompatActivity {
 //            // }
 //
 //        });
-        AppController.initiateCTAForShareComment();
-        change_status.setOnClickListener(v -> inflateDialogtoShowChangeStatusMenu());
+            AppController.initiateCTAForShareComment();
+            change_status.setOnClickListener(v -> inflateDialogtoShowChangeStatusMenu());
+        } catch (Exception e) {
+            activity.finish();
+        }
     }
 
     private void inflateDialogtoShowChangeStatusMenu() {
 
         d.setContentView(R.layout.inflate_listview_change_status);
         cStatusListData = new ArrayList<>();
-         new SetListData(d).execute();
+        new SetListData(d).execute();
     }
 
     ArrayList<ChangeStatusListData> cStatusListData;
@@ -505,9 +512,9 @@ public class ComplaintDetail extends BaseAppCompatActivity {
                                             .optString("user_image_url"));
                                 try {
                                     ccData.setSpanColorForCoplaintStatus(ParseComplaintData.getSpanColorForStatusTitle(
-                                        Integer
-                                            .parseInt(ccData
-                                                    .getComment_complaint_status_id())));
+                                            Integer
+                                                    .parseInt(ccData
+                                                            .getComment_complaint_status_id())));
                                 } catch (NumberFormatException w) {
                                     ccData.setSpanColorForCoplaintStatus("#00000000");
                                 }
