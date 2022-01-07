@@ -181,7 +181,7 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
         findViewById(R.id.parentLayout).setVisibility(View.GONE);
         findViewById(R.id.progressBarRim).setVisibility(View.VISIBLE);
         AppUtils.getInstance().showProgressDialog(activity);
-        final String url = URLData.BASE_URL + URLData.COMPLAINT_ID + AppController.selectedComplaintData.getComplaintId() + "&userId=" + ICMyCPreferenceData.getPreferenceItem(ComplaintDetailNew.this, ICMyCPreferenceData.id, "");
+        final String url = URLData.BASE_URL + URLData.COMPLAINT_ID + AppController.selectedComplaintData.getComplaintId() + "&userId=" + ICMyCPreferenceData.getPreferenceItem(ComplaintDetailNew.this, ICMyCPreferenceData.id, "")+"&apiKey="+URLData.API_KEY;
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override

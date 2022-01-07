@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -381,7 +382,84 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (item != null) {
             if (!isFirstTime) {
                 int id = item.getItemId();
+                switch (id) {
+//                    case R.id.high_priority:
+//                        complaintFilter.setSelection(2);
+//                        break;
+//                    case R.id.on_the_job:
+//                        complaintFilter.setSelection(3);
+//                        break;
+//                    case R.id.resolved:
+//                        complaintFilter.setSelection(5);
+//                        break;
+//                    case R.id.rejected:
+//                        complaintFilter.setSelection(6);
+//                        break;
+//                    case R.id.re_opened:
+//                        complaintFilter.setSelection(4);
+//                        break;
+//
+//                    //Added by Sindhu BC(ITC Infotech)
+//                  /*  case R.id.public_toilet_nearby:
+//
+//                        startActivity(new Intent(MainActivity.this,
+//                                PublicToiletNearbyActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+//                        *//*String appPackageName = activity.getPackageName();
+//                        try {
+//                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri
+//                                    .parse("http://play.google.com/store/apps/details?id="
+//                                            + appPackageName)));
+////                        AppController.trackEvent(AppController.RATE_US_ON_PLAYSTORE,
+////                                AppController.RATE_US_ON_PLAYSTORE_LANDED,
+////                                AppController.RATE_US_ON_PLAYSTORE_LANDED);
+//                        } catch (android.content.ActivityNotFoundException anfe) {
+//
+//                        }*//*
+//                        break;*//**/
+                    case R.id.rate_us_on_playstore:
+                        String appPackageName = activity.getPackageName();
+                        try {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+                            //                        AppController.trackEvent(AppController.RATE_US_ON_PLAYSTORE,
+                            //                                AppController.RATE_US_ON_PLAYSTORE_LANDED,
+                            //                                AppController.RATE_US_ON_PLAYSTORE_LANDED);
+                        } catch (android.content.ActivityNotFoundException anfe) {
 
+                        }
+                        break;
+                    case R.id.nav_privacypolicy:
+                        try {
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.ichangemycity.com/privacy-policy-mobile?app=sbmengineer")));
+                        } catch (android.content.ActivityNotFoundException anfe) {
+
+                        }
+                        break;
+
+                    case R.id.report_bug:
+                        try {
+                            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "swachhbharat@janaagraha.org,pattabi.raman@janaagraha.org", null));
+                            String sAux = "\n";
+                            sAux = sAux + "Bug : \n";
+                            emailIntent.putExtra(Intent.EXTRA_SUBJECT, activity.getResources().getString(R.string.app_name) + " - Android App - Bug Report");
+                            emailIntent.putExtra(Intent.EXTRA_TEXT, sAux);
+                            activity.startActivity(Intent.createChooser(emailIntent, "Report bug using"));
+
+                            //                        AppController.trackEvent(AppController.REPORT_BUG,
+                            //                                AppController.REPORT_BUG_LANDED,
+                            //                                AppController.REPORT_BUG_LANDED);
+
+                        } catch (Exception e) { // e.toString();
+                        }
+                        break;
+                    case R.id.nav_logout:
+                        //                    AppController.trackEvent(
+                        //                            AppController.LOGOUT,
+                        //                            AppController.LOGGED_OUT_SUCCESS,
+                        //                            AppController.LOGGED_OUT_SUCCESS);
+                        //            SecurePrefManager.with(activity).clear().confirm();
+
+                        break;
+                }
             }
         }
         if (isFirstTime) {
@@ -393,6 +471,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
     }
+
+
 
     private void getProfileDetailsAndRunHomeFeed() {
         final String url = URLData.BASE_URL + URLData.USERS + "?apiKey=" + URLData.API_KEY;
