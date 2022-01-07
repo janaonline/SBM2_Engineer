@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/selectedLanguage"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin16dp"
+            android:background="@drawable/select_language_bg"
+            android:elevation="@dimen/horizontal_vertical_spacing"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:padding="@dimen/horizontal_vertical_spacing"
+            android:text="@string/english"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize16dp"
+            app:drawableEndCompat="@mipmap/ic_arrow_drop_down_black_24dp"
+            app:drawableRightCompat="@mipmap/ic_arrow_drop_down_black_24dp"
+            app:drawableStartCompat="@drawable/ic_baseline_language_24"
+            app:drawableTint="@color/white"
+            tools:targetApi="m" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/onboarding_bg" />
+    </FrameLayout>
+
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/margin16dp"
+        android:layout_marginEnd="@dimen/margin16dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/language_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="left"
+                android:text="@string/welcome"
+                android:textColor="@color/primerColorBlack"
+                android:textSize="@dimen/textSize30dp"
+                tools:ignore="RtlHardcoded" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="left"
+                android:text="@string/login_to_your_account"
+                android:textColor="@color/primerColorBlack"
+                android:textSize="@dimen/textSize20dp"
+                tools:ignore="RtlHardcoded" />
+
+
+            <EditText
+                android:id="@+id/et_mobno"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin16dp"
+                android:background="@drawable/edittext_bg_"
+                android:cursorVisible="false"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="start"
+                android:hint="@string/enter_mobile_number"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no"
+                android:includeFontPadding="true"
+                android:inputType="number"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:paddingStart="@dimen/activity_horizontal_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/horizontal_vertical_spacing"
+                android:paddingBottom="@dimen/horizontal_vertical_spacing"
+                android:textColor="@color/primary"
+                android:textColorHint="@color/grey"
+                android:textSize="@dimen/textSize18dp"
+                tools:ignore="RtlSymmetry" />
+
+            <Button
+                android:id="@+id/done"
+                style="@style/ButtonTheme"
+                android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
+                android:text="@string/get_started" />
+
+            <TextView
+                android:id="@+id/signupLinkBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="@string/dont_have_account"
+                android:textColor="@color/black"
+                android:textSize="@dimen/textSize16dp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <!-- </ScrollView>-->
+    <ImageView
+        android:id="@+id/icmycText"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/horizontal_vertical_spacing"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/moud" />
+
+</RelativeLayout>
