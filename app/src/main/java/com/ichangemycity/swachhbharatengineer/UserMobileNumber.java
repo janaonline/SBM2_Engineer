@@ -205,6 +205,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
                                     AppController.showAlert(activity, "",
                                             "Provided mobile number is not registered as SBM Engineer, please check the "
                                                     +
+
                                                     "number and try again", false, new OnButtonClick() {
                                                 @Override
                                                 public void onPositiveButtonClicked(DialogInterface dialogInterface) {
@@ -214,6 +215,11 @@ public class UserMobileNumber extends BaseAppCompatActivity {
 
                                                 @Override
                                                 public void onNegativeButtonClicked() {
+
+                                                }
+
+                                                @Override
+                                                public void onNegativeButtonClicked(DialogInterface dialogInterface) {
 
                                                 }
                                             });

@@ -21,8 +21,8 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.swachhbharatengineer.CommentsActivity;
+import com.ichangemycity.swachhbharatengineer.ComplaintActivity;
 import com.ichangemycity.swachhbharatengineer.ComplaintDetailNew;
-import com.ichangemycity.swachhbharatengineer.MainActivity;
 import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.webservice.ParseComplaintData;
 
@@ -55,7 +55,7 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
 
     @Override
     public int getItemCount() {
-        return MainActivity.data.size();
+        return ComplaintActivity.data.size();
     }
 
     @Override
@@ -129,7 +129,7 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
         // if (arg1 == 0) {
         // v.textPostComplaint.setText("All Complaints");
         // } else {
-        final ComplaintData cData = MainActivity.data.get(arg1);
+        final ComplaintData cData = ComplaintActivity.data.get(arg1);
         v.tv_username.setText(cData.getFull_name());
         v.created_on.setText(cData.getCreated_at());
         v.complaint_status.setText(cData.getComplaint_status());

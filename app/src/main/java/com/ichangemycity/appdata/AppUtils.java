@@ -130,6 +130,11 @@ public class AppUtils {
                 public void onNegativeButtonClicked() {
 
                 }
+
+                @Override
+                public void onNegativeButtonClicked(DialogInterface dialogInterface) {
+
+                }
             });
             // alertdialog_with_one_button
             // .showErrorAlert("Mobile Number cannot be empty");
@@ -148,6 +153,11 @@ public class AppUtils {
 
                 @Override
                 public void onNegativeButtonClicked() {
+
+                }
+
+                @Override
+                public void onNegativeButtonClicked(DialogInterface dialogInterface) {
 
                 }
             });
@@ -340,6 +350,11 @@ public class AppUtils {
 
                         @Override
                         public void onNegativeButtonClicked() {
+
+                        }
+
+                        @Override
+                        public void onNegativeButtonClicked(DialogInterface dialogInterface) {
 
                         }
                     });

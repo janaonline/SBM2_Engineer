@@ -199,6 +199,11 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                                 public void onNegativeButtonClicked() {
 
                                 }
+
+                                @Override
+                                public void onNegativeButtonClicked(DialogInterface dialogInterface) {
+
+                                }
                             });
                         }
                     }
@@ -255,6 +260,11 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
                     @Override
                     public void onNegativeButtonClicked() {
+
+                    }
+
+                    @Override
+                    public void onNegativeButtonClicked(DialogInterface dialogInterface) {
 
                     }
 

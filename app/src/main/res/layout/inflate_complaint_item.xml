@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/parentRelativeGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardBackgroundColor="@color/primaryDark"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp"
+            app:cardUseCompatPadding="true">
+
+            <FrameLayout
+                android:id="@+id/parentLinear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/mCategoryicon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/margin16dp"
+                    android:layout_marginEnd="@dimen/margin16dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/acknowledged"
+                    android:tint="@color/white"
+                    android:tintMode="multiply" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/mCategorytitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="@dimen/margin16dp"
+                    android:layout_marginEnd="@dimen/horizontal_vertical_spacing"
+                    android:layout_marginBottom="@dimen/margin16dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="start"
+                    android:maxLines="2"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textSize16dp"
+                    tools:text="25\nacknowledged" />
+
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

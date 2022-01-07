@@ -14,6 +14,7 @@
     <dimen name="textSize32dp">32sp</dimen>
 
     <dimen name="margin24dp">24dp</dimen>
+    <dimen name="margin8dp">8dp</dimen>
     <dimen name="margin16dp">16dp</dimen>
     <dimen name="margin20dp">20dp</dimen>
     <dimen name="margin40dp">40dp</dimen>
