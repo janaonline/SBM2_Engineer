@@ -119,8 +119,6 @@ com/ichangemycity/swachhbharatengineer/MainActivity.java
  com.ichangemycity.swachhbharatengineer.MainActivity$1
  com.ichangemycity.swachhbharatengineer.MainActivity$2
  com.ichangemycity.swachhbharatengineer.MainActivity$3
- com.ichangemycity.swachhbharatengineer.MainActivity$ParseJSONResponse
- com.ichangemycity.swachhbharatengineer.MainActivity$ParseJSONResponse$1
 com/ichangemycity/fragment/VoteupFragment.java
  com.ichangemycity.fragment.VoteupFragment
 com/ichangemycity/fragment/CommentsFragment.java
@@ -186,8 +184,20 @@ com/ichangemycity/firebase/MyFirebaseInstanceIDService.java
  com.ichangemycity.firebase.MyFirebaseInstanceIDService
 com/ichangemycity/webservice/URLDataSwachhManch.java
  com.ichangemycity.webservice.URLDataSwachhManch
+com/ichangemycity/swachhbharatengineer/databinding/ProfileActivityBinding.java
+ com.ichangemycity.swachhbharatengineer.databinding.ProfileActivityBinding
 com/ichangemycity/model/NotificationHeaderData.java
  com.ichangemycity.model.NotificationHeaderData
+com/ichangemycity/adapter/ComplaintAdapter.java
+ com.ichangemycity.adapter.ComplaintAdapter
+ com.ichangemycity.adapter.ComplaintAdapter$1
+ com.ichangemycity.adapter.ComplaintAdapter$ActionCallBack
+ com.ichangemycity.adapter.ComplaintAdapter$ComplaintViewHolder
+com/ichangemycity/swachhbharatengineer/ComplaintActivity.java
+ com.ichangemycity.swachhbharatengineer.ComplaintActivity
+ com.ichangemycity.swachhbharatengineer.ComplaintActivity$1
+ com.ichangemycity.swachhbharatengineer.ComplaintActivity$ParseJSONResponse
+ com.ichangemycity.swachhbharatengineer.ComplaintActivity$ParseJSONResponse$1
 com/ichangemycity/appdata/AnalyticsTracker.java
  com.ichangemycity.appdata.AnalyticsTracker
  com.ichangemycity.appdata.AnalyticsTracker$1
@@ -234,6 +244,8 @@ com/ichangemycity/appdata/AppController.java
  com.ichangemycity.appdata.AppController
 com/ichangemycity/permission/GetPermissionResult.java
  com.ichangemycity.permission.GetPermissionResult
+com/ichangemycity/swachhbharatengineer/databinding/ActivityComplaintBinding.java
+ com.ichangemycity.swachhbharatengineer.databinding.ActivityComplaintBinding
 com/ichangemycity/firebase/MyFirebaseMessagingService.java
  com.ichangemycity.firebase.MyFirebaseMessagingService
 com/ichangemycity/model/SelectedImageModel.java
@@ -246,8 +258,14 @@ com/ichangemycity/swachhbharatengineer/CommentsActivity.java
  com.ichangemycity.swachhbharatengineer.CommentsActivity$InitiatePostComment
  com.ichangemycity.swachhbharatengineer.CommentsActivity$ParseResponse
  com.ichangemycity.swachhbharatengineer.CommentsActivity$ParseResponse$1
+com/ichangemycity/swachhbharatengineer/ProfileViewActivity.java
+ com.ichangemycity.swachhbharatengineer.ProfileViewActivity
+ com.ichangemycity.swachhbharatengineer.ProfileViewActivity$1
+ com.ichangemycity.swachhbharatengineer.ProfileViewActivity$1$1
 com/ichangemycity/model/VotedUpData.java
  com.ichangemycity.model.VotedUpData
+com/ichangemycity/swachhbharatengineer/DataBindingTriggerClass.java
+ com.ichangemycity.swachhbharatengineer.DataBindingTriggerClass
 com/ichangemycity/swachhbharatengineer/ChangeStatusActivity.java
  com.ichangemycity.swachhbharatengineer.ChangeStatusActivity
  com.ichangemycity.swachhbharatengineer.ChangeStatusActivity$1

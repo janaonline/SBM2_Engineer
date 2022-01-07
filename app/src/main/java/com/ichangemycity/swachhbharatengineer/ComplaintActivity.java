@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.ichangemycity.adapter.HomeTabLocalFeedAdapter;
+import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.base.BaseAppCompatActivity;
@@ -37,7 +38,6 @@ import static android.R.color.holo_blue_bright;
 import static android.R.color.holo_green_light;
 import static android.R.color.holo_orange_light;
 import static android.R.color.holo_red_light;
-import static com.ichangemycity.swachhbharatengineer.ComplaintDetail.isToRefresh;
 
 public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -91,14 +91,14 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
     protected void onResume() {
         super.onResume();
         try {
-            if (isToRefresh) {
-                isToRefresh = false;
+            if (AppConstant.isToRefreshComplaint) {
                 runHomeFeedWebService(complaintFilterModel.getComplaintType(), true);
             }
         } catch (Exception e) {
 
         }
     }
+
 
     private int currentPage;
     public static ArrayList<ComplaintData> data = new ArrayList<>();

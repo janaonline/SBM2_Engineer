@@ -18,7 +18,9 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
+import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.swachhbharatengineer.CommentsActivity;
 import com.ichangemycity.swachhbharatengineer.ComplaintActivity;
@@ -45,9 +47,9 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = null;
-        if(i == TYPE_HEADER) {
+        if (i == TYPE_HEADER) {
             v = LayoutInflater.from(activity).inflate(R.layout.inflate_primer, null, false);
-        } else if(i == TYPE_ITEM) {
+        } else if (i == TYPE_ITEM) {
             v = LayoutInflater.from(activity).inflate(R.layout.home_complaint_card, null, false);
         }
         return new ViewHolder(v, i);
@@ -117,7 +119,7 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
 
         public ViewHolder(final View convertView, int type) {
             super(convertView);
-            if(type == TYPE_ITEM) {
+            if (type == TYPE_ITEM) {
                 ButterKnife.bind(this, convertView);
                 votedUpCount.setVisibility(View.GONE);
             }
@@ -179,7 +181,7 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
             final ComplaintData mCData = (ComplaintData) v.rl_cc_top.getTag();
             ParseComplaintData.shareComplaint(activity, mCData);
         });*/
-        if(Integer.parseInt(cData.getComplaint_status_id()) == AppController.COMPLAINT_REJECTED) {
+        if (Integer.parseInt(cData.getComplaint_status_id()) == AppController.COMPLAINT_REJECTED) {
             v.rl_top_feed.setVisibility(View.GONE);
         } else {
             v.rl_top_feed.setVisibility(View.VISIBLE);
@@ -189,7 +191,7 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
         }
         ParseComplaintData.getInstance().setCategoryImage(activity, v.category_image, cData);
 
-        if(!TextUtils.isEmpty(cData.getComplaint_image())) {
+        if (!TextUtils.isEmpty(cData.getComplaint_image())) {
             v.rl_cc_images.setVisibility(View.VISIBLE);
             ParseComplaintData.setImage(activity, null, v.complaint_image, cData.getComplaint_image(), false);
         } else {
@@ -200,22 +202,25 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
     }
 
     private void setTopFeedForCard(final ComplaintData cData, final RelativeLayout rl_top_feed, final TextView tv_feed, final TextView tv_feed_user_name, ImageView feed_flag) {
-        if(cData.isHasFeed()) {
+        if (cData.isHasFeed()) {
             rl_top_feed.setVisibility(View.VISIBLE);
-            if(cData.get_is_feed_high_priority().equalsIgnoreCase("1")) {
+            if (cData.get_is_feed_high_priority().equalsIgnoreCase("1")) {
                 feed_flag.setVisibility(View.VISIBLE);
                 feed_flag.setColorFilter(activity.getResources().getColor(R.color.red_reopn_open));
+                feed_flag.setOnClickListener(v -> {
+                    AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Complaint marked as high priority for faster resolution");
+                });
             } else {
                 feed_flag.setVisibility(View.GONE);
             }
 
-            if(cData.getFeed_color().equalsIgnoreCase("R")) {
+            if (cData.getFeed_color().equalsIgnoreCase("R")) {
                 tv_feed_user_name.setTextColor(activity.getResources().getColor(R.color.red_reopn_open));
                 tv_feed.setTextColor(activity.getResources().getColor(R.color.red_reopn_open));
-            } else if(cData.getFeed_color().equalsIgnoreCase("G")) {
+            } else if (cData.getFeed_color().equalsIgnoreCase("G")) {
                 tv_feed_user_name.setTextColor(activity.getResources().getColor(R.color.green_resolved));
                 tv_feed.setTextColor(activity.getResources().getColor(R.color.green_resolved));
-            } else if(cData.getFeed_color().equalsIgnoreCase("B")) {
+            } else if (cData.getFeed_color().equalsIgnoreCase("B")) {
                 tv_feed_user_name.setTextColor(activity.getResources().getColor(R.color.blue_on_the_job));
                 tv_feed.setTextColor(activity.getResources().getColor(R.color.blue_on_the_job));
             } else {

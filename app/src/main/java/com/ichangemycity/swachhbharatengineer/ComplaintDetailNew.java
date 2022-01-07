@@ -52,7 +52,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ComplaintDetailNew extends BaseAppCompatActivity {
 
     private Activity activity;
-    public static boolean isToRefresh = false;
 
     public ComplaintData complaintDetailData = new ComplaintData();
 
@@ -151,8 +150,8 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
     protected void onResume() {
         super.onResume();
         try {
-            if(isToRefresh) {
-                isToRefresh = false;
+            if(AppConstant.isToRefreshComplaint) {
+                AppConstant.isToRefreshComplaint = false;
                 runGetComplaintWebService();
             }
             if(d != null) {

@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Pattabi/AndroidStudioProjects/SBM2_Engineer/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Pattabi/AndroidStudioProjects/SBM2_Engineer/app/src/main/res/layout/app_bar_main.xml" value="0.2" />
         <entry key="..\:/Users/Pattabi/AndroidStudioProjects/SBM2_Engineer/app/src/main/res/layout/complaint_details_new.xml" value="0.2" />
+        <entry key="..\:/Users/Pattabi/AndroidStudioProjects/SBM2_Engineer/app/src/main/res/layout/content_main.xml" value="0.25" />
         <entry key="..\:/Users/Pattabi/AndroidStudioProjects/SBM2_Engineer/app/src/main/res/layout/home_complaint_card.xml" value="0.25" />
         <entry key="..\:/Users/Pattabi/AndroidStudioProjects/SBM2_Engineer/app/src/main/res/layout/inflate_change_status.xml" value="0.2" />
         <entry key="..\:/Users/Pattabi/AndroidStudioProjects/SBM2_Engineer/app/src/main/res/layout/inflate_comment.xml" value="0.2" />

@@ -1,5 +1,10 @@
 package com.ichangemycity.swachhbharatengineer;
 
+import static android.R.color.holo_blue_bright;
+import static android.R.color.holo_green_light;
+import static android.R.color.holo_orange_light;
+import static android.R.color.holo_red_light;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,7 +15,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,52 +25,36 @@ import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.navigation.NavigationView;
 import com.ichangemycity.adapter.ComplaintAdapter;
-import com.ichangemycity.adapter.HomeTabLocalFeedAdapter;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.callback.OnResponseListener;
-import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.model.ComplaintFilterModel;
-import com.ichangemycity.webservice.ParseComplaintData;
 import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.WebserviceHelper;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static android.R.color.holo_blue_bright;
-import static android.R.color.holo_green_light;
-import static android.R.color.holo_orange_light;
-import static android.R.color.holo_red_light;
-import static com.ichangemycity.swachhbharatengineer.ComplaintDetail.isToRefresh;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener, ComplaintAdapter.ActionCallBack {
 
     public static Activity activity;
-    RecyclerView mRecyclerView;
     private SwipeRefreshLayout refreshLayout;
-    private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<ComplaintFilterModel> complaintFilterModel = new ArrayList<ComplaintFilterModel>();
-    //    public static Spinner complaintFilter;
-    private static ImageView complaintFilterDropdownImageView;
     public static androidx.appcompat.app.ActionBar actionBar;
     private DrawerLayout drawer;
-    int pastVisiblesItems, visibleItemCount, totalItemCount;
     private RecyclerView complaintList;
     private CircleImageView circleUserImage;
+    private TextView toolbar_title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AppController.assignLanguage(MainActivity.this);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar_title = findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
         activity = MainActivity.this;
         clearBackStack();
@@ -81,11 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
 
         circleUserImage = findViewById(R.id.circleUserImage);
-        // recycler view
-        mRecyclerView = findViewById(R.id.list);
         refreshLayout = findViewById(R.id.swipe_container);
-        mLayoutManager = new LinearLayoutManager(activity);
-        mRecyclerView.setLayoutManager(mLayoutManager);
         initSwipeOptions();
         setToolbarAndCustomizeTitle(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -118,6 +103,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
           ComplaintDetail.class));
     }*/
 
+        toolbar_title.setOnClickListener(v -> {
+            onRefresh();
+        });
+
+        // to redirect from deeplinking
+        onNewIntent(getIntent());
     }
 
     private void clearBackStack() {
@@ -181,16 +172,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             // 2 or ULB , 4 for Engineer
             mComplaintFilterModel.setDisplayTitle(activity.getResources().getString(R.string.un_assigned_complaints));
             mComplaintFilterModel.setComplaintType(URLData.UN_ASSIGNED_COMPLAINTS);
+            mComplaintFilterModel.setComplaintCount(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.un_assigned_count, "0"));
 
         } else {
             mComplaintFilterModel.setDisplayTitle(activity.getResources().getString(R.string.assigned_complaints));
             mComplaintFilterModel.setComplaintType(URLData.ASSIGNED_COMPLAINTS_ENGINEER);
+            mComplaintFilterModel.setComplaintCount(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.assignedCount, "0"));
 
         }
-
         mComplaintFilterModel.setComplaintColor(AppConstant.BG_COLOR_DEFAULT[0]);
         mComplaintFilterModel.setResId(R.drawable.acknowledged);
-        mComplaintFilterModel.setComplaintCount(ICMyCPreferenceData.getPreferenceItem(activity, "", "0"));
+
         complaintFilterModel.add(mComplaintFilterModel);
 
         mComplaintFilterModel = new ComplaintFilterModel();
@@ -241,35 +233,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mComplaintFilterModel.setComplaintCount(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.rejected_count, "0"));
         complaintFilterModel.add(mComplaintFilterModel);
 
-//        complaintFilter = findViewById(R.id.complaintFilter);
-        complaintFilterDropdownImageView = findViewById(R.id.complaintFilterDropdownImageView);
-//        ComplaintFilterSpinnerAdapter complaintFilterSpinnerAdapter = new ComplaintFilterSpinnerAdapter(activity, complaintFilterModel);
-//        complaintFilter.setAdapter(complaintFilterSpinnerAdapter);
 
         ComplaintAdapter complaintAdapter = new ComplaintAdapter(activity, complaintFilterModel);
         complaintList.setAdapter(complaintAdapter);
         complaintAdapter.setActionCallBack(this);
 
-
-//        complaintFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                AppController.getInstance().cancelPendingRequests(AppController.TAG);
-//                AppUtils.getInstance().hideProgressDialog(activity);
-//                runHomeFeedWebService(complaintFilterModel.get(position).getComplaintType(), true);
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//        });
-//        complaintFilterDropdownImageView.setOnClickListener(view -> {
-//            complaintFilter.performClick();
-//        });
     }
 
     private void setToolbarAndCustomizeTitle(Toolbar toolbar) {
@@ -331,28 +299,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setPropertyForNavItemCount();
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
         setLeftMenuProfileDetails();
+        setSpinnerData();
     }
 
-    //  private static ImageView menuIcon1;
     private TextView userNameLeftMenu, textViewLocation, userDesignationLeftMenu;
 
     private void setLeftMenuProfileDetails() {
         navigationView.inflateHeaderView(R.layout.nav_header_main);
-        //    menuIcon1 = (ImageView) drawer.findViewById(R.id.menuIcon1);
-        //    menuIcon1.setVisibility(View.VISIBLE);
         CircleImageView imageView = drawer.findViewById(R.id.imageView1);
 
         LinearLayout llProfile = drawer.findViewById(R.id.llProfile);
 
         imageView.setImageResource(R.mipmap.ic_not_found);
-        //    imageView.setTag(SecurePrefManager.with(activity).get(ICMyCPreferenceData.userProfileImage)
-        //        .defaultValue("http://icmycsaasqa.ichangemycity" +
-        //            ".com/android/image/image_not_found.png").go());
-        imageView.setTag(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, "http://icmycsaasqa.ichangemycity" + ".com/android/image/image_not_found.png"));
+        imageView.setTag(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, "https://www.ichangemycity.com/android/images/account.png"));
 
-        //    AppUtils.setImage(imageView, null,
-        //        SecurePrefManager.with(activity).get(ICMyCPreferenceData.userProfileImage).defaultValue("")
-        //            .go(), true);
         AppUtils.setImage(imageView, null, ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, ""), true);
         userNameLeftMenu = drawer.findViewById(R.id.userNameLeftMenu);
         textViewLocation = drawer.findViewById(R.id.textViewLocation);
@@ -368,17 +328,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-   /* menuIcon1.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        drawer.closeDrawer(Gravity.LEFT);
-      }
-    });*/
         userNameLeftMenu.setText(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.user_full_name, activity.getResources().getString(R.string.you)));
-        //        SecurePrefManager.with(activity).get(ICMyCPreferenceData.user_full_name)
-        //            .defaultValue(activity.getResources()
-        //                .getString(R
-        //                    .string.you)).go());
         textViewLocation.setText(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.location, ""));
         if (!TextUtils.isEmpty(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.designation, ""))) {
             userDesignationLeftMenu.setVisibility(View.GONE);
@@ -426,84 +376,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (item != null) {
             if (!isFirstTime) {
                 int id = item.getItemId();
-//                switch (id) {
-//                    case R.id.high_priority:
-//                        complaintFilter.setSelection(2);
-//                        break;
-//                    case R.id.on_the_job:
-//                        complaintFilter.setSelection(3);
-//                        break;
-//                    case R.id.resolved:
-//                        complaintFilter.setSelection(5);
-//                        break;
-//                    case R.id.rejected:
-//                        complaintFilter.setSelection(6);
-//                        break;
-//                    case R.id.re_opened:
-//                        complaintFilter.setSelection(4);
-//                        break;
-//
-//                    //Added by Sindhu BC(ITC Infotech)
-//                  /*  case R.id.public_toilet_nearby:
-//
-//                        startActivity(new Intent(MainActivity.this,
-//                                PublicToiletNearbyActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-//                        *//*String appPackageName = activity.getPackageName();
-//                        try {
-//                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri
-//                                    .parse("http://play.google.com/store/apps/details?id="
-//                                            + appPackageName)));
-////                        AppController.trackEvent(AppController.RATE_US_ON_PLAYSTORE,
-////                                AppController.RATE_US_ON_PLAYSTORE_LANDED,
-////                                AppController.RATE_US_ON_PLAYSTORE_LANDED);
-//                        } catch (android.content.ActivityNotFoundException anfe) {
-//
-//                        }*//*
-//                        break;*//**/
-//                    case R.id.rate_us_on_playstore:
-//                        String appPackageName = activity.getPackageName();
-//                        try {
-//                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
-//                            //                        AppController.trackEvent(AppController.RATE_US_ON_PLAYSTORE,
-//                            //                                AppController.RATE_US_ON_PLAYSTORE_LANDED,
-//                            //                                AppController.RATE_US_ON_PLAYSTORE_LANDED);
-//                        } catch (android.content.ActivityNotFoundException anfe) {
-//
-//                        }
-//                        break;
-//                    case R.id.nav_privacypolicy:
-//                        try {
-//                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.ichangemycity.com/privacy-policy-mobile?app=sbmengineer")));
-//                        } catch (android.content.ActivityNotFoundException anfe) {
-//
-//                        }
-//                        break;
-//
-//                    case R.id.report_bug:
-//                        try {
-//                            Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "champa.r@janaagraha.org,pattabi.raman@janaagraha.org", null));
-//                            String sAux = "\n";
-//                            sAux = sAux + "Bug : \n";
-//                            emailIntent.putExtra(Intent.EXTRA_SUBJECT, activity.getResources().getString(R.string.app_name) + " - Android App - Bug Report");
-//                            emailIntent.putExtra(Intent.EXTRA_TEXT, sAux);
-//                            activity.startActivity(Intent.createChooser(emailIntent, "Report bug using"));
-//
-//                            //                        AppController.trackEvent(AppController.REPORT_BUG,
-//                            //                                AppController.REPORT_BUG_LANDED,
-//                            //                                AppController.REPORT_BUG_LANDED);
-//
-//                        } catch (Exception e) { // e.toString();
-//                        }
-//                        break;
-//                    case R.id.nav_logout:
-//                        //                    AppController.trackEvent(
-//                        //                            AppController.LOGOUT,
-//                        //                            AppController.LOGGED_OUT_SUCCESS,
-//                        //                            AppController.LOGGED_OUT_SUCCESS);
-//                        //            SecurePrefManager.with(activity).clear().confirm();
-//
-//                        break;
-//                }
+
             }
         }
         if (isFirstTime) {
@@ -517,28 +390,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void getProfileDetailsAndRunHomeFeed() {
-        refreshLayout.setEnabled(false);
         final String url = URLData.BASE_URL + URLData.USERS + "?apiKey=" + URLData.API_KEY;
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
-                refreshLayout.setEnabled(true);
-                AppUtils.getInstance().hideProgressDialog(activity);
                 hideSwipeProgress();
-                AppUtils.getInstance().hideProgressDialog(activity);
+                setSpinnerData();
             }
 
             @Override
             public void OnResponseSuccess(final JSONObject response) {
-                AppUtils.getInstance().hideProgressDialog(activity);
-                refreshLayout.setEnabled(true);
+                hideSwipeProgress();
                 try {
                     if (response.optInt("httpCode") == 200 || response.optInt("httpCode") == 201) {
                         try {
-//                            AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
-                            //                                    Toast.makeText(MainActivity.this,
-                            //                                            mJsonObject.optString("message"),
-                            //                                            Toast.LENGTH_LONG).show();
                             handleSuccessResponse(response);
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
@@ -547,15 +412,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     } else {
                         try {
                             AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
-                            //                                    Toast.makeText(MainActivity.this,
-                            //                                            mJsonObject.optString("message"),
-                            //                                            Toast.LENGTH_LONG).show(
+
                         } catch (Exception e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
                     }
-                    onNewIntent(getIntent());
+
                 } catch (Exception e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -563,106 +426,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
 
-
-      /*  JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-                URLData.BASE_URL + URLData.USERS + "?apiKey=" + URLData.API_KEY, null,
-                new Response.Listener<JSON  Object>() {
-                    @Override
-                    public void onResponse(final JSONObject mJsonObject) {
-                        try {
-                            if (mJsonObject.optInt("httpCode") == 200 || mJsonObject.optInt("httpCode") == 201) {
-                                try {
-                                    AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO,mJsonObject.optString("message"));
-//                                    Toast.makeText(MainActivity.this,
-//                                            mJsonObject.optString("message"),
-//                                            Toast.LENGTH_LONG).show();
-                                    handleSuccessResponse(mJsonObject);
-                                } catch (Exception e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                            } else {
-                                try {
-                                    AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, mJsonObject.optString("message"));
-//                                    Toast.makeText(MainActivity.this,
-//                                            mJsonObject.optString("message"),
-//                                            Toast.LENGTH_LONG).show(
-                                } catch (Exception e) {
-                                    // TODO Auto-generated catch block
-                                    e.printStackTrace();
-                                }
-                            }
-                            onNewIntent(getIntent());
-                        } catch (Exception e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
-
-                    }
-                }, new Response.ErrorListener() {
-
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                AppController.handleVolleyError(activity, (RelativeLayout) findViewById(R.id.parentLayout), error);
-            }
-
-        }) {
-
-            *//**
-         * Passing some request headers
-         * *//*
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                return URLData.getHeaders(activity);
-            }
-
-            @Override
-            protected Map<String, String> getParams() {
-                return null;
-            }
-
-        };
-        jsonObjReq.setRetryPolicy(new DefaultRetryPolicy(
-                AppController.MY_SOCKET_TIMEOUT_MS,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(jsonObjReq,
-                AppController.TAG);
-*/
-
     }
 
     private void handleSuccessResponse(final JSONObject mJsonObject) {
         try {
-            if (mJsonObject.has("engineer")) {
-                String user = mJsonObject.optString("engineer");
-                JSONObject userData = new JSONObject(user);
+            if (mJsonObject.has("engineer") && mJsonObject.optJSONObject("engineer") != null) {
+                JSONObject userData = mJsonObject.optJSONObject("engineer");
                 String name = userData.optString("name");
                 String mobile_number = userData.optString("mobile_number");
-                String latitude = userData.get("latitude").toString() + "";
+                String latitude = userData.optString("latitude") + "";
                 String roleId = userData.optString("role_id");
                 String designation = userData.optString("designation");
 
-                String longitude = userData.get("longitude").toString() + "";
-                // String complaint_count = userData
-                // .optInt("complaint_count") + "";
-                // String voted_up_count = userData
-                // .optInt("voted_up_count") + "";
+                String longitude = userData.optString("longitude") + "";
                 String location = userData.optString("location");
-                // String language = userData
-                // .optString("language");
                 String language_code = userData.optString("lang");
                 String imageUrl = userData.optString("image_urls");
                 String unReadNotificationCount = userData.optString("unread_notification_count");
-                String high_priority_count = userData.get("high_priority_count").toString();
-                String on_the_job_count = userData.get("on_the_job_count").toString();
-                String resolved_count = userData.get("resolved_count").toString();
-                String re_opened_count = userData.get("re_opened_count").toString();
-                String rejected_count = userData.get("rejected_count").toString();
+                String high_priority_count = userData.optString("high_priority_count");
+                String on_the_job_count = userData.optString("on_the_job_count");
+                String resolved_count = userData.optString("resolved_count");
+                String re_opened_count = userData.optString("re_opened_count");
+                String rejected_count = userData.optString("rejected_count");
                 String un_assigned_count = "0";
                 if (userData.has("un_assigned_count")) {
-                    un_assigned_count = userData.getString("un_assigned_count").toString();
+                    un_assigned_count = userData.getString("un_assigned_count");
                 }
 
                 if (!imageUrl.equalsIgnoreCase("")) {
@@ -678,7 +466,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     if (roleId.equalsIgnoreCase("2")) {
 
                     } else if (roleId.equalsIgnoreCase("4")) {
-                        ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.assignedCount, userData.getString("assignedCount").toString());
+                        ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.assignedCount, userData.getString("assignedCount"));
                     }
                 }
                 if (!TextUtils.isEmpty(designation)) {
@@ -686,49 +474,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 } else {
                     ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.designation, "");
                 }
-                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.un_assigned_count, (un_assigned_count == null) ? "0" : un_assigned_count);
-                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.unreadNotificationsCnt, (unReadNotificationCount == null) ? "0" : unReadNotificationCount);
-                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.high_priority_count, (high_priority_count == null) ? "0" : high_priority_count);
-                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.on_the_job_count, (on_the_job_count == null) ? "0" : on_the_job_count);
-                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.resolved_count, (resolved_count == null) ? "0" : resolved_count);
-                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.re_opened_count, (re_opened_count == null) ? "0" : re_opened_count);
-                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.rejected_count, (rejected_count == null) ? "0" : rejected_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.un_assigned_count, un_assigned_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.unreadNotificationsCnt, unReadNotificationCount);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.high_priority_count, high_priority_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.on_the_job_count, on_the_job_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.resolved_count, resolved_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.re_opened_count, re_opened_count);
+                ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.rejected_count, rejected_count);
 
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.Mobile_No, mobile_number);
-                // ICMyCPreferenceData.setPreference(
-                // MainActivity.this,
-                // ICMyCPreferenceData.selectedLanguage,
-                // language_code);
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.location, location.replace("%20", " "));
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.Latitude, latitude);
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.Longitude, longitude);
-                // ICMyCPreferenceData.setPreference(
-                // MainActivity.this,
-                // ICMyCPreferenceData.selectedLanguage,
-                // language);
-
-                // ICMyCPreferenceData
-                // .setPreference(
-                // MainActivity.this,
-                // ICMyCPreferenceData.posted_complaint_count,
-                // complaint_count);
-                // ICMyCPreferenceData.setPreference(
-                // MainActivity.this,
-                // ICMyCPreferenceData.voted_up_count,
-                // voted_up_count);
                 AppUtils.setImage(circleUserImage, null, ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, ""), true);
 
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.user_full_name, name);
             }
-            // new ParseJSONResponse(
-            // complaintsResponse)
-            // .execute();
             initializeCountForNavItems();
 
-
-            //            runHomeFeedWebService(complaintFilterModel.get(
-            //                    complaintFilter.getSelectedItemPosition())
-            //                    .getComplaintType());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -739,79 +502,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onResume() {
         super.onResume();
         try {
-
             AppUtils.getInstance().hideProgressDialog(activity);
-            if (isToRefresh) {
-                isToRefresh = false;
+            if (AppConstant.isToRefreshComplaint) {
+                AppConstant.isToRefreshComplaint = false;
                 getProfileDetailsAndRunHomeFeed();
-//                runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), true);
             }
         } catch (Exception e) {
-
-        }
-    }
-
-    private int currentPage;
-    public static ArrayList<ComplaintData> data = new ArrayList<>();
-
-    private void runHomeFeedWebService(final String ComplaintType, final boolean isToScroll) {
-        {
-            AppUtils.getInstance().hideProgressDialog(activity);
-            if (isToScroll) {
-                currentPage = 0;
-                //            ((TextView) (mRecyclerView.getEmptyView().findViewById(R.id.emptyView))).setText(activity.getResources().getString(R.string.loading));
-                //            mRecyclerView.getProgressView().setVisibility(View.VISIBLE);
-                //            AppUtils.getInstance().showProgressDialog(activity, getString(R.string.loading));
-            }
-            currentPage += 1;
-            if (currentPage == 1) {
-                data.clear();
-                mRecyclerView.setAdapter(new HomeTabLocalFeedAdapter(activity));
-                AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
-                try {
-                    ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.loading));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            }
-            refreshLayout.setEnabled(false);
-            final String url = URLData.BASE_URL + ComplaintType + URLData.PAGE + currentPage;
-            new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
-                @Override
-                public void OnResponseFailure() {
-                    refreshLayout.setEnabled(true);
-                    AppUtils.getInstance().hideProgressDialog(activity);
-                    hideSwipeProgress();
-                    AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
-
-                }
-
-                @Override
-                public void OnResponseSuccess(final JSONObject response) {
-                    AppUtils.getInstance().hideProgressDialog(activity);
-                    refreshLayout.setEnabled(true);
-                    AppController.traceLog("home", url + " ---> " + response);
-                    if (isToScroll) {
-                        data.clear();
-                        mRecyclerView.getAdapter().notifyDataSetChanged();
-                        AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
-                        try {
-                            ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.loading));
-                        } catch (Exception e) {
-                        }
-                    } else {
-                        AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
-                        try {
-                            findViewById(R.id.viewEmpty).setVisibility(View.GONE);
-                        } catch (Exception e) {
-                        }
-                    }
-                    getProfileDetailsAndRunHomeFeed();
-//                    new ParseJSONResponse(response, isToScroll).execute();
-                }
-            }, isToScroll, WebserviceHelper.HEADER_TYPE_NORMAL);
-
+            e.printStackTrace();
         }
     }
 
@@ -824,138 +521,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-//    private class ParseJSONResponse extends AsyncTask<Void, Void, Void> {
-//
-//        JSONObject jsonObject = new JSONObject();
-//        boolean isToScroll;
-//
-//        public ParseJSONResponse(JSONObject response, final boolean isToScroll) {
-//            this.jsonObject = response;
-//            this.isToScroll = isToScroll;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... params) {
-//            GetParsedJsonFromResponse(this.jsonObject);
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Void result) {
-//            // TODO Auto-generated method stub
-//            super.onPostExecute(result);
-//            mRecyclerView.setVisibility(View.VISIBLE);
-//            hideSwipeProgress();
-//            if (data.size() <= 0) {
-//                AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
-//                try {
-//                    findViewById(R.id.viewEmpty).setVisibility(View.VISIBLE);
-//                    ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
-//                } catch (Exception e) {
-//                }
-//            }
-//            if (isToScroll) {
-//                AppUtils.getInstance().hideProgressDialog(activity);
-//                mRecyclerView.setAdapter(new HomeTabLocalFeedAdapter(activity));
-//                AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
-//                try {
-//                    ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
-//                } catch (Exception e) {
-//                }
-//                mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-//                    /**
-//                     * Callback method to be invoked when the RecyclerView has been scrolled. This will be
-//                     * called after the scroll has completed.
-//                     * <p>
-//                     * This callback will also be called if visible item range changes after a layout
-//                     * calculation. In that case, dx and dy will be 0.
-//                     *
-//                     * @param recyclerView The RecyclerView which scrolled.
-//                     * @param dx           The amount of horizontal scroll.
-//                     * @param dy           The amount of vertical scroll.
-//                     */
-//                    @Override
-//                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-//                        super.onScrolled(recyclerView, dx, dy);
-//                      /*  if (dy < 0) {
-//                            Animation hide = AnimationUtils.loadAnimation(activity, R.anim.up_bottom);
-//                            MainActivity.tabLayout.setVisibility(View.GONE);
-//                            MainActivity.tabLayout.startAnimation(hide);
-//                        } else if(dy <= 0 && dx<=0){
-//                            Animation show = AnimationUtils.loadAnimation(activity, R.anim.botton_up);
-//                            MainActivity.tabLayout.setVisibility(View.VISIBLE);
-//                            MainActivity.tabLayout.startAnimation(show);
-//                        }*/
-//                        boolean enable = false;
-//                        visibleItemCount = mLayoutManager.getChildCount();
-//                        totalItemCount = mLayoutManager.getItemCount();
-//                        pastVisiblesItems = ((LinearLayoutManager) mLayoutManager).findFirstVisibleItemPosition();
-//                        if (visibleItemCount > 0 && mRecyclerView != null) {
-//                            boolean firstItemVisible = pastVisiblesItems == 0;
-//                            // check if the top of the first item is
-//                            // visible
-//                            boolean topOfFirstItemVisible = ((LinearLayoutManager) mLayoutManager).findFirstCompletelyVisibleItemPosition() == 0;
-//                            enable = firstItemVisible && topOfFirstItemVisible;
-//                        }
-//                        refreshLayout.setEnabled(enable);
-//                        if (isLoadMore) {
-//                            if ((visibleItemCount + pastVisiblesItems) >= (totalItemCount - 5)) {
-//                                isLoadMore = false;
-//                                // loading = false;
-//                                try {
-//                                    runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), false);
-//
-//                                } catch (Exception e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//
-//                        }
-//
-//                    }
-//                });
-//            } else {
-//                mRecyclerView.getAdapter().notifyDataSetChanged();
-//            }
-//            hideSwipeProgress();
-//        }
-//
-//    }
-
-    boolean isLoadMore;
-
-    private ArrayList<ComplaintData> GetParsedJsonFromResponse(JSONObject json_comp_object) {
-        try {
-            JSONArray json_comp_array = json_comp_object.getJSONArray("complaints");
-            if (json_comp_array.length() == 0) {
-                isLoadMore = false;
-            } else {
-
-                data.addAll(ParseComplaintData.getParsedComplaintData(json_comp_array));
-                isLoadMore = true;
-            }
-            return data;
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            isLoadMore = false;
-        }
-        return null;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        try {
-            mRecyclerView.getAdapter().notifyDataSetChanged();
-        } catch (Exception e) {
-        }
-    }
 
     private void initSwipeOptions() {
         refreshLayout.setOnRefreshListener(this);
         setAppearance();
-        // enableSwipe();
         refreshLayout.setEnabled(true);
 
     }
@@ -965,20 +534,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**
-     * It shows the SwipeRefreshLayout progress
+     * It hides the SwipeRefreshLayout progress
      */
     public void hideSwipeProgress() {
         refreshLayout.setRefreshing(false);
     }
 
     /**
+     * It shows the SwipeRefreshLayout progress
+     */
+    public void showSwipeProgress() {
+        refreshLayout.setRefreshing(true);
+    }
+
+
+    /**
      * Called when a swipe gesture triggers a refresh.
      */
     @Override
     public void onRefresh() {
-        mRecyclerView.setVisibility(View.GONE);
+        showSwipeProgress();
         getProfileDetailsAndRunHomeFeed();
-//        runHomeFeedWebService(complaintFilterModel.get(complaintFilter.getSelectedItemPosition()).getComplaintType(), true);
     }
 
 

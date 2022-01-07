@@ -87,7 +87,7 @@ public class AppController extends MultiDexApplication {
     private Locale locale = null;
 
     public static void traceLog(String key, String value) {
-//        Log.i(key, value);
+        Log.i(key, value);
     }
 
     public static void hideKeyboard(Activity activity, EditText et) {

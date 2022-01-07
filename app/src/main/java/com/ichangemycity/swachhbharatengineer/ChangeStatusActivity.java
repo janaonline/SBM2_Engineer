@@ -1,5 +1,6 @@
 package com.ichangemycity.swachhbharatengineer;
 
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -51,7 +52,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,8 +62,6 @@ import java.util.Timer;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import static com.ichangemycity.swachhbharatengineer.ComplaintDetail.isToRefresh;
 
 public class ChangeStatusActivity extends BaseAppCompatActivity {
     Toolbar toolbar;
@@ -302,6 +300,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         new WebserviceHelper(activity, WebserviceHelper.METHOD_PUT, url + URLParams, null, new OnResponseListener() {
             @Override
             public void OnResponseFailure() {
+                AppConstant.isToRefreshComplaint = false;
                 AppUtils.getInstance().hideProgressDialog(activity);
                 AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, "Unknown error, please refresh complaints");
                 activity.finish();
@@ -317,14 +316,14 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
 
                     try {
                         try {
-                            ComplaintDetailNew.isToRefresh = true;
+                            AppConstant.isToRefreshComplaint = true;
                         } catch (Exception e) {
                         }
 
                         int httpCode = response.getInt("httpCode");
                         if (httpCode == 200 || httpCode == 201) {
                             ICMyCPreferenceData.setPreference(activity, ICMyCPreferenceData.commentUploadedImageFile, "");
-                            isToRefresh = true;
+                            AppConstant.isToRefreshComplaint = true;
                             activity.finish();
                         }
                         AppUtils.showToast(activity, AppConstant.TOAST_TYPE_INFO, response.optString("message"));
@@ -514,7 +513,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         //        toolbar.setNavigationIcon(getResources().getDrawable(R.mipmap.back));
         toolbar.setNavigationOnClickListener(v -> {
             activity.finish();
-            isToRefresh = false;
+            AppConstant.isToRefreshComplaint = false;
         });
         final Drawable upArrow = getResources().getDrawable(R.mipmap.back);
         upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
