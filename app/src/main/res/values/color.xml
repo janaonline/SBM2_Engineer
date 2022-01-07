@@ -4,8 +4,7 @@
 	<color name="layout_bg">#333333</color>
   <!-- A light Holo shade of blue -->
   <!-- A light Holo shade of gray -->
-	<color name="bg_spinner_color">#DEDEDB</color>
-  <!-- A light Holo shade of green -->
+	<!-- A light Holo shade of green -->
   <!-- A light Holo shade of red -->
   <!-- A dark Holo shade of blue -->
   <!-- A dark Holo shade of green -->
@@ -28,30 +27,21 @@
 	<color name="gray_closed">#607D8B</color>
 
   <color name="blue_pressed_bottom">#165FA0</color>
-  <color name="colorPrimary">#FF6D00</color>
-	<color name="colorPrimaryDark">#FF6D00</color>
-  <color name="colorAccent">#FFD180</color>
+	<color name="colorAccent">#FFD180</color>
   <color name="secondary_text_color">#757575</color>
 	<color name="white_edittext">#fafafa</color>
 	<color name="body">#e5e5e5</color>
   <color name="complaint_id_bgcolor">#e6e6e6</color>
-	<color name="blue_fab_bg">#0981fc</color>
 
 	<color name="view_color">#e2e2e2</color>
 	<color name="primerColorBlack">#242132</color>
 	<color name="primary">#EC8367</color>
-	<color name="primerColorComplaintCardOrange">#EC8367</color>
 	<color name="secondary">#444876</color>
 	<color name="secondaryLight">#7173A5</color>
 	<color name="tertiary">#1A9E93</color>
-	<color name="primerColorWhite">#FCF2EC</color>
-	<color name="primerColorGreen">#249185</color>
 	<color name="tertiaryLight">#5CD0C3</color>
 	<color name="tertiaryDark">#006F65</color>
-	<color name="primerColorIndigo">#9194BE</color>
-	<color name="primerColorLightAquaSurvekshan">#A1EBE4</color>
 	<color name="primaryDark">#B6543C</color>
-	<color name="primaryLightDim">#FCB58C</color>
 	<color name="primaryLight">#ffb495</color>
 	<color name="secondaryDark">#18214A</color>
 	<color name="grey">#DBDBDB</color>

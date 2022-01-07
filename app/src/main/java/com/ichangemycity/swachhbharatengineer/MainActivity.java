@@ -35,6 +35,8 @@ import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.callback.OnResponseListener;
+import com.ichangemycity.model.ChangeStatusModel;
+import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.model.ComplaintFilterModel;
 import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.WebserviceHelper;
@@ -285,6 +287,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     TextView on_the_job, resolved, rejected, re_opened, high_priority;
     NavigationView navigationView;
 
+    @SuppressWarnings("deprecation")
     private void initializeCountForNavItems() {
         high_priority = (TextView) MenuItemCompat.getActionView(navigationView.getMenu().
                 findItem(R.id.high_priority));
@@ -305,6 +308,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView userNameLeftMenu, textViewLocation, userDesignationLeftMenu;
 
     private void setLeftMenuProfileDetails() {
+        if (navigationView.getHeaderView(0) != null)
+            navigationView.removeHeaderView(navigationView.getHeaderView(0));
         navigationView.inflateHeaderView(R.layout.nav_header_main);
         CircleImageView imageView = drawer.findViewById(R.id.imageView1);
 
@@ -557,5 +562,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getProfileDetailsAndRunHomeFeed();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        try {
+            //clear all constants
+            AppController.selectedComplaintData = new ComplaintData();
+            AppController.selectedComplaintChangeStatusOptions = new ChangeStatusModel();
+            AppController.getInstance().cancelPendingRequests(AppController.TAG);
+            AppController.commentData = new ArrayList<>();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
+    }
 }

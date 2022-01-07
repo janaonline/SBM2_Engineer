@@ -384,6 +384,7 @@ public class SelectImageDialogActivity extends BaseAppCompatActivity {/*
                 rippleViewGallery.setOnClickListener(rippleView -> {
 //                    AppController.getInstance().trackEvent(AppConstant.POST_COMPLAINT, AppConstant.IMAGE_SELECTED_GALLERY, AppConstant.IMAGE_SELECTED_GALLERY);
                     Intent takePicture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    //noinspection deprecation
                     startActivityForResult(takePicture, OPEN_MEDIA_PICKER);
                 });
 
@@ -438,6 +439,7 @@ public class SelectImageDialogActivity extends BaseAppCompatActivity {/*
         //Camera intent
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+        //noinspection deprecation
         startActivityForResult(cameraIntent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
 

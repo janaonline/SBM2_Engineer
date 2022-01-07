@@ -131,6 +131,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
         cvimagePreview.setVisibility(View.GONE);
     }
 
+    @SuppressWarnings("deprecation")
     private class InitiatePostComment extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -395,6 +396,7 @@ public class CommentsActivity extends BaseAppCompatActivity {
         JSONObject jsonObject;
         boolean isToScroll;
 
+        @SuppressWarnings("deprecation")
         ParseResponse(final JSONObject jsonObject, final boolean isToScroll) {
             this.jsonObject = jsonObject;
             this.isToScroll = isToScroll;

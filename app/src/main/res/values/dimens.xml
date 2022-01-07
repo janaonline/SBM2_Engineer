@@ -3,12 +3,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="text_size_default">16sp</dimen>
-    <dimen name="textSize10dp">10sp</dimen>
     <dimen name="textSize16dp">16sp</dimen>
     <dimen name="textSize14dp">14sp</dimen>
-    <dimen name="textSize17dp">17sp</dimen>
     <dimen name="textSize18dp">18sp</dimen>
-    <dimen name="textSize12dp">12sp</dimen>
     <dimen name="textSize20dp">20sp</dimen>
     <dimen name="textSize30dp">30sp</dimen>
     <dimen name="textSize32dp">32sp</dimen>
@@ -20,7 +17,6 @@
     <dimen name="margin40dp">40dp</dimen>
     <dimen name="margin56dp">56dp</dimen>
     <dimen name="margin64dp">64dp</dimen>
-    <dimen name="margin_size_medium">8dp</dimen>
 
     <dimen name="horizontal_vertical_spacing">8dp</dimen>
     <dimen name="margin32dp">32dp</dimen>

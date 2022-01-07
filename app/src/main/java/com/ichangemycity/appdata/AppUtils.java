@@ -238,6 +238,7 @@ public class AppUtils {
     }
 
     public void parseProfileGetResponse(final Activity activity, final JSONObject jsonObject, final OnTaskCompleted onTaskCompleted) {
+        @SuppressWarnings("deprecation")
         class ParseResponse extends AsyncTask<Void, Void, Void> {
             JSONObject jsonObject = new JSONObject();
 

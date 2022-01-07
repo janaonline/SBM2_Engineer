@@ -63,6 +63,7 @@ import java.util.Timer;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+@SuppressWarnings("ALL")
 public class ChangeStatusActivity extends BaseAppCompatActivity {
     Toolbar toolbar;
     RelativeLayout postComm;
@@ -515,7 +516,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
             activity.finish();
             AppConstant.isToRefreshComplaint = false;
         });
-        final Drawable upArrow = getResources().getDrawable(R.mipmap.back);
+        @SuppressLint("UseCompatLoadingForDrawables") final Drawable upArrow = getResources().getDrawable(R.mipmap.back);
         upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(upArrow);
         getSupportActionBar().setTitle(title);

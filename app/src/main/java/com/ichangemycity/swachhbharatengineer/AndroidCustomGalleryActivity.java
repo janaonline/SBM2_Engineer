@@ -40,6 +40,7 @@ import butterknife.ButterKnife;
 import static android.content.Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION;
 import static android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION;
 
+@SuppressWarnings("ALL")
 public class AndroidCustomGalleryActivity extends BaseAppCompatActivity {
     SelectedImageModel mSelectedImagesModel = new SelectedImageModel();
     @Nullable

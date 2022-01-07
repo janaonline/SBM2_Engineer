@@ -1,5 +1,6 @@
 package com.ichangemycity.swachhbharatengineer;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -39,6 +40,7 @@ import static android.R.color.holo_green_light;
 import static android.R.color.holo_orange_light;
 import static android.R.color.holo_red_light;
 
+@SuppressWarnings("ALL")
 public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private ActivityComplaintBinding binding;
@@ -136,6 +138,7 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
 
                 }
 
+                @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void OnResponseSuccess(final JSONObject response) {
                     AppUtils.getInstance().hideProgressDialog(activity);
@@ -164,6 +167,7 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class ParseJSONResponse extends AsyncTask<Void, Void, Void> {
 
         JSONObject jsonObject = new JSONObject();

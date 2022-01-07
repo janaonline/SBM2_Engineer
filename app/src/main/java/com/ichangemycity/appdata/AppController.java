@@ -52,6 +52,7 @@ import com.ichangemycity.swachhbharatengineer.Splashscreen;
 import com.ichangemycity.swachhbharatengineer.UserMobileNumber;
 import com.ichangemycity.webservice.LruBitmapCache;
 
+import org.acra.ACRA;
 import org.acra.annotation.AcraMailSender;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -67,6 +68,7 @@ import static com.ichangemycity.appdata.AppConstant.TOAST_TYPE_ERROR;
 /**
  * Created by pattabi.raman on 23-09-2017.
  */
+@SuppressWarnings("ALL")
 @AcraMailSender(mailTo = "pattabi.raman@janaagraha.org")
 public class AppController extends MultiDexApplication {
     public static ArrayList<LanguageData> languageArrayList = new ArrayList<LanguageData>();
@@ -87,7 +89,7 @@ public class AppController extends MultiDexApplication {
     private Locale locale = null;
 
     public static void traceLog(String key, String value) {
-        Log.i(key, value);
+//        Log.i(key, value);
     }
 
     public static void hideKeyboard(Activity activity, EditText et) {
@@ -126,7 +128,7 @@ public class AppController extends MultiDexApplication {
             MultiDex.install(this);
             AnalyticsTracker.initialize(this);
             AnalyticsTracker.getInstance().get(AnalyticsTracker.Target.APP);
-
+            ACRA.init(this);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -430,8 +430,7 @@ public class NotificationActivity extends BaseAppCompatActivity implements
                                             .optString("redirectTo"));
                             notificationHeaderData
                                     .setTextMsg(notificationDataJsonObject
-                                            .optString("textMsg").replace(" ",
-                                                    "-"));
+                                            .optString("textMsg"));
                             notificationHeaderData.setRead(readStatus);
                             if (notificationHeaderData.getFeedType()
                                     .equalsIgnoreCase("Posted")) {
