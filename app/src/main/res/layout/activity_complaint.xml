@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:wheel="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
         android:id="@+id/parentLayout"
@@ -21,11 +20,13 @@
             android:id="@+id/swipe_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/progressBar"
             android:layout_below="@+id/toolbar">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
+
                 android:layout_height="match_parent" />
 
             <TextView
@@ -44,24 +45,15 @@
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-        <LinearLayout
-            android:id="@+id/linearM"
-            android:layout_width="match_parent"
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/textSize32dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="#eaeaea"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:layout_centerInParent="true"
+            android:layout_gravity="center" />
 
-            <com.pnikosis.materialishprogress.ProgressWheel
-                android:id="@+id/pb_loader"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                wheel:matProg_progressIndeterminate="true" />
-        </LinearLayout>
     </RelativeLayout>
 
 </layout>

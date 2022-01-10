@@ -85,11 +85,11 @@ public class SetEmailPasswordActivity extends BaseAppCompatActivity {
     }
 
     private void loginAPICall() {
-        submitMobileNumberWithOTPSourceFaceBook();
+        submitMobileNumberWithOTPSource();
     }
 
     // bug - otp is receiving if mobile_number_verified is true
-    private void submitMobileNumberWithOTPSourceFaceBook() {
+    private void submitMobileNumberWithOTPSource() {
         HashMap<String, String> params = new HashMap<>();
         params.put("mobile_number", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.Mobile_No, ""));
         params.put("device_token", ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.deviceToken, ""));

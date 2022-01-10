@@ -391,7 +391,6 @@ public class AppUtils {
                             AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
                         } else {
                             ICMyCPreferenceData.clearPreferences(act);
-
                             new AppController().cancelPendingRequests(AppController.TAG);
                             act.startActivity(new Intent(act, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             act.finish();

@@ -30,39 +30,34 @@
 
     <application
         android:name="com.ichangemycity.appdata.AppController"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup"
+        tools:targetApi="m">
 
         <activity
             android:name=".ComplaintActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
 
         <activity
             android:name=".ProfileViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateAlwaysHidden"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
 
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
-
-        <meta-data
-            android:name="com.facebook.accountkit.ApplicationName"
-            android:value="@string/app_name" />
-        <meta-data
-            android:name="com.facebook.accountkit.ClientToken"
-            android:value="7408b7b4e110479f6c8efa4cea267521" />
 
         <activity
             android:name=".Splashscreen"

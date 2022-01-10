@@ -127,13 +127,14 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
 
             }
             refreshLayout.setEnabled(false);
-            final String url = URLData.BASE_URL + ComplaintType + URLData.PAGE + currentPage;
+            final String url = URLData.BASE_URL + ComplaintType + URLData.PAGE + currentPage+"&per_page=30";
             new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
                 @Override
                 public void OnResponseFailure() {
                     refreshLayout.setEnabled(true);
                     AppUtils.getInstance().hideProgressDialog(activity);
                     hideSwipeProgress();
+                    setProgressVisibility(View.GONE);
                     AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
 
                 }
@@ -176,6 +177,7 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
         public ParseJSONResponse(JSONObject response, final boolean isToScroll) {
             this.jsonObject = response;
             this.isToScroll = isToScroll;
+            setProgressVisibility(View.VISIBLE);
         }
 
         @Override
@@ -190,7 +192,7 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
             super.onPostExecute(result);
             mRecyclerView.setVisibility(View.VISIBLE);
             hideSwipeProgress();
-            if (data.size() <= 0) {
+            if (data!=null && data.size() <= 0) {
                 AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
                 try {
                     findViewById(R.id.viewEmpty).setVisibility(View.VISIBLE);
@@ -235,14 +237,16 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
                         refreshLayout.setEnabled(enable);
                         if (isLoadMore) {
                             if ((visibleItemCount + pastVisiblesItems) >= (totalItemCount - 5)) {
+                                setProgressVisibility(View.VISIBLE);
                                 isLoadMore = false;
-                                // loading = false;
                                 try {
                                     runHomeFeedWebService(complaintFilterModel.getComplaintType(), false);
 
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
+                            }else{
+                                setProgressVisibility(View.GONE);
                             }
 
                         }
@@ -251,8 +255,10 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
                 });
             } else {
                 mRecyclerView.getAdapter().notifyDataSetChanged();
+                setProgressVisibility(View.GONE);
             }
             hideSwipeProgress();
+        AppController.traceLog("TotalComplaintCountListed","-------->"+mRecyclerView.getAdapter().getItemCount()+"");
         }
 
     }
@@ -283,6 +289,7 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
         super.onStart();
         try {
             mRecyclerView.getAdapter().notifyDataSetChanged();
+            setProgressVisibility(View.GONE);
         } catch (Exception e) {
         }
     }
@@ -314,4 +321,9 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
         mRecyclerView.setVisibility(View.GONE);
         runHomeFeedWebService(complaintFilterModel.getComplaintType(), true);
     }
+    private void setProgressVisibility(final int VISIBILITY) {
+        binding.progressBar.setVisibility(VISIBILITY);
+
+    }
+
 }

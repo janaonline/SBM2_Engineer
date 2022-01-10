@@ -124,13 +124,13 @@ public class UserMobileNumber extends BaseAppCompatActivity {
 
         submit.setOnClickListener(v -> {
             if (AppUtils.validateMobileNumber(activity, mobileNumber)) {
-                submitMobileNumberAPI(false);
+                submitMobileNumberAPI();
             }
         });
 //    setToolbarAndCustomizeTitle(findViewById(R.id.toolbar), " ");
     }
 
-    private void submitMobileNumberAPI(final boolean isToAddOTPSource) {
+    private void submitMobileNumberAPI() {
         // take roles from this response if
         /**
          * {
@@ -161,9 +161,9 @@ public class UserMobileNumber extends BaseAppCompatActivity {
                 ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.deviceUniqueID, ""));
         params.put("device_token",
                 TextUtils.isEmpty(AppConstant.deviceToken) ? "" : AppConstant.deviceToken);
-        if (isToAddOTPSource) {
+       /* if (isToAddOTPSource) {
             params.put("otp_source", "facebook");
-        }
+        }*/
         params.putAll(URLDataSwachhManch.getChannelParam());
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_POST, url, params,
@@ -297,7 +297,7 @@ public class UserMobileNumber extends BaseAppCompatActivity {
 
                             @Override
                             public void onTaskFailure() {
-                                submitMobileNumberAPI(false);
+                                submitMobileNumberAPI();
                             }
                         });
 
