@@ -130,6 +130,11 @@ public class AppUtils {
                 public void onNegativeButtonClicked() {
 
                 }
+
+                @Override
+                public void onNegativeButtonClicked(DialogInterface dialogInterface) {
+
+                }
             });
             // alertdialog_with_one_button
             // .showErrorAlert("Mobile Number cannot be empty");
@@ -148,6 +153,11 @@ public class AppUtils {
 
                 @Override
                 public void onNegativeButtonClicked() {
+
+                }
+
+                @Override
+                public void onNegativeButtonClicked(DialogInterface dialogInterface) {
 
                 }
             });
@@ -228,6 +238,7 @@ public class AppUtils {
     }
 
     public void parseProfileGetResponse(final Activity activity, final JSONObject jsonObject, final OnTaskCompleted onTaskCompleted) {
+        @SuppressWarnings("deprecation")
         class ParseResponse extends AsyncTask<Void, Void, Void> {
             JSONObject jsonObject = new JSONObject();
 
@@ -342,6 +353,11 @@ public class AppUtils {
                         public void onNegativeButtonClicked() {
 
                         }
+
+                        @Override
+                        public void onNegativeButtonClicked(DialogInterface dialogInterface) {
+
+                        }
                     });
                 } catch (Exception e) {
                 }
@@ -375,7 +391,6 @@ public class AppUtils {
                             AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
                         } else {
                             ICMyCPreferenceData.clearPreferences(act);
-
                             new AppController().cancelPendingRequests(AppController.TAG);
                             act.startActivity(new Intent(act, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             act.finish();

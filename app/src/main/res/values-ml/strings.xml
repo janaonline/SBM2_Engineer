@@ -6,10 +6,7 @@
     <string name="mobile_verification">വെരിഫൈ ചെയ്യുക </string>
     <string name="resend_code_">കോഡ് വീണ്ടും അയക്കണോ? </string>
     <string name="done">ചെയ്തു </string>
-    <string name="welcomes_you_some_text_goes_here">താങ്കളുടെ മൊബൈൽ നമ്പർ നമ്പർ എൻറർ ചെയ്യുക</string>
     <string name="enter_verification_code_sent_to_">ഞങ്ങൾ നിങ്ങളുടെ നമ്പറിലേക്ക് ഒരു കോഡ് അയച്ചിട്ടുണ്ട്.</string>
-    <string name="your_mobile_number_is_safe_with_us">നിങ്ങളുടെ മൊബൈൽ നമ്പർ ഞങ്ങളുടെ പക്കൽ സുരക്ഷിതമായിരിക്കും.</string>
-    <string name="we_won_t_share_your_details_with_any_one">നിങ്ങളുടെ വിശദാംശങ്ങൾ ഞങ്ങൾ ആരുമായും പങ്കുവയ്ക്കുന്നതല്ല.</string>
     <string name="change">വ്യത്യാസപ്പെടുത്തുക </string>
     <string name="enter_mobile_number">മൊബൈൽ നമ്പർ എൻറർ ചെയ്യുക </string>
     <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
@@ -21,27 +18,19 @@
 
     <!--Grievance-->
     <string name="more_information">കൂടുതൽ വിവരങ്ങൾ കൂട്ടിച്ചേർക്കുക </string>
-    <string name="thank_you">നന്ദി! </string>
     <string name="no_complaints">പരാതികളില്ല</string>
     <string name="complaint_details">വിശദാംശങ്ങൾ</string>
-    <string name="resolve">പരിഹാരം</string>
-    <string name="_votes">" വോട്ടുകൾ" </string>
-    <string name="_comments">" കമൻറുകൾ" </string>
     <string name="be_the_first_to_comment">കമൻറ് ചെയ്യുന്ന ആദ്യത്തെ വ്യക്തിയാകുക</string>
     <string name="change_status">സ്റ്റാറ്റസ് വ്യത്യാസപ്പെടുത്തുക</string>
     <string name="you_re_changing_the_status_of_the_complaint_to_new_status">താങ്കൾ പരാതിയുടെ സ്റ്റാറ്റസ്  #NEW_STATUS ആയി വ്യത്യാസപ്പെടുത്തുകയാണ്. </string>
-    <string name="submit">സബ്മിറ്റ് ചെയ്യുക</string>
     <string name="notification">നോട്ടിഫിക്കേഷനുകൾ </string>
     <string name="previously_read">നേരത്തെ വായിച്ചത്</string>
     <string name="no_read_notification">നോട്ടിഫിക്കേഷനുകൾ ഇല്ല</string>
 
     <!--    Messages-->
     <string name="ok">ഒ.കെ. </string>
-    <string name="error">പിശക് </string>
-    <string name="cancel">റദ്ദാക്കുക </string>
     <string name="loading">ലോഡ് ചെയ്യുന്നു </string>
     <string name="could_not_connect_to_internet">ഇൻറർനെറ്റ് കണക്ടിവിറ്റി ഇല്ല</string>
-    <string name="something_went_wrong">എന്തോ പിശക്സംഭവിച്ചിരിക്കുന്നു. response code -   </string>
     <string name="select_an_image">ഒരു ചിത്രം തെരഞ്ഞെടുക്കുക </string>
 
     <!--sidemenu-->
@@ -53,7 +42,6 @@
     <!--change_status-->
     <string name="you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_">നിങ്ങൾ പരാതിയുടെ സ്റ്റാറ്റസ് വ്യത്യാസപ്പെടുത്തുകയാണ്. നിങ്ങളുടെ അനുഭവത്തെ കുറിച്ച് അല്ലെങ്കിൽ നിങ്ങൾക്ക് എന്തെങ്കിലും റിമാർക്സ് ഉണ്ടെങ്കിൽ ദയവായി ഒരു കമൻറ് രേഖപ്പെടുത്തുക. നിങ്ങളുടെ കമൻറിനോടൊപ്പം നിങ്ങൾക്ക് ഫോട്ടോകളും ചേർക്കാവുന്നതാണ്.</string>
     <string name="rejected">നിരാകരിച്ചു</string>
-    <string name="address">മേൽവിലാസം</string>
     <string name="all_complaints">എല്ലാ പരാതികളും</string>
     <string name="high_priority_complaints">ഉയർന്ന മുൻഗണനയുള്ള പരാതികൾ</string>
     <string name="on_the_job_complaints">ഓൺ-ദ-ജോബ് പരാതികൾ</string>
@@ -65,9 +53,7 @@
 
     <!--OTHERS-->
     <string name="mobile_number_cannot_be_empty">മൊബൈൽ നമ്പർ ശൂന്യമാകാനാവില്ല</string>
-    <string name="_10_digit_mobile_number">മൊബൈൽ നമ്പർ</string>
     <string name="mobile_number_needs_10_digits">10 അക്ക മൊബൈൽ നമ്പർ ആവശ്യമാണ്</string>
-    <string name="enter_otp">ഒ.ടി.പി. എൻറർ ചെയ്യുക</string>
     <string name="comment">കമൻറ്</string>
     <string name="you">താങ്കൾ</string>
     <string name="vote_up">വോട്ട് അപ്പ് ചെയ്യുക</string>
@@ -75,11 +61,8 @@
     <string name="take_a_picture">ഒരു ചിത്രം എടുക്കുക</string>
     <string name="gallery">ഗ്യാലറി</string>
     <string name="no_data">ഡാറ്റ ഇല്ല</string>
-    <string name="notifs">നോട്ടിഫിക്കേഷൻ</string>
     <string name="write_a_comment">ഒരു കമൻറ് എഴുതുക</string>
     <string name="language">ഭാഷ</string>
-    <string name="yes">അതെ</string>
-    <string name="no">ഇല്ല</string>
     <string name="comments">കമന്റുകൾ</string>
     <string name="landmark">നാഴികക്കല്ല്</string>
     <string name="resolved">പരിഹരിച്ചു</string>
@@ -87,7 +70,6 @@
 
     <!--COVID-19-->
     <string name="skip">ഒഴിവാക്കുക</string>
-    <string name="more_information_landmark_contact">കൂടുതൽ വിവരങ്ങൾ</string>
     <string name="please_wait_for">"Please wait for "</string>
     <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
 

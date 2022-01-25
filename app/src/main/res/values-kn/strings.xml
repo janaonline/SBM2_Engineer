@@ -6,10 +6,7 @@
     <string name="mobile_verification">ಪರಿಶೀಲಿಸಿ</string>
     <string name="resend_code_">ಕೋಡ್ ಅನ್ನು ಮತ್ತೆಕಳುಹಿಸಬೇಕೇ?</string>
     <string name="done">ಆಯಿತು</string>
-    <string name="welcomes_you_some_text_goes_here">ನಿಮ್ಮ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ</string>
     <string name="enter_verification_code_sent_to_">ನಾವು ನಿಮ್ಮ ಕೋಡ್ ಸಂಖ್ಯೆಯನ್ನು ಕಳುಹಿಸಿದ್ದೇವೆ</string>
-    <string name="your_mobile_number_is_safe_with_us">ನಿಮ್ಮ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯು ನಮ್ಮೊಂದಿಗೆ ಸುರಕ್ಷಿತವಾಗಿದೆ</string>
-    <string name="we_won_t_share_your_details_with_any_one">ನಾವು ನಿಮ್ಮ ವಿವರಗಳು ಯಾರೊಂಗಿಗೂ ಹಂಚಿಕೊಳ್ಳುವುದಿಲ್ಲ</string>
     <string name="change">ಬದಲಾವಣೆ</string>
     <string name="enter_mobile_number">ಮೊಬೈಲ್ ಸಂಖ್ಯೆನಮೂದಿಸಿ</string>
     <string name="didn_t_receive_otp">Didn\'t receive OTP?</string>
@@ -21,27 +18,19 @@
 
     <!--Grievance-->
     <string name="more_information">ಹೆಚ್ಚಿನ ಮಾಹಿತಿ ಸೇರಿಸಿ</string>
-    <string name="thank_you">ಧನ್ಯವಾದಗಳು!</string>
     <string name="no_complaints">ಯಾವುದೇ ದೂರುಗಳಿಲ್ಲ</string>
     <string name="complaint_details">ವಿವರಗಳು</string>
-    <string name="resolve">ಬಗೆಹರಿದಿದೆಯೆಂದುಗುರುತಿಸಿ</string>
-    <string name="_votes"> ವೋಟ್</string>
-    <string name="_comments">" ಪ್ರತಿಕ್ರಿಯೆಗಳು"</string>
     <string name="be_the_first_to_comment">ಕಾಮೆಂಟ್ ಮಾಡುವವರಲ್ಲಿಮೊದಲಿಗರಾಗಿರಿ</string>
     <string name="change_status">ಸ್ಟೇಟಸ್ ಬದಲಿಸಿ</string>
     <string name="you_re_changing_the_status_of_the_complaint_to_new_status">ನೀವು ದೂರಿನ ಸ್ಟೇಟಸ್ಅನ್ನು ಹೀಗೆಂದುಬದಲಾಯಿಸುತ್ತಿದ್ದೀರಿ #NEW_STATUS.</string>
-    <string name="submit">ಸಲ್ಲಿಸಿ</string>
     <string name="notification">ನೋಟಿಫಿಕೇಶನ್</string>
     <string name="previously_read">ಹಿಂದೆ ಓದಿದ್ದು</string>
     <string name="no_read_notification">No read notification</string>
 
     <!--    Messages-->
     <string name="ok">ಸರಿ</string>
-    <string name="error">ದೋಷ</string>
-    <string name="cancel">ರದ್ದುಮಾಡಿ</string>
     <string name="loading">ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ..</string>
     <string name="could_not_connect_to_internet">ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕವಿಲ್ಲ</string>
-    <string name="something_went_wrong">ಏನೋ ತಪ್ಪಾಗಿದೆ </string>
     <string name="select_an_image">ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
 
     <!--sidemenu-->
@@ -53,7 +42,6 @@
     <!--change_status-->
     <string name="you_are_changing_the_status_of_the_complaint_please_leave_a_comment_about_your_experience_or_if_you_have_any_remarks_you_can_add_photos_as_well_to_your_comment_">ನೀವು ದೂರಿನ ಸ್ಥಿತಿಯನ್ನು ಬದಲಾಗಯಿಸುತ್ತಿರುವಿರಿ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ಅನುಭವದ ಬಗ್ಗೆ ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆ ಅಥವಾ ಯಾವುದೇ ಟೀಕೆಗಳಿದ್ದಲ್ಲಿ ಕಳುಹಿಸಿ. ನಿಮ್ಮ ಪ್ರತಿಕ್ರಯೆಯೊಂದಿಗೆ ಫೋಟೋಗಳನ್ನೂ ಸೇರಿಸಬಹುದು.</string>
     <string name="rejected">ತ್ಯಜಿಸಲಾಗಿದೆ</string>
-    <string name="address">ವಿಳಾಸ</string>
     <string name="all_complaints">ಎಲ್ಲಾ ದೂರುಗಳು</string>
     <string name="high_priority_complaints">ಹೆಚ್ಚಿನ ಆದ್ಯತೆಯ ದೂರುಗಳು</string>
     <string name="on_the_job_complaints">ಕೆಲಸದ ದೂರುಗಳು</string>
@@ -65,9 +53,7 @@
 
     <!--OTHERS-->
     <string name="mobile_number_cannot_be_empty">ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯನ್ನು ಖಾಲಿ ಬಿಡುವಂತಿಲ್ಲ</string>
-    <string name="_10_digit_mobile_number">ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</string>
     <string name="mobile_number_needs_10_digits">10 ಅಂಕಿಗಳ ಮೊಬೈಲ್ ಸಂಖ್ಯೆಯ ಅಗತ್ಯವಿದೆ</string>
-    <string name="enter_otp">OTP ನಮೂದಿಸಿ</string>
     <string name="comment">ಕಮೆಂಟ್</string>
     <string name="you">ನೀವು</string>
     <string name="vote_up">ವೋಟ್ ಅಪ್</string>
@@ -75,11 +61,8 @@
     <string name="take_a_picture">ಫೋಟೋ ತೆಗೆದುಕೊಳ್ಳಿ</string>
     <string name="gallery">ಗ್ಯಾಲರಿ</string>
     <string name="no_data">ದತ್ತಾಂಶವಿಲ್ಲ</string>
-    <string name="notifs">ನೋಟಿಫಿಕೇಷನ್</string>
     <string name="write_a_comment">ಕಮೆಂಟ್ ಅನ್ನು ಬರೆಯಿರಿ</string>
     <string name="language">ಭಾಷೆ</string>
-    <string name="yes">ಹೌದು</string>
-    <string name="no">ಅಲ್ಲ</string>
     <string name="comments">ಕಮೆಂಟುಗಳು</string>
     <string name="landmark">ಹೆಗ್ಗುರುತು</string>
     <string name="resolved">ಪರಿಹರಿಸಲಾಗಿದೆ</string>
@@ -87,7 +70,6 @@
 
     <!--COVID-19-->
     <string name="skip">ಬಿಟ್ಟುಬಿಡಿ</string>
-    <string name="more_information_landmark_contact">ಹೆಸರು, ದೂರವಾಣಿ ಸಂಖ್ಯೆ, ವಿಳಾಸ, ಹೆಗ್ಗುರುತು, ಅಥವಾ ರೋಗಿಯ ಮೂಲ ಲಕ್ಷಣಗಳು</string>
     <string name="please_wait_for">"Please wait for "</string>
     <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
 

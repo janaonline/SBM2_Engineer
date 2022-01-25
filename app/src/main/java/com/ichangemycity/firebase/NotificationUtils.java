@@ -27,6 +27,7 @@ import java.util.Random;
 /**
  * Created by Ravi on 31/03/15.
  */
+@SuppressWarnings("ALL")
 public class NotificationUtils {
 
   private Context mContext;

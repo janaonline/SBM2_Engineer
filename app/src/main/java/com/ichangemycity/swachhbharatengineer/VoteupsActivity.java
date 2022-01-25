@@ -171,6 +171,7 @@ public class VoteupsActivity extends BaseAppCompatActivity {
         AppController.getInstance().addToRequestQueue(stringRequest, TAG);*/
     }
 
+    @SuppressWarnings("deprecation")
     private class ParseResponse extends AsyncTask<Void, Void, Void> {
 
         private JSONObject jsonObject;

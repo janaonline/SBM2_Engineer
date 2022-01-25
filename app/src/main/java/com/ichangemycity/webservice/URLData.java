@@ -2,6 +2,7 @@ package com.ichangemycity.webservice;
 
 import android.app.Activity;
 
+import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 
 import java.util.HashMap;
@@ -91,6 +92,7 @@ public class URLData {
         } else {
             headers.putAll(getHeadersSwachhManch(activity, headerType));
         }
+        AppController.traceLog("headers",headers+"");
         return headers;
     }
 

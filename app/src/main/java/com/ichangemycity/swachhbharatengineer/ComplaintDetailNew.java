@@ -52,7 +52,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ComplaintDetailNew extends BaseAppCompatActivity {
 
     private Activity activity;
-    public static boolean isToRefresh = false;
 
     public ComplaintData complaintDetailData = new ComplaintData();
 
@@ -151,8 +150,8 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
     protected void onResume() {
         super.onResume();
         try {
-            if(isToRefresh) {
-                isToRefresh = false;
+            if(AppConstant.isToRefreshComplaint) {
+                AppConstant.isToRefreshComplaint = false;
                 runGetComplaintWebService();
             }
             if(d != null) {
@@ -182,7 +181,7 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
         findViewById(R.id.parentLayout).setVisibility(View.GONE);
         findViewById(R.id.progressBarRim).setVisibility(View.VISIBLE);
         AppUtils.getInstance().showProgressDialog(activity);
-        final String url = URLData.BASE_URL + URLData.COMPLAINT_ID + AppController.selectedComplaintData.getComplaintId() + "&userId=" + ICMyCPreferenceData.getPreferenceItem(ComplaintDetailNew.this, ICMyCPreferenceData.id, "");
+        final String url = URLData.BASE_URL + URLData.COMPLAINT_ID + AppController.selectedComplaintData.getComplaintId() + "&userId=" + ICMyCPreferenceData.getPreferenceItem(ComplaintDetailNew.this, ICMyCPreferenceData.id, "")+"&apiKey="+URLData.API_KEY;
 
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
             @Override

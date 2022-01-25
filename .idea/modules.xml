@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SBM2_Engineer.iml" filepath="$PROJECT_DIR$/.idea/modules/SBM2_Engineer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/SBM2_Engineer.iml" filepath="$PROJECT_DIR$/.idea/SBM2_Engineer.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SBM2_Engineer.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SBM2_Engineer.app.iml" />
     </modules>
   </component>

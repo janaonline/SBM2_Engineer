@@ -8,12 +8,6 @@
 
     </style>
 
-    <style name="Theme.AppCompat.Light.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
-    </style>
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
@@ -27,19 +21,6 @@
         <item name="android:fontFamily" tools:ignore="NewApi">@font/montserrat_bold</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-
-    </style>
-
-    <style name="TextViewSecondaryTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:fontFamily" tools:ignore="NewApi">@font/adobe_clean_regular</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:textSize">@dimen/textSize17dp</item>
-        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
-        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
-        <item name="android:paddingTop">@dimen/horizontal_vertical_spacing</item>
-        <item name="android:paddingBottom">@dimen/horizontal_vertical_spacing</item>
 
     </style>
 

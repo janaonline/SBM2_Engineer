@@ -1,8 +1,15 @@
 package com.ichangemycity.model;
 
-public class ComplaintFilterModel {
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class ComplaintFilterModel implements Serializable {
     private String complaintType, displayTitle;
     private int complaintColor;
+    private String complaintCount;
+    private int resId;
+
 
     /**
      * @return the complaintColor
@@ -47,5 +54,21 @@ public class ComplaintFilterModel {
      */
     public void setComplaintType(String complaintType) {
         this.complaintType = complaintType;
+    }
+
+    public String getComplaintCount() {
+        return complaintCount;
+    }
+
+    public void setComplaintCount(String complaintCount) {
+        this.complaintCount = complaintCount;
+    }
+
+    public int getResId() {
+        return resId;
+    }
+
+    public void setResId(int resId) {
+        this.resId = resId;
     }
 }

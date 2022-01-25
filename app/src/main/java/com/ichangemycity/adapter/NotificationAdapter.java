@@ -92,7 +92,6 @@ public class NotificationAdapter extends
         rl_top_cc = convertView
             .findViewById(R.id.rl_top_cc);
 
-
       } else if (type == TYPE_HEADER) {
         tv_feed = convertView.findViewById(R.id.tv_feed);
         tv_feed_user_name = convertView
@@ -119,7 +118,8 @@ public class NotificationAdapter extends
         v.rl_top_cc.setBackground(activity.getResources().getDrawable(
             R.drawable.notif_item_click));
       }
-      if (nData.getTextMsg().contains("RE-OPENED")) {
+
+     /* if (nData.getTextMsg().contains("RE-OPENED")) {
         searchFor("RE-OPENED", activity.getResources()
                 .getColor(R.color.red_reopn_open), nData.getTextMsg(),
             v.title);
@@ -133,8 +133,9 @@ public class NotificationAdapter extends
             v.title);
       } else {
         v.title.setText(nData.getTextMsg());
-      }
+      }*/
 
+      v.title.setText(nData.getTextMsg());
       v.rl_top_cc.setTag(nData);
       try {
         v.user_image.setColorFilter(Color.WHITE);
@@ -221,31 +222,18 @@ public class NotificationAdapter extends
 
   }
 
-  private Spannable searchFor(String text, int bg,
-      String descr, final TextView title) {
+  private Spannable searchFor(String text, final int bg,
+      final String descr, final TextView title) {
     Spannable raw = new SpannableString(descr.replace(text, "  " + text
         + "  "));
-    // BackgroundColorSpan[] spans = raw.getSpans(0, descr.length(),
-    // BackgroundColorSpan.class);
-    //
-    // for (BackgroundColorSpan span : spans) {
-    // raw.removeSpan(span);
-    // }
+
     text = "  " + text + "  ";
     int index = TextUtils.indexOf(raw, text);
 
-    // while (index >= 0) {
-    // raw.setSpan(new BackgroundColorSpan(bg), index,
-    // index + text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    // raw.setSpan(new ForegroundColorSpan(foreground), index, index
-    // + text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    // index = TextUtils.indexOf(raw, text,
-    // index + text.length());
     raw.setSpan(
         new RoundedBackgroundSpan(raw, index,
             ((index) + text.length()), bg), (index),
         ((index) + text.length()), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-    // }
     title.setText(raw);
     return raw;
   }
