@@ -62,7 +62,7 @@ public class ProfileViewActivity extends BaseAppCompatActivity {
                 ""), true);
 
 
-        String version = "<font color=" + activity.getResources().getColor(R.color.greyDark) + ">" + BuildConfig.VERSION_NAME + "</font>";
+        String version = "<font color=" + activity.getResources().getColor(R.color.greyDark) + ">V" + BuildConfig.VERSION_NAME + "</font>";
         binding.tvVersion.setText(Html.fromHtml(activity.getResources().getString(R.string.app_name) + " " + version));
     }
 

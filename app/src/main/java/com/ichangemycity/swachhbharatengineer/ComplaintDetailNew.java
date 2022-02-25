@@ -274,7 +274,7 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
                     if(json_obj.has("complaint_image"))
                         complaintDetailData.setComplaint_image(json_obj.optString("complaint_image"));
                     else
-                        complaintDetailData.setComplaint_image("http://icmycsaasqa.ichangemycity.com/android/garbage.jpg");
+                        complaintDetailData.setComplaint_image("http://swachh.city/android_ios_data/images/category_not_found.png");
 
                     complaintDetailData.setLocation(json_obj.optString("location"));
                     if(json_obj.has("landmark"))
@@ -291,7 +291,7 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
                     if(json_obj.has("user_image"))
                         complaintDetailData.setUser_image(json_obj.optString("user_image"));
                     else
-                        complaintDetailData.setUser_image("http://icmycsaasqa.ichangemycity.com/android/account.png");
+                        complaintDetailData.setUser_image(URLData.DEFAULT_AVATAR);
 
                     complaintDetailData.setComplaint_status_id(json_obj.optString("complaint_status_id"));
                     complaintDetailData.setComplaint_status(json_obj.optString("complaint_status"));

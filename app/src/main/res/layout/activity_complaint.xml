@@ -39,7 +39,8 @@
                 android:drawableTop="@mipmap/ic_not_found"
                 android:gravity="center"
                 android:text="@string/loading"
-                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/secondary_text_color"
                 android:textStyle="bold" />
 
 

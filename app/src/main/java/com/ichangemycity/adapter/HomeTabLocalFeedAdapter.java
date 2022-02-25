@@ -26,6 +26,7 @@ import com.ichangemycity.swachhbharatengineer.CommentsActivity;
 import com.ichangemycity.swachhbharatengineer.ComplaintActivity;
 import com.ichangemycity.swachhbharatengineer.ComplaintDetailNew;
 import com.ichangemycity.swachhbharatengineer.R;
+import com.ichangemycity.swachhbharatengineer.SearchComplaintsActivity;
 import com.ichangemycity.webservice.ParseComplaintData;
 
 import butterknife.BindView;
@@ -39,6 +40,7 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
 
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
+
 
     public HomeTabLocalFeedAdapter(Activity activity) {
         HomeTabLocalFeedAdapter.activity = activity;
@@ -57,7 +59,12 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
 
     @Override
     public int getItemCount() {
-        return ComplaintActivity.data.size();
+        if (activity.getClass().getSimpleName().equalsIgnoreCase(ComplaintActivity.class.getSimpleName())) {
+            return ComplaintActivity.data.size();
+        } else {
+            // from search complaints activity
+            return SearchComplaintsActivity.data.size();
+        }
     }
 
     @Override
@@ -131,7 +138,14 @@ public class HomeTabLocalFeedAdapter extends RecyclerView.Adapter<HomeTabLocalFe
         // if (arg1 == 0) {
         // v.textPostComplaint.setText("All Complaints");
         // } else {
-        final ComplaintData cData = ComplaintActivity.data.get(arg1);
+        ComplaintData cData;
+        if (activity.getClass().getSimpleName().equalsIgnoreCase(ComplaintActivity.class.getSimpleName())) {
+            cData = ComplaintActivity.data.get(arg1);
+        } else {
+            // from search complaints activity
+            cData = SearchComplaintsActivity.data.get(arg1);
+        }
+
         v.tv_username.setText(cData.getFull_name());
         v.created_on.setText(cData.getCreated_at());
         v.complaint_status.setText(cData.getComplaint_status());

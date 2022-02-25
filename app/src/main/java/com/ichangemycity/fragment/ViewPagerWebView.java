@@ -22,7 +22,6 @@ import androidx.fragment.app.Fragment;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.swachhbharatengineer.R;
-import com.ichangemycity.webservice.URLData;
 
 import java.util.List;
 
@@ -79,8 +78,7 @@ public class ViewPagerWebView extends Fragment {
         webSettings.setDefaultZoom(ZoomDensity.CLOSE);
         String s = "<html><body style=\"margin: 0; padding: 0\">"
                 + "<P ALIGN='CENTER'><IMG  width='100%' src=\"" +
-                ((!array.get(position).contains("timthumb")) ? (URLData.TIMTHUMB_XXLARGE + array
-                        .get(position)) : array.get(position)) +
+                array.get(position) +
                 "\"></P>"
                 + "<body><html>";
 

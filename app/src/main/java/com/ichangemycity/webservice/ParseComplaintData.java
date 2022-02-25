@@ -77,7 +77,7 @@ public class ParseComplaintData {
                 if (json_obj.has("complaint_image"))
                     cData.setComplaint_image(json_obj.optString("complaint_image"));
                 else
-                    cData.setComplaint_image("http://icmycsaasqa.ichangemycity.com/android/garbage.jpg");
+                    cData.setComplaint_image("http://swachh.city/android_ios_data/images/category_not_found.png");
 
                 cData.setComplaint_image_l1(json_obj.optString("complaint_image_l1"));
                 cData.setComplaint_image_l1(json_obj.optString("complaint_image_l2"));
@@ -97,7 +97,7 @@ public class ParseComplaintData {
                 if (json_obj.has("user_image"))
                     cData.setUser_image(json_obj.optString("user_image"));
                 else
-                    cData.setUser_image("http://icmycsaasqa.ichangemycity.com/android/account.png");
+                    cData.setUser_image(URLData.DEFAULT_AVATAR);
 
                 cData.setComplaint_status_id(json_obj.optString("complaint_status_id"));
                 cData.setComplaint_status(json_obj.optString("complaint_status"));
@@ -350,7 +350,7 @@ public class ParseComplaintData {
             } else {
                 i.setType("image/jpeg");
                 AppUtils.getInstance().showProgressDialog(activity);
-                Glide.with(activity).asBitmap().load("https://www.ichangemycity.com/theme/timthumb/timthumb.php?src=XXXX&w=420".replace("XXXX", complaintModel.getComplaint_image())).into(new CustomTarget<Bitmap>(320, 240) {
+                Glide.with(activity).asBitmap().load(complaintModel.getComplaint_image()).into(new CustomTarget<Bitmap>(320, 240) {
                     @Override
                     public void onResourceReady(@NonNull @NotNull Bitmap resource, @Nullable @org.jetbrains.annotations.Nullable Transition<? super Bitmap> transition) {
                         AppUtils.getInstance().showProgressDialog(activity);
@@ -482,9 +482,6 @@ public class ParseComplaintData {
                 Glide.with(activity).load("http://api.swachh.city/images/categories/fogging_sanitation.png").thumbnail(0.5f).into(imageView);
                 break;
             default:
-                //        Glide.with(activity).load(R.mipmap.ic_not_found).thumbnail(0.5f).into(imageView);
-        /*imageView.setBackgroundColor(activity.getResources()
-            .getColor(AppController.BG_COLOR_DEFAULT[new Random().nextInt(AppController.BG_COLOR_DEFAULT.length-1)]));*/
                 imageView.setImageResource(R.mipmap.round_new_releases_white_36);
                 imageView.setColorFilter(activity.getResources().getColor(R.color.secondary), android.graphics.PorterDuff.Mode.MULTIPLY);
                 break;

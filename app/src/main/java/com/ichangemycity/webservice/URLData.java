@@ -30,7 +30,7 @@ public class URLData {
     public static final String GET_LANGUAGES = "http://api.swachh.city/languages";
     public static final String BASE_URL = "http://api.swachh.city/engineer/v1/";
     public static final String BASE_URL_UPLOAD_IMAGE = "https://files.ichangemycity.com/swachhata/complaints";
-    public static final String URL_VALIDATE_LOCATION = "https://www.ichangemycity.com/android/api/sbm/primer_card/2.0/engineer/api.php";
+    public static final String URL_VALIDATE_LOCATION = "http://swachh.city/android_ios_data/primer_card/2.0/engineer/api.php";
 
 
 //    Old API call to upload image
@@ -48,6 +48,7 @@ public class URLData {
     public static final String REOPENED_COMPLAINT_LISTS = "complaints/getReOpenedComplaintLists";
     public static final String RESOLVED_COMPLAINT_LISTS = "complaints/getResolvedComplaintLists";
     public static final String GET_REJECTED_COMPLAINT_LISTS = "complaints/getRejectedComplaintLists";
+    public static final String SEARCH_COMPLAINTS =  "http://api.swachh.city/sbm/v1/search?keyword=_KEYWORD_&lang=_LANG_&per_page=1&page=1";
 
     // in
     // users
@@ -76,9 +77,11 @@ public class URLData {
     public static final String BEARER_TOKEN = "";
     public static final String CONTENT_TYPE = "application/json";
 
-    public static final String TIMTHUMB_MEDIUM = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=72&src=";
-    public static final String TIMTHUMB_SMALL = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=48&src=";
-    public static final String TIMTHUMB_XXLARGE = "https://www.ichangemycity.com/theme/timthumb/timthumb.php?w=1024&src=";
+
+    public static final String DEFAULT_AVATAR = "http://swachh.city/android_ios_data/images/account.png";
+    public static final String DEFAULT_CATEGORY = "http://swachh.city/android_ios_data/images/category_not_found.png";
+    public static final String NOT_FOUND = "http://swachh.city/android_ios_data/images/not_found.png";
+    public static final String PRIVACY_POLICY = "https://www.ichangemycity.com/privacy-policy-mobile?app=sbmengineer";
 
 
     public static HashMap<String, String> getHeaders(final Activity activity, final int headerType) {
