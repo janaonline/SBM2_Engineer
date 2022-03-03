@@ -50,7 +50,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener, ComplaintAdapter.ActionCallBack {
 
-    public static Activity activity;
+    private Activity activity;
     private SwipeRefreshLayout refreshLayout;
     private ArrayList<ComplaintFilterModel> complaintFilterModel = new ArrayList<ComplaintFilterModel>();
     public static androidx.appcompat.app.ActionBar actionBar;
@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         try {
             if (!TextUtils.isEmpty(AppController.selectedComplaintData.getComplaintId())) {
-                startActivity(new Intent(MainActivity.activity, ComplaintDetailNew.class));
+                startActivity(new Intent(MainActivity.this, ComplaintDetailNew.class));
             }
 
         } catch (Exception e) {
@@ -234,6 +234,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mComplaintFilterModel.setComplaintColor(AppConstant.BG_COLOR_DEFAULT[6]);
         mComplaintFilterModel.setResId(R.drawable.rejected);
         mComplaintFilterModel.setComplaintCount(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.rejected_count, "0"));
+        complaintFilterModel.add(mComplaintFilterModel);
+
+        mComplaintFilterModel = new ComplaintFilterModel();
+        mComplaintFilterModel.setComplaintType(URLData.SEARCH_COMPLAINTS);
+        mComplaintFilterModel.setDisplayTitle("Complaint");
+        mComplaintFilterModel.setComplaintColor(AppConstant.BG_COLOR_DEFAULT[7]);
+        mComplaintFilterModel.setComplaintColor(AppConstant.BG_COLOR_DEFAULT[7]);
+        mComplaintFilterModel.setResId(R.drawable.ic_baseline_search_24);
+        mComplaintFilterModel.setComplaintCount("Search");
         complaintFilterModel.add(mComplaintFilterModel);
 
 
@@ -317,7 +326,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         LinearLayout llProfile = drawer.findViewById(R.id.llProfile);
 
         imageView.setImageResource(R.mipmap.ic_not_found);
-        imageView.setTag(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, "https://www.ichangemycity.com/android/images/account.png"));
+        imageView.setTag(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, URLData.DEFAULT_AVATAR));
 
         AppUtils.setImage(imageView, null, ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, ""), true);
         userNameLeftMenu = drawer.findViewById(R.id.userNameLeftMenu);
@@ -327,7 +336,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         llProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 onBackPressed();
                 startActivity(new Intent(activity, ProfileViewActivity.class));
             }
@@ -429,7 +437,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         break;
                     case R.id.nav_privacypolicy:
                         try {
-                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.ichangemycity.com/privacy-policy-mobile?app=sbmengineer")));
+                            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URLData.PRIVACY_POLICY)));
                         } catch (android.content.ActivityNotFoundException anfe) {
 
                         }
@@ -471,7 +479,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
     }
-
 
 
     private void getProfileDetailsAndRunHomeFeed() {
@@ -599,8 +606,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void selectedComplaintType(ComplaintFilterModel complaintFilterModel) {
-        if (complaintFilterModel != null) {
+        if (complaintFilterModel != null && !complaintFilterModel.getComplaintType().equalsIgnoreCase(URLData.SEARCH_COMPLAINTS)) {
             Intent intent = new Intent(activity, ComplaintActivity.class);
+            intent.putExtra("complaint", complaintFilterModel);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(activity, SearchComplaintsActivity.class);
             intent.putExtra("complaint", complaintFilterModel);
             startActivity(intent);
         }

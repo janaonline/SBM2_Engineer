@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fr\\values-fr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\c1cc75897b9d2ca399df3e13bccc1f0e\\jetified-firebase-messaging-17.5.0\\res\\values-fr\\values.xml",
+                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\59bcdc77b85df4e41232f41727423723\\jetified-firebase-messaging-17.5.0\\res\\values-fr\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -91,23 +91,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\44b6440f276c756755fffde1a2295d3c\\jetified-android-image-cropper-2.7.0\\res\\values-fr\\values-fr.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,165,212,276,335,423,507,580,654",
-                        "endColumns": "109,46,63,58,87,83,72,73,82",
-                        "endOffsets": "160,207,271,330,418,502,575,649,732"
-                    },
-                    "to": {
-                        "startLines": "55,56,57,58,59,60,61,62,114",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "6317,6427,6474,6538,6597,6685,6769,6842,11080",
-                        "endColumns": "109,46,63,58,87,83,72,73,82",
-                        "endOffsets": "6422,6469,6533,6592,6680,6764,6837,6911,11158"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\a3d12d1fc89a97f738d5feb33bafe6f6\\jetified-play-services-basement-17.0.0\\res\\values-fr\\values.xml",
                     "from": {
                         "startLines": "4",
@@ -122,6 +105,23 @@
                         "startOffsets": "4647",
                         "endColumns": "223",
                         "endOffsets": "4866"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\96949c2605c9aa3e34d4691fafb16448\\jetified-android-image-cropper-2.7.0\\res\\values-fr\\values-fr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,165,212,276,335,423,507,580,654",
+                        "endColumns": "109,46,63,58,87,83,72,73,82",
+                        "endOffsets": "160,207,271,330,418,502,575,649,732"
+                    },
+                    "to": {
+                        "startLines": "55,56,57,58,59,60,61,62,114",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "6317,6427,6474,6538,6597,6685,6769,6842,11080",
+                        "endColumns": "109,46,63,58,87,83,72,73,82",
+                        "endOffsets": "6422,6469,6533,6592,6680,6764,6837,6911,11158"
                     }
                 }
             ]

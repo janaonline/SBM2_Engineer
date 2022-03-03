@@ -21,6 +21,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\96949c2605c9aa3e34d4691fafb16448\\jetified-android-image-cropper-2.7.0\\res\\values-de\\values-de.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,191,238,299,357,439,517,604,668",
+                        "endColumns": "135,46,60,57,81,77,86,63,73",
+                        "endOffsets": "186,233,294,352,434,512,599,663,737"
+                    },
+                    "to": {
+                        "startLines": "55,56,57,58,59,60,61,62,114",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "6243,6379,6426,6487,6545,6627,6705,6792,10991",
+                        "endColumns": "135,46,60,57,81,77,86,63,73",
+                        "endOffsets": "6374,6421,6482,6540,6622,6700,6787,6851,11060"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\1f3d5f7855b02048ceb81d4ad163d9f1\\core-1.7.0\\res\\values-de\\values-de.xml",
                     "from": {
                         "startLines": "2",
@@ -52,40 +69,6 @@
                         "startOffsets": "288,393,491,603,689,795,910,988,1063,1155,1249,1345,1446,1553,1653,1757,1855,1953,2050,2132,2243,2345,2443,2550,2653,2757,2913,11065",
                         "endColumns": "104,97,111,85,105,114,77,74,91,93,95,100,106,99,103,97,97,96,81,110,101,97,106,102,103,155,101,81",
                         "endOffsets": "388,486,598,684,790,905,983,1058,1150,1244,1340,1441,1548,1648,1752,1850,1948,2045,2127,2238,2340,2438,2545,2648,2752,2908,3010,11142"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\44b6440f276c756755fffde1a2295d3c\\jetified-android-image-cropper-2.7.0\\res\\values-de\\values-de.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,191,238,299,357,439,517,604,668",
-                        "endColumns": "135,46,60,57,81,77,86,63,73",
-                        "endOffsets": "186,233,294,352,434,512,599,663,737"
-                    },
-                    "to": {
-                        "startLines": "55,56,57,58,59,60,61,62,114",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "6243,6379,6426,6487,6545,6627,6705,6792,10991",
-                        "endColumns": "135,46,60,57,81,77,86,63,73",
-                        "endOffsets": "6374,6421,6482,6540,6622,6700,6787,6851,11060"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\c1cc75897b9d2ca399df3e13bccc1f0e\\jetified-firebase-messaging-17.5.0\\res\\values-de\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "103",
-                        "endOffsets": "308"
-                    },
-                    "to": {
-                        "startLines": "65",
-                        "startColumns": "4",
-                        "startOffsets": "7016",
-                        "endColumns": "107",
-                        "endOffsets": "7119"
                     }
                 },
                 {
@@ -122,6 +105,23 @@
                         "startOffsets": "3403,3514,3710,3840,3954,4191,4324,4475,4827,5066,5180,5380,5513,5734,5940,6041,6134",
                         "endColumns": "110,195,129,113,236,132,150,147,238,113,199,132,220,205,100,92,108",
                         "endOffsets": "3509,3705,3835,3949,4186,4319,4470,4618,5061,5175,5375,5508,5729,5935,6036,6129,6238"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\59bcdc77b85df4e41232f41727423723\\jetified-firebase-messaging-17.5.0\\res\\values-de\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "205",
+                        "endColumns": "103",
+                        "endOffsets": "308"
+                    },
+                    "to": {
+                        "startLines": "65",
+                        "startColumns": "4",
+                        "startOffsets": "7016",
+                        "endColumns": "107",
+                        "endOffsets": "7119"
                     }
                 }
             ]

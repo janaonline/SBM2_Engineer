@@ -1849,6 +1849,7 @@ drawable googleg_standard_color_18
 drawable gradient_shade
 drawable ic_arrow
 drawable ic_baseline_language_24
+drawable ic_baseline_search_24
 drawable ic_clock_black_24dp
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
@@ -2230,8 +2231,11 @@ id loadmore
 id location
 id locationImage
 id locationMap
+id location_clear
+id locationsearch
 id logout
 id lottie_layer_name
+id mBack
 id mCategoryicon
 id mCategorytitle
 id mRecyclerview
@@ -2327,6 +2331,7 @@ id packed
 id parallax
 id parent
 id parentLayout
+id parentLayout1
 id parentLinear
 id parentPanel
 id parentRelative
@@ -2346,6 +2351,7 @@ id postLayout
 id postedOn
 id profileCategory
 id progress
+id progressBar
 id progressBarRim
 id progress_circular
 id progress_horizontal
@@ -2473,6 +2479,7 @@ id text
 id text1
 id text2
 id textComment
+id textCount
 id textEnd
 id textPCDescription
 id textPCDescription1
@@ -2722,6 +2729,7 @@ layout notification_template_part_time
 layout otp_verify
 layout profile_activity
 layout recyclerview_for_comments
+layout search_complaint
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

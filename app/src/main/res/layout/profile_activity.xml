@@ -55,7 +55,6 @@
                                 app:civ_border_width="0.2dp" />
 
 
-
                         </FrameLayout>
 
 
@@ -71,7 +70,6 @@
                         android:text="@string/you"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
-
 
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -120,8 +118,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="end"
-                                tools:text="@string/mobile_number"
-                                android:textColor="@color/black" />
+                                android:textColor="@color/black"
+                                tools:text="@string/mobile_number" />
                         </LinearLayout>
 
 
@@ -153,8 +151,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:gravity="end"
-                                tools:text="@string/location"
-                                android:textColor="@color/black" />
+                                android:textColor="@color/black"
+                                tools:text="@string/location" />
                         </LinearLayout>
 
                         <View
@@ -168,25 +166,22 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="80dp"
                         android:orientation="vertical">
-
-
 
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1sp"
-                            android:layout_marginTop="32sp"
                             android:background="@color/greyLight" />
 
                         <TextView
                             android:id="@+id/logout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="20sp"
-                            android:layout_marginBottom="16sp"
                             android:fontFamily="@font/roboto_regular"
                             android:gravity="center"
+                            android:padding="20sp"
                             android:paddingTop="4dp"
                             android:text="@string/logout"
                             android:textColor="@color/primaryDark"

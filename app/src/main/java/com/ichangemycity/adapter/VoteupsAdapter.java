@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ichangemycity.model.VotedUpData;
 import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.webservice.ParseComplaintData;
-import com.ichangemycity.webservice.URLData;
 
 import java.util.ArrayList;
 
@@ -48,7 +47,7 @@ public class VoteupsAdapter extends RecyclerView.Adapter<VoteupsAdapter.AddRemar
         holder.mName.setText(voteupData.getFull_name());
         holder.postedOn.setText(voteupData.getVoted_up_on());
         ParseComplaintData.getInstance().setImage(activity, holder.mUserImage, null,
-                URLData.TIMTHUMB_SMALL + voteupData.getUser_image_url(), true);
+                voteupData.getUser_image_url(), true);
     }
 
     @Override
