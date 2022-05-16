@@ -1,15 +1,27 @@
 [
     {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_complaint_posted.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_complaint_posted.png"
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\raw_loading.json.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\raw\\loading.json"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_mode_edit_white_24dp.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_mode_edit_white_24dp.png"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_language_24.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_language_24.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_complaint_posted.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_complaint_posted.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_clear.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\clear.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_feedback3.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_feedback3.png"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_view_all_media.xml.flat",
@@ -18,6 +30,14 @@
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\xml_provider_paths.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\xml\\provider_paths.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_message_white_24dp.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_message_white_24dp.png"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_voteup_feedback.xml.flat",
@@ -36,6 +56,10 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\menu\\mark_notifs_read.xml"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_complaint_status_resolved.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\complaint_status_resolved.xml"
     },
@@ -48,12 +72,28 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_listview_change_status.xml"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_montserrat_regular.ttf.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\montserrat_regular.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_no_water_supply_in_toilet_7.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\cat_no_water_supply_in_toilet_7.webp"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_language.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\select_language.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_round_check_circle_white_24.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\round_check_circle_white_24.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_change_status.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_change_status.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
@@ -64,24 +104,56 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\round_corner_changestatus.xml"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_stagnant_water_on_the_road.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\stagnant_water_on_the_road.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_language_24.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_language_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_main.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\app_bar_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_select_language_bg.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\select_language_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notif_item_click.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\notif_item_click.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_complaint_status_closed.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\complaint_status_closed.xml"
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_language_24.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_language_24.png"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_baseline_language_24.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_language_24.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_complaint_status_closed.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\complaint_status_closed.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_change_status_activity.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\change_status_activity.xml"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_share_white_24dp.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_share_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_sewerage_or_storm_water_overflow.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\sewerage_or_storm_water_overflow.webp"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_set_email_password.xml.flat",
@@ -108,360 +180,12 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_complaint_filter_dropdown.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_complaint_filter_dropdown.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_round_image_bg.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\round_image_bg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_language_header.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\language_header.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\raw_splash_screen.mp4.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\raw\\splash_screen.mp4"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_search_24.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_search_24.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_search_24.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_search_24.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_select_language_bg.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\select_language_bg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_arrow.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_arrow.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_add.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\add.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_voteups_list_item.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_voteups_list_item.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_arrow.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_arrow.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_montserrat_blackitalic.ttf.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\montserrat_blackitalic.ttf"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_language_24.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_language_24.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_search_24.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_search_24.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_dust_bins_not_cleaned_2.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\cat_dust_bins_not_cleaned_2.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_icon_poc.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\icon_poc.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_primer.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_primer.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_open_manholes_or_drains.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\open_manholes_or_drains.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_improper_disposal_of_fecal_waste_septage.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\improper_disposal_of_fecal_waste_septage.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_signup_with_fb_bg.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\signup_with_fb_bg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_baseline_directions_black_24.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\baseline_directions_black_24.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradient_shade.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\gradient_shade.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_complaint.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\activity_complaint.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_change_pic.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\change_pic.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto_regular.ttf.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\roboto_regular.ttf"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_flag_white_24dp.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_flag_white_24dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_round_star_rate_white_24.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\round_star_rate_white_24.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_arrow.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_arrow.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_send_black_24dp.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_send_black_24dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_main.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\nav_header_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edittext_locationbg.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\edittext_locationbg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_splash.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\splash.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\menu_notifs.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\menu\\notifs.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_round_comment_white_36.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\round_comment_white_36.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_notifications_active_white_48dp.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_notifications_active_white_48dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_view_all_media_fragment_image_preview_webview.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_view_all_media_fragment_image_preview_webview.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_comment_white_48dp.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_comment_white_48dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rejected.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\rejected.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_done_bg.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\done_bg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_round_info_white_36.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\round_info_white_36.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_star_half_white_48dp.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_star_half_white_48dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_black_round_bg.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\black_round_bg.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_mobile_number.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\mobile_number.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_complaint_details_new.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\complaint_details_new.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_previously_read.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\previously_read.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_notification_card.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_notification_card.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edittext_bg_.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\edittext_bg_.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_toolbar_spinner_item_dropdown.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_toolbar_spinner_item_dropdown.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_toilet_cleaning_9.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\cat_toilet_cleaning_9.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_schedule_white_24dp.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_schedule_white_24dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_arrow.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_arrow.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_search_complaint.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\search_complaint.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_comment.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_comment.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_moud.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\moud.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_icon_upd.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\icon_upd.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_complaint_status_on_the_job.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\complaint_status_on_the_job.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_arial_regular.ttf.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\arial_regular.ttf"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_search_24.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_search_24.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_internet_connection.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_internet_connection.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_notification.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_notification.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_search_24.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_search_24.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_mode_edit_white_24dp.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_mode_edit_white_24dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\raw_loading.json.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\raw\\loading.json"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_feedback3.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_feedback3.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_message_white_24dp.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_message_white_24dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\xml_provider_paths.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\xml\\provider_paths.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_montserrat_regular.ttf.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\montserrat_regular.ttf"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_no_water_supply_in_toilet_7.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\cat_no_water_supply_in_toilet_7.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_change_status.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_change_status.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_stagnant_water_on_the_road.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\stagnant_water_on_the_road.webp"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_language_24.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_language_24.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_main.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\app_bar_main.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_select_language_bg.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\select_language_bg.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notif_item_click.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\notif_item_click.xml"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_baseline_language_24.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_baseline_language_24.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
-    },
-    {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_sewerage_or_storm_water_overflow.webp.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\sewerage_or_storm_water_overflow.webp"
-    },
-    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_back.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\back.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_complaint_filter_dropdown.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_complaint_filter_dropdown.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
@@ -474,6 +198,10 @@
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notif_selected_reverse.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\notif_selected_reverse.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_round_image_bg.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\round_image_bg.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_public_eye.png.flat",
@@ -492,6 +220,10 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\xml\\app_tracker.xml"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_language_header.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\language_header.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_resolved.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\resolved.png"
     },
@@ -506,6 +238,10 @@
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\xml_global_tracker.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\google-services\\debug\\xml\\global_tracker.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_card_relative_layout.xml.flat",
@@ -524,6 +260,10 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_round_new_releases_white_36.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\round_new_releases_white_36.webp"
     },
@@ -532,12 +272,36 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_exit_to_app_white_48dp.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\raw_splash_screen.mp4.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\raw\\splash_screen.mp4"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_baseline_search_24.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_baseline_search_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_feedback4.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_feedback4.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_baseline_search_24.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_search_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_select_language_bg.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\select_language_bg.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_select_language_bg.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\select_language_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_arrow.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_arrow.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_select_language_bg.png.flat",
@@ -556,6 +320,10 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\open.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_add.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\add.webp"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_round_corner_stroke.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\round_corner_stroke.xml"
     },
@@ -568,12 +336,32 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\home_complaint_card.xml"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_voteups_list_item.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_voteups_list_item.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_complaint_status_red.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\complaint_status_red.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_escalated.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\escalated.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_arrow.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_arrow.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_montserrat_blackitalic.ttf.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\montserrat_blackitalic.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_language_24.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_language_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_baseline_search_24.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_baseline_search_24.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_comments_activity.xml.flat",
@@ -584,12 +372,20 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_activity.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\notification_activity.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_montserrat_bold.ttf.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\montserrat_bold.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_dust_bins_not_cleaned_2.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\cat_dust_bins_not_cleaned_2.webp"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
@@ -608,12 +404,28 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\content_main.xml"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_icon_poc.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\icon_poc.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_bug_report_white_48dp.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_bug_report_white_48dp.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_no_electricity_in_toilet_6.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\cat_no_electricity_in_toilet_6.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_primer.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_primer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_open_manholes_or_drains.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\open_manholes_or_drains.webp"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_arrow_drop_down_black_24dp.png.flat",
@@ -622,6 +434,14 @@
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_done_all_white_48dp.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_done_all_white_48dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_improper_disposal_of_fecal_waste_septage.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\improper_disposal_of_fecal_waste_septage.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_signup_with_fb_bg.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\signup_with_fb_bg.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_otp_verify.xml.flat",
@@ -644,6 +464,10 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_arrow.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_baseline_directions_black_24.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\baseline_directions_black_24.webp"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_outline_thumb_up_white_36_before_voteup.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\outline_thumb_up_white_36_before_voteup.webp"
     },
@@ -660,16 +484,40 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_not_found.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradient_shade.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\gradient_shade.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_complaint.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\activity_complaint.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_acknowledged.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\acknowledged.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_change_pic.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\change_pic.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_arrow.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_arrow.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_select_language_bg.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\select_language_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto_regular.ttf.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\roboto_regular.ttf"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_flag_white_24dp.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_flag_white_24dp.png"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_sweeping_not_done_5.webp.flat",
@@ -684,12 +532,32 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_round_star_rate_white_24.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\round_star_rate_white_24.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_arrow.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_arrow.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_urination_in_public_open_defecation.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\urination_in_public_open_defecation.webp"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_send_black_24dp.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_send_black_24dp.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_select_language_bg.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\select_language_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_main.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\nav_header_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edittext_locationbg.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\edittext_locationbg.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_thumb_up_white_24dp.png.flat",
@@ -700,8 +568,20 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_baseline_search_24.png"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_splash.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\splash.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_select_language_bg.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\select_language_bg.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\menu_notifs.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\menu\\notifs.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_round_comment_white_36.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\round_comment_white_36.webp"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_garbage_dump_3.webp.flat",
@@ -712,16 +592,64 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\adobe_clean_regular.otf"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_notifications_active_white_48dp.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_notifications_active_white_48dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_view_all_media_fragment_image_preview_webview.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_view_all_media_fragment_image_preview_webview.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_comment_white_48dp.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_comment_white_48dp.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_image_dialog_activity.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\select_image_dialog_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rejected.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\rejected.png"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_round_share_white_36.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\round_share_white_36.webp"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_done_bg.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\done_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_round_info_white_36.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\round_info_white_36.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_star_half_white_48dp.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_star_half_white_48dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_black_round_bg.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\black_round_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_mobile_number.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\mobile_number.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_burning_of_garbage_in_open_space.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\burning_of_garbage_in_open_space.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_complaint_details_new.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\complaint_details_new.xml"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_done_all_white_48dp.png.flat",
@@ -740,8 +668,28 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\debris_removal_construction_material.webp"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_previously_read.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\previously_read.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_notification_card.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_notification_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edittext_bg_.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\edittext_bg_.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_toolbar_spinner_item_dropdown.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_toolbar_spinner_item_dropdown.xml"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_onboarding_bg.webp.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\onboarding_bg.webp"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_toilet_cleaning_9.webp.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxxhdpi\\cat_toilet_cleaning_9.webp"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_cat_toilet_blockage_8.webp.flat",
@@ -752,19 +700,67 @@
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_cta_change_stats_directions.xml"
     },
     {
-        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_complaint_details.xml.flat",
-        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\complaint_details.xml"
-    },
-    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_recyclerview_for_comments.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\recyclerview_for_comments.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_schedule_white_24dp.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_schedule_white_24dp.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_search_complaint.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\search_complaint.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_arrow.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_arrow.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_comment.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_comment.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_moud.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\moud.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_icon_upd.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xxhdpi\\icon_upd.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable_complaint_status_on_the_job.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\drawable\\complaint_status_on_the_job.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\font_arial_regular.ttf.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\font\\arial_regular.ttf"
     },
     {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_comments_fragment.xml.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\comments_fragment.xml"
     },
     {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_search_24.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_search_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\layout_inflate_internet_connection.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\layout\\inflate_internet_connection.xml"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_notification.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-xhdpi\\ic_notification.png"
+    },
+    {
         "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_baseline_language_24.png.flat",
         "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_baseline_language_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_baseline_search_24.png.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_baseline_search_24.png"
+    },
+    {
+        "merged": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Pattabi\\AndroidStudioProjects\\SBM2_Engineer\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     }
 ]

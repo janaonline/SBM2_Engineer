@@ -297,34 +297,9 @@ public class ComplaintDetailNew extends BaseAppCompatActivity {
                     complaintDetailData.setComplaint_status(json_obj.optString("complaint_status"));
                     complaintDetailData.setRadius("" + json_obj.optInt("radius"));
                     AppController.commentData = new ArrayList<>();
-                    if(json_obj.has("comments")) {
+                    if (json_obj.has("comments")) {
                         String comments = json_obj.optString("comments");
-                        JSONArray commentsArray = new JSONArray(comments);
-                        try {
-                            for(int j = 0; j < commentsArray.length(); j++) {
-                                JSONObject commentsJsonObject = commentsArray.getJSONObject(j);
-                                CommentsData ccData = new CommentsData();
-                                ccData.setComment_id(commentsJsonObject.optInt("id") + "");
-                                ccData.setComment_user_id(commentsJsonObject.optInt("user_id") + "");
-                                ccData.setComment_full_name(commentsJsonObject.optString("full_name"));
-                                ccData.setComment_description(commentsJsonObject.optString("description"));
-                                ccData.setComment_posted_on(commentsJsonObject.optString("posted_on"));
-                                ccData.setComment_complaint_status(commentsJsonObject.optString("complaint_status"));
-                                ccData.setComment_complaint_status_id(commentsJsonObject.get("complaint_status_id").toString() + "");
-                                ccData.setComment_image_url(commentsJsonObject.optString("comment_image_url"));
-                                if(commentsJsonObject.has("user_image_url"))
-                                    ccData.setUser_image_url(commentsJsonObject.optString("user_image_url"));
-                                try {
-                                    ccData.setSpanColorForCoplaintStatus(ParseComplaintData.getSpanColorForStatusTitle(Integer.parseInt(ccData.getComment_complaint_status_id())));
-                                } catch(NumberFormatException w) {
-                                    ccData.setSpanColorForCoplaintStatus("#00000000");
-                                }
-                                AppController.commentData.add(ccData);
-                            }
-                            complaintDetailData.setCommentsData(AppController.commentData);
-                        } catch(Exception e) {
-                            e.printStackTrace();
-                        }
+                        complaintDetailData.setCommentsData(ParseComplaintData.getInstance().parseCommentsData(activity, new JSONArray(comments)));
                     }
                     AppController.votedUpData = new ArrayList<>();
                     if(json_obj.has("voted_up_users")) {

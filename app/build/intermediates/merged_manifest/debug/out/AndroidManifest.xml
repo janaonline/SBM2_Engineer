@@ -121,11 +121,6 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
-            android:name="com.ichangemycity.swachhbharatengineer.ComplaintDetail"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
             android:name="com.ichangemycity.swachhbharatengineer.ComplaintDetailNew"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"

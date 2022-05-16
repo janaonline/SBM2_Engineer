@@ -5,6 +5,7 @@ public class CommentsData {
             comment_full_name, comment_description, comment_posted_on,
             comment_complaint_status, comment_complaint_status_id,
             comment_image_url,user_image_url;
+
     public String getSpanColorForCoplaintStatus() {
         return spanColorForCoplaintStatus;
     }
@@ -125,5 +126,21 @@ public class CommentsData {
      */
     public void setComment_image_url(String comment_image_url) {
         this.comment_image_url = comment_image_url;
+    }
+
+    public String getComment_id() {
+        return comment_id;
+    }
+
+    public String getComment_user_id() {
+        return comment_user_id;
+    }
+
+    public String getComment_type_id() {
+        return comment_type_id;
+    }
+
+    public void setComment_type_id(String comment_type_id) {
+        this.comment_type_id = comment_type_id;
     }
 }

@@ -50,8 +50,8 @@ public class URLDataSwachhManch {
 
 
   //Channel
-    private static final String CHANNEL_VALUE = "swachhata-engineer-android";
-    private static final String CHANNEL_KEY = "channel";
+    public static final String CHANNEL_VALUE = "swachhata-engineer-android";
+    public static final String CHANNEL_KEY = "channel";
 
   public static HashMap<String, String> getChannelParam() {
         HashMap<String, String> map = new HashMap<String, String>();

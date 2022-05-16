@@ -55,23 +55,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\59bcdc77b85df4e41232f41727423723\\jetified-firebase-messaging-17.5.0\\res\\values-bn\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "99",
-                        "endOffsets": "304"
-                    },
-                    "to": {
-                        "startLines": "71",
-                        "startColumns": "4",
-                        "startOffsets": "7111",
-                        "endColumns": "103",
-                        "endOffsets": "7210"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\4255f2db9c03f775cffb044f512c6ff9\\appcompat-1.4.0\\res\\values-bn\\values-bn.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
@@ -122,6 +105,23 @@
                         "startOffsets": "3868,3979,4170,4300,4413,4609,4733,4875,5219,5423,5534,5721,5851,6044,6222,6312,6409",
                         "endColumns": "110,190,129,112,195,123,141,132,203,110,186,129,192,177,89,96,118",
                         "endOffsets": "3974,4165,4295,4408,4604,4728,4870,5003,5418,5529,5716,5846,6039,6217,6307,6404,6523"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\4a0b0a19d4994aa5fc39b9af591762aa\\jetified-firebase-messaging-17.5.0\\res\\values-bn\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "205",
+                        "endColumns": "99",
+                        "endOffsets": "304"
+                    },
+                    "to": {
+                        "startLines": "71",
+                        "startColumns": "4",
+                        "startOffsets": "7111",
+                        "endColumns": "103",
+                        "endOffsets": "7210"
                     }
                 }
             ]

@@ -48,7 +48,9 @@ public class URLData {
     public static final String REOPENED_COMPLAINT_LISTS = "complaints/getReOpenedComplaintLists";
     public static final String RESOLVED_COMPLAINT_LISTS = "complaints/getResolvedComplaintLists";
     public static final String GET_REJECTED_COMPLAINT_LISTS = "complaints/getRejectedComplaintLists";
-    public static final String SEARCH_COMPLAINTS =  "http://api.swachh.city/sbm/v1/search?keyword=_KEYWORD_&lang=_LANG_&per_page=1&page=1";
+    public static final String SEARCH_COMPLAINTS = "http://api.swachh.city/sbm/v1/search?keyword=_KEYWORD_&lang=_LANG_&per_page=1&page=1";
+    public static final String URL_PRIMER_CARD = "http://swachh.city/android_ios_data/primer_card/2.0/api.php?mode=live&deviceOS=" + URLDataSwachhManch.CHANNEL_VALUE;
+    public static final String _LANGUAGE = "&lang=";
 
     // in
     // users
@@ -95,7 +97,7 @@ public class URLData {
         } else {
             headers.putAll(getHeadersSwachhManch(activity, headerType));
         }
-        AppController.traceLog("headers",headers+"");
+        AppController.traceLog("headers", headers + "");
         return headers;
     }
 

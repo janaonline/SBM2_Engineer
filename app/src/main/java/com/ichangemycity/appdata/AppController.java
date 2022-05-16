@@ -1,5 +1,7 @@
 package com.ichangemycity.appdata;
 
+import static com.ichangemycity.appdata.AppConstant.TOAST_TYPE_ERROR;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -63,8 +65,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-import static com.ichangemycity.appdata.AppConstant.TOAST_TYPE_ERROR;
-
 /**
  * Created by pattabi.raman on 23-09-2017.
  */
@@ -88,8 +88,21 @@ public class AppController extends MultiDexApplication {
 
     private Locale locale = null;
 
+    private JSONObject swachhSurvey;
+
+    /**
+     * @param swachhSurvey JSONObject to store the primer card API response
+     */
+    public void setSwachhSurveyPrimerCardData(JSONObject swachhSurvey) {
+        this.swachhSurvey = swachhSurvey;
+    }
+
+    public JSONObject getSwachhSurveyPrimerCardData() {
+        return this.swachhSurvey;
+    }
+
     public static void traceLog(String key, String value) {
-//        Log.i(key, value);
+        Log.i(key, value);
     }
 
     public static void hideKeyboard(Activity activity, EditText et) {
@@ -176,7 +189,7 @@ public class AppController extends MultiDexApplication {
             } else {
                 //            SBM Engineer api error handling
                 VolleyLog.d(AppController.TAG, "Error: " + volleyError.getMessage());
-                if(volleyError.networkResponse !=null) {
+                if (volleyError.networkResponse != null) {
                     int statusCode = volleyError.networkResponse.statusCode;
                     if (statusCode == 500 || statusCode == 504) {
                         AppUtils.showToast(act, TOAST_TYPE_ERROR, "Server Error / Too many Connections at a time. Please try again after sometime.");
@@ -275,11 +288,11 @@ public class AppController extends MultiDexApplication {
                             }
                         }
                     }
-                    if(volleyError.networkResponse.statusCode ==401){
-                        AppUtils.handleVolleyError(act,volleyError);
+                    if (volleyError.networkResponse.statusCode == 401) {
+                        AppUtils.handleVolleyError(act, volleyError);
                     }
-                }else{
-                    AppUtils.showToast(act,AppConstant.TOAST_TYPE_INFO,"Server isn't responding... please try again later!");
+                } else {
+                    AppUtils.showToast(act, AppConstant.TOAST_TYPE_INFO, "Server isn't responding... please try again later!");
                 }
             }
         } catch (Exception e) {

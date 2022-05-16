@@ -36,4 +36,31 @@ public class AppConstant {
     public ArrayList<String> imagePreviewList = new ArrayList<>();
 
 
+    public static final int COMPLAINT_OPEN = 1;
+    public static final int COMPLAINT_FOLLOW_UP = 2;
+    public static final int COMPLAINT_ON_THE_JOB = 3;
+    public static final int COMPLAINT_RESOLVED = 4;
+    public static final int COMPLAINT_REOPEN = 5;
+    public static final int COMPLAINT_REJECTED = 6;
+
+    /*360 DEGREE RESOLUTION ACCEPTANCE TYPES - Constants*/
+    public static final int RESOLUTION_TYPE_OLD_COMPLAINTS = 0;
+    public static final int RESOLUTION_PENDING_ACCEPTANCE = 1;
+    public static final int RESOLUTION_ACCEPTED = 2;
+    public static final int RESOLUTION_REJECTED = 3;
+    public static final int RESOLUTION_AUTO_ACCEPTANCE = 4;
+
+    /*  'comment_type_id'=1 normal comment,
+      'comment_type_id'=2 for status change,
+      'comment_type_id'=3 for feedback on a resolved complaint,
+      'comment_type_id'=4 for resolved accepted/resolved automatically accepted,
+      'comment_type_id'=5 for resolved rejected.
+  */
+    public static final int COMMENT_TYPE_NORMAL_COMMENT=1;
+    public static final int COMMENT_TYPE_STATUS_CHANGE=2;
+    public static final int COMMENT_TYPE_CITIZEN_ACCEPTED_RESOLUTION=4;
+    public static final int COMMENT_TYPE_CITIZEN_REJECTED_RESOLUTION=5;
+
+
+
 }

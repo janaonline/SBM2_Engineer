@@ -94,11 +94,14 @@
 
     <!--COVID-19-->
     <string name="skip">Skip Selection</string>
-    <string name="assigned_complaints">Assigned Complaints</string>
+    <string name="assigned_complaints" translatable="false">Assigned Complaints</string>
     <string name="please_wait_for">"Please wait for "</string>
     <string name="seconds_to_resend_otp">seconds,\n to resend OTP code</string>
-    <string name="are_you_sure_to_logout">Are you sure to logout ?</string>
-    <string name="complaints">Complaints</string>
+    <string name="are_you_sure_to_logout" translatable="false">Are you sure to logout ?</string>
+    <string name="complaints" translatable="false">Complaints</string>
 
+    <!--360 degree-->
+    <string name="resolved_accepted" translatable="false">Resolved-Accepted</string>
+    <string name="resolved_rejected" translatable="false">Resolved-Rejected</string>
 
 </resources>
