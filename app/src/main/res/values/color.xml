@@ -54,4 +54,7 @@
 	<color name="complaint_stats_card_resolved">#7E318A</color>
 	<color name="complaint_stats_card_escalated">#0B8CC2</color>
 	<color name="complaint_stats_card_rejected">#529021</color>
+	<!--360 degree-->
+	<color name="green_accept_resolution">#358E0B</color>
+	<color name="red_reject_resolution">#D31C04</color>
 </resources>

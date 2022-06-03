@@ -40,6 +40,7 @@ import com.ichangemycity.model.ChangeStatusModel;
 import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.model.ComplaintFilterModel;
 import com.ichangemycity.webservice.URLData;
+import com.ichangemycity.webservice.URLDataSwachhManch;
 import com.ichangemycity.webservice.WebserviceHelper;
 
 import org.json.JSONObject;
@@ -250,6 +251,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         complaintList.setAdapter(complaintAdapter);
         complaintAdapter.setActionCallBack(this);
 
+    }
+
+    private void getPrimerCardsAPI() {
+        final String url = URLData.URL_PRIMER_CARD + "&cityID=" + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.city_id, "1") + URLData._LANGUAGE + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.selectedLanguage, "en") + "&deviceOs=" + URLDataSwachhManch.CHANNEL_VALUE;
+        new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
+            @Override
+            public void OnResponseFailure() {
+            }
+
+            @Override
+            public void OnResponseSuccess(JSONObject response) {
+                AppController.getInstance().setSwachhSurveyPrimerCardData(response);
+            }
+        }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
     }
 
     private void setToolbarAndCustomizeTitle(Toolbar toolbar) {
@@ -651,6 +666,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onRefresh() {
         showSwipeProgress();
         getProfileDetailsAndRunHomeFeed();
+//        getPrimerCardsAPI();
     }
 
     @Override

@@ -21,23 +21,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\59bcdc77b85df4e41232f41727423723\\jetified-firebase-messaging-17.5.0\\res\\values-kk\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "98",
-                        "endOffsets": "303"
-                    },
-                    "to": {
-                        "startLines": "57",
-                        "startColumns": "4",
-                        "startOffsets": "6199",
-                        "endColumns": "102",
-                        "endOffsets": "6297"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\41926189f6437c4802da3bc03b371d30\\jetified-play-services-base-17.0.0\\res\\values-kk\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -71,6 +54,23 @@
                         "endLines": "5,33,34,35,36,55,56,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105",
                         "endColumns": "12,78,91,111,81,63,94,69,62,106,66,60,66,61,53,113,58,60,53,74,125,87,88,111,71,72,88,66,65,70,76,85,71,75,80,69,86,71,90,92,73,74,91,51,65,83,85,61,63,62,103,99,93,100,83",
                         "endOffsets": "273,3043,3135,3247,3329,6099,6194,6367,6430,6537,6604,6665,6732,6794,6848,6962,7021,7082,7136,7211,7337,7425,7514,7626,7698,7771,7860,7927,7993,8064,8141,8227,8299,8375,8456,8526,8613,8685,8776,8869,8943,9018,9110,9162,9228,9312,9398,9460,9524,9587,9691,9791,9885,9986,10070"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\4a0b0a19d4994aa5fc39b9af591762aa\\jetified-firebase-messaging-17.5.0\\res\\values-kk\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "205",
+                        "endColumns": "98",
+                        "endOffsets": "303"
+                    },
+                    "to": {
+                        "startLines": "57",
+                        "startColumns": "4",
+                        "startOffsets": "6199",
+                        "endColumns": "102",
+                        "endOffsets": "6297"
                     }
                 },
                 {

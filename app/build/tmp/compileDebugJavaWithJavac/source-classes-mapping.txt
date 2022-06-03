@@ -106,23 +106,12 @@ com/ichangemycity/swachhbharatengineer/UserMobileNumber.java
  com.ichangemycity.swachhbharatengineer.UserMobileNumber$3$1
  com.ichangemycity.swachhbharatengineer.UserMobileNumber$4
  com.ichangemycity.swachhbharatengineer.UserMobileNumber$4$1
-com/ichangemycity/swachhbharatengineer/ComplaintDetail.java
- com.ichangemycity.swachhbharatengineer.ComplaintDetail
- com.ichangemycity.swachhbharatengineer.ComplaintDetail$1
- com.ichangemycity.swachhbharatengineer.ComplaintDetail$2
- com.ichangemycity.swachhbharatengineer.ComplaintDetail$3
- com.ichangemycity.swachhbharatengineer.ComplaintDetail$ParseComplaintDetailResponse
- com.ichangemycity.swachhbharatengineer.ComplaintDetail$SetListData
- com.ichangemycity.swachhbharatengineer.ComplaintDetail$ViewPagerAdapter
 com/ichangemycity/swachhbharatengineer/MainActivity.java
  com.ichangemycity.swachhbharatengineer.MainActivity
  com.ichangemycity.swachhbharatengineer.MainActivity$1
  com.ichangemycity.swachhbharatengineer.MainActivity$2
  com.ichangemycity.swachhbharatengineer.MainActivity$3
-com/ichangemycity/fragment/VoteupFragment.java
- com.ichangemycity.fragment.VoteupFragment
-com/ichangemycity/fragment/CommentsFragment.java
- com.ichangemycity.fragment.CommentsFragment
+ com.ichangemycity.swachhbharatengineer.MainActivity$4
 com/ichangemycity/callback/OnButtonClick.java
  com.ichangemycity.callback.OnButtonClick
 com/ichangemycity/swachhbharatengineer/SelectImageDialogActivity.java

@@ -29,6 +29,7 @@ import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
+import com.ichangemycity.model.CommentsData;
 import com.ichangemycity.model.ComplaintData;
 import com.ichangemycity.swachhbharatengineer.R;
 import com.ichangemycity.swachhbharatengineer.ViewAllMediaActivity;
@@ -256,17 +257,17 @@ public class ParseComplaintData {
         }
     }
 
-    public static String getSpanColorForStatusTitle(final int statusId) {
-        //        Log.i("getSpanColor", "--------------->" + statusId + "");
+
+    public String getSpanColorForStatusTitle(final Activity activity, final int statusId) {
         try {
-            if (statusId == AppController.COMPLAINT_OPEN || statusId == AppController.COMPLAINT_REOPEN) {
-                //                return Color.argb(1, 213, 0, 0);
+            if (statusId == AppConstant.COMPLAINT_OPEN || statusId == AppConstant.COMPLAINT_REOPEN) {
+//                return Color.argb(1, 213, 0, 0);
                 return ("#D50000");
-            } else if (statusId == AppController.COMPLAINT_ON_THE_JOB) {
-                //                return Color.argb(1, 43, 181, 249);
+            } else if (statusId == AppConstant.COMPLAINT_ON_THE_JOB) {
+//                return Color.argb(1, 43, 181, 249);
                 return ("#2BB5F9");
-            } else if (statusId == AppController.COMPLAINT_RESOLVED) {
-                //                return Color.argb(0, 189, 0, 1);
+            } else if (statusId == AppConstant.COMPLAINT_RESOLVED) {
+//                return Color.argb(0, 189, 0, 1);
                 return ("#00BD00");
             } else {
                 return ("#607D8B");
@@ -276,6 +277,7 @@ public class ParseComplaintData {
         }
         return ("#607D8B");
     }
+
 
     public static int setBgDrawableForComplaintStatus(final Activity activity, final ComplaintData cData, final TextView complaintStatusTextView) {
         String ComplaintStatusID = cData.getComplaint_status_id();
@@ -488,4 +490,57 @@ public class ParseComplaintData {
         }
     }
 
+    public ArrayList<CommentsData> parseCommentsData(final Activity activity, final JSONArray commentsArray) {
+        ArrayList<CommentsData> commentsData = new ArrayList<>();
+        try {
+            for (int j = 0; j < commentsArray.length(); j++) {
+                JSONObject commentsJsonObject = commentsArray
+                        .optJSONObject(j);
+                CommentsData commentDatum = new CommentsData();
+                commentDatum.setComment_id(commentsJsonObject
+                        .optInt("id") + "");
+                commentDatum.setComment_user_id(commentsJsonObject
+                        .optInt("user_id") + "");
+                commentDatum.setComment_full_name(commentsJsonObject
+                        .optString("full_name"));
+                commentDatum.setComment_description(commentsJsonObject
+                        .optString("description"));
+                commentDatum.setComment_posted_on(commentsJsonObject
+                        .optString("posted_on"));
+                commentDatum.setComment_complaint_status(commentsJsonObject
+                        .optString("complaint_status"));
+                commentDatum.setComment_complaint_status_id(commentsJsonObject
+                        .optInt("complaint_status_id") + "");
+                commentDatum.setComment_image_url(commentsJsonObject
+                        .optString("comment_image_url"));
+                commentDatum.setUser_image_url(commentsJsonObject
+                        .optString("user_image_url"));
+
+                            /*
+                            'comment_type_id'=1 normal comment,
+                            'comment_type_id'=2 for status change,
+                            'comment_type_id'=4 for resolved accepted/resolved automatically accepted,
+                            'comment_type_id'=5 for resolved rejected.
+                            * */
+                if (commentsJsonObject.has("comment_type_id")) {
+                    commentDatum.setComment_type_id(commentsJsonObject.optString("comment_type_id"));
+                }
+                try {
+                    commentDatum.setSpanColorForCoplaintStatus(
+                            ParseComplaintData.getInstance().getSpanColorForStatusTitle(activity, Integer
+                                    .parseInt(commentDatum
+                                            .getComment_complaint_status_id())));
+                } catch (NumberFormatException w) {
+                    commentDatum.setSpanColorForCoplaintStatus(String.valueOf(activity.getResources().getColor(R.color.primerColorBlack)));
+                }
+                commentsData.add(commentDatum);
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return commentsData;
+
+    }
 }

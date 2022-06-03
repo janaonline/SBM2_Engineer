@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.model.CommentsData;
 import com.ichangemycity.swachhbharatengineer.R;
@@ -93,12 +94,32 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.AddRem
         }
 
         public void bind(final CommentsData commentData) {
-            String text = (!TextUtils.isEmpty(commentData.getComment_complaint_status()) ? ((commentData.getComment_complaint_status() + " - ")) : "") + commentData.getComment_description();
+            String text;
+
+            switch (Integer.parseInt(!TextUtils.isEmpty(commentData.getComment_type_id()) ? commentData.getComment_type_id() : AppConstant.COMMENT_TYPE_NORMAL_COMMENT + "")) {
+                case AppConstant.COMMENT_TYPE_STATUS_CHANGE:
+                    text = (!TextUtils.isEmpty(commentData.getComment_complaint_status()) ? (
+                            ("<b><font color=" + commentData.getSpanColorForCoplaintStatus() + "> " + commentData.getComment_complaint_status().toUpperCase() + " </font></b> - ")) : "") + commentData
+                            .getComment_description();
+                    break;
+                case AppConstant.COMMENT_TYPE_CITIZEN_ACCEPTED_RESOLUTION:
+                    text = ("<b><font color=" + activity.getResources().getColor(R.color.green_accept_resolution) + "> " + activity.getResources().getString(R.string.resolved_accepted).toUpperCase() + " </font></b> - ")
+                            + commentData.getComment_description();
+                    break;
+                case AppConstant.COMMENT_TYPE_CITIZEN_REJECTED_RESOLUTION:
+                    text = ("<b><font color=" + activity.getResources().getColor(R.color.red_reject_resolution) + "> " + activity.getResources().getString(R.string.resolved_rejected).toUpperCase() + " </font></b> - ")
+                            + commentData.getComment_description();
+                    break;
+                default:
+                    text = commentData.getComment_description();
+                    break;
+            }
             mDescription.setText(Html.fromHtml(text));
+
             mName.setText(commentData.getComment_full_name());
             mpostedOn.setText(commentData.getComment_posted_on());
             ParseComplaintData.getInstance().setImage(activity, mUserImage, null, commentData.getUser_image_url(), true);
-            if(TextUtils.isEmpty(commentData.getComment_image_url())) {
+            if (TextUtils.isEmpty(commentData.getComment_image_url())) {
                 cvCommentImage.setVisibility(View.GONE);
                 comment_image.setVisibility(View.GONE);
             } else {

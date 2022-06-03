@@ -40,6 +40,23 @@
                     }
                 },
                 {
+                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\4a0b0a19d4994aa5fc39b9af591762aa\\jetified-firebase-messaging-17.5.0\\res\\values-cs\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "205",
+                        "endColumns": "99",
+                        "endOffsets": "304"
+                    },
+                    "to": {
+                        "startLines": "67",
+                        "startColumns": "4",
+                        "startOffsets": "6943",
+                        "endColumns": "103",
+                        "endOffsets": "7042"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\41926189f6437c4802da3bc03b371d30\\jetified-play-services-base-17.0.0\\res\\values-cs\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
@@ -74,20 +91,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\59bcdc77b85df4e41232f41727423723\\jetified-firebase-messaging-17.5.0\\res\\values-cs\\values.xml",
+                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\aab231f7f1b25c628d46254703751f76\\jetified-android-image-cropper-2.7.0\\res\\values-cs\\values-cs.xml",
                     "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "99",
-                        "endOffsets": "304"
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,169,216,274,333,415,492,586,650",
+                        "endColumns": "113,46,57,58,81,76,93,63,72",
+                        "endOffsets": "164,211,269,328,410,487,581,645,718"
                     },
                     "to": {
-                        "startLines": "67",
-                        "startColumns": "4",
-                        "startOffsets": "6943",
-                        "endColumns": "103",
-                        "endOffsets": "7042"
+                        "startLines": "57,58,59,60,61,62,63,64,116",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "6184,6298,6345,6403,6462,6544,6621,6715,10809",
+                        "endColumns": "113,46,57,58,81,76,93,63,72",
+                        "endOffsets": "6293,6340,6398,6457,6539,6616,6710,6774,10877"
                     }
                 },
                 {
@@ -105,23 +122,6 @@
                         "startOffsets": "10965",
                         "endColumns": "100",
                         "endOffsets": "11061"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Pattabi\\.gradle\\caches\\transforms-2\\files-2.1\\96949c2605c9aa3e34d4691fafb16448\\jetified-android-image-cropper-2.7.0\\res\\values-cs\\values-cs.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,169,216,274,333,415,492,586,650",
-                        "endColumns": "113,46,57,58,81,76,93,63,72",
-                        "endOffsets": "164,211,269,328,410,487,581,645,718"
-                    },
-                    "to": {
-                        "startLines": "57,58,59,60,61,62,63,64,116",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "6184,6298,6345,6403,6462,6544,6621,6715,10809",
-                        "endColumns": "113,46,57,58,81,76,93,63,72",
-                        "endOffsets": "6293,6340,6398,6457,6539,6616,6710,6774,10877"
                     }
                 }
             ]
