@@ -110,6 +110,10 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.AddRem
                     text = ("<b><font color=" + activity.getResources().getColor(R.color.red_reject_resolution) + "> " + activity.getResources().getString(R.string.resolved_rejected).toUpperCase() + " </font></b> - ")
                             + commentData.getComment_description();
                     break;
+                case AppConstant.COMMENT_TYPE_AUTO_ACCEPTED_BY_SYSTEM:
+                    text = ("<b><font color=" + activity.getResources().getColor(R.color.green_resolved) + "> " + activity.getResources().getString(R.string.resolved_auto_accepted).toUpperCase() + " </font></b> - ")
+                            + commentData.getComment_description();
+                    break;
                 default:
                     text = commentData.getComment_description();
                     break;

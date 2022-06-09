@@ -101,7 +101,9 @@
     <string name="complaints" translatable="false">Complaints</string>
 
     <!--360 degree-->
-    <string name="resolved_accepted" translatable="false">Resolved-Accepted</string>
-    <string name="resolved_rejected" translatable="false">Resolved-Rejected</string>
+    <string name="resolved_accepted" translatable="false">Resolved - Accepted</string>
+    <string name="resolved_rejected" translatable="false">Resolved - Rejected</string>
+    <string name="resolved_auto_accepted" translatable="false">Resolved - Automatically Accepted</string>
+
 
 </resources>

@@ -60,6 +60,7 @@ public class AppConstant {
     public static final int COMMENT_TYPE_STATUS_CHANGE=2;
     public static final int COMMENT_TYPE_CITIZEN_ACCEPTED_RESOLUTION=4;
     public static final int COMMENT_TYPE_CITIZEN_REJECTED_RESOLUTION=5;
+    public static final int COMMENT_TYPE_AUTO_ACCEPTED_BY_SYSTEM=6;
 
 
 
