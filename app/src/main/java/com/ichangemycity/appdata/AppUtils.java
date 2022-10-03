@@ -210,14 +210,17 @@ public class AppUtils {
     private static View view;
 
     public void showProgressDialog(final Activity activity) {
-        if (view != null) {
-            hideProgressDialog(activity);
+        try {
+            if (view != null) {
+                hideProgressDialog(activity);
+            }
+            view = ((LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_loading, null);
+            CardView viewLoadingCardView = view.findViewById(R.id.viewLoadingCardView);
+            viewLoadingCardView.setCardBackgroundColor(activity.getResources().getColor(AppController.BG_COLOR_DEFAULT[new Random().nextInt(AppController.BG_COLOR_DEFAULT.length - 1)]));
+            activity.addContentView(view, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        view = ((LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.view_loading, null);
-        CardView viewLoadingCardView = view.findViewById(R.id.viewLoadingCardView);
-        viewLoadingCardView.setCardBackgroundColor(activity.getResources().getColor(AppController.BG_COLOR_DEFAULT[new Random().nextInt(AppController.BG_COLOR_DEFAULT.length - 1)]));
-        activity.addContentView(view, new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-
     }
 
     public void hideProgressDialog(final Activity activity) {
@@ -230,10 +233,12 @@ public class AppUtils {
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
         try {
             (activity.findViewById(R.id.progress)).setVisibility(View.GONE);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -374,10 +379,16 @@ public class AppUtils {
             case HTTPResponseCode.HTTP_UN_AUTHORIZED:
                 break;
             case HTTPResponseCode.HTTP_UNAUTHENTICATED:
-                errors = responseObject.optString("message") + "";
-                if (errors != null) if (errors.trim().length() > 0)
-                    AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
-                new GenerateNewAccessToken().generateNewAccessToken(act, new OnTaskCompleted() {
+//                errors = responseObject.optString("message") + "";
+//                if (errors != null) if (errors.trim().length() > 0)
+//                    AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
+                ICMyCPreferenceData.clearPreferences(act);
+                AppUtils.showToast(act, AppConstant.TOAST_TYPE_INFO, "Session expired, login again");
+                new AppController().cancelPendingRequests(AppController.TAG);
+                act.startActivity(new Intent(act, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                act.finish();
+
+                /*new GenerateNewAccessToken().generateNewAccessToken(act, new OnTaskCompleted() {
                     @Override
                     public void onTaskSuccess() {
 
@@ -396,7 +407,7 @@ public class AppUtils {
                             act.finish();
                         }
                     }
-                });
+                });*/
 
                 break;
             default:

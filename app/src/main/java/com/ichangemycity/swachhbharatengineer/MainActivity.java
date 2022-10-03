@@ -77,27 +77,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         refreshLayout = findViewById(R.id.swipe_container);
         initSwipeOptions();
         setToolbarAndCustomizeTitle(toolbar);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.setDrawerIndicatorEnabled(false);
-        toggle.syncState();
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.setDrawerIndicatorEnabled(false);
+//        toggle.syncState();
 
-        navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//        navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
         complaintList = findViewById(R.id.complaintList);
         complaintList.setLayoutManager(new GridLayoutManager(activity, 2));
 
         getProfileDetailsAndRunHomeFeed();
         setSpinnerData();
 
-        circleUserImage.setOnClickListener(new View.OnClickListener() {
+       /*  circleUserImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawer.openDrawer(GravityCompat.START);
             }
         });
-   /* if (ICMyCPreferenceData.getPreferenceItem(
+   if (ICMyCPreferenceData.getPreferenceItem(
         MainActivity.activity,
         ICMyCPreferenceData.isDeeplinked, "0").equalsIgnoreCase("1")) {
       ICMyCPreferenceData.setPreference(
@@ -310,10 +310,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     TextView on_the_job, resolved, rejected, re_opened, high_priority;
-    NavigationView navigationView;
+//    NavigationView navigationView;
 
     @SuppressWarnings("deprecation")
-    private void initializeCountForNavItems() {
+   /* private void initializeCountForNavItems() {
         high_priority = (TextView) MenuItemCompat.getActionView(navigationView.getMenu().
                 findItem(R.id.high_priority));
         on_the_job = (TextView) MenuItemCompat.getActionView(navigationView.getMenu().
@@ -328,9 +328,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
         setLeftMenuProfileDetails();
         setSpinnerData();
-    }
+    }*/
 
-    private TextView userNameLeftMenu, textViewLocation, userDesignationLeftMenu;
+    /*private TextView userNameLeftMenu, textViewLocation, userDesignationLeftMenu;
 
     private void setLeftMenuProfileDetails() {
         if (navigationView.getHeaderView(0) != null)
@@ -395,9 +395,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         re_opened.setTextColor(getResources().getColor(R.color.secondary_text_color));
         re_opened.setText(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.re_opened_count, "0"));
 
-    }
+    }*/
 
-    boolean isFirstTime = true;
+            boolean isFirstTime = true;
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -594,10 +594,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.Latitude, latitude);
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.Longitude, longitude);
                 AppUtils.setImage(circleUserImage, null, ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage, ""), true);
-
+                circleUserImage.setOnClickListener(v -> {
+                    startActivity(new Intent(activity, ProfileViewActivity.class));
+                });
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.user_full_name, name);
             }
-            initializeCountForNavItems();
+//            initializeCountForNavItems();
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.StrictMode;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -39,6 +40,10 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Logger;
 import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.security.ProviderInstaller;
+import com.google.firebase.FirebaseApp;
 import com.ichangemycity.adapter.ChangeStatusSpinnerAdapter;
 import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.model.ChangeStatusListData;
@@ -60,10 +65,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+
+import javax.net.ssl.SSLContext;
 
 /**
  * Created by pattabi.raman on 23-09-2017.
@@ -128,21 +136,38 @@ public class AppController extends MultiDexApplication {
     public static int MY_SOCKET_TIMEOUT_MS = 120000;
     //    public static ArrayList<String> images = new ArrayList<>();
     public static SelectedImageModel mSelectedImageModels = new SelectedImageModel();
-    private Tracker mTracker;
+//    private Tracker mTracker;
 
     @Override
     public void onCreate() {
         super.onCreate();
         mInstance = this;
         try {
-            //            new SecurePrefManagerInit.Initializer(mInstance.getApplicationContext())
-            //                    .useEncryption(true)
-            //                    .initialize();
             MultiDex.install(this);
-            AnalyticsTracker.initialize(this);
-            AnalyticsTracker.getInstance().get(AnalyticsTracker.Target.APP);
             ACRA.init(this);
+            FirebaseApp.initializeApp(this);
+            initializeSSLContext(this);
+            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Initialize SSL
+     */
+    public static void initializeSSLContext(Context mContext) {
+        try {
+            SSLContext.getInstance("TLSv1.2");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        try {
+            ProviderInstaller.installIfNeeded(mContext.getApplicationContext());
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
             e.printStackTrace();
         }
     }
@@ -311,12 +336,12 @@ public class AppController extends MultiDexApplication {
 
     // GA
     // /////////////////////////////GA////////////////////////
-
+/*
     public synchronized Tracker getGoogleAnalyticsTracker() {
-        /*
-         * AnalyticsTracker analyticsTrackers = AnalyticsTracker.getInstance(); return
-         * analyticsTrackers.get(AnalyticsTracker.Target.APP);
-         */
+        *//*
+     * AnalyticsTracker analyticsTrackers = AnalyticsTracker.getInstance(); return
+     * analyticsTrackers.get(AnalyticsTracker.Target.APP);
+     *//*
         if (mTracker == null) {
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
             analytics.getInstance(this).setDryRun(true);
@@ -331,7 +356,7 @@ public class AppController extends MultiDexApplication {
 
         }
         return mTracker;
-    }
+    }*/
 
     public static void assignLanguage(final Activity activity) {
         try {

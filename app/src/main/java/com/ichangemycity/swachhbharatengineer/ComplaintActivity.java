@@ -55,7 +55,8 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_complaint);
+        binding = ActivityComplaintBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         activity = ComplaintActivity.this;
         bundle = getIntent().getExtras();
         if (bundle != null)
@@ -75,7 +76,6 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
             e.printStackTrace();
         }
 
-        AppUtils.getInstance().showProgressDialog(activity);
         runHomeFeedWebService(complaintFilterModel.getComplaintType(), true);
         initSwipeOptions();
 
@@ -114,8 +114,9 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
 
     private void runHomeFeedWebService(final String ComplaintType, final boolean isToScroll) {
         {
-            AppUtils.getInstance().hideProgressDialog(activity);
+
             if (isToScroll) {
+                showSwipeProgress();
                 currentPage = 0;
                 //            ((TextView) (mRecyclerView.getEmptyView().findViewById(R.id.emptyView))).setText(activity.getResources().getString(R.string.loading));
                 //            mRecyclerView.getProgressView().setVisibility(View.VISIBLE);
@@ -135,13 +136,12 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
                 }
 
             }
-            refreshLayout.setEnabled(false);
+
             final String url = URLData.BASE_URL + ComplaintType + URLData.PAGE + currentPage + "&per_page=30";
             new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
                 @Override
                 public void OnResponseFailure() {
-                    refreshLayout.setEnabled(true);
-                    AppUtils.getInstance().hideProgressDialog(activity);
+
                     hideSwipeProgress();
                     setProgressVisibility(View.GONE);
                     AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
@@ -150,8 +150,7 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
 
                 @Override
                 public void OnResponseSuccess(final JSONObject response) {
-                    AppUtils.getInstance().hideProgressDialog(activity);
-                    refreshLayout.setEnabled(true);
+                    hideSwipeProgress();
                     AppController.traceLog("home", url + " ---> " + response);
                     if (isToScroll) {
                         data.clear();
@@ -176,7 +175,7 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
                     }
                     new ParseJSONResponse(response, isToScroll).execute();
                 }
-            }, isToScroll, WebserviceHelper.HEADER_TYPE_NORMAL);
+            }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
 
 
         }
@@ -206,26 +205,17 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
         protected void onPostExecute(Void result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            mRecyclerView.setVisibility(View.VISIBLE);
             hideSwipeProgress();
-            if (data != null && data.size() <= 0 && mRecyclerView.getAdapter() != null) {
+            try {
                 AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
-                try {
-                    findViewById(R.id.viewEmpty).setVisibility(View.VISIBLE);
-                    ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
-                } catch (Exception e) {
-                }
+                ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
+            } catch (Exception e) {
+                e.printStackTrace();
             }
             if (isToScroll) {
-                AppUtils.getInstance().hideProgressDialog(activity);
-
-                if(mRecyclerView.getAdapter()!=null) {
+                if (mRecyclerView.getAdapter() != null) {
                     mRecyclerView.getAdapter().notifyDataSetChanged();
-                    AppController.getInstance().setEmptyViewForRecyclerView(activity, mRecyclerView);
-                    try {
-                        ((TextView) findViewById(R.id.viewEmpty)).setText(activity.getResources().getString(R.string.no_complaints));
-                    } catch (Exception e) {
-                    }
+
                 }
                 mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                     /**
@@ -275,6 +265,11 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
             } else {
                 if (mRecyclerView.getAdapter() != null)
                     mRecyclerView.getAdapter().notifyDataSetChanged();
+                try {
+                    if (data.size() > 0)
+                        findViewById(R.id.viewEmpty).setVisibility(View.GONE);
+                } catch (Exception e) {
+                }
             }
             setProgressVisibility(View.GONE);
             hideSwipeProgress();
@@ -330,6 +325,13 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
     /**
      * It shows the SwipeRefreshLayout progress
      */
+    public void showSwipeProgress() {
+        refreshLayout.setRefreshing(true);
+    }
+
+    /**
+     * It shows the SwipeRefreshLayout progress
+     */
     public void hideSwipeProgress() {
         refreshLayout.setRefreshing(false);
     }
@@ -339,13 +341,14 @@ public class ComplaintActivity extends BaseAppCompatActivity implements SwipeRef
      */
     @Override
     public void onRefresh() {
-        mRecyclerView.setVisibility(View.GONE);
         runHomeFeedWebService(complaintFilterModel.getComplaintType(), true);
     }
 
     private void setProgressVisibility(final int VISIBILITY) {
-        binding.progressBar.setVisibility(VISIBILITY);
-
+        try {
+            findViewById(R.id.progressBar).setVisibility(VISIBILITY);
+        } catch (Exception e) {
+        }
     }
 
 }
