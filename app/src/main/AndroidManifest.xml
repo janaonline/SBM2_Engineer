@@ -118,7 +118,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden|adjustPan"
             tools:ignore="LockedOrientationActivity" />
-      
+
         <activity
             android:name=".ComplaintDetailNew"
             android:screenOrientation="portrait"

@@ -30,7 +30,7 @@ public class URLData {
     public static final String GET_LANGUAGES = "http://api.swachh.city/languages";
     public static final String BASE_URL = "http://api.swachh.city/engineer/v1/";
     public static final String BASE_URL_UPLOAD_IMAGE = "https://files.ichangemycity.com/swachhata/complaints";
-    public static final String URL_VALIDATE_LOCATION = "http://swachh.city/android_ios_data/primer_card/2.0/engineer/api.php";
+    public static final String URL_VALIDATE_LOCATION = "http://www.swachh.city/android_ios_data/primer_card/2.0/engineer/api.php";
 
 
 //    Old API call to upload image
@@ -49,7 +49,7 @@ public class URLData {
     public static final String RESOLVED_COMPLAINT_LISTS = "complaints/getResolvedComplaintLists";
     public static final String GET_REJECTED_COMPLAINT_LISTS = "complaints/getRejectedComplaintLists";
     public static final String SEARCH_COMPLAINTS = "http://api.swachh.city/sbm/v1/search?keyword=_KEYWORD_&lang=_LANG_&per_page=1&page=1";
-    public static final String URL_PRIMER_CARD = "http://swachh.city/android_ios_data/primer_card/2.0/api.php?mode=live&deviceOS=" + URLDataSwachhManch.CHANNEL_VALUE;
+    public static final String URL_PRIMER_CARD = "http://www.swachh.city/android_ios_data/primer_card/2.0/api.php?mode=live&deviceOS=" + URLDataSwachhManch.CHANNEL_VALUE;
     public static final String _LANGUAGE = "&lang=";
 
     // in

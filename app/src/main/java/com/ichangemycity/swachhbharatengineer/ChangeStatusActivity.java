@@ -75,9 +75,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     String mStatus = "";
     ListView list;
     ArrayList<String> listOfReasonToRejectComplaint = new ArrayList<>();
-    @BindView(R.id.cvimagePreview)
     CardView cvimagePreview;
-    @BindView(R.id.clear)
     ImageView clear;
 
     private JSONObject geoFencingJsonObject = new JSONObject();
@@ -87,16 +85,16 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         super.onCreate(savedInstanceState);
         AppController.assignLanguage(ChangeStatusActivity.this);
         setContentView(R.layout.change_status_activity);
-
-        ButterKnife.bind(this);
         activity = ChangeStatusActivity.this;
-        BaseAppCompatActivity.activity = activity;
+//        BaseAppCompatActivity.activity = activity;
         try {
             geoFencingJsonObject = new JSONObject(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.validate_location_json_object, ""));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+        cvimagePreview = findViewById(R.id.cvimagePreview);
+        clear = findViewById(R.id.clear);
         mStatus = AppController.selectedComplaintChangeStatusOptions.getStatusName();
         statusTitleValue = findViewById(R.id.statusTitleValue);
         imageToUpload = findViewById(R.id.imageToUpload);
@@ -110,19 +108,13 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         addImage.setOnClickListener(v -> showAlertToPickImage());
         setToolbarAndCustomizeTitle(getString(R.string.change_status));
         send.setOnClickListener(v -> {
-            JSONArray statusIdsArray = geoFencingJsonObject.optJSONArray("status_ids");
-            Type type = new TypeToken<List<Integer>>() {
-            }.getType();
-
-            assert statusIdsArray != null;
-            ArrayList<Integer> statusIds = new Gson().fromJson(statusIdsArray.toString(), type);
-            if (geoFencingJsonObject.optBoolean("validate_location") && statusIds.contains(AppController.selectedComplaintChangeStatusOptions.getStatusID())) {
+            if (geoFencingJsonObject.optBoolean("validate_location")) {
                 checkForLocationPermission();
             } else {
                 changeStatusCTA();
             }
         });
-        postComm.setVisibility(View.VISIBLE);
+//        postComm.setVisibility(View.VISIBLE);
 
         String statusText = ((String) activity.getResources().getString(R.string.you_re_changing_the_status_of_the_complaint_to_new_status));
         statusText = statusText.replace("#NEW_STATUS", mStatus);
@@ -219,7 +211,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            postComm.setVisibility(View.GONE);
+//            postComm.setVisibility(View.GONE);
         }
 
         /**
@@ -253,7 +245,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                 AppController.showAlert(activity, "", getResources().getString(R.string.please_upload_an_image_and_then_resolve_the_complaint_to_resolved), false, new OnButtonClick() {
                     @Override
                     public void onPositiveButtonClicked(DialogInterface dialogInterface) {
-                        postComm.setVisibility(View.VISIBLE);
+//                        postComm.setVisibility(View.VISIBLE);
                         addImage.performClick();
                     }
 
@@ -491,13 +483,16 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     }
 
     private void previewImage() {
-        if (AppController.mSelectedImageModels != null && AppController.mSelectedImageModels.getUriOfImage() != null) {
-            cvimagePreview.setVisibility(View.VISIBLE);
-            imageToUpload.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageToUpload.setImageURI(AppController.mSelectedImageModels.getUriOfImage());
-            clear.setVisibility(View.VISIBLE);
-        } else {
-            initializeImageView();
+        try {
+            if (AppController.mSelectedImageModels != null && AppController.mSelectedImageModels.getUriOfImage() != null) {
+                cvimagePreview.setVisibility(View.VISIBLE);
+                imageToUpload.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageToUpload.setImageURI(AppController.mSelectedImageModels.getUriOfImage());
+                clear.setVisibility(View.VISIBLE);
+            } else {
+                initializeImageView();
+            }
+        } catch (Exception e) {
         }
     }
 
@@ -524,7 +519,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
     }
 
     private void showAlertToPickImage() {
-        postComm.setVisibility(View.VISIBLE);
+//        postComm.setVisibility(View.VISIBLE);
         AppController.selectedPurposeToUploadImage = AppController.PURPOSE_POST_COMMENT;
         startActivity(new Intent(activity, SelectImageDialogActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
     }
@@ -567,7 +562,7 @@ public class ChangeStatusActivity extends BaseAppCompatActivity {
                     });
                     final String rejectedStatus = getString(R.string.you_re_changing_the_status_of_the_complaint_to_new_status).replace("#New_STATUS", getString(R.string.change_status_rejected)) + "Please select a reason from below to reject this complaint";
                     messageToShow.setText(rejectedStatus);
-                    postComm.setVisibility(View.GONE);
+//                    postComm.setVisibility(View.GONE);
                     break;
                 default:
                     //                    complaintStatus = R.drawable.complaint_status_closed;

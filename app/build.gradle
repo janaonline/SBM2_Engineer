@@ -1,14 +1,15 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 31
     defaultConfig {
         applicationId "com.ichangemycity.swachhbharatengineer"
-        minSdkVersion 18
+        minSdkVersion 21
         multiDexEnabled true
         targetSdkVersion 31
-        versionCode 42
-        versionName "2.0"
+        versionCode 43
+        versionName "2.1"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     buildTypes {
@@ -96,7 +97,6 @@ allprojects {
         }
     }
 }
-apply plugin: 'com.google.gms.google-services'
 
 repositories {
     mavenCentral()
