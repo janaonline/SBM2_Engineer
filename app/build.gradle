@@ -8,7 +8,7 @@ android {
         minSdkVersion 21
         multiDexEnabled true
         targetSdkVersion 31
-        versionCode 43
+        versionCode 44
         versionName "2.1"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -65,7 +65,7 @@ dependencies {
     implementation 'com.android.volley:dc-volley:1.1.0'
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
-    implementation platform('com.google.firebase:firebase-bom:17.0.0')
+    implementation platform('com.google.firebase:firebase-bom:28.0.0')
     implementation('com.google.firebase:firebase-analytics') {
         exclude module: "play-services-ads-identifier"
         exclude module: "play-services-measurement"
@@ -85,6 +85,9 @@ dependencies {
     implementation "ch.acra:acra-mail:$acraVersion"
     implementation "ch.acra:acra-http:$acraVersion"
     implementation "ch.acra:acra-core:$acraVersion"
+
+    /*auto update*/
+    implementation 'com.google.android.play:core:1.10.0'
 }
 
 allprojects {

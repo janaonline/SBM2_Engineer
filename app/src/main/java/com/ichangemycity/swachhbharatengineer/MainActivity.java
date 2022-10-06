@@ -35,6 +35,7 @@ import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
+import com.ichangemycity.base.BaseAppCompatActivity;
 import com.ichangemycity.callback.OnResponseListener;
 import com.ichangemycity.model.ChangeStatusModel;
 import com.ichangemycity.model.ComplaintData;
@@ -49,9 +50,9 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener, ComplaintAdapter.ActionCallBack {
+public class MainActivity extends BaseAppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener, ComplaintAdapter.ActionCallBack {
 
-    private Activity activity;
+    private AppCompatActivity activity;
     private SwipeRefreshLayout refreshLayout;
     private ArrayList<ComplaintFilterModel> complaintFilterModel = new ArrayList<ComplaintFilterModel>();
     public static androidx.appcompat.app.ActionBar actionBar;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar_title = findViewById(R.id.toolbar_title);
         setSupportActionBar(toolbar);
         activity = MainActivity.this;
+        AppController.getInstance().checkInAppAutoUpdate(activity);
         clearBackStack();
 
         toolbar = findViewById(R.id.toolbar);
@@ -77,35 +79,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         refreshLayout = findViewById(R.id.swipe_container);
         initSwipeOptions();
         setToolbarAndCustomizeTitle(toolbar);
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.setDrawerIndicatorEnabled(false);
-//        toggle.syncState();
-
-//        navigationView = findViewById(R.id.nav_view);
-//        navigationView.setNavigationItemSelectedListener(this);
         complaintList = findViewById(R.id.complaintList);
         complaintList.setLayoutManager(new GridLayoutManager(activity, 2));
 
-        getProfileDetailsAndRunHomeFeed();
-        setSpinnerData();
-
-       /*  circleUserImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.openDrawer(GravityCompat.START);
-            }
-        });
-   if (ICMyCPreferenceData.getPreferenceItem(
-        MainActivity.activity,
-        ICMyCPreferenceData.isDeeplinked, "0").equalsIgnoreCase("1")) {
-      ICMyCPreferenceData.setPreference(
-          MainActivity.activity,
-          ICMyCPreferenceData.isDeeplinked, "0");
-      startActivity(new Intent(MainActivity.activity,
-          ComplaintDetail.class));
-    }*/
 
         toolbar_title.setOnClickListener(v -> {
             onRefresh();
@@ -252,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         complaintAdapter.setActionCallBack(this);
 
     }
-
+/*
     private void getPrimerCardsAPI() {
         final String url = URLData.URL_PRIMER_CARD + "&cityID=" + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.city_id, "1") + URLData._LANGUAGE + ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.selectedLanguage, "en") + "&deviceOs=" + URLDataSwachhManch.CHANNEL_VALUE;
         new WebserviceHelper(activity, WebserviceHelper.METHOD_GET, url, null, new OnResponseListener() {
@@ -265,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 AppController.getInstance().setSwachhSurveyPrimerCardData(response);
             }
         }, false, WebserviceHelper.HEADER_TYPE_NORMAL);
-    }
+    }*/
 
     private void setToolbarAndCustomizeTitle(Toolbar toolbar) {
         toolbar = findViewById(R.id.toolbar);
@@ -600,7 +576,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 ICMyCPreferenceData.setPreference(MainActivity.this, ICMyCPreferenceData.user_full_name, name);
             }
 //            initializeCountForNavItems();
-
+            setSpinnerData();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -612,10 +588,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onResume();
         try {
             AppUtils.getInstance().hideProgressDialog(activity);
-            if (AppConstant.isToRefreshComplaint) {
+           /* if (AppConstant.isToRefreshComplaint) {
                 AppConstant.isToRefreshComplaint = false;
-                getProfileDetailsAndRunHomeFeed();
-            }
+
+            }*/
+            getProfileDetailsAndRunHomeFeed();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -637,7 +615,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void initSwipeOptions() {
         refreshLayout.setOnRefreshListener(this);
-        setAppearance();
+        getProfileDetailsAndRunHomeFeed();
         refreshLayout.setEnabled(true);
 
     }

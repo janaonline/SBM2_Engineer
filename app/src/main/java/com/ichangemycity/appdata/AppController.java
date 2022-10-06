@@ -4,9 +4,11 @@ import static com.ichangemycity.appdata.AppConstant.TOAST_TYPE_ERROR;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.StrictMode;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -20,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,6 +46,12 @@ import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.security.ProviderInstaller;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.ichangemycity.adapter.ChangeStatusSpinnerAdapter;
 import com.ichangemycity.callback.OnButtonClick;
@@ -96,19 +105,18 @@ public class AppController extends MultiDexApplication {
 
     private Locale locale = null;
 
-    private JSONObject swachhSurvey;
+    /* private JSONObject swachhSurvey;*/
 
     /**
      * @param swachhSurvey JSONObject to store the primer card API response
      */
-    public void setSwachhSurveyPrimerCardData(JSONObject swachhSurvey) {
+    /*public void setSwachhSurveyPrimerCardData(JSONObject swachhSurvey) {
         this.swachhSurvey = swachhSurvey;
     }
 
     public JSONObject getSwachhSurveyPrimerCardData() {
         return this.swachhSurvey;
-    }
-
+    }*/
     public static void traceLog(String key, String value) {
 //        Log.i(key, value);
     }
@@ -534,9 +542,53 @@ public class AppController extends MultiDexApplication {
         }
         return cStatusListData;
     }
-    //    public static void logTrace(Activity activity, String value) {
-    //        Log.i(activity.getClass().getSimpleName().toString(), value);
-    //    }
 
+
+    public void checkInAppAutoUpdate(final AppCompatActivity activity) {
+        try {
+            AppUpdateManager appUpdateManager = AppUpdateManagerFactory.create(activity);
+
+            // Returns an intent object that you use to check for an update.
+            Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+            // Checks that the platform will allow the specified type of update.
+            appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+                if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                        // This example applies an immediate update. To apply a flexible update
+                        // instead, pass in AppUpdateType.FLEXIBLE
+                        && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                    // Request the update.
+                    showAlertToUpdateApp(activity);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showAlertToUpdateApp(final AppCompatActivity activity) {
+        AlertDialog.Builder ab = new AlertDialog.Builder(activity);
+        ab.setMessage("A new version is available. Update " + activity.getResources().getString(R.string.app_name) + " app to experience the exciting features and enhancements");
+        ab.setTitle("App Update Available !");
+        ab.setCancelable(true);
+        ab.setPositiveButton(activity.getResources().getString(R.string.common_google_play_services_update_button), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                openAppOnGooglePlayStore(activity);
+                activity.finish();
+            }
+        });
+        ab.setCancelable(false);
+        ab.show();
+    }
+
+    public void openAppOnGooglePlayStore(final AppCompatActivity activity) {
+        String appPackageName = "com.ichangemycity.swachhbharatengineer";
+        try {
+            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + appPackageName)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+
+        }
+    }
 }
 

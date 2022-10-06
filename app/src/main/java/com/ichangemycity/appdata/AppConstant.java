@@ -30,7 +30,6 @@ public class AppConstant {
     public static final String DATE_FORMAT = "dd/MM/yyyy HH:mm:ss";
     public static boolean isToRefreshComplaint = false;
 
-    public static String USER_TEMP_MOBILE_NUMBER = "";
 
 
     public ArrayList<String> imagePreviewList = new ArrayList<>();

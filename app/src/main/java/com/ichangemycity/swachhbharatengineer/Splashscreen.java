@@ -1,5 +1,8 @@
 package com.ichangemycity.swachhbharatengineer;
 
+import static com.ichangemycity.appdata.AppController.TAG;
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -9,13 +12,19 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.ichangemycity.appdata.AppConstant;
 import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
@@ -23,7 +32,6 @@ import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.base.BaseAppCompatActivity;
 import com.ichangemycity.callback.InternetConnectionCallback;
 import com.ichangemycity.callback.OnResponseListener;
-import com.ichangemycity.firebase.MyFirebaseInstanceIDService;
 import com.ichangemycity.model.LanguageData;
 import com.ichangemycity.webservice.URLData;
 import com.ichangemycity.webservice.WebserviceHelper;
@@ -108,13 +116,13 @@ public class Splashscreen extends BaseAppCompatActivity {
         new RegisterBackground().execute();
     }
 
-    private static String regid = "";
-
+    String msg = "";
+    @SuppressLint("StaticFieldLeak")
     public class RegisterBackground extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... arg0) {
-            String msg = "";
+
             try {
                 Thread.sleep(2000);
                 performGCMRegistration();
@@ -128,11 +136,31 @@ public class Splashscreen extends BaseAppCompatActivity {
 
         private void performGCMRegistration() {
             try {
-                new MyFirebaseInstanceIDService().onTokenRefresh();
+
+                FirebaseApp.initializeApp(activity);
+                FirebaseMessaging.getInstance().getToken()
+                        .addOnCompleteListener(new OnCompleteListener<String>() {
+                            @Override
+                            public void onComplete(@NonNull Task<String> task) {
+                                if (!task.isSuccessful()) {
+                                    AppController.traceLog(TAG, "getInstanceId failed :" + task.getException());
+                                    return;
+                                } else {
+                                    String refreshedToken = task.getResult();
+                                    if (!TextUtils.isEmpty(refreshedToken)) {
+                                        AppConstant.deviceToken = refreshedToken;
+                                        AppController.traceLog("deviceToken", refreshedToken);
+                                    } else {
+                                        AppController.traceLog(TAG, "device token is null or empty");
+                                    }
+                                }
+                            }
+                        });
             } catch (Exception ex) {
-                ex.printStackTrace();
+                msg = "Error :" + ex.getMessage();
             }
         }
+
 
         @Override
         protected void onPostExecute(String msg) {
@@ -239,10 +267,9 @@ public class Splashscreen extends BaseAppCompatActivity {
             //      if (Integer.parseInt(ICMyCPreferenceData.getPreferenceItem(
             //          Splashscreen.this, ICMyCPreferenceData.activated, "0")) == 0) {
             if (ICMyCPreferenceData.getPreferenceItem(Splashscreen.this, ICMyCPreferenceData.activated, "0").equalsIgnoreCase("0") || ICMyCPreferenceData.getPreferenceItem(Splashscreen.this, ICMyCPreferenceData.activated, "0").equalsIgnoreCase("NA")) {
-                AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER = "";
                 startActivity(new Intent(Splashscreen.this, UserMobileNumber.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             } else {
-                startActivity(new Intent(Splashscreen.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                startActivity(new Intent(Splashscreen.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
 
             }
             Splashscreen.this.finish();

@@ -8,13 +8,16 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.android.volley.NetworkResponse;
@@ -92,20 +95,23 @@ public class AppUtils {
     }
 
     public static void showToast(final Activity activity, final int type, final String message) {
-        switch (type) {
+       /* switch (type) {
             case AppConstant.TOAST_TYPE_ERROR:
-                //                Toasty.error(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
-                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
-                break;
             case AppConstant.TOAST_TYPE_INFO:
-                //                Toasty.info(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
-                Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
-                break;
             case AppConstant.TOAST_TYPE_SUCCESS:
-                //                Toasty.success(activity.getApplicationContext(), message, Toast.LENGTH_SHORT, true).show();
-                Toast.makeText(activity, message, Toast.LENGTH_LONG).show();
+
                 break;
-        }
+        }*/
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.custom_toast,
+                null);
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText(message);
+        Toast toast = new Toast(activity);
+        toast.setView(layout);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.show();
     }
 
     public static boolean validateMobileNumber(final Activity activity, final EditText mobileNumber) {
