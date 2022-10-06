@@ -88,20 +88,12 @@ public class UserMobileNumber extends BaseAppCompatActivity {
                     submit.setEnabled(true);
                     submit.setTextColor(Color.WHITE);
                     AppController.hideKeyboard(activity, mobileNumber);
-                    AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER = mobileNumber.getText().toString();
                 } else {
                     submit.setEnabled(false);
                     submit.setTextColor(getResources().getColor(R.color.greySecondary));
                 }
             }
         });
-        mobileNumber.setText(ICMyCPreferenceData.getPreferenceItem(
-                UserMobileNumber.this, ICMyCPreferenceData.Mobile_No, ""));
-
-
-        if (!AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER.isEmpty())
-            mobileNumber.setText(AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER);
-
         selectedLanguage.setText(AppController.languageArrayList.get(Integer.parseInt(ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.selectedLanguagePosition, "0"))).getLanguage_label());
         selectedLanguage.setOnClickListener(new View.OnClickListener() {
             /**
@@ -200,7 +192,6 @@ public class UserMobileNumber extends BaseAppCompatActivity {
                                 }
                                 if (isEngineerOrULBAdmin) {
                                     startActivity(new Intent(activity, OTPVerification.class));
-                                    AppConstant.getInstance().USER_TEMP_MOBILE_NUMBER = "";
                                 } else {
                                     AppController.showAlert(activity, "",
                                             "Provided mobile number is not registered as SBM Engineer, please check the "
