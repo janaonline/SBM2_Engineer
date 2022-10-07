@@ -92,7 +92,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="swachh.city"
+                    android:host="www.swachh.city"
                     android:pathPrefix="/"
                     android:scheme="http" />
                 <data
