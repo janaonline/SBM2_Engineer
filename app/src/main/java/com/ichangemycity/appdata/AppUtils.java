@@ -383,16 +383,17 @@ public class AppUtils {
                 AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
                 break;
             case HTTPResponseCode.HTTP_UN_AUTHORIZED:
-                break;
             case HTTPResponseCode.HTTP_UNAUTHENTICATED:
-//                errors = responseObject.optString("message") + "";
-//                if (errors != null) if (errors.trim().length() > 0)
-//                    AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
-                ICMyCPreferenceData.clearPreferences(act);
-                AppUtils.showToast(act, AppConstant.TOAST_TYPE_INFO, "Session expired, login again");
-                new AppController().cancelPendingRequests(AppController.TAG);
-                act.startActivity(new Intent(act, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                act.finish();
+                if ((act.getClass().getSimpleName().equalsIgnoreCase(UserMobileNumber.class.getSimpleName()) || act.getClass().getSimpleName().equalsIgnoreCase(OTPVerification.class.getSimpleName()))) {
+                    errors = responseObject.optString("message") + "";
+                    AppController.traceLog("error", responseObject + "");
+                    AppUtils.showToast(act, AppConstant.TOAST_TYPE_ERROR, errors);
+                } else {
+                    ICMyCPreferenceData.clearPreferences(act);
+                    new AppController().cancelPendingRequests(AppController.TAG);
+                    act.startActivity(new Intent(act, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    act.finish();
+                }
 
                 /*new GenerateNewAccessToken().generateNewAccessToken(act, new OnTaskCompleted() {
                     @Override
