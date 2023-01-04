@@ -117,6 +117,7 @@ public class Splashscreen extends BaseAppCompatActivity {
     }
 
     String msg = "";
+
     @SuppressLint("StaticFieldLeak")
     public class RegisterBackground extends AsyncTask<String, String, String> {
 
