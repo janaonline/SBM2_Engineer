@@ -6,6 +6,7 @@ import static android.R.color.holo_orange_light;
 import static android.R.color.holo_red_light;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -36,6 +37,7 @@ import com.ichangemycity.appdata.AppController;
 import com.ichangemycity.appdata.AppUtils;
 import com.ichangemycity.appdata.ICMyCPreferenceData;
 import com.ichangemycity.base.BaseAppCompatActivity;
+import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.callback.OnResponseListener;
 import com.ichangemycity.model.ChangeStatusModel;
 import com.ichangemycity.model.ComplaintData;
@@ -280,6 +282,26 @@ public class MainActivity extends BaseAppCompatActivity implements NavigationVie
         if (id == R.id.notifs) {
             activity.startActivity(new Intent(activity, NotificationActivity.class));
             return true;
+        } else if (id == R.id.logout) {
+            AppController.showAlert(activity, activity.getResources().getString(R.string.logout) + "?", activity.getResources().getString(R.string
+                    .are_you_sure_to_logout), true, new OnButtonClick() {
+                @Override
+                public void onPositiveButtonClicked(DialogInterface dialogInterface) {
+                    ICMyCPreferenceData.clearPreferences(activity);
+                    activity.startActivity(new Intent(activity, Splashscreen.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    activity.finish();
+                }
+
+                @Override
+                public void onNegativeButtonClicked() {
+
+                }
+
+                @Override
+                public void onNegativeButtonClicked(DialogInterface dialogInterface) {
+                    dialogInterface.dismiss();
+                }
+            });
         }
 
         return super.onOptionsItemSelected(item);

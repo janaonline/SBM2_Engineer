@@ -267,7 +267,7 @@ public class Splashscreen extends BaseAppCompatActivity {
             super.onPostExecute(result);
             //      if (Integer.parseInt(ICMyCPreferenceData.getPreferenceItem(
             //          Splashscreen.this, ICMyCPreferenceData.activated, "0")) == 0) {
-            if (ICMyCPreferenceData.getPreferenceItem(Splashscreen.this, ICMyCPreferenceData.activated, "0").equalsIgnoreCase("0") || ICMyCPreferenceData.getPreferenceItem(Splashscreen.this, ICMyCPreferenceData.activated, "0").equalsIgnoreCase("NA")) {
+            if (!(ICMyCPreferenceData.getPreferenceItem(Splashscreen.this, ICMyCPreferenceData.activated, "0").equalsIgnoreCase("1"))) {
                 startActivity(new Intent(Splashscreen.this, UserMobileNumber.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             } else {
                 startActivity(new Intent(Splashscreen.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));

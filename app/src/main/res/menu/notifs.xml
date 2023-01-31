@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/ic_logout"
+        android:iconTint="@color/white"
+        android:orderInCategory="0"
+        android:title="@string/logout"
+        android:visible="true"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction"
+        tools:targetApi="o" />
     <item
         android:id="@+id/notifs"
         android:icon="@mipmap/ic_notification"
+        android:orderInCategory="0"
+        android:title="@string/notification"
         android:visible="true"
-        app:showAsAction="always"
-        android:orderInCategory="0"/>
+        app:showAsAction="always" />
 
 </menu>
