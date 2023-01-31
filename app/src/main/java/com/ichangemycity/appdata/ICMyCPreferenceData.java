@@ -90,7 +90,7 @@ public class ICMyCPreferenceData {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(activity);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
         new AppController().cancelPendingRequests(AppController.TAG);
     }
 
