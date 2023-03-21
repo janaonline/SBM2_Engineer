@@ -86,7 +86,7 @@
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1sp"
+                        android:layout_height="1dp"
                         android:layout_marginTop="16sp"
                         android:background="@color/greyLight" />
 
@@ -125,7 +125,7 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="1sp"
+                            android:layout_height="1dp"
                             android:background="@color/greyLight" />
 
                         <!-- Location -->
@@ -157,7 +157,26 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="1sp"
+                            android:layout_height="1dp"
+                            android:background="@color/greyLight" />
+
+                        <!--Mobile Number-->
+
+                        <TextView
+                            android:id="@+id/privacyPolicy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin16dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="center_vertical"
+                            android:padding="@dimen/margin16dp"
+                            android:text="@string/privacy_policy"
+                            android:textColor="@color/blue_on_the_job"
+                            tools:text="@string/privacy_policy" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
                             android:background="@color/greyLight" />
 
                     </LinearLayout>
@@ -172,7 +191,7 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="1sp"
+                            android:layout_height="1dp"
                             android:background="@color/greyLight" />
 
                         <TextView
@@ -190,7 +209,7 @@
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="1sp"
+                            android:layout_height="1dp"
                             android:background="@color/greyLight" />
 
 

@@ -83,7 +83,7 @@ public class URLData {
     public static final String DEFAULT_AVATAR = "http://swachh.city/android_ios_data/images/account.png";
     public static final String DEFAULT_CATEGORY = "http://swachh.city/android_ios_data/images/category_not_found.png";
     public static final String NOT_FOUND = "http://swachh.city/android_ios_data/images/not_found.png";
-    public static final String PRIVACY_POLICY = "https://www.ichangemycity.com/privacy-policy-mobile?app=sbmengineer";
+    public static final String PRIVACY_POLICY = "http://www.swachh.city/privacy-policy-sbmengineer";
 
 
     public static HashMap<String, String> getHeaders(final Activity activity, final int headerType) {

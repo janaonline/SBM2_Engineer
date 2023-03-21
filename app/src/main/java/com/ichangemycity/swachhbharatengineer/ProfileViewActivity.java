@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.ichangemycity.base.BaseAppCompatActivity;
 import com.ichangemycity.callback.OnButtonClick;
 import com.ichangemycity.swachhbharatengineer.databinding.ProfileActivityBinding;
 import com.ichangemycity.webservice.ParseComplaintData;
+import com.ichangemycity.webservice.URLData;
 
 public class ProfileViewActivity extends BaseAppCompatActivity {
 
@@ -56,6 +58,13 @@ public class ProfileViewActivity extends BaseAppCompatActivity {
                         dialogInterface.dismiss();
                     }
                 });
+            }
+        });
+        binding.privacyPolicy.setOnClickListener(v -> {
+            try {
+                activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URLData.PRIVACY_POLICY)));
+            } catch (android.content.ActivityNotFoundException anfe) {
+
             }
         });
         ParseComplaintData.setImage(activity, binding.userImage, null, ICMyCPreferenceData.getPreferenceItem(activity, ICMyCPreferenceData.userProfileImage,
