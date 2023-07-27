@@ -86,7 +86,7 @@ import javax.net.ssl.SSLContext;
  * Created by pattabi.raman on 23-09-2017.
  */
 @SuppressWarnings("ALL")
-@AcraMailSender(mailTo = "pattabi.raman@janaagraha.org")
+@AcraMailSender(mailTo = "support@sbmurban.org")
 public class AppController extends MultiDexApplication {
     public static ArrayList<LanguageData> languageArrayList = new ArrayList<LanguageData>();
     public static String language_code = "code";
