@@ -245,9 +245,8 @@ public class CommentsActivity extends BaseAppCompatActivity {
 
 
     private void uploadImage() {
-        final String uploadImageURL = BASE_URL_UPLOAD_IMAGE;
         AppUtils.getInstance().showProgressDialog(activity);
-        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, uploadImageURL, response -> {
+        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, BASE_URL_UPLOAD_IMAGE, response -> {
             String resultResponse = new String(response.data);
             try {
                 AppUtils.getInstance().hideProgressDialog(activity);

@@ -29,7 +29,7 @@ public class URLData {
     //    LIVE
     public static final String GET_LANGUAGES = "http://api.swachh.city/languages";
     public static final String BASE_URL = "http://api.swachh.city/engineer/v1/";
-    public static final String BASE_URL_UPLOAD_IMAGE = "https://files.ichangemycity.com/swachhata/complaints";
+    public static final String BASE_URL_UPLOAD_IMAGE = "http://fs.swachhmanch.in/swachhata-files/swachhata/complaints";//"https://files.ichangemycity.com/swachhata/complaints";
     public static final String URL_VALIDATE_LOCATION = "http://www.swachh.city/android_ios_data/primer_card/2.0/engineer/api.php";
 
 
